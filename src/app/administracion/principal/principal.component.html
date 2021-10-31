@@ -1,0 +1,92 @@
+<nz-layout class="layout" >
+
+
+    <nz-sider nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="64" [nzWidth]="200" style="background-color: #264653; " [nzTrigger]="" nzCollapsible [(nzCollapsed)]="isCollapsed">
+  
+      <div class="logo" style="text-align: center;">
+        <img src="../../../assets/img/LOGO-01.png" alt="" width="20%">
+      </div>
+  
+      
+        <ul nz-menu style="background-color: #264653;">
+          <li nz-menu-item>
+            <a routerLink="infCorporativa">
+              INF. CORPORATIVA
+            </a>
+            
+          </li>
+          <li nz-menu-item><a routerLink="empleados">EMPLEADOS</a></li>
+          <li nz-menu-item><a routerLink="cargos">CARGO</a></li>
+          <li nz-menu-item><a routerLink="tours">TOURS</a></li>
+          <li nz-menu-item><a routerLink="paquetes">PAQUETES</a></li>
+          <li nz-menu-item><a routerLink="aliados">ALIADOS</a></li>
+          <li nz-menu-item><a routerLink="clientes">CLIENTES</a></li>
+          <li nz-menu-item><a routerLink="alojamientos">ALOJAMIENTO</a></li>
+          <li nz-menu-item><a routerLink="actividades">ACTIVIDADES</a></li>
+
+          <!-- <li nz-menu-item><a routerLink="rutas">RUTAS</a></li>
+          <li nz-menu-item><a routerLink="descuentos">DESCUENTOS</a></li>
+          <li nz-menu-item><a routerLink="personas" >PERSONA</a></li> -->
+          
+        </ul>
+      
+        <div class="colapsar">
+          
+        </div>
+        
+  
+    </nz-sider>
+  
+    <nz-layout>
+      
+      <nz-header style="background-color: #264653;">
+        
+        <ul nz-menu nzMode="horizontal" style="background-color: #264653;">
+
+          <li nz-menu-item>
+            <a routerLink="content/inicio">
+              <i nz-icon nzType="home"></i>
+            </a>
+            INICIO
+          </li>
+  
+          <li nz-menu-item>
+            <a routerLink="reportes">
+              <i nz-icon nzType="bar-chart"></i>
+            </a>
+            REPORTES
+          </li>
+  
+          <li nz-menu-item>
+            <i nz-icon nzType="notification" nzTheme="outline"></i>
+          </li>
+  
+          <li nz-menu-item>
+            <i nz-icon nzType="user"></i>
+            Nombre Administrador
+          </li>
+  
+        </ul>
+      </nz-header>
+  
+      <nz-content class="principal">
+        <!-- <div>
+          <i
+          class="trigger"
+          nz-icon
+          [nzType]="isCollapsed ? 'right-circle' : 'left-circle'"
+          (click)="isCollapsed = !isCollapsed"
+          style="font-size: 25px; color:#2a9d8f;"
+        ></i>
+        </div> -->
+        
+        <div class="inner-content" style="height: 80vh; overflow-y: scroll;">
+          
+          <router-outlet></router-outlet>
+        
+  
+        </div>
+      </nz-content>
+  
+    </nz-layout>
+  </nz-layout>

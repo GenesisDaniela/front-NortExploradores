@@ -1,0 +1,64 @@
+.layout {
+    min-height: 100vh;
+  }
+
+  .logo {
+    height: 32px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px;
+  }
+
+  nz-header {
+    background: #fff;
+    padding: 0;
+  }
+
+  nz-content {
+    margin: 24px 16px 0;
+  }
+
+  .inner-content {
+    padding: 24px;
+    background: #fff;
+    min-height: 360px;
+  }
+
+  nz-footer {
+    text-align: center;
+  }
+
+  li a{
+    color:  #2a9d8f;
+    font-weight: bold;
+  }
+
+  li{
+    color: #2a9d8f;
+    font-weight: bold;
+  }
+
+  li:hover{
+    background-color: #fff;
+  }
+
+
+
+
+.trigger {
+  
+  font-size: 18px;
+  line-height: 10px;
+  padding:10px;
+  cursor: pointer;
+  transition: color 0.3s;
+  margin: 0px;
+  /* text-align: center;
+  display: block; */
+}
+
+.colapsar{
+  background-color: #2a9d8f;
+  position: absolute;
+  left: 0px;
+}
+
