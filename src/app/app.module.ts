@@ -18,6 +18,9 @@ import { RouterModule } from '@angular/router';
 import { ErrorPagesComponent } from './shared/error-pages/error-pages.component';
 import { ClientesModule } from './clientes/clientes.module';
 
+//DATA-TABLES
+import { DataTablesModule } from "angular-datatables";
+
 registerLocaleData(es);
 
 @NgModule({
@@ -34,7 +37,8 @@ registerLocaleData(es);
     BrowserAnimationsModule,
     NzButtonModule,
     AdministracionModule,
-    ClientesModule
+    ClientesModule,
+    DataTablesModule
   ],
   providers: [{ provide: NZ_I18N, useValue: es_ES }],
   bootstrap: [AppComponent]

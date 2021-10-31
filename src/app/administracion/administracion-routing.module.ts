@@ -12,6 +12,8 @@ import { InfCorporativaComponent } from './pages/inf-corporativa/inf-corporativa
 import { PaquetesComponent } from './pages/paquetes/paquetes.component';
 import { ToursComponent } from './pages/tours/tours.component';
 import { PrincipalComponent } from './principal/principal.component';
+import { AddEmpleadoComponent } from './pages/empleados/add-empleado/add-empleado.component';
+import { AddCargoComponent } from './pages/cargo/add-cargo/add-cargo.component';
 
 const routes : Routes = [
   {path:"", 
@@ -19,10 +21,12 @@ const routes : Routes = [
     children:[
       {path:"reportes", component:ReportesComponent},
       {path:"empleados", component:EmpleadosComponent},
+        {path:"nuevoEmpleado", component:AddEmpleadoComponent},
       {path:"alojamientos", component:AlojamientosComponent},
       {path:"actividades", component:ActividadesComponent},
       {path:"aliados", component:AliadosComponent},
       {path:"cargos", component:CargoComponent},
+        {path:"nuevoCargo", component:AddCargoComponent},
       {path:"clientes", component:ClientesComponent},
       {path:"infCorporativa", component:InfCorporativaComponent},
       {path:"paquetes", component:PaquetesComponent},

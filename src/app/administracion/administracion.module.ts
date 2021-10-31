@@ -3,11 +3,18 @@ import { CommonModule } from '@angular/common';
 import { PrincipalComponent } from './principal/principal.component';
 import { RouterModule } from '@angular/router';
 
+//DATA-TABLES
+import { DataTablesModule } from "angular-datatables";
+
 // COMPONENTES ANGULAR
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+
+
+// COMPONENTES 
 import { EmpleadosComponent } from './pages/empleados/empleados.component';
 import { AlojamientosComponent } from './pages/alojamientos/alojamientos.component';
 import { ReportesComponent } from './pages/reportes/reportes.component';
@@ -19,6 +26,8 @@ import { AliadosComponent } from './pages/aliados/aliados.component';
 import { ClientesComponent } from './pages/clientes/clientes.component';
 import { ActividadesComponent } from './pages/actividades/actividades.component';
 import { AdministracionRoutingModule } from './administracion-routing.module';
+import { AddEmpleadoComponent } from './pages/empleados/add-empleado/add-empleado.component';
+import { AddCargoComponent } from './pages/cargo/add-cargo/add-cargo.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +41,9 @@ import { AdministracionRoutingModule } from './administracion-routing.module';
     PaquetesComponent,
     AliadosComponent,
     ClientesComponent,
-    ActividadesComponent
+    ActividadesComponent,
+    AddEmpleadoComponent,
+    AddCargoComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +52,9 @@ import { AdministracionRoutingModule } from './administracion-routing.module';
     NzIconModule,
     NzPageHeaderModule,
     NzMenuModule,
-    AdministracionRoutingModule
+    DataTablesModule,
+    AdministracionRoutingModule,
+    NzButtonModule
   ],
   exports:[
     PrincipalComponent
