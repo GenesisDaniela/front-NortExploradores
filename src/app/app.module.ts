@@ -14,15 +14,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //COMPONENTES DE ANGULAR
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { AdministracionModule } from './administracion/administracion.module';
-import { SharedModule } from './shared/shared.module';
-import { ClientesModule } from './clientes/clientes.module';
 import { RouterModule } from '@angular/router';
+import { ErrorPagesComponent } from './shared/error-pages/error-pages.component';
+import { ClientesModule } from './clientes/clientes.module';
 
 registerLocaleData(es);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ErrorPagesComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +34,6 @@ registerLocaleData(es);
     BrowserAnimationsModule,
     NzButtonModule,
     AdministracionModule,
-    SharedModule,
     ClientesModule
   ],
   providers: [{ provide: NZ_I18N, useValue: es_ES }],

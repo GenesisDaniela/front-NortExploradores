@@ -3,9 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
-import { AdministracionModule } from '../administracion/administracion.module';
 
-
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 
 @NgModule({
   declarations: [
@@ -15,7 +14,7 @@ import { AdministracionModule } from '../administracion/administracion.module';
   imports: [
     CommonModule,
     RouterModule,
-    // AdministracionModule
+    NzDropDownModule
   ],
   exports:[
     FooterComponent,

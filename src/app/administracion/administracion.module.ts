@@ -18,6 +18,7 @@ import { PaquetesComponent } from './pages/paquetes/paquetes.component';
 import { AliadosComponent } from './pages/aliados/aliados.component';
 import { ClientesComponent } from './pages/clientes/clientes.component';
 import { ActividadesComponent } from './pages/actividades/actividades.component';
+import { AdministracionRoutingModule } from './administracion-routing.module';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ActividadesComponent } from './pages/actividades/actividades.component'
     NzLayoutModule,
     NzIconModule,
     NzPageHeaderModule,
-    NzMenuModule
+    NzMenuModule,
+    AdministracionRoutingModule
   ],
   exports:[
     PrincipalComponent
