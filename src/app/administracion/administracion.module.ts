@@ -28,6 +28,9 @@ import { ActividadesComponent } from './pages/actividades/actividades.component'
 import { AdministracionRoutingModule } from './administracion-routing.module';
 import { AddEmpleadoComponent } from './pages/empleados/add-empleado/add-empleado.component';
 import { AddCargoComponent } from './pages/cargo/add-cargo/add-cargo.component';
+import { AddPaqueteComponent } from './pages/paquetes/add-paquete/add-paquete.component';
+import { AddAliadoComponent } from './pages/aliados/add-aliado/add-aliado.component';
+import { AddActividadComponent } from './pages/actividades/add-actividad/add-actividad.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { AddCargoComponent } from './pages/cargo/add-cargo/add-cargo.component';
     ClientesComponent,
     ActividadesComponent,
     AddEmpleadoComponent,
-    AddCargoComponent
+    AddCargoComponent,
+    AddPaqueteComponent,
+    AddAliadoComponent,
+    AddActividadComponent
   ],
   imports: [
     CommonModule,
