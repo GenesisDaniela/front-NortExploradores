@@ -19,6 +19,7 @@ import { AddTourComponent } from './pages/tours/add-tour/add-tour.component';
 import { AddPaqueteComponent } from './pages/paquetes/add-paquete/add-paquete.component';
 import { AddAliadoComponent } from './pages/aliados/add-aliado/add-aliado.component';
 import { AddAlojamientoComponent } from './pages/alojamientos/add-alojamiento/add-alojamiento.component';
+import { CalendarioComponent } from './pages/calendario/calendario.component';
 
 const routes : Routes = [
   {path:"", 
@@ -42,6 +43,7 @@ const routes : Routes = [
       {path:"reportes", component:ReportesComponent},
       {path:"tours", component:ToursComponent},
         {path:"nuevoTour", component:AddTourComponent},
+      {path:"calendario", component:CalendarioComponent},
       {path:"**", redirectTo:"reportes"}
   ]}
 ]

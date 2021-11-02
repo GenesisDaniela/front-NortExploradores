@@ -6,11 +6,13 @@ import { HomeComponent } from './pages/home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { VerRutasComponent } from './pages/ver-rutas/ver-rutas.component';
 
-import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { PasadiaComponent } from './pages/tours/pasadia/pasadia.component';
 import { EstadiaComponent } from './pages/tours/estadia/estadia.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
+// import { CalendarioComponent } from '../administracion/pages/calendario/calendario.component';
 
+//NG ZORRO
+import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 
 
 @NgModule({
@@ -20,13 +22,14 @@ import { ContactoComponent } from './pages/contacto/contacto.component';
     VerRutasComponent,
     PasadiaComponent,
     EstadiaComponent,
-    ContactoComponent
+    ContactoComponent,
   ],
   imports: [
     CommonModule,
     ClientesRoutingModule,
     SharedModule,
-    NzCarouselModule
+    NzCarouselModule,
+
   ],
   exports:[]
 })

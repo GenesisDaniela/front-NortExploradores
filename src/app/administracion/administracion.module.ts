@@ -14,6 +14,8 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
+import { NzCalendarModule } from 'ng-zorro-antd/calendar';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
 
 // COMPONENTES 
 import { EmpleadosComponent } from './pages/empleados/empleados.component';
@@ -33,6 +35,7 @@ import { AddPaqueteComponent } from './pages/paquetes/add-paquete/add-paquete.co
 import { AddAliadoComponent } from './pages/aliados/add-aliado/add-aliado.component';
 import { AddActividadComponent } from './pages/actividades/add-actividad/add-actividad.component';
 import { AddTourComponent } from './pages/tours/add-tour/add-tour.component';
+import { CalendarioComponent } from './pages/calendario/calendario.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,8 @@ import { AddTourComponent } from './pages/tours/add-tour/add-tour.component';
     AddPaqueteComponent,
     AddAliadoComponent,
     AddActividadComponent,
-    AddTourComponent
+    AddTourComponent,
+    CalendarioComponent
   ],
   imports: [
     CommonModule,
@@ -65,7 +69,9 @@ import { AddTourComponent } from './pages/tours/add-tour/add-tour.component';
     AdministracionRoutingModule,
     NzButtonModule,
     NzDropDownModule,
-    NzStepsModule
+    NzStepsModule,
+    NzCalendarModule,
+    NzBadgeModule
   ],
   exports:[
     PrincipalComponent
