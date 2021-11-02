@@ -80,20 +80,20 @@
     </nz-layout>
   </nz-layout>
  -->
- <nz-layout class="app-layout">
+<nz-layout class="app-layout">
   <nz-sider
     class="menu-sidebar"
     nzCollapsible
-    nzWidth="256px"
+    nzWidth="240px"
     nzBreakpoint="md"
     [(nzCollapsed)]="isCollapsed"
     [nzTrigger]="null"
   >
     <div class="sidebar-logo">
-      <!-- <a href="https://ng.ant.design/" target="_blank"> -->
-        <img src="../../../assets/img/LOGO-01.png" alt="logo" />
-        <h1>NortExploradores</h1>
-      <!-- </a> -->
+      
+      <img src="../../../assets/img/LOGO-01.png" alt="logo" />
+      <h1>NortExploradores</h1>
+      
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
       <li nz-menu-item>
@@ -127,17 +127,6 @@
       <li nz-menu-item>
         <i
           nz-icon
-          nzType="mobile"
-          nzTheme="outline"
-          style="font-size: 20px"
-        ></i>
-        <span>Paquetes</span>
-        <a routerLink="paquetes"></a>
-      </li>
-
-      <li nz-menu-item>
-        <i
-          nz-icon
           nzType="idcard"
           nzTheme="outline"
           style="font-size: 20px"
@@ -166,6 +155,17 @@
       <li nz-menu-item>
         <i
           nz-icon
+          nzType="mobile"
+          nzTheme="outline"
+          style="font-size: 20px"
+        ></i>
+        <span>Paquetes</span>
+        <a routerLink="paquetes"></a>
+      </li>
+
+      <li nz-menu-item>
+        <i
+          nz-icon
           nzType="file-search"
           nzTheme="outline"
           style="font-size: 20px"
@@ -177,23 +177,62 @@
   </nz-sider>
   <nz-layout>
     <nz-header>
-      <div class="app-header">
-        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-          <i
-            class="trigger"
-            nz-icon
-            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-          ></i>
-        </span>
+      <div class="app-header row">
+        <div class="col-1">
+          <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+            <i
+              class="trigger"
+              nz-icon
+              [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+            ></i>
+          </span>
+        </div>
 
-        
-        <a routerLink="">Holas</a>
+        <div class="col-8 d-flex">
+          <div class="item">
+            <a routerLink="/inicio">INICIO</a>
+          </div>
+
+          <div class="item">
+            <a routerLink="Reportes">CALENDARIO</a>
+          </div>
+
+          <div class="item">
+            <a routerLink="inicio">DESCUENTOS</a>
+          </div>
+
+          <div class="item">
+            <a routerLink="Reportes">REPORTES</a>
+          </div>
+
+          <div class="item">
+            <a routerLink="Reportes"><i nz-icon nzType="bell" nzTheme="outline" style="font-size: 30px;"></i></a>
+          </div>
+        </div>
+
+        <div class="col-3 d-flex">
+          <div class="item">
+                  
+            <nz-button-group>
+              <button nz-button (click)="log()">Cristiano Ronaldo</button>
+              <button nz-button nz-dropdown [nzDropdownMenu]="menu" nzPlacement="bottomRight">
+                <i nz-icon nzType="user"></i>
+              </button>
+            </nz-button-group>
+
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+              <ul nz-menu>
+                <li nz-menu-item>Editar Perfil</li>
+                <li nz-menu-item routerLink="/inicio">Cerrar Sesión</li>
+              </ul>
+            </nz-dropdown-menu>
+          </div>
+        </div>
       </div>
     </nz-header>
-   
-    <div class="contenido" style="width: 100%; height: 100%; overflow: scroll;">
-        <router-outlet></router-outlet>
+
+    <div class="contenido" style="width: 100%; height: 100%; overflow: scroll">
+      <router-outlet></router-outlet>
     </div>
   </nz-layout>
 </nz-layout>
- 
