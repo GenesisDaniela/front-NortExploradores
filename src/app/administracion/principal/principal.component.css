@@ -127,6 +127,7 @@ nz-header {
   padding: 0;
   width: 100%;
   z-index: 2;
+  /* position: absolute; */
 }
 
 .app-header {
@@ -162,7 +163,7 @@ nz-button-group [nz-button] {
 
 .item a{
 
-    color: teal;
+    color: white;
     font-size: 15px;
     padding: 0 10px;
     letter-spacing: 2px;

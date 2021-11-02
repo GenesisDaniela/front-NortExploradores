@@ -177,7 +177,7 @@
   </nz-sider>
   <nz-layout>
     <nz-header>
-      <div class="app-header row">
+      <div class="app-header row d-flex">
         <div class="col-1">
           <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
             <i
@@ -190,23 +190,35 @@
 
         <div class="col-8 d-flex">
           <div class="item">
-            <a routerLink="/inicio">INICIO</a>
+            <a routerLink="/inicio">
+              <i class="fas fa-home"></i>
+              INICIO
+            </a>
           </div>
 
           <div class="item">
-            <a routerLink="Reportes">CALENDARIO</a>
+            <a routerLink="calendario">
+              <i class="fas fa-calendar-alt"></i>
+              CALENDARIO
+            </a>
           </div>
 
           <div class="item">
-            <a routerLink="inicio">DESCUENTOS</a>
+            <a routerLink="descuentos">
+              <i class="fas fa-tags"></i>  
+              DESCUENTOS
+            </a>
           </div>
 
           <div class="item">
-            <a routerLink="Reportes">REPORTES</a>
+            <a routerLink="Reportes">
+              <i class="fas fa-file-chart-line"></i>
+              REPORTES
+            </a>
           </div>
 
           <div class="item">
-            <a routerLink="Reportes"><i nz-icon nzType="bell" nzTheme="outline" style="font-size: 30px;"></i></a>
+            <a routerLink="notificaciones"><i nz-icon nzType="bell" nzTheme="outline" style="font-size: 30px;"></i></a>
           </div>
         </div>
 

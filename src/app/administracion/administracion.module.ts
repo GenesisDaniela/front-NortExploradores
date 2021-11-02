@@ -13,6 +13,7 @@ import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzStepsModule } from 'ng-zorro-antd/steps';
 
 // COMPONENTES 
 import { EmpleadosComponent } from './pages/empleados/empleados.component';
@@ -63,7 +64,8 @@ import { AddTourComponent } from './pages/tours/add-tour/add-tour.component';
     DataTablesModule,
     AdministracionRoutingModule,
     NzButtonModule,
-    NzDropDownModule
+    NzDropDownModule,
+    NzStepsModule
   ],
   exports:[
     PrincipalComponent
