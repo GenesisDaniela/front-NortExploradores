@@ -8,6 +8,8 @@ import { registerLocaleData } from '@angular/common';
 import es from '@angular/common/locales/es';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './shared/header/header.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //COMPONENTES DE ANGULAR
@@ -27,6 +29,7 @@ import { UsuarioService } from './services/usuario.service';
 import { PersonaService } from './services/persona.service';
 import { TransaccionService } from './services/transaccion.service';
 import { interceptorProvider } from './security/interceptors/paq-interceptor.service';
+import { FooterComponent } from './shared/footer/footer.component';
 
 // import { InformacionPagoComponent } from './home/informacion-pago/informacion-pago/informacion-pago.component';
 

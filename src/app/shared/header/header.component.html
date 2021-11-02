@@ -1,3 +1,4 @@
+
 <header class="header">
   <div class="menu margen-interno">
     <div class="logo">
@@ -57,11 +58,17 @@
 
     </div>
     <div class="social">
-      <a href="" routerLink="/login"
+      <a href="" *ngIf="!isLogged" routerLink="/login"
         ><i class="fas fa-home"></i><span class="off">Inicio Sesión</span></a
       >
-      <a href=""
+      <a href="" *ngIf="!isLogged" 
         ><i class="fab fa-weixin"></i><span class="off">Registarse</span></a
+      >
+      <a href="" *ngIf="isLogged" 
+        ><i class="fab fa-weixin"></i><span class="off">Bienvenido, {{usuario.username}}</span></a
+      >
+      <a href="" (click)="onLogOut()" *ngIf="isLogged" 
+        ><i class="fab fa-weixin"></i><span class="off">Cerrar Sesion</span></a
       >
     </div>
   </div>
