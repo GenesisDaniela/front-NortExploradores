@@ -1,15 +1,7 @@
 <div class="container-fluid">
     <h3 style="text-align: center">ADMINISTRACIÓN DE CLIENTES</h3>
   
-    <div style="text-align: right; margin: 0;">
-        <a routerLink="/administracion/nuevoEmpleado" nz-button nzType="primary"><i nz-icon nzType="user-add" nzTheme="outline" style="padding-bottom: 2px;"></i>Agregar Empleado</a>
-    </div>
-
-    
-
-    <!-- <button routerLink="agregarEmpleado">ir</button> -->
-    
-
+      
     <br />
     <table
       datatable
@@ -35,8 +27,7 @@
             <td>{{ clien.persona.sexo }}</td>
             <td>{{ clien.persona.fechaNac }}</td>
             <td>{{ clien.persona.cel }}</td>            
-            <td>{{ clien.persona.correo }}</td>  
-            <td>opción</td>           
+            <td>{{ clien.persona.correo }}</td>                       
           <td nzAlign="center">
             <a>
               <i

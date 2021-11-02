@@ -2,7 +2,7 @@
     <h3 style="text-align: center">ADMINISTRACIÓN DE ACTIVIDADES</h3>
   
     <div style="text-align: right; margin: 0;">
-        <a routerLink="/administracion/nuevoEmpleado" nz-button nzType="primary"><i nz-icon nzType="user-add" nzTheme="outline" style="padding-bottom: 2px;"></i>Agregar Actividad</a>
+        <a routerLink="/administracion/nuevaActividad" nz-button nzType="primary"><i nz-icon nzType="user-add" nzTheme="outline" style="padding-bottom: 2px;"></i>Agregar Actividad</a>
     </div>
 
     
@@ -29,9 +29,8 @@
         <tr *ngFor="let acti of data">
             <td>{{ acti.nombre }}</td>
             <td>{{ acti.descripcion }}</td>
-            <td>{{ acti.urlImg}}</td>            
-            <td>Opciones</td>            
-          <td nzAlign="center">
+            <td>{{ acti.urlImg}}</td>
+            <td nzAlign="center">
             <a>
               <i
                 nz-icon
