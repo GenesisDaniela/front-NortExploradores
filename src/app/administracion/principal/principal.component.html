@@ -1,4 +1,4 @@
-<nz-layout class="layout" >
+<!-- <nz-layout class="layout" >
 
 
     <nz-sider nzCollapsible nzBreakpoint="lg" [nzCollapsedWidth]="64" [nzWidth]="200" style="background-color: #264653; " [nzTrigger]="" nzCollapsible [(nzCollapsed)]="isCollapsed">
@@ -24,9 +24,6 @@
           <li nz-menu-item><a routerLink="alojamientos">ALOJAMIENTO</a></li>
           <li nz-menu-item><a routerLink="actividades">ACTIVIDADES</a></li>
 
-          <!-- <li nz-menu-item><a routerLink="rutas">RUTAS</a></li>
-          <li nz-menu-item><a routerLink="descuentos">DESCUENTOS</a></li>
-          <li nz-menu-item><a routerLink="personas" >PERSONA</a></li> -->
           
         </ul>
       
@@ -70,15 +67,7 @@
       </nz-header>
   
       <nz-content class="principal">
-        <!-- <div>
-          <i
-          class="trigger"
-          nz-icon
-          [nzType]="isCollapsed ? 'right-circle' : 'left-circle'"
-          (click)="isCollapsed = !isCollapsed"
-          style="font-size: 25px; color:#2a9d8f;"
-        ></i>
-        </div> -->
+        
         
         <div class="inner-content" style="height: 80vh; overflow-y: scroll;">
           
@@ -90,3 +79,128 @@
   
     </nz-layout>
   </nz-layout>
+ -->
+ <nz-layout class="app-layout">
+  <nz-sider
+    class="menu-sidebar"
+    nzCollapsible
+    nzWidth="256px"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+  >
+    <div class="sidebar-logo">
+      <a href="https://ng.ant.design/" target="_blank">
+        <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo" />
+        <h1>Ant Design Of Angular</h1>
+      </a>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item>
+        <i
+          nz-icon
+          nzType="bar-chart"
+          nzTheme="outline"
+          style="font-size: 20px"
+        ></i>
+        <span>Empleados</span>
+        <a routerLink="empleados"></a>
+      </li>
+
+      <li nz-menu-item>
+        <i nz-icon nzType="car" nzTheme="outline" style="font-size: 20px"></i>
+        <span>Cargos</span>
+        <a routerLink="cargos"></a>
+      </li>
+
+      <li nz-menu-item>
+        <i
+          nz-icon
+          nzType="cluster"
+          nzTheme="outline"
+          style="font-size: 20px"
+        ></i>
+        <span>Tours</span>
+        <a routerLink="tours"></a>
+      </li>
+
+      <li nz-menu-item>
+        <i
+          nz-icon
+          nzType="mobile"
+          nzTheme="outline"
+          style="font-size: 20px"
+        ></i>
+        <span>Paquetes</span>
+        <a routerLink="paquetes"></a>
+      </li>
+
+      <li nz-menu-item>
+        <i
+          nz-icon
+          nzType="idcard"
+          nzTheme="outline"
+          style="font-size: 20px"
+        ></i>
+        <span>Aliados</span>
+        <a routerLink="aliados"></a>
+      </li>
+
+      <li nz-menu-item>
+        <i nz-icon nzType="team" nzTheme="outline" style="font-size: 20px"></i>
+        <span>Clientes</span>
+        <a routerLink="clientes"></a>
+      </li>
+
+      <li nz-menu-item>
+        <i
+          nz-icon
+          nzType="shopping-cart"
+          nzTheme="outline"
+          style="font-size: 20px"
+        ></i>
+        <span>Alojamientos</span>
+        <a routerLink="alojamientos"></a>
+      </li>
+
+      <li nz-menu-item>
+        <i
+          nz-icon
+          nzType="file-search"
+          nzTheme="outline"
+          style="font-size: 20px"
+        ></i>
+        <span>Actividades</span>
+        <a routerLink="actividades"></a>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+          <i
+            class="trigger"
+            nz-icon
+            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+          ></i>
+        </span>
+
+        <!-- <li nz-menu-item>
+          <a routerLink="inicio">
+            <i nz-icon nzType="home"></i>
+          </a>
+          INICIO
+        </li> -->
+        <a routerLink="">Holas</a>
+      </div>
+    </nz-header>
+    <!-- <nz-content>
+      <div class="inner-content"></div>
+    </nz-content> -->
+    <div class="contenido" style="width: 100%; height: 100%; overflow-y: scroll;">
+        <router-outlet></router-outlet>
+    </div>
+  </nz-layout>
+</nz-layout>
+ 
