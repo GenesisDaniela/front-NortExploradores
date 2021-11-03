@@ -1,1 +1,88 @@
-<p>ver-rutas works!</p>
+<div class="container-fluid">
+    <br>
+    <br>
+    <h3 style="text-align: center">RUTAS</h3>
+
+    
+    <div class="flex-container">
+        <!-- Card 1 -->
+
+        <div *ngFor="let car of data" id=centro class="card" style="width: 400px;">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="https://mdbootstrap.com/img/new/standard/nature/111.jpg" class="img-fluid" id=bordSupRad/>
+                <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ car.municipio.nombre }}</h5>
+                <p class="card-text">
+                    {{ car.municipio.descripcion }}
+                </p>
+                <div id=centro>
+                <a id=centro href="#!" class="btn btn-primary" > Ver más </a>
+            </div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        
+        <!-- <div id=centro class="card" style="width: 250px;">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="https://mdbootstrap.com/img/new/standard/nature/111.jpg" class="img-fluid" id=bordSupRad />
+                <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Card title 2</h5>
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                </p>
+                <a href="#!" class="btn btn-primary">Button</a>
+            </div>
+        </div> -->
+
+        <!-- Card 3 -->
+
+       <!--  <div id=centro class="card" style="width: 250px;">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="https://mdbootstrap.com/img/new/standard/nature/111.jpg" class="img-fluid" id=bordSupRad/>
+                <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Card title 3</h5>
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                </p>
+                <a href="#!" class="btn btn-primary">Button</a>
+            </div>
+        </div> -->
+
+        <!-- Card 4 -->
+
+       <!--  <div id=centro class="card" style="width: 250px;">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src="https://mdbootstrap.com/img/new/standard/nature/111.jpg" class="img-fluid" id=bordSupRad />
+                <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Card title 4</h5>
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up the bulk of the
+                    card's content.
+                </p>
+                <a href="#!" class="btn btn-primary">Button</a>
+            </div>
+        </div> -->
+
+        <!-- Fin de los Cards -->
+
+    </div>
+</div>

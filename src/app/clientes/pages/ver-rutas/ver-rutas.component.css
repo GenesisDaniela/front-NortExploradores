@@ -1,0 +1,19 @@
+
+.flex-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 20px;
+   /*  border: 8px solid black; */
+    margin: 20px;
+}
+
+#centro{
+    width: 150px;
+    margin: 50px auto;
+}
+
+#bordSupRad{    
+    border-top-right-radius:  20px; 
+    border-top-left-radius:  20px;
+}
