@@ -1,1 +1,40 @@
-<p>add-cargo works!</p>
+<div class="row mt-4">
+    <div class="col"></div>
+    <div class="col-8 bg-light ">
+  
+      <form [formGroup]="form" (submit)="enviarData()">
+        <div class="mb-3 row">
+          <div class="col-sm-2"></div>
+          <h1 class="col-sm-10">Formulario de Cargos</h1>
+        </div>
+  
+        <div class="row mb-3">
+          <label for="inputNombre" class="col-sm-2 col-form-label">Cargo</label>
+          <div class="col-sm-10">
+            <input formControlName = "nombre" type="text" class="form-control" id="inputNombre">
+          </div>
+        </div>
+  
+        <div class="row mb-3">
+          <label for="inputDescripcion" class="col-sm-2 col-form-label">Descripción</label>
+          <div class="col-sm-10">
+              <textarea formControlName="descripcion" class="form-control" id="inputDescripcion"
+                  rows="3"></textarea>
+          </div>
+      </div>
+  
+        <div class="row mb-3">
+          <label for="inputSueldo" class="col-sm-2 col-form-label">Sueldo</label>
+          <div class="col-sm-10">
+            <input formControlName = "sueldo" type="number" class="form-control" id="inputSueldo">
+          </div>
+        </div>
+  
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button class="btn btn-primary" type="submit">Agregar Cargo</button>
+          <div class="col-sm-0"></div>
+        </div>
+      </form>
+    </div>
+    <div class="col"></div>
+  </div>
