@@ -17,7 +17,6 @@ export class VerRutasComponent implements OnInit {
   constructor(private rutaService: RutasService){
 
   }
-
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
