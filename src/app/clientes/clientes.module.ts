@@ -6,11 +6,17 @@ import { HomeComponent } from './pages/home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { VerRutasComponent } from './pages/ver-rutas/ver-rutas.component';
 
-import { NzCarouselModule } from 'ng-zorro-antd/carousel';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { PasadiaComponent } from './pages/tours/pasadia/pasadia.component';
 import { EstadiaComponent } from './pages/tours/estadia/estadia.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
+import { FormPagosComponent } from './pages/pagos/form-pagos/form-pagos.component';
+import { InformacionPagoComponent } from './pages/pagos/informacion-pago/informacion-pago/informacion-pago.component';
 
+//NG ZORRO
+import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 
 
 @NgModule({
@@ -20,13 +26,18 @@ import { ContactoComponent } from './pages/contacto/contacto.component';
     VerRutasComponent,
     PasadiaComponent,
     EstadiaComponent,
-    ContactoComponent
+    ContactoComponent,
+    FormPagosComponent,
+    InformacionPagoComponent
   ],
   imports: [
     CommonModule,
     ClientesRoutingModule,
     SharedModule,
-    NzCarouselModule
+    NzCarouselModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   exports:[]
 })

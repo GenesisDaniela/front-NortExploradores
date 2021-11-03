@@ -2,17 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PrincipalComponent } from './principal/principal.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //DATA-TABLES
 import { DataTablesModule } from "angular-datatables";
 
-// COMPONENTES ANGULAR
+// COMPONENTES ANGULAR ZORRO
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzStepsModule } from 'ng-zorro-antd/steps';
+import { NzCalendarModule } from 'ng-zorro-antd/calendar';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
 
 // COMPONENTES 
 import { EmpleadosComponent } from './pages/empleados/empleados.component';
@@ -31,6 +35,9 @@ import { AddCargoComponent } from './pages/cargo/add-cargo/add-cargo.component';
 import { AddPaqueteComponent } from './pages/paquetes/add-paquete/add-paquete.component';
 import { AddAliadoComponent } from './pages/aliados/add-aliado/add-aliado.component';
 import { AddActividadComponent } from './pages/actividades/add-actividad/add-actividad.component';
+import { AddTourComponent } from './pages/tours/add-tour/add-tour.component';
+import { CalendarioComponent } from './pages/calendario/calendario.component';
+import { AddAlojamientoComponent } from './pages/alojamientos/add-alojamiento/add-alojamiento.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +56,10 @@ import { AddActividadComponent } from './pages/actividades/add-actividad/add-act
     AddCargoComponent,
     AddPaqueteComponent,
     AddAliadoComponent,
-    AddActividadComponent
+    AddActividadComponent,
+    AddTourComponent,
+    CalendarioComponent,
+    AddAlojamientoComponent
   ],
   imports: [
     CommonModule,
@@ -60,7 +70,13 @@ import { AddActividadComponent } from './pages/actividades/add-actividad/add-act
     NzMenuModule,
     DataTablesModule,
     AdministracionRoutingModule,
-    NzButtonModule
+    NzButtonModule,
+    NzDropDownModule,
+    NzStepsModule,
+    NzCalendarModule,
+    NzBadgeModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports:[
     PrincipalComponent

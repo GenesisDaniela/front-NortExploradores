@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NzButtonSize } from 'ng-zorro-antd/button';
 
 @Component({
   selector: 'app-principal',
@@ -8,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class PrincipalComponent implements OnInit {
 
   isCollapsed = false;
-
+  size: NzButtonSize = 'large';
+  log(): void {
+    console.log('click dropdown button');
+  }
   constructor() { }
 
   ngOnInit(): void {

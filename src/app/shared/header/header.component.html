@@ -1,3 +1,4 @@
+
 <header class="header">
   <div class="menu margen-interno">
     <div class="logo">
@@ -7,18 +8,20 @@
     </div>
     <div class="nav">
 
-      <a routerLink="inicio"
-        ><i class="fas fa-home"></i><span class="off">Inicio</span></a
-      >
+      <a routerLink="inicio">
+        <span class="off">Inicio </span>
+        <i class="fas fa-home"></i>
+        </a>
 
-      <a routerLink="rutas"
-        ><i class="fab fa-weixin"></i><span class="off">Rutas</span></a
-      >
+      <a routerLink="rutas">
+        <span class="off">Rutas </span>
+        <i class="fas fa-road"></i>
+        </a>
 
       
       <a nz-dropdown [nzDropdownMenu]="tours">
-        Tours
-        <i nz-icon nzType="down"></i>
+        <span>Tours </span>
+        <i class="fas fa-globe-americas"></i>
       </a>
       <nz-dropdown-menu #tours="nzDropdownMenu">
         <ul nz-menu nzSelectable>
@@ -27,14 +30,14 @@
         </ul>
       </nz-dropdown-menu>
 
-      <a routerLink=""
-        ><i class="fas fa-concierge-bell"></i
-        ><span class="off">Contacto</span></a
-      >
+      <a routerLink="contacto">
+        <span class="off">Contacto </span>
+        <i class="fas fa-phone"></i>
+      </a>
 
       <a nz-dropdown [nzDropdownMenu]="menu">
         Ver mas
-        <i nz-icon nzType="down"></i>
+        <i class="fas fa-chevron-circle-down"></i>
       </a>
       <nz-dropdown-menu #menu="nzDropdownMenu">
         <ul nz-menu nzSelectable>
@@ -48,18 +51,23 @@
         </ul>
       </nz-dropdown-menu>
 
-      <a routerLink="administracion/reportes"
-        ><i class="fas fa-concierge-bell"></i
-        ><span class="off">Admin</span></a
-      >
+      <a routerLink="administracion/reportes">
+        <i class="fas fa-concierge-bell"></i>
+        <span class="off">Admin</span></a>
 
     </div>
     <div class="social">
-      <a href=""
+      <a href="" *ngIf="!isLogged" routerLink="/login"
         ><i class="fas fa-home"></i><span class="off">Inicio Sesión</span></a
       >
-      <a href=""
+      <a href="" *ngIf="!isLogged" 
         ><i class="fab fa-weixin"></i><span class="off">Registarse</span></a
+      >
+      <a href="" *ngIf="isLogged" 
+        ><i class="fab fa-weixin"></i><span class="off">Bienvenido, {{usuario.username}}</span></a
+      >
+      <a href="" (click)="onLogOut()" *ngIf="isLogged" 
+        ><i class="fab fa-weixin"></i><span class="off">Cerrar Sesion</span></a
       >
     </div>
   </div>

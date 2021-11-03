@@ -127,6 +127,7 @@ nz-header {
   padding: 0;
   width: 100%;
   z-index: 2;
+  /* position: absolute; */
 }
 
 .app-header {
@@ -136,6 +137,8 @@ nz-header {
   /* background: #fff; */
   background: #27293d;
   box-shadow: 0 1px 4px rgba(0,21,41,.08);
+  /* display: flex;
+  flex-wrap: wrap; */
 }
 
 nz-content {
@@ -146,4 +149,32 @@ nz-content {
   padding: 24px;
   background: #fff;
   height: 100%;
+}
+
+
+[nz-button] {
+  margin-right: 8px;
+  margin-bottom: 12px;
+}
+
+nz-button-group [nz-button] {
+  margin-right: 0;
+}
+
+.item a{
+
+    color: white;
+    font-size: 15px;
+    padding: 0 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    
+}
+
+.item a:hover{
+  color: salmon;
+}
+
+nz-button-group {
+  margin: 0 8px 8px 0;
 }

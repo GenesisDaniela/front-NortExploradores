@@ -1,10 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './clientes/pages/inicio/inicio.component';
+import { FormPagosComponent } from './clientes/pages/pagos/form-pagos/form-pagos.component';
+import { AuthLoginComponent } from './security/auth-login/auth-login.component';
+import { LoginUsuario } from './security/models/login-usuario';
 import { ErrorPagesComponent } from './shared/error-pages/error-pages.component';
 
 const routes: Routes = [
-
+  {
+    path:"login",component:AuthLoginComponent
+  },
+  {
+    path:"pago",component:FormPagosComponent
+  },
   {
     path:"administracion", 
     loadChildren: ()=> import("./administracion/administracion.module").then( m => m.AdministracionModule)

@@ -15,4 +15,7 @@ export class AlojamientosService {
   public listarAlojamiento():Observable<any>{    
     return this.http.get<any>(this.url);
   }
+  public post(alojamiento:any):Observable<any>{
+    return this.http.post<any>(this.url, alojamiento)
+  }
 }
