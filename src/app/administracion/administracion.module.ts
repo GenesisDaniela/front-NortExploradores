@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PrincipalComponent } from './principal/principal.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //DATA-TABLES
 import { DataTablesModule } from "angular-datatables";
@@ -36,6 +37,7 @@ import { AddAliadoComponent } from './pages/aliados/add-aliado/add-aliado.compon
 import { AddActividadComponent } from './pages/actividades/add-actividad/add-actividad.component';
 import { AddTourComponent } from './pages/tours/add-tour/add-tour.component';
 import { CalendarioComponent } from './pages/calendario/calendario.component';
+import { AddAlojamientoComponent } from './pages/alojamientos/add-alojamiento/add-alojamiento.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { CalendarioComponent } from './pages/calendario/calendario.component';
     AddAliadoComponent,
     AddActividadComponent,
     AddTourComponent,
-    CalendarioComponent
+    CalendarioComponent,
+    AddAlojamientoComponent
   ],
   imports: [
     CommonModule,
@@ -71,7 +74,9 @@ import { CalendarioComponent } from './pages/calendario/calendario.component';
     NzDropDownModule,
     NzStepsModule,
     NzCalendarModule,
-    NzBadgeModule
+    NzBadgeModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports:[
     PrincipalComponent
