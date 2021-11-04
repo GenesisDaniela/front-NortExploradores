@@ -17,6 +17,9 @@ import { InformacionPagoComponent } from './pages/pagos/informacion-pago/informa
 
 //NG ZORRO
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
+import { QuienesSomosComponent } from './pages/inicio/quienes-somos/quienes-somos.component';
+import { ServiciosComponent } from './pages/inicio/servicios/servicios.component';
+import { ExperienciasComponent } from './pages/inicio/experiencias/experiencias.component';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { NzCarouselModule } from 'ng-zorro-antd/carousel';
     EstadiaComponent,
     ContactoComponent,
     FormPagosComponent,
-    InformacionPagoComponent
+    InformacionPagoComponent,
+    QuienesSomosComponent,
+    ServiciosComponent,
+    ExperienciasComponent
   ],
   imports: [
     CommonModule,

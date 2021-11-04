@@ -25,7 +25,8 @@ export class AddEmpleadoComponent implements OnInit {
     private empleadoService:EmpleadosService,
     private personaService:PersonaService,
     private formBuilder: FormBuilder,
-    private tipoIdService: TipoidService
+    private tipoIdService: TipoidService,
+    private router : Router
   ){}
 
   ngOnInit(): void {
@@ -71,6 +72,8 @@ export class AddEmpleadoComponent implements OnInit {
       console.log(this.formPer.value);
       this.personaService.post(this.formPer.value).subscribe(persona=>{
         this.empleadoService.post(this.form.value).subscribe(data=>{})
+  
+        this.router.navigate(["/administracion/empleados"]);
       })
   }
   
