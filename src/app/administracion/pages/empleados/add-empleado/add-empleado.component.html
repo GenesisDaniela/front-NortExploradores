@@ -1,1 +1,109 @@
-<p>add-empleado works!</p>
+
+<div class="row mt-4">
+  <div class="col"></div>
+  <div class="col-8 bg-light rounded-3">
+    <form [formGroup]="formPer" (submit)="enviarData()">
+      <div class="mb-3 row">
+        <div class="col-2"></div>
+        <h1 class="col-10">Formulario de empleados</h1>
+      </div>
+
+      <div class="mb-2 row">
+        <div class="col-sm-0"></div>
+        <label class="col-sm-2 col-form-label">Tipo de documento</label>
+        <div class="col-sm-10">
+          <select formControlName="idTipo" class="form-select" aria-label="Default select example">
+            <option *ngFor="let tipo of tipos" name="tipo" id="tipo{{tipo.idTipo}}"
+              value={{tipo.idTipo}}>
+              {{tipo.descripcion}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label for="inputIdent" class="col-sm-2 col-form-label">Identificacion</label>
+        <div class="col-sm-10">
+          <input formControlName="idPersona" type="number" class="form-control" id="inputIdent" >
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label for="inputNombre" class="col-sm-2 col-form-label">Nombre</label>
+        <div class="col-sm-10">
+          <input formControlName="nombre" type="text" class="form-control" id="inputNombre" >
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label for="inputApellido" class="col-sm-2 col-form-label">Apellido</label>
+        <div class="col-sm-10">
+          <input formControlName="apellido" type="text" class="form-control" id="inputApellido" >
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label for="inputSexo" class="col-sm-2 col-form-label">Sexo</label>
+        <div class="col-sm-10">
+            <select formControlName="sexo" type="number" class="form-control" id="inputSexo">
+                <option value="1">Masculino</option> 
+                <option value="0">Femenino</option>
+            </select>
+        </div>
+       </div>
+
+      <div class="row mb-3">
+        <label for="inputFechaNac" class="col-sm-2 col-form-label">Fecha de nacimiento</label>
+        <div class="col-sm-10">
+          <input formControlName="fechaNac" type="DATE" class="form-control" id="inputFechaNac" >
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label for="inputCelular" class="col-sm-2 col-form-label">Celular</label>
+        <div class="col-sm-10">
+          <input formControlName="cel" type="text" class="form-control" id="inputCelular" >
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label for="inputEmail" class="col-sm-2 col-form-label">Correo</label>
+        <div class="col-sm-10">
+          <input formControlName="correo" type="email" class="form-control" id="inputEmail" >
+        </div>
+      </div>
+
+      <div [formGroup]="form" class="row mb-3">
+        <label for="inputFecha" class="col-sm-2 col-form-label">Fecha de contratacion</label>
+        <div class="col-sm-10">
+          <input formControlName="fechaContratacion" type="date" class="form-control" id="inputFecha" >
+        </div>
+      </div>
+
+      <div [formGroup]="form" class="row mb-3">
+        <label for="inputImage" class="col-sm-2 col-form-label">Imagen</label>
+        <div class="col-sm-10">
+          <input formControlName="urlImagen" type="url" class="form-control" id="inputImage">
+        </div>
+      </div>
+
+
+      <div [formGroup]="form" class="mb-2 row">
+        <div class="col-sm-0"></div>
+        <label class="col-sm-2 col-form-label">Cargo</label>
+        <div class="col-sm-10">
+          <select formControlName="cargo" class="form-select" aria-label="Default select example">
+            <option *ngFor="let cargo of cargos" name="cargo" id="car{{cargo.idCargo}}"
+              value={{cargo.idCargo}}>
+              {{cargo.nombre}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-secondary" type="submit">Agregar Empleado</button>
+        <div class="col-sm-0"></div>
+      </div>
+    </form>
+  </div>
+  <div class="col"></div>
+</div>

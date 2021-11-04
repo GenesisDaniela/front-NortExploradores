@@ -15,4 +15,11 @@ export class TipoidService {
     return this.http.get(this.uri);
 
   }
+  public listarTipo():Observable<any>{
+    return this.http.get<any>(this.uri)
+  }
+
+  public post(tipo:any):Observable<any>{
+    return this.http.post<any>(this.uri, tipo)
+  }
 }
