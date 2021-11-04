@@ -38,6 +38,8 @@ import { AddActividadComponent } from './pages/actividades/add-actividad/add-act
 import { AddTourComponent } from './pages/tours/add-tour/add-tour.component';
 import { CalendarioComponent } from './pages/calendario/calendario.component';
 import { AddAlojamientoComponent } from './pages/alojamientos/add-alojamiento/add-alojamiento.component';
+import { AddSegurosComponent } from './pages/aliados/add-seguros/add-seguros.component';
+import { AddTransportesComponent } from './pages/aliados/add-transportes/add-transportes.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { AddAlojamientoComponent } from './pages/alojamientos/add-alojamiento/ad
     AddActividadComponent,
     AddTourComponent,
     CalendarioComponent,
-    AddAlojamientoComponent
+    AddAlojamientoComponent,
+    AddSegurosComponent,
+    AddTransportesComponent
   ],
   imports: [
     CommonModule,
