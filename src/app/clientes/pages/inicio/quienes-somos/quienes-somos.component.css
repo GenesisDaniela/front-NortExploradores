@@ -1,0 +1,34 @@
+.quienes-somos{
+    margin-top: 15px;
+    margin-bottom: 100px;
+  }
+
+  .quienes-somos h2{
+    font-weight: bold;
+  }
+
+  .info{
+    margin-top: 10px; 
+    margin-bottom: 10px; 
+    text-align: center;
+  }
+
+  .card{
+    background-color:white;
+    box-shadow: 0 1px 38px rgba(0, 0, 0, 0.15), 0 5px 12px rgba(0, 0, 0, 0.25);
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #364d79;
+    width: 45%;
+    margin: 10px;
+  }
+
+  
+
+  img{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    width: 100%; 
+    height: 100%;
+  }

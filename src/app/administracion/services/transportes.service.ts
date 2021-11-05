@@ -6,17 +6,16 @@ import * as global from 'global'
 @Injectable({
   providedIn: 'root'
 })
-export class EmpresaService {
+export class TransportesService {
 
-  uri=`${global.url}/empresa/`;
+  uri =`${global.url}/transporte/`;
   constructor(private http: HttpClient) { }
 
-  public listarEmpresa():Observable<any>{
+  public listarTransporte():Observable<any>{
     return this.http.get<any>(this.uri);
   }
-
-  public post(empresa:any):Observable<any>{
-    return this.http.post<any>(this.uri, empresa)
+  
+  public post(transporte:any):Observable<any>{
+    return this.http.post<any>(this.uri, transporte)
   }
-
 }

@@ -16,4 +16,7 @@ export class PaquetesService {
   public listarPaquete():Observable<any>{    
     return this.http.get<any>(this.url);
   }
+  public post(paquete:any):Observable<any>{
+    return this.http.post<any>(this.url, paquete)
+  }
 }

@@ -1,0 +1,64 @@
+<div class="row mt-4">
+    <div class="col"></div>
+    <div class="col-8 bg-light rounded-3">
+      <form [formGroup]="form" (submit)="enviarData()">
+        <div class="mb-3 row">
+          <div class="col-2"></div>
+          <h1 class="col-10">Formulario de transporte</h1>
+        </div>
+        
+        <div class="row mb-3">
+            <label for="inputTransporte" class="col-sm-2 col-form-label">Identificacion del transporte</label>
+            <div class="col-sm-10">
+              <input formControlName="idTransporte" type="text" class="form-control" id="inputTransporte" >
+            </div>
+          </div>
+        
+        <div class="row mb-3">
+          <label for="inputPuestos" class="col-sm-2 col-form-label">Puestos</label>
+          <div class="col-sm-10">
+            <input formControlName="puestos" type="number" class="form-control" id="inputPuestos" >
+          </div>
+        </div>
+  
+        <div class="row mb-3">
+          <label for="inputModelo" class="col-sm-2 col-form-label">Modelo</label>
+          <div class="col-sm-10">
+            <input formControlName="modelo" type="text" class="form-control" id="inputModelo" >
+          </div>
+        </div>
+  
+        <div class="row mb-3">
+          <label for="inputColor" class="col-sm-2 col-form-label">Color</label>
+          <div class="col-sm-10">
+            <input formControlName="color" type="text" class="form-control" id="inputColor" >
+          </div>
+        </div>
+  
+        <div class="row mb-3">
+          <label for="inputPrecio" class="col-sm-2 col-form-label">Precio</label>
+          <div class="col-sm-10">
+            <input formControlName="precio" type="number" class="form-control" id="inputPrecio" >
+          </div>
+        </div>
+  
+        <div class="mb-2 row">
+          <div class="col-sm-0"></div>
+          <label class="col-sm-2 col-form-label">Empresa</label>
+          <div class="col-sm-10">
+            <select formControlName="empresa" class="form-select" aria-label="Default select example">
+              <option *ngFor="let empresa of empresas" name="empresa" id="emp{{empresa.idEmpresa}}"
+                value={{empresa.idEmpresa}}>
+                {{empresa.nombre}}</option>
+            </select>
+          </div>
+        </div>
+  
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button class="btn btn-secondary" type="submit">Agregar Transporte</button>
+          <div class="col-sm-0"></div>
+        </div>
+      </form>
+    </div>
+    <div class="col"></div>
+  </div>

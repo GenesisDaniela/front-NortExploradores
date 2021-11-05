@@ -20,6 +20,8 @@ import { AddPaqueteComponent } from './pages/paquetes/add-paquete/add-paquete.co
 import { AddAliadoComponent } from './pages/aliados/add-aliado/add-aliado.component';
 import { AddAlojamientoComponent } from './pages/alojamientos/add-alojamiento/add-alojamiento.component';
 import { CalendarioComponent } from './pages/calendario/calendario.component';
+import { AddSegurosComponent } from './pages/aliados/add-seguros/add-seguros.component';
+import { AddTransportesComponent } from './pages/aliados/add-transportes/add-transportes.component';
 
 const routes : Routes = [
   {path:"", 
@@ -34,6 +36,8 @@ const routes : Routes = [
         {path:"nuevaActividad", component:AddActividadComponent},
       {path:"aliados", component:AliadosComponent},
         {path:"nuevoAliado", component:AddAliadoComponent},
+        {path:"nuevoSeguro", component:AddSegurosComponent},
+        {path:"nuevoTransporte", component:AddTransportesComponent},
       {path:"cargos", component:CargoComponent},
         {path:"nuevoCargo", component:AddCargoComponent},
       {path:"clientes", component:ClientesComponent},
