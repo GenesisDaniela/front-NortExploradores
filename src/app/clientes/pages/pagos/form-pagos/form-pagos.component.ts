@@ -8,7 +8,7 @@ import { TipoidService } from 'src/app/services/tipoid.service';
 import { TokenService } from 'src/app/services/token.service';
 import { TourService } from 'src/app/services/tour.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import * as crypto from "crypto-js";
+/* import * as crypto from "crypto-js"; */
 
 @Component({
   selector: 'app-form-pagos',
@@ -70,7 +70,7 @@ export class FormPagosComponent implements OnInit {
   apikeyTest= "4Vj8eK4rloUd272L48hsrarnUA";
 
   firmaElectronicaTest = `${this.apikeyTest}~508029~${this.referenciaUnic}~${this.total}~${this.moneda}`;
-  firmaElectronicaMD5Test = crypto.MD5(this.firmaElectronicaTest).toString();
+  /* firmaElectronicaMD5Test = crypto.MD5(this.firmaElectronicaTest).toString(); */
   
 
   constructor(
@@ -436,7 +436,7 @@ cargarPayu(){
   this.descripcion = "Pago de ("+pasajeros.length+") paquete(s) turistico(s) destino: "+this.tourSeleccionado.ruta.municipio.nombre
 
   this.firmaElectronica = `${this.apikey}~${this.idMercado}~${this.idCompra}~${this.totalCompra}~${this.moneda}`;
-  this.firmaElectronicaMD5 = crypto.MD5(this.firmaElectronica).toString();
+  /* this.firmaElectronicaMD5 = crypto.MD5(this.firmaElectronica).toString(); */
   
 
 }
