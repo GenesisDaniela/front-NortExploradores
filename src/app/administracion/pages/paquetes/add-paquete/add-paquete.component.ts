@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlojamientosService } from 'src/app/administracion/services/alojamientos.service';
 import { PaquetesService } from 'src/app/administracion/services/paquetes.service';
+import { ActividadesService } from 'src/app/administracion/services/actividades.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-paquete',
@@ -11,12 +13,16 @@ import { PaquetesService } from 'src/app/administracion/services/paquetes.servic
 export class AddPaqueteComponent implements OnInit {
 
   public alojamientos: any = [];
+  public actividades: any=[];
   public form!: FormGroup;
+  public formAct!: FormGroup;
 
   constructor(
     private alojamientoservice: AlojamientosService,
+    private actividadService: ActividadesService,
     private paqueteService: PaquetesService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router : Router
   ) { }
 
   ngOnInit(): void {
@@ -30,7 +36,16 @@ export class AddPaqueteComponent implements OnInit {
       nombre:['', Validators.required],
       alojamiento:['', Validators.required]
     });
-  }
+  
+  this.formAct=this.formBuilder.group({
+    nombre: ['', Validators.required],
+    descripcion: ['', Validators.required], 
+    urlImg: ['', Validators.required],
+    paquete: ['', Validators.required]
+  });
+}
+
+
 
   public agregarAlojamiento() {
     this.alojamientoservice.listarAlojamiento().subscribe(alojamientos => {
@@ -38,9 +53,20 @@ export class AddPaqueteComponent implements OnInit {
     })
   }
 
+  
   public enviarData() {
-    this.paqueteService.post(this.form.value).subscribe()
+    
+    console.log(this.form.value);
+    console.log(this.formAct.value);
+
+    this.paqueteService.post(this.form.value).subscribe(paquete=>{
+         this.formAct.controls.paquete.setValue(paquete)
+         this.actividadService.post(this.formAct.value).subscribe(data=>
+          {console.log(data,'yyyyyy')
+         this.router.navigate(["/administracion/paquetes"]);})
+    
+        })  
+        
   }
 
-
-}
+  }

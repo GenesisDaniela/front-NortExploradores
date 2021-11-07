@@ -15,4 +15,9 @@ export class ActividadesService {
   public listarActividad():Observable<any>{    
     return this.http.get<any>(this.url);
   }
+  public post(actividad:any):Observable<any>{
+    return this.http.post<any>(this.url,actividad)
+  }
+
+
 }

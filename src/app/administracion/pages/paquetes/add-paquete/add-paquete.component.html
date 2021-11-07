@@ -67,6 +67,28 @@
 
             </div>
 
+        
+          <div [formGroup]="formAct" class="row mb-3">
+                <label for="inputNombre" class="col-sm-2 col-form-label">Actividad</label>
+                <div class="col-sm-10">
+                  <input formControlName="nombre" type="text" class="form-control" id="inputNombre">
+                </div>
+              </div> 
+        
+              <div  [formGroup]="formAct" class="row mb-3">
+                <label for="inputDescripcion" class="col-sm-2 col-form-label">Descripción</label>
+                <div class="col-sm-10">
+                  <textarea style="resize: none" formControlName="descripcion" class="form-control" id="inputDescripcion"
+                    rows="3"></textarea>
+                </div>
+              </div>
+        
+              <div  [formGroup]="formAct"  class="row mb-3">
+                <label for="inputImagen" class="col-sm-2 col-form-label">Imagen</label>
+                <div class="col-sm-10">
+                  <input formControlName="urlImg" type="text" class="form-control" id="inputImagen">
+                </div>
+              </div>
 
             <div class="d-grid gap-2 col-6 mx-auto">
                 <button class="btn btn-primary" type="submit">Agregar Paquete</button>
