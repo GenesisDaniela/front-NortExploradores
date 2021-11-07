@@ -18,6 +18,11 @@ export class ActividadesService {
   public post(actividad:any):Observable<any>{
     return this.http.post<any>(this.url,actividad)
   }
-
+  obtenerActividad(id:string): Observable<any>{
+    return this.http.get<any>(this.url+id)
+  }
+  editarActividad(id:string,actividad:any):Observable<any>{
+    return this.http.put<any>(this.url,actividad)
+  }
 
 }

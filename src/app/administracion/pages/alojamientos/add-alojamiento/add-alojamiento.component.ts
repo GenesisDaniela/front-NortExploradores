@@ -37,12 +37,14 @@ export class AddAlojamientoComponent implements OnInit {
 
   public enviarData() {
       console.log('sss')
+      //edita alojamiento
     if (this.id !== null) {
-
       this.alojamientosservice
         .editarAlojamiento(this.id, this.form.value)
         .subscribe((data) => {});
         console.log('zzzz')
+
+        //agrga alojamiento
     } else {
       this.alojamientosservice.post(this.form.value).subscribe();
     }
