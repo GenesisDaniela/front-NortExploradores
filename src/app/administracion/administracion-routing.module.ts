@@ -22,6 +22,7 @@ import { AddAlojamientoComponent } from './pages/alojamientos/add-alojamiento/ad
 import { CalendarioComponent } from './pages/calendario/calendario.component';
 import { AddSegurosComponent } from './pages/aliados/add-seguros/add-seguros.component';
 import { AddTransportesComponent } from './pages/aliados/add-transportes/add-transportes.component';
+import { UpdateEmpleadoComponent } from './pages/empleados/update-empleado/update-empleado.component';
 
 const routes : Routes = [
   {path:"", 
@@ -30,6 +31,7 @@ const routes : Routes = [
       {path:"reportes", component:ReportesComponent},
       {path:"empleados", component:EmpleadosComponent},
         {path:"nuevoEmpleado", component:AddEmpleadoComponent},
+        {path:"update/:id", component:UpdateEmpleadoComponent},
       {path:"alojamientos", component:AlojamientosComponent},
         {path:"nuevoAlojamiento", component:AddAlojamientoComponent},
         {path:"editarAlojamiento/:idAlojamiento", component:AddAlojamientoComponent},

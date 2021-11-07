@@ -40,6 +40,7 @@ import { CalendarioComponent } from './pages/calendario/calendario.component';
 import { AddAlojamientoComponent } from './pages/alojamientos/add-alojamiento/add-alojamiento.component';
 import { AddSegurosComponent } from './pages/aliados/add-seguros/add-seguros.component';
 import { AddTransportesComponent } from './pages/aliados/add-transportes/add-transportes.component';
+import { UpdateEmpleadoComponent } from './pages/empleados/update-empleado/update-empleado.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { AddTransportesComponent } from './pages/aliados/add-transportes/add-tra
     CalendarioComponent,
     AddAlojamientoComponent,
     AddSegurosComponent,
-    AddTransportesComponent
+    AddTransportesComponent,
+    UpdateEmpleadoComponent
   ],
   imports: [
     CommonModule,
