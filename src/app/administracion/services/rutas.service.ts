@@ -12,6 +12,10 @@ export class RutasService {
 
   constructor(private http:HttpClient) { }
 
+  public guardarTransporteRuta(idRuta:number, idTransporte:any){
+    this.http.get<any>(`${global.url}/${idRuta}/${idTransporte}`)
+  }
+
   public listarRuta():any{
     return this.http.get<any>(this.uri);
   }
