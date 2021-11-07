@@ -1,1 +1,55 @@
 <p>add-actividad works!</p>
+<div class="row mt-4">
+    <div class="col"></div>
+    <div class="col-8 bg-light ">
+  
+      <form [formGroup]="form" (submit)="enviarData()">
+        <div class="mb-3 row">
+          <div class="col-sm-2"></div>
+          <h1 class="col-sm-10">Formulario de Actividades</h1>
+        </div>
+  
+        <div class="row mb-3">
+          <label for="inputNombre" class="col-sm-2 col-form-label">Nombre</label>
+          <div class="col-sm-10">
+            <input formControlName = "nombre" type="text" class="form-control" id="inputNombre">
+          </div>
+        </div>
+  
+        <div class="row mb-3">
+          <label for="inputDescripcion" class="col-sm-2 col-form-label">Descripción</label>
+          <div class="col-sm-10">
+              <textarea  style="resize: none" formControlName="descripcion" class="form-control" id="inputDescripcion"
+                  rows="3"></textarea>
+          </div>
+      </div>
+  
+
+        <div class="row mb-3">
+          <label for="inputImagen" class="col-sm-2 col-form-label">Imagen</label>
+          <div class="col-sm-10">
+            <input formControlName = "urlImg" type="text" class="form-control" id="inputImagen">
+          </div>
+        </div>
+  
+        <div class="mb-3 row">
+            <div class="col-sm-0"></div>
+            <label class="col-sm-2 col-form-label">paquete</label>
+            <div class="col-sm-10">
+              <select formControlName = "paquete" class="form-select" aria-label="Default select example">
+                <option *ngFor="let paquete of paquetes" name="paquete" id="paquete{{paquete.idPaq}}" 
+                value={{paquete.idPaq}}>
+                {{paquete.nombre}} </option>
+              </select>
+            </div>
+        </div>
+          
+
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button class="btn btn-primary" type="submit">Agregar Actividad</button>
+          <div class="col-sm-0"></div>
+        </div>
+      </form>
+    </div>
+    <div class="col"></div>
+  </div>
