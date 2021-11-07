@@ -41,6 +41,8 @@ import { AddAlojamientoComponent } from './pages/alojamientos/add-alojamiento/ad
 import { AddSegurosComponent } from './pages/aliados/add-seguros/add-seguros.component';
 import { AddTransportesComponent } from './pages/aliados/add-transportes/add-transportes.component';
 import { UpdateEmpleadoComponent } from './pages/empleados/update-empleado/update-empleado.component';
+import { TransportesComponent } from './pages/aliados/transportes/transportes.component';
+import { SegurosComponent } from './pages/aliados/seguros/seguros.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,9 @@ import { UpdateEmpleadoComponent } from './pages/empleados/update-empleado/updat
     AddAlojamientoComponent,
     AddSegurosComponent,
     AddTransportesComponent,
-    UpdateEmpleadoComponent
+    UpdateEmpleadoComponent,
+    TransportesComponent,
+    SegurosComponent
   ],
   imports: [
     CommonModule,

@@ -7,6 +7,9 @@ import { VerRutasComponent } from './pages/ver-rutas/ver-rutas.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { PasadiaComponent } from './pages/tours/pasadia/pasadia.component';
 import { EstadiaComponent } from './pages/tours/estadia/estadia.component';
+import { RecomendacionesComponent } from './pages/recomendaciones/recomendaciones.component';
+import { ViajesGrupalesComponent } from './pages/viajes-grupales/viajes-grupales.component';
+import { FestividadesComponent } from './pages/festividades/festividades.component';
 
 const routes : Routes = [
   {path:"",
@@ -17,6 +20,9 @@ const routes : Routes = [
     {path:"contacto", component:ContactoComponent},
     {path:"pasadia", component:PasadiaComponent},
     {path:"estadia", component:EstadiaComponent},
+    {path:"recomendaciones", component:RecomendacionesComponent},
+    {path:"viajesGrupales", component:ViajesGrupalesComponent},
+    {path:"festividades", component:FestividadesComponent},
     {path:"**", redirectTo:"inicio"}
   ]}
 ]

@@ -20,6 +20,9 @@ import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { QuienesSomosComponent } from './pages/inicio/quienes-somos/quienes-somos.component';
 import { ServiciosComponent } from './pages/inicio/servicios/servicios.component';
 import { ExperienciasComponent } from './pages/inicio/experiencias/experiencias.component';
+import { ViajesGrupalesComponent } from './pages/viajes-grupales/viajes-grupales.component';
+import { FestividadesComponent } from './pages/festividades/festividades.component';
+import { RecomendacionesComponent } from './pages/recomendaciones/recomendaciones.component';
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import { ExperienciasComponent } from './pages/inicio/experiencias/experiencias.
     InformacionPagoComponent,
     QuienesSomosComponent,
     ServiciosComponent,
-    ExperienciasComponent
+    ExperienciasComponent,
+    ViajesGrupalesComponent,
+    FestividadesComponent,
+    RecomendacionesComponent
   ],
   imports: [
     CommonModule,

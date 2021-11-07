@@ -23,6 +23,8 @@ import { CalendarioComponent } from './pages/calendario/calendario.component';
 import { AddSegurosComponent } from './pages/aliados/add-seguros/add-seguros.component';
 import { AddTransportesComponent } from './pages/aliados/add-transportes/add-transportes.component';
 import { UpdateEmpleadoComponent } from './pages/empleados/update-empleado/update-empleado.component';
+import { TransportesComponent } from './pages/aliados/transportes/transportes.component';
+import { SegurosComponent } from './pages/aliados/seguros/seguros.component';
 
 const routes : Routes = [
   {path:"", 
@@ -44,6 +46,8 @@ const routes : Routes = [
         {path:"nuevoSeguro", component:AddSegurosComponent},
         {path:"nuevoTransporte", component:AddTransportesComponent},
         {path:"editarAliado/:idAliado", component:AddAliadoComponent},
+        {path:"transportes", component:TransportesComponent},
+        {path:"seguros", component:SegurosComponent},
         // {path:"editarSeguro/:idSeguro", component:AddAliadoComponent},
      
         {path:"cargos", component:CargoComponent},
