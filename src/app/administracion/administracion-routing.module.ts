@@ -40,7 +40,7 @@ const routes : Routes = [
         {path:"nuevoAliado", component:AddAliadoComponent},
         {path:"nuevoSeguro", component:AddSegurosComponent},
         {path:"nuevoTransporte", component:AddTransportesComponent},
-
+        {path:"editarAliado/:idAliado", component:AddAliadoComponent},
       {path:"cargos", component:CargoComponent},
         {path:"nuevoCargo", component:AddCargoComponent},
         {path:"editarCargo/:idCargo", component:AddCargoComponent},
