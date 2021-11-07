@@ -36,14 +36,14 @@
               ></i>
             </a>
   
-            <a href="">
-              <i
+        
+              <i [routerLink]="['/administracion/editarActividad',acti.idActividad]"
                 nz-icon
                 nzType="edit"
                 nzTheme="outline"
-                style="font-size: 20px"
+                style="font-size: 20px; color: rgb(13, 14, 75)"
               ></i>
-            </a>
+           
           </td>
         </tr>
       </tbody>
@@ -85,7 +85,7 @@
       <tr *ngFor="let acti of data">
           <td>{{ acti.nombre }}</td>
           <td>{{ acti.descripcion }}</td>
-          <td> <img [src]="acti.urlImg" alt=""> </td>
+          <td> <img [src]="acti.urlImg" width="30%"  alt=""> </td>
           <td nzAlign="center">
           <a>
             <i
@@ -96,7 +96,7 @@
             ></i>
           </a>
 
-          <a href="">
+          <a [routerLink]="['/administracion/editarActividad',acti.idActividad]">
             <i
               nz-icon
               nzType="edit"
