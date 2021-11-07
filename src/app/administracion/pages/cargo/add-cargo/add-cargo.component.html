@@ -5,8 +5,12 @@
       <form [formGroup]="form" (submit)="enviarData()">
         <div class="mb-3 row">
           <div class="col-sm-2"></div>
-          <h1 class="col-sm-10">Formulario de Cargos</h1>
+          <h4 class="col-sm-10">{{titulo | uppercase}}</h4>
         </div>
+
+
+        <input formControlName="idCargo" hidden type="text" class="form-control" id="inputCargo">
+               
   
         <div class="row mb-3">
           <label for="inputNombre" class="col-sm-2 col-form-label">Cargo</label>
@@ -31,7 +35,7 @@
         </div>
   
         <div class="d-grid gap-2 col-6 mx-auto">
-          <button class="btn btn-primary" type="submit">Agregar Cargo</button>
+          <button class="btn btn-primary" type="submit">{{boton | uppercase}}</button>
           <div class="col-sm-0"></div>
         </div>
       </form>

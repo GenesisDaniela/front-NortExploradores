@@ -32,14 +32,19 @@ const routes : Routes = [
         {path:"nuevoEmpleado", component:AddEmpleadoComponent},
       {path:"alojamientos", component:AlojamientosComponent},
         {path:"nuevoAlojamiento", component:AddAlojamientoComponent},
+        {path:"editarAlojamiento/:idAlojamiento", component:AddAlojamientoComponent},
+        
       {path:"actividades", component:ActividadesComponent},
         {path:"nuevaActividad", component:AddActividadComponent},
       {path:"aliados", component:AliadosComponent},
         {path:"nuevoAliado", component:AddAliadoComponent},
         {path:"nuevoSeguro", component:AddSegurosComponent},
         {path:"nuevoTransporte", component:AddTransportesComponent},
+
       {path:"cargos", component:CargoComponent},
         {path:"nuevoCargo", component:AddCargoComponent},
+        {path:"editarCargo/:idCargo", component:AddCargoComponent},
+
       {path:"clientes", component:ClientesComponent},
       {path:"infCorporativa", component:InfCorporativaComponent},
       {path:"paquetes", component:PaquetesComponent},

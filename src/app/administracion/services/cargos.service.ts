@@ -17,4 +17,12 @@ export class CargosService {
   public post(cargo:any):Observable<any>{
     return this.http.post<any>(this.uri, cargo)
   }
+
+  obtenerCargo(id:string): Observable<any>{
+  return this.http.get(this.uri+id)
+  }
+
+  editarCargo(id:string,cargo:any):Observable<any>{
+    return this.http.put(this.uri,cargo)
+  }
 }

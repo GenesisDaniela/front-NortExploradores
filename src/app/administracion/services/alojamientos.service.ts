@@ -9,7 +9,6 @@ import { HttpClient } from '@angular/common/http';
 export class AlojamientosService {
 
   url = `${global.url}/alojamiento/`;
-
   constructor(private http: HttpClient) { }
 
   public listarAlojamiento():Observable<any>{    
@@ -18,4 +17,13 @@ export class AlojamientosService {
   public post(alojamiento:any):Observable<any>{
     return this.http.post<any>(this.url, alojamiento)
   }
+
+  obtenerAlojamiento(id:string): Observable<any>{
+    return this.http.get<any>(this.url+id)
+  }
+
+  editarAlojamiento(id:string,alojamiento:any):Observable<any>{
+    return this.http.put<any>(this.url,alojamiento)
+  }
+
 }
