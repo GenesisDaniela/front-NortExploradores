@@ -81,28 +81,24 @@
   </nz-layout>
  -->
 <nz-layout class="app-layout">
-  <nz-sider
-    class="menu-sidebar"
-    nzCollapsible
-    nzWidth="240px"
-    nzBreakpoint="md"
-    [(nzCollapsed)]="isCollapsed"
-    [nzTrigger]="null"
-  >
+  <nz-sider class="menu-sidebar" nzCollapsible nzWidth="240px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null">
     <div class="sidebar-logo">
-      
+
       <img src="../../../assets/img/LOGO-01.png" alt="logo" />
       <h1>NortExploradores</h1>
-      
+
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
+
       <li nz-menu-item>
-        <i
-          nz-icon
-          nzType="bar-chart"
-          nzTheme="outline"
-          style="font-size: 20px"
-        ></i>
+        <i nz-icon nzType="container" nzTheme="outline" style="font-size: 20px"></i>
+        <span>Inf Corporativa</span>
+        <a routerLink="infoCorporativa"></a>
+      </li>
+
+      <li nz-menu-item>
+        <i nz-icon nzType="user" nzTheme="outline" style="font-size: 20px"></i>
         <span>Empleados</span>
         <a routerLink="empleados"></a>
       </li>
@@ -114,23 +110,13 @@
       </li>
 
       <li nz-menu-item>
-        <i
-          nz-icon
-          nzType="cluster"
-          nzTheme="outline"
-          style="font-size: 20px"
-        ></i>
+        <i nz-icon nzType="cluster" nzTheme="outline" style="font-size: 20px"></i>
         <span>Tours</span>
         <a routerLink="tours"></a>
       </li>
 
       <li nz-menu-item>
-        <i
-          nz-icon
-          nzType="idcard"
-          nzTheme="outline"
-          style="font-size: 20px"
-        ></i>
+        <i nz-icon nzType="idcard" nzTheme="outline" style="font-size: 20px"></i>
         <span>Aliados</span>
         <a routerLink="aliados"></a>
       </li>
@@ -142,34 +128,19 @@
       </li>
 
       <li nz-menu-item>
-        <i
-          nz-icon
-          nzType="shopping-cart"
-          nzTheme="outline"
-          style="font-size: 20px"
-        ></i>
+        <i nz-icon nzType="shopping-cart" nzTheme="outline" style="font-size: 20px"></i>
         <span>Alojamientos</span>
         <a routerLink="alojamientos"></a>
       </li>
 
       <li nz-menu-item>
-        <i
-          nz-icon
-          nzType="mobile"
-          nzTheme="outline"
-          style="font-size: 20px"
-        ></i>
+        <i nz-icon nzType="mobile" nzTheme="outline" style="font-size: 20px"></i>
         <span>Paquetes</span>
         <a routerLink="paquetes"></a>
       </li>
 
       <li nz-menu-item>
-        <i
-          nz-icon
-          nzType="file-search"
-          nzTheme="outline"
-          style="font-size: 20px"
-        ></i>
+        <i nz-icon nzType="file-search" nzTheme="outline" style="font-size: 20px"></i>
         <span>Actividades</span>
         <a routerLink="actividades"></a>
       </li>
@@ -180,11 +151,7 @@
       <div class="app-header row d-flex">
         <div class="col-1">
           <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-            <i
-              class="trigger"
-              nz-icon
-              [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-            ></i>
+            <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
           </span>
         </div>
 
@@ -205,7 +172,7 @@
 
           <div class="item">
             <a routerLink="descuentos">
-              <i class="fas fa-tags"></i>  
+              <i class="fas fa-tags"></i>
               DESCUENTOS
             </a>
           </div>
@@ -224,7 +191,7 @@
 
         <div class="col-3 d-flex">
           <div class="item">
-                  
+
             <nz-button-group>
               <button nz-button (click)="log()">Cristiano Ronaldo</button>
               <button nz-button nz-dropdown [nzDropdownMenu]="menu" nzPlacement="bottomRight">

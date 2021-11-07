@@ -21,9 +21,9 @@ export class EmpresaService {
 
   obtenerEmpresa(id:string): Observable<any>{
     return this.http.get(this.uri+id)
-    }
+  }
   
-    editarEmpresa(id:string,empresa:any):Observable<any>{
+  editarEmpresa(id:string,empresa:any):Observable<any>{
       return this.http.put(this.uri,empresa)
-    }
+  }
 }

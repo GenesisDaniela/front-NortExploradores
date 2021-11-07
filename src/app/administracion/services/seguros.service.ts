@@ -18,4 +18,12 @@ export class SegurosService {
   public post(empresa:any):Observable<any>{
     return this.http.post<any>(this.uri, empresa)
   }
+
+  obtenerSeguro(id:string): Observable<any>{
+    return this.http.get(this.uri+id)
+  }
+  
+  editarSeguro(id:string,seguro:any):Observable<any>{
+      return this.http.put(this.uri,seguro)
+  }
 }

@@ -22,31 +22,31 @@ import { AddAlojamientoComponent } from './pages/alojamientos/add-alojamiento/ad
 import { CalendarioComponent } from './pages/calendario/calendario.component';
 import { AddSegurosComponent } from './pages/aliados/add-seguros/add-seguros.component';
 import { AddTransportesComponent } from './pages/aliados/add-transportes/add-transportes.component';
+import { UpdateEmpleadoComponent } from './pages/empleados/update-empleado/update-empleado.component';
 
 const routes : Routes = [
   {path:"", 
     component:PrincipalComponent,
     children:[
+      {path:"infoCorporativa", component:InfCorporativaComponent},
       {path:"reportes", component:ReportesComponent},
       {path:"empleados", component:EmpleadosComponent},
         {path:"nuevoEmpleado", component:AddEmpleadoComponent},
-
+        {path:"update/:id", component:UpdateEmpleadoComponent},
       {path:"alojamientos", component:AlojamientosComponent},
         {path:"nuevoAlojamiento", component:AddAlojamientoComponent},
         {path:"editarAlojamiento/:idAlojamiento", component:AddAlojamientoComponent},
         
       {path:"actividades", component:ActividadesComponent},
         {path:"nuevaActividad", component:AddActividadComponent},
-        {path:"editarActividad/:idActividad", component:AddActividadComponent},
-        
-
       {path:"aliados", component:AliadosComponent},
         {path:"nuevoAliado", component:AddAliadoComponent},
         {path:"nuevoSeguro", component:AddSegurosComponent},
         {path:"nuevoTransporte", component:AddTransportesComponent},
         {path:"editarAliado/:idAliado", component:AddAliadoComponent},
-
-     {path:"cargos", component:CargoComponent},
+        // {path:"editarSeguro/:idSeguro", component:AddAliadoComponent},
+     
+        {path:"cargos", component:CargoComponent},
         {path:"nuevoCargo", component:AddCargoComponent},
         {path:"editarCargo/:idCargo", component:AddCargoComponent},
 

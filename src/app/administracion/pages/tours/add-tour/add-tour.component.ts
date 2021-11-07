@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { EmpleadosService } from 'src/app/administracion/services/empleados.service';
 import { MunicipioService } from 'src/app/administracion/services/municipio.service';
 import { RutasService } from 'src/app/administracion/services/rutas.service';
 import { SegurosService } from 'src/app/administracion/services/seguros.service';
 import { ToursService } from 'src/app/administracion/services/tours.service';
+import { TransportesService } from 'src/app/administracion/services/transportes.service';
 import { PaqueteService } from 'src/app/services/paquete.service';
 
 @Component({
@@ -32,7 +34,9 @@ export class AddTourComponent implements OnInit {
     private empleadoService:EmpleadosService,
     private tourService:ToursService,
     private rutaService:RutasService,
-    private formBuilder:FormBuilder
+    private transporteService:TransportesService,
+    private formBuilder:FormBuilder,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -41,12 +45,13 @@ export class AddTourComponent implements OnInit {
     this.agregarRutas();
     this.agregarEmpleados();
     this.agregarMunicipio();
+    this.agregarTransporte();
     this.form=this.formBuilder.group({ 
       minCupos: ['', Validators.required],
       maxCupos: ['', Validators.required],
       fechaLlegada: ['', Validators.required],
       fechaSalida: ['', Validators.required],
-      precio: ['', Validators.required],
+      // estado: ['', Validators.required],
       cantCupos: ['', Validators.required],
       empleado: ['', Validators.required],
       paquete: ['', Validators.required],
@@ -70,6 +75,12 @@ export class AddTourComponent implements OnInit {
   public agregarMunicipio(){
     this.MunicipioService.listarMunicipio().subscribe(municipios=>{
       this.municipios = municipios; 
+    })
+  }
+
+  public agregarTransporte(){
+    this.transporteService.listarTransporte().subscribe(transportes=>{
+     this.transportes = transportes; 
     })
   }
 
@@ -98,7 +109,9 @@ export class AddTourComponent implements OnInit {
     console.log(this.formRut.value);
     this.rutaService.post(this.formRut.value).subscribe(ruta=>{
       this.rutaService.guardarTransporteRuta(ruta.idRuta,  this.formTrans.controls.idTransporte)
-      this.tourService.post(this.form.value).subscribe(data=>{})
+      this.tourService.post(this.form.value).subscribe(data=>{
+        this.router.navigate(["/administracion/tours"]);
+      })
     })
   }
 }
