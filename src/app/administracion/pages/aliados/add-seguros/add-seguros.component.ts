@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { SegurosService } from 'src/app/administracion/services/seguros.service';
 import { EmpresaService } from 'src/app/services/empresa.service';
 
@@ -12,16 +13,23 @@ export class AddSegurosComponent implements OnInit {
 
   public empresas:any = [];
   public form!: FormGroup;
+  titulo = 'Agregar Seguro';
+  boton = 'Agregar Seguro';
+  id: string | null;
 
   constructor(
     
     private empresaService:EmpresaService,
     private seguroService:SegurosService,
-    private formBuilder: FormBuilder
-  ){}
+    private formBuilder: FormBuilder,
+    private aRouter: ActivatedRoute 
+  ){
+    this.id = aRouter.snapshot.paramMap.get('idSeguro');
+  }
 
   ngOnInit(): void {
     this.agregarEmpresa();
+    this.esEditar();
     this.form=this.formBuilder.group({
       nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
@@ -38,8 +46,30 @@ export class AddSegurosComponent implements OnInit {
   }
  
   public enviarData(){
-    console.log(this.form.value);
-    this.seguroService.post(this.form.value).subscribe()
+    if (this.id !== null) {
+      this.seguroService
+        .editarSeguro(this.id, this.form.value)
+        .subscribe((data) => {});
+    } else {
+      this.seguroService.post(this.form.value).subscribe();
+    }
+      
+  }
+
+  esEditar() {
+    if (this.id !== null) {
+      this.titulo = 'Editar Seguro';
+      this.boton = 'Editar Seguro';
+      this.seguroService.obtenerSeguro(this.id).subscribe((data) => {
+        this.form.setValue({
+          nombre: data.nombre,
+          descripcion: data.descripcion,
+          precio: data.precio,
+          idSeguro: data.idSeguro,
+          empresa: data.empresa,
+        });
+      });
+    }
   }
 
 }

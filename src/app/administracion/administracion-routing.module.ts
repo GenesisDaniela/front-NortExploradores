@@ -41,7 +41,9 @@ const routes : Routes = [
         {path:"nuevoSeguro", component:AddSegurosComponent},
         {path:"nuevoTransporte", component:AddTransportesComponent},
         {path:"editarAliado/:idAliado", component:AddAliadoComponent},
-      {path:"cargos", component:CargoComponent},
+        // {path:"editarSeguro/:idSeguro", component:AddAliadoComponent},
+     
+        {path:"cargos", component:CargoComponent},
         {path:"nuevoCargo", component:AddCargoComponent},
         {path:"editarCargo/:idCargo", component:AddCargoComponent},
 
