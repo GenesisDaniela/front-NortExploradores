@@ -1,6 +1,6 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { AlojamientosService } from 'src/app/administracion/services/alojamientos.service';
 
 
@@ -16,10 +16,12 @@ export class AddAlojamientoComponent implements OnInit {
   titulo = 'Agregar Alojamiento';
   boton = 'Agregar Alojamiento';
   id: string | null;
+  
   constructor(
     private alojamientosservice: AlojamientosService,
     private formBuilder: FormBuilder,
-    private aRouter: ActivatedRoute
+    private aRouter: ActivatedRoute,
+    private router : Router
   ) {
     this.id = aRouter.snapshot.paramMap.get('idAlojamiento');
   }
@@ -39,12 +41,14 @@ export class AddAlojamientoComponent implements OnInit {
       console.log('sss')
     if (this.id !== null) {
 
-      this.alojamientosservice
-        .editarAlojamiento(this.id, this.form.value)
-        .subscribe((data) => {});
-        console.log('zzzz')
+      this.alojamientosservice.editarAlojamiento(this.id, this.form.value)
+        .subscribe((data) => {
+          this.router.navigate(["/administracion/alojamientos"]);
+        });
     } else {
-      this.alojamientosservice.post(this.form.value).subscribe();
+      this.alojamientosservice.post(this.form.value).subscribe((data)=>{
+        this.router.navigate(["/administracion/alojamientos"]);
+      });
     }
   }
 

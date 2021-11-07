@@ -69,8 +69,9 @@ export class AddEmpleadoComponent implements OnInit {
   public enviarData(){
       this.form.controls.persona.setValue(this.formPer.value);
       this.personaService.post(this.formPer.value).subscribe(persona=>{
-        this.empleadoService.post(this.form.value).subscribe(data=>{})
-        this.router.navigate(["/administracion/empleados"]);
+        this.empleadoService.post(this.form.value).subscribe(data=>{
+          this.router.navigate(["/administracion/empleados"]);
+        })
       })
   }
   

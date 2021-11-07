@@ -61,10 +61,8 @@ export class AddPaqueteComponent implements OnInit {
 
     this.paqueteService.post(this.form.value).subscribe(paquete=>{
          this.formAct.controls.paquete.setValue(paquete)
-         this.actividadService.post(this.formAct.value).subscribe(data=>
-          {console.log(data,'yyyyyy')
+         this.actividadService.post(this.formAct.value).subscribe(data=>{
          this.router.navigate(["/administracion/paquetes"]);})
-    
         })  
         
   }

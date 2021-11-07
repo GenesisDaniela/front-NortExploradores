@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { data } from 'jquery';
 import { CargosService } from 'src/app/administracion/services/cargos.service';
 
@@ -18,7 +18,8 @@ export class AddCargoComponent implements OnInit {
   constructor(
     private cargoService: CargosService,
     private formBuilder: FormBuilder,
-    private aRouter: ActivatedRoute
+    private aRouter: ActivatedRoute,
+    private router : Router
   ) {
     this.id = aRouter.snapshot.paramMap.get('idCargo');
   }
@@ -35,11 +36,13 @@ export class AddCargoComponent implements OnInit {
 
   public enviarData() {
     if (this.id !== null) {
-      this.cargoService
-        .editarCargo(this.id, this.form.value)
-        .subscribe((data) => {});
+      this.cargoService.editarCargo(this.id, this.form.value).subscribe((data) => {
+        this.router.navigate(["/administracion/cargos"]);
+      });
     } else {
-      this.cargoService.post(this.form.value).subscribe();
+      this.cargoService.post(this.form.value).subscribe((data) => {
+        this.router.navigate(["/administracion/cargos"]);
+      });
     }
   }
 
