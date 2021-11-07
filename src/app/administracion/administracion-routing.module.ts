@@ -28,6 +28,7 @@ const routes : Routes = [
   {path:"", 
     component:PrincipalComponent,
     children:[
+      {path:"infoCorporativa", component:InfCorporativaComponent},
       {path:"reportes", component:ReportesComponent},
       {path:"empleados", component:EmpleadosComponent},
         {path:"nuevoEmpleado", component:AddEmpleadoComponent},

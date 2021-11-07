@@ -97,7 +97,6 @@
 
               <td nzAlign="center">
                 <a
-                  href="http://localhost:4200/empleado/{{ item.idEmpleado }}"
                   style="margin-right: 2px; margin-right: 10px"
                 >
                   <i
@@ -108,7 +107,7 @@
                   ></i>
                 </a>
 
-                <a href="">
+                <a [routerLink]="['/administracion/editarCargo',item.idCargo]" >
                   <i
                     nz-icon
                     nzType="edit"

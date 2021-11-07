@@ -14,7 +14,6 @@ export class AddSegurosComponent implements OnInit {
   public form!: FormGroup;
 
   constructor(
-    
     private empresaService:EmpresaService,
     private seguroService:SegurosService,
     private formBuilder: FormBuilder
