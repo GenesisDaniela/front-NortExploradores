@@ -39,6 +39,9 @@ const routes : Routes = [
         
       {path:"actividades", component:ActividadesComponent},
         {path:"nuevaActividad", component:AddActividadComponent},
+        {path:"editarActividad/:idActividad", component:AddActividadComponent},
+
+
       {path:"aliados", component:AliadosComponent},
         {path:"nuevoAliado", component:AddAliadoComponent},
         {path:"nuevoSeguro", component:AddSegurosComponent},

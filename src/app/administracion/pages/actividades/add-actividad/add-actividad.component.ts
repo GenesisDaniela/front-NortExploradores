@@ -54,7 +54,7 @@ export class AddActividadComponent implements OnInit {
     this.actividadService
       .editarActividad(this.id, this.form.value)
       .subscribe((data) => {});
-      console.log('zzzz')
+     
 
       //agrga alojamiento
   } else {
