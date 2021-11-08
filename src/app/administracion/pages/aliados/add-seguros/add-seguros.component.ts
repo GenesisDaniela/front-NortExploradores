@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SegurosService } from 'src/app/administracion/services/seguros.service';
 import { EmpresaService } from 'src/app/services/empresa.service';
 
@@ -21,7 +21,8 @@ export class AddSegurosComponent implements OnInit {
     private empresaService:EmpresaService,
     private seguroService:SegurosService,
     private formBuilder: FormBuilder,
-    private aRouter: ActivatedRoute 
+    private aRouter: ActivatedRoute ,
+    private router : Router
   ){
     this.id = aRouter.snapshot.paramMap.get('idSeguro');
   }
@@ -48,11 +49,12 @@ export class AddSegurosComponent implements OnInit {
     if (this.id !== null) {
       this.seguroService
         .editarSeguro(this.id, this.form.value)
-        .subscribe((data) => {});
+        .subscribe((data) => {this.router.navigate(["/administracion/transportes"]);});
     } else {
-      this.seguroService.post(this.form.value).subscribe();
+      this.seguroService.post(this.form.value).subscribe((data) => {
+        this.router.navigate(["/administracion/transportes"]);
+      });
     }
-      
   }
 
   esEditar() {

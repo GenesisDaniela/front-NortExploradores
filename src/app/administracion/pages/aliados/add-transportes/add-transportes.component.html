@@ -4,7 +4,7 @@
       <form [formGroup]="form" (submit)="enviarData()">
         <div class="mb-3 row">
           <div class="col-2"></div>
-          <h1 class="col-10">Formulario de transporte</h1>
+          <h4 class="col-10">{{titulo | uppercase}}</h4>
         </div>
         
         <div class="row mb-3">
@@ -55,7 +55,7 @@
         </div>
   
         <div class="d-grid gap-2 col-6 mx-auto">
-          <button class="btn btn-secondary" type="submit">Agregar Transporte</button>
+          <button class="btn btn-secondary" type="submit">{{boton | uppercase}}</button>
           <div class="col-sm-0"></div>
         </div>
       </form>

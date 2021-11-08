@@ -18,4 +18,16 @@ export class TransportesService {
   public post(transporte:any):Observable<any>{
     return this.http.post<any>(this.uri, transporte)
   }
+
+  obtenerTransporte(id:string): Observable<any>{
+    return this.http.get(this.uri+id)
+  }
+  
+  editarTransporte(id:string,transporte:any):Observable<any>{
+      return this.http.put(this.uri,transporte)
+  }
+
+
+
+
 }

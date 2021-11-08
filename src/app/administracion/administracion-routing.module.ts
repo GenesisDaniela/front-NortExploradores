@@ -32,24 +32,29 @@ const routes : Routes = [
     children:[
       {path:"infoCorporativa", component:InfCorporativaComponent},
       {path:"reportes", component:ReportesComponent},
-      {path:"empleados", component:EmpleadosComponent},
+      
+        {path:"empleados", component:EmpleadosComponent},
         {path:"nuevoEmpleado", component:AddEmpleadoComponent},
         {path:"update/:id", component:UpdateEmpleadoComponent},
-      {path:"alojamientos", component:AlojamientosComponent},
+        
+        {path:"alojamientos", component:AlojamientosComponent},
         {path:"nuevoAlojamiento", component:AddAlojamientoComponent},
         {path:"editarAlojamiento/:idAlojamiento", component:AddAlojamientoComponent},
         
-      {path:"actividades", component:ActividadesComponent},
+        {path:"actividades", component:ActividadesComponent},
         {path:"nuevaActividad", component:AddActividadComponent},
         {path:"editarActividad/:idActividad", component:AddActividadComponent},
 
 
-      {path:"aliados", component:AliadosComponent},
+        {path:"aliados", component:AliadosComponent},
         {path:"nuevoAliado", component:AddAliadoComponent},
-        {path:"nuevoSeguro", component:AddSegurosComponent},
-        {path:"nuevoTransporte", component:AddTransportesComponent},
         {path:"editarAliado/:idAliado", component:AddAliadoComponent},
+
+        {path:"nuevoTransporte", component:AddTransportesComponent},
         {path:"transportes", component:TransportesComponent},
+        {path:"editarTransporte/:idTransporte", component:AddTransportesComponent},
+
+        {path:"nuevoSeguro", component:AddSegurosComponent},
         {path:"seguros", component:SegurosComponent},
         {path:"editarSeguro/:idSeguro", component:AddSegurosComponent},
      
@@ -59,11 +64,14 @@ const routes : Routes = [
 
       {path:"clientes", component:ClientesComponent},
       {path:"infCorporativa", component:InfCorporativaComponent},
+      
       {path:"paquetes", component:PaquetesComponent},
-        {path:"nuevoPaquete", component:AddPaqueteComponent},
-      {path:"reportes", component:ReportesComponent},
+      {path:"nuevoPaquete", component:AddPaqueteComponent},
+      
+        {path:"reportes", component:ReportesComponent},
+      
       {path:"tours", component:ToursComponent},
-        {path:"nuevoTour", component:AddTourComponent},
+      {path:"nuevoTour", component:AddTourComponent},
       {path:"calendario", component:CalendarioComponent},
       {path:"**", redirectTo:"reportes"}
   ]}
