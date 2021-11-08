@@ -65,7 +65,7 @@ export class AddSegurosComponent implements OnInit {
           descripcion: data.descripcion,
           precio: data.precio,
           idSeguro: data.idSeguro,
-          empresa: data.empresa,
+          empresa: data.empresa.idEmpresa,
         });
       });
     }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ActividadesService } from 'src/app/administracion/services/actividades.service';
 import { PaquetesService } from 'src/app/administracion/services/paquetes.service';
 
@@ -22,7 +22,8 @@ export class AddActividadComponent implements OnInit {
     private actividadService:ActividadesService,
     private paqueteService:PaquetesService,
     private formBuilder:FormBuilder,
-    private aRouter: ActivatedRoute
+    private aRouter: ActivatedRoute,
+    private router : Router
   ) {
     this.id = aRouter.snapshot.paramMap.get('idActividad');
 
@@ -53,12 +54,12 @@ export class AddActividadComponent implements OnInit {
   if (this.id !== null) {
     this.actividadService
       .editarActividad(this.id, this.form.value)
-      .subscribe((data) => {});
+      .subscribe((data) => {this.router.navigate(["/administracion/actividades"]);});
      
 
       //agrga alojamiento
   } else {
-    this.actividadService.post(this.form.value).subscribe();
+    this.actividadService.post(this.form.value).subscribe((data) => {this.router.navigate(["/administracion/actividades"]);});
   }
 }
 

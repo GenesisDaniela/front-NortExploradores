@@ -51,7 +51,7 @@ const routes : Routes = [
         {path:"editarAliado/:idAliado", component:AddAliadoComponent},
         {path:"transportes", component:TransportesComponent},
         {path:"seguros", component:SegurosComponent},
-        // {path:"editarSeguro/:idSeguro", component:AddAliadoComponent},
+        {path:"editarSeguro/:idSeguro", component:AddSegurosComponent},
      
         {path:"cargos", component:CargoComponent},
         {path:"nuevoCargo", component:AddCargoComponent},
