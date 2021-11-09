@@ -73,7 +73,7 @@ export class AddEmpleadoComponent implements OnInit {
   public enviarData(){
     if (this.id !== null) {
       this.personaService.editarPersona(this.formPer.value).subscribe(persona=>{
-        this.form.controls.persona.setValue(persona);
+        this.form.controls.persona.setValue(this.formPer.value);
         this.empleadoService.editarEmpleado(this.form.value).subscribe(data=>{
           this.router.navigate(["/administracion/empleados"]);
         })
@@ -97,7 +97,7 @@ export class AddEmpleadoComponent implements OnInit {
           fechaContratacion: data.fechaContratacion,
           urlImagen: data.urlImagen,
           cargo: data.cargo.idCargo,
-          persona: data.persona
+          persona: data.persona.idPersona
         });
         this.formPer.setValue({
           idPersona: data.persona.idPersona,
