@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlojamientosService } from 'src/app/administracion/services/alojamientos.service';
 import { PaquetesService } from 'src/app/administracion/services/paquetes.service';
 import { ActividadesService } from 'src/app/administracion/services/actividades.service';
@@ -15,7 +15,6 @@ export class AddPaqueteComponent implements OnInit {
   public alojamientos: any = [];
   public actividades: any=[];
   public form!: FormGroup;
-  public formAct!: FormGroup;
 
   constructor(
     private alojamientoservice: AlojamientosService,
@@ -34,15 +33,10 @@ export class AddPaqueteComponent implements OnInit {
       descripcion:['', Validators.required],
       recomendacion:['', Validators.required],
       nombre:['', Validators.required],
-      alojamiento:['', Validators.required]
+      alojamiento:['', Validators.required],
+      acts: this.formBuilder.array([])
     });
   
-  this.formAct=this.formBuilder.group({
-    nombre: ['', Validators.required],
-    descripcion: ['', Validators.required], 
-    urlImg: ['', Validators.required],
-    paquete: ['', Validators.required]
-  });
 }
 
 
@@ -52,19 +46,39 @@ export class AddPaqueteComponent implements OnInit {
       this.alojamientos = alojamientos;
     })
   }
+  public cargarActividades(evento: any){
+    let totalAct = evento.target.value;
+    let actividadess = this.form.get('acts') as FormArray;
+    
 
-  
+    for (let i = 0; i < totalAct; i++) {
+      actividadess.push(
+        this.formBuilder.group({
+          nombre: ['', Validators.required],
+          descripcion: ['', Validators.required], 
+          urlImg: ['', Validators.required],
+          paquete: ['', Validators.required]
+        })
+      )
+    }
+    console.log(actividadess.value);
+    console.log('total acts', totalAct);
+  }
+  get getActividades(){
+    return this.form.get('acts') as FormArray;
+  }
   public enviarData() {
     
-    console.log(this.form.value);
-    console.log(this.formAct.value);
+    console.log('actssss', this.getActividades.value);
+    
 
     this.paqueteService.post(this.form.value).subscribe(paquete=>{
-         this.formAct.controls.paquete.setValue(paquete)
-         this.actividadService.post(this.formAct.value).subscribe(data=>{
-         this.router.navigate(["/administracion/paquetes"]);})
-        })  
-        
-  }
+      
+      this.paqueteService.postAct(this.getActividades.value, paquete.idPaq).subscribe(data=>{
+        this.router.navigate(["/administracion/paquetes"]);})
+      })
+   }
 
-  }
+
+   
+}

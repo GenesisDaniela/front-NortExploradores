@@ -114,18 +114,18 @@
               <td>{{ item.fechaContratacion }}</td>
               <td>{{ item.cargo.nombre }}</td>
               <td nzAlign="center">
-                <!-- <a [routerLink]="/administracion/empleados" style="margin-right: 2px; margin-right: 10px">
+                <a style="margin-right: 2px; margin-right: 10px">
                 <i
                   nz-icon
                   nzType="delete"
                   nzTheme="outline"
                   style="font-size: 20px; color: red"
                 ></i>
-              </a> -->
+              </a>
   
                 <!-- <button class="btn btn-info" (click)="deshabilitar(item.idEmpleado)">Click</button> -->
   
-                <a [routerLink]="['/administracion/update', item.idEmpleado]">
+                <a [routerLink]="['/administracion/editarEmpleado', item.idEmpleado]">
                   <i nz-icon nzType="edit" nzTheme="outline" style="font-size: 20px"></i>
                 </a>
               </td>

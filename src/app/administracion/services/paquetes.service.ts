@@ -17,6 +17,9 @@ export class PaquetesService {
     return this.http.get<any>(this.url);
   }
   public post(paquete:any):Observable<any>{
-    return this.http.post<any>(this.url, paquete)
+    return this.http.post<any>(this.url, paquete);
+  }
+  public postAct(actividades: any [], paquete:any):Observable<any>{
+    return this.http.post<any>(this.url+paquete+'guardarActividades', actividades);
   }
 }

@@ -103,11 +103,10 @@ export class AddTourComponent implements OnInit {
   }
 
   public enviarData(){
-
-    this.form.controls.ruta.setValue(this.formRut.value);
     console.log(this.form.value);
     console.log(this.formRut.value);
     this.rutaService.post(this.formRut.value).subscribe(ruta=>{
+      this.form.controls.ruta.setValue(ruta);
       this.rutaService.guardarTransporteRuta(ruta.idRuta,  this.formTrans.controls.idTransporte)
       this.tourService.post(this.form.value).subscribe(data=>{
         this.router.navigate(["/administracion/tours"]);

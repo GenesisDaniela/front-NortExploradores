@@ -35,6 +35,7 @@ const routes : Routes = [
       
         {path:"empleados", component:EmpleadosComponent},
         {path:"nuevoEmpleado", component:AddEmpleadoComponent},
+        {path:"editarEmpleado/:idEmpleado", component:AddEmpleadoComponent},
         {path:"update/:id", component:UpdateEmpleadoComponent},
         
         {path:"alojamientos", component:AlojamientosComponent},

@@ -13,6 +13,10 @@ import { TipoidService } from 'src/app/services/tipoid.service';
 })
 export class AddEmpleadoComponent implements OnInit {
   
+  titulo = 'Agregar Empleado';
+  boton = 'Agregar Empleado';
+  id: string | null;
+  idPer: string | null;
   public cargos:any = [];
   public personas:any = [];
   public empleados:any = [];
@@ -26,14 +30,18 @@ export class AddEmpleadoComponent implements OnInit {
     private personaService:PersonaService,
     private formBuilder: FormBuilder,
     private tipoIdService: TipoidService,
+    private aRouter: ActivatedRoute,
     private router : Router
-  ){}
+  ){
+    this.id = aRouter.snapshot.paramMap.get('idEmpleado');
+    this.idPer = aRouter.snapshot.paramMap.get('idPersona');
+  }
 
   ngOnInit(): void {
     this.agregarCargos();
     this.agregarTipo();
     //this.agregarPersonas();
-    
+    this.esEditarEmpleado();
     this.formPer=this.formBuilder.group({
       idPersona: ['', Validators.required],
       nombre: ['', Validators.required],
@@ -67,13 +75,46 @@ export class AddEmpleadoComponent implements OnInit {
     })
   }
   public enviarData(){
+    if (this.id !== null) {
+      this.personaService.editarPersona(this.formPer.value).subscribe(persona=>{
+        this.empleadoService.editarEmpleado(this.form.value).subscribe(data=>{
+          this.router.navigate(["/administracion/empleados"]);
+        })
+      });
+    } else {
       this.form.controls.persona.setValue(this.formPer.value);
       this.personaService.post(this.formPer.value).subscribe(persona=>{
         this.empleadoService.post(this.form.value).subscribe(data=>{
           this.router.navigate(["/administracion/empleados"]);
         })
-      })
+      });
+    }
   }
-  
-  
+  public esEditarEmpleado() {
+    if (this.id !== null) {
+      this.titulo = 'Editar Empleado';
+      this.boton = 'Editar Empleado';
+      this.empleadoService.obtenerEmpleado(this.id).subscribe((data) => {
+        console.log(data);
+        
+        this.form.setValue({
+          idCargo: data.idCargo,
+          nombre: data.nombre,
+          descripcion: data.descripcion,
+          persona: data.persona
+        });
+        this.formPer.setValue({
+          idPersona: data.persona.idPersona,
+          nombre: data.persona.nombre,
+          apellido: data.persona.apellido,
+          sexo: data.persona.sexo,
+          fechaNac: data.persona.fechaNac,
+          cel: data.persona.cel,
+          correo: data.persona.correo,
+          idTipo: data.persona.idTipo
+        });
+      });
+      
+    }
+  }
 }
