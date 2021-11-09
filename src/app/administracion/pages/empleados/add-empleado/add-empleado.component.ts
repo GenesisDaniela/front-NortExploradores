@@ -53,6 +53,7 @@ export class AddEmpleadoComponent implements OnInit {
       idTipo: ['', Validators.required]
     });
     this.form=this.formBuilder.group({
+      idEmpleado: ['', Validators.required],
       fechaContratacion: ['', Validators.required],
       urlImagen: ['', Validators.required],
       cargo: ['', Validators.required],
@@ -64,19 +65,15 @@ export class AddEmpleadoComponent implements OnInit {
       this.cargos = cargos; 
     })
   }
-  // public agregarPersonas(){
-  //   this.personaService.listarPersona().subscribe(personas=>{
-  //     this.personas = personas; 
-  //   })
-  // }
   public agregarTipo(){
     this.tipoIdService.listarTipo().subscribe(tipos=>{
-      this.tipos = tipos; 
+      this.tipos = tipos;
     })
   }
   public enviarData(){
     if (this.id !== null) {
       this.personaService.editarPersona(this.formPer.value).subscribe(persona=>{
+        this.form.controls.persona.setValue(persona);
         this.empleadoService.editarEmpleado(this.form.value).subscribe(data=>{
           this.router.navigate(["/administracion/empleados"]);
         })
@@ -95,12 +92,11 @@ export class AddEmpleadoComponent implements OnInit {
       this.titulo = 'Editar Empleado';
       this.boton = 'Editar Empleado';
       this.empleadoService.obtenerEmpleado(this.id).subscribe((data) => {
-        console.log(data);
-        
         this.form.setValue({
-          idCargo: data.idCargo,
-          nombre: data.nombre,
-          descripcion: data.descripcion,
+          idEmpleado: data.idEmpleado,
+          fechaContratacion: data.fechaContratacion,
+          urlImagen: data.urlImagen,
+          cargo: data.cargo.idCargo,
           persona: data.persona
         });
         this.formPer.setValue({
@@ -111,7 +107,7 @@ export class AddEmpleadoComponent implements OnInit {
           fechaNac: data.persona.fechaNac,
           cel: data.persona.cel,
           correo: data.persona.correo,
-          idTipo: data.persona.idTipo
+          idTipo: data.persona.idTipo.idTipo
         });
       });
       
