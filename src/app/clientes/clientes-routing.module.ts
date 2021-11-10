@@ -10,12 +10,16 @@ import { EstadiaComponent } from './pages/tours/estadia/estadia.component';
 import { RecomendacionesComponent } from './pages/recomendaciones/recomendaciones.component';
 import { ViajesGrupalesComponent } from './pages/viajes-grupales/viajes-grupales.component';
 import { FestividadesComponent } from './pages/festividades/festividades.component';
+import { NuestrosAliadosComponent } from './pages/inicio/nuestros-aliados/nuestros-aliados.component';
+import { ToursDelMesComponent } from './pages/inicio/tours-del-mes/tours-del-mes.component';
 
 const routes : Routes = [
   {path:"",
     component:HomeComponent, 
     children:[
     {path:"inicio", component:InicioComponent},
+      {path:"nuestrosAliados", component:NuestrosAliadosComponent},
+      {path:"toursDelMes", component:ToursDelMesComponent},
     {path:"rutas", component:VerRutasComponent},
     {path:"contacto", component:ContactoComponent},
     {path:"pasadia", component:PasadiaComponent},

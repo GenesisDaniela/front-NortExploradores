@@ -17,6 +17,7 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzCalendarModule } from 'ng-zorro-antd/calendar';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 // COMPONENTES 
 import { EmpleadosComponent } from './pages/empleados/empleados.component';
@@ -86,7 +87,8 @@ import { SegurosComponent } from './pages/aliados/seguros/seguros.component';
     NzCalendarModule,
     NzBadgeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NzModalModule
   ],
   exports:[
     PrincipalComponent

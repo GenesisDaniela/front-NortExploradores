@@ -23,6 +23,8 @@ import { ExperienciasComponent } from './pages/inicio/experiencias/experiencias.
 import { ViajesGrupalesComponent } from './pages/viajes-grupales/viajes-grupales.component';
 import { FestividadesComponent } from './pages/festividades/festividades.component';
 import { RecomendacionesComponent } from './pages/recomendaciones/recomendaciones.component';
+import { NuestrosAliadosComponent } from './pages/inicio/nuestros-aliados/nuestros-aliados.component';
+import { ToursDelMesComponent } from './pages/inicio/tours-del-mes/tours-del-mes.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { RecomendacionesComponent } from './pages/recomendaciones/recomendacione
     ExperienciasComponent,
     ViajesGrupalesComponent,
     FestividadesComponent,
-    RecomendacionesComponent
+    RecomendacionesComponent,
+    NuestrosAliadosComponent,
+    ToursDelMesComponent
   ],
   imports: [
     CommonModule,

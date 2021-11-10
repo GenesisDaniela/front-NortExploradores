@@ -15,10 +15,14 @@
     overflow: hidden;
     margin: 20px;
     text-align: center;
-    transform: all 0.25s;
+    /* transform: all 0.25s; */
+    transition: all 0.25s linear;
+    transform-style: preserve-3d;
 }
 
 .container .card:hover{
+    /* transform: translateY(-15px);
+    box-shadow: 0px 12px 16px rgba(0,0, 0, 0.2); */
     transform: translateY(-15px);
     box-shadow: 0px 12px 16px rgba(0,0, 0, 0.2);
 }
