@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { data } from 'jquery';
 import { CargosService } from 'src/app/administracion/services/cargos.service';
+import { CargoComponent } from '../cargo.component';
 
 @Component({
   selector: 'app-add-cargo',
@@ -15,6 +16,8 @@ export class AddCargoComponent implements OnInit {
   titulo = 'Agregar Cargo';
   boton = 'Agregar Cargo';
   id: string | null;
+
+
   constructor(
     private cargoService: CargosService,
     private formBuilder: FormBuilder,
@@ -44,9 +47,12 @@ export class AddCargoComponent implements OnInit {
         this.router.navigate(["/administracion/cargos"]);
       });
     }
+
+    // CargoComponent.prototype.handleOk();
   }
 
   esEditar() {
+    // this.aRouter.snapshot.paramMap("idCargo");
     if (this.id !== null) {
       this.titulo = 'Editar Cargo';
       this.boton = 'Editar Cargo';
