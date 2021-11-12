@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { Subject } from 'rxjs';
 import { CargosService } from '../../services/cargos.service';
 import { AddCargoComponent } from './add-cargo/add-cargo.component';
@@ -39,24 +40,5 @@ export class CargoComponent implements OnInit, OnDestroy {
   }
 
 
-  isVisible = false;
-
-  // constructor() {}
-
-  showModal(): void {
-    this.isVisible = true;
-    // AddCargoComponent.prototype.enviarData();
-  }
-
-  handleOk(): void {
-    console.log('Button ok clicked!');
-    this.isVisible = false;
-    // AddCargoComponent.prototype.enviarData();
-  }
-
-  handleCancel(): void {
-    console.log('Button cancel clicked!');
-    this.isVisible = false;
-  }
 
 }

@@ -1,7 +1,7 @@
 'use strict';
 // ==============================Backend==============================
 // ****Pruebas****
-//export const url = "http://localhost:8080";
+// export const url = "http://localhost:8080";
 
 // ****Produccion****
 export const url = "https://nortexploradores.herokuapp.com";
