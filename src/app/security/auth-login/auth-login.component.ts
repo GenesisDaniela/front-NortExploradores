@@ -10,6 +10,7 @@ import { LoginUsuario } from '../models/login-usuario';
 export class AuthLoginComponent implements OnInit {
   isLogged = false;
   isLoginFail = false;
+  isAdmin = false;
   loginUsuario!: LoginUsuario;
   nombreUsuario!: string;
   password!: string;
@@ -30,6 +31,13 @@ export class AuthLoginComponent implements OnInit {
       this.isLoginFail = false;
       this.roles = this.tokenService.getAuthorities();
     }
+
+  }
+
+  isAdministrador(){
+    if(this.roles.length == 2){
+      this.isAdmin=true;
+    }
   }
 
   onLogin(): void {
@@ -42,10 +50,17 @@ export class AuthLoginComponent implements OnInit {
         this.tokenService.setUserName(data.nombreUsuario);
         this.tokenService.setAuthorities(data.authorities);
         this.roles = data.authorities;
+
         // this.toastr.success('Bienvenido ' + data.nombreUsuario, 'OK', {
         //   timeOut: 3000, positionClass: 'toast-top-center'
         // });
-        this.router.navigate(['/']);
+        this.isAdministrador();
+
+        if(this.isAdmin){
+          this.router.navigate(['/administracion']);
+        }else{
+          this.router.navigate(['/']);
+        }
       },
       err => {
         this.isLogged = false;

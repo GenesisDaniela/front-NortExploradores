@@ -2,13 +2,15 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CompraService } from 'src/app/services/compra.service';
+import { DetcompraService } from 'src/app/services/detcompra.service';
 import { PaqueteService } from 'src/app/services/paquete.service';
 import { PersonaService } from 'src/app/services/persona.service';
 import { TipoidService } from 'src/app/services/tipoid.service';
 import { TokenService } from 'src/app/services/token.service';
 import { TourService } from 'src/app/services/tour.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
-/* import * as crypto from "crypto-js"; */
+ import * as crypto from "crypto-js"; 
 
 @Component({
   selector: 'app-form-pagos',
@@ -27,7 +29,7 @@ export class FormPagosComponent implements OnInit {
   public pasajerosFrec: any=[];
   public tipoId :any= [];
   public pasajerosFrecElegidos : any = [];
-
+  public pasajerosTotal:any = [];
   public pasajerosClasificados: any = [];
 
   public idPaquete:any;
@@ -81,7 +83,9 @@ export class FormPagosComponent implements OnInit {
     private route: ActivatedRoute,
     private tokenS: TokenService,
     private formBuilder : FormBuilder,
-    private tourService:TourService
+    private tourService:TourService,
+    private compraService: CompraService,
+    private detalleCompra: DetcompraService
     ){}
 
   ngOnInit(): void {
@@ -101,6 +105,7 @@ export class FormPagosComponent implements OnInit {
       total : [],
       pasajeros : this.formBuilder.array([])
     })
+    
     this.tipoIdService.getTipoId().subscribe(ids=>{
       this.tipoId = ids
     })
@@ -115,6 +120,7 @@ export class FormPagosComponent implements OnInit {
   agregarPasajero(tipoid = "", documento = "", nombre="", apellido="", sexo="", fechaNac="", celular="",correo=""){
     this.total++;
     let persona = this.pagosInfo.get('pasajeros') as FormArray;
+
     persona.push(this.formBuilder.group({
       idTipo : [tipoid, [Validators.required]],
       idPersona : [documento, [Validators.required]],
@@ -236,6 +242,7 @@ export class FormPagosComponent implements OnInit {
           "persona":pasajero,
           "usuario":this.usuario.id_Usuario
         }
+        this.pasajerosTotal.push(pasajeroPost);
         pasajeros.push(pasajeroPost)
     }
     const output = document.getElementById("errorPresentado");
@@ -249,9 +256,11 @@ export class FormPagosComponent implements OnInit {
 
     // Guardo los pasajeros asociados al usuario -->
     this.usuarioService.guardarPasajerosDeUsuario(this.usuario.id_Usuario,pasajeros).subscribe(pasajeros=>{
-      console.log(pasajeros);
+      this.pasajerosTotal = pasajeros;
     });
     
+
+
     //Primero tengo que guardar los detalles compra.
     //Tengo que enviar el tour por ID /compraReservada/{idtour}
     
@@ -321,6 +330,7 @@ export class FormPagosComponent implements OnInit {
 
   public cargarPasajeros(pasajeros:any){
     for (let i = 0; i < pasajeros.length; i++) {
+
       let pasajero = pasajeros[i]
       if(pasajero.esCotizante==false){
         this.pasajerosFrec.push(pasajero)
@@ -329,7 +339,8 @@ export class FormPagosComponent implements OnInit {
         this.total++;
         let pasajeroX = this.pagosInfo.get('pasajeros') as FormArray;
         
-        pasajeroX.push(this.formBuilder.group({
+        pasajeroX.push(
+          this.formBuilder.group({
           idTipo : [this.persona.idTipo.idTipo, [Validators.required]],
           idPersona : [this.persona.idPersona, [Validators.required]],
           nombre : [this.persona.nombre, [Validators.required]],
@@ -342,8 +353,6 @@ export class FormPagosComponent implements OnInit {
 
          
       }    
-      
-   
   }
   }  
   public actualizarPasajeros(event:any){ //metodo para agregar un pasajero o eliminarlo si se vuelve a seleccionar
@@ -436,16 +445,51 @@ cargarPayu(){
   this.descripcion = "Pago de ("+pasajeros.length+") paquete(s) turistico(s) destino: "+this.tourSeleccionado.ruta.municipio.nombre
 
   this.firmaElectronica = `${this.apikey}~${this.idMercado}~${this.idCompra}~${this.totalCompra}~${this.moneda}`;
-  /* this.firmaElectronicaMD5 = crypto.MD5(this.firmaElectronica).toString(); */
+  this.firmaElectronicaMD5 = crypto.MD5(this.firmaElectronica).toString();
   
 
 }
 
 guardarCompra(form:HTMLFormElement){
-  // toda la logica de guardar compra, recordar hacer el form.sumit dentro de la respuesta de la peticion de guardar
-  // guardar los pasajeros asociados a la compra
-  form.submit();
+
+  var compra={
+    idCompra:this.referenciaUnic,
+    cantidadPasajeros:this.total,
+    totalCompra:this.totalCompra,
+    estado:"PENDIENTE",
+    fecha:Date.now,
+    usuario:this.usuario.id_Usuario
+  }
+
+  this.compraService.post(compra,this.tourSeleccionado.idTour).subscribe(compra=>{
+    console.log("La compra es:",compra);
+    let pasajeros = this.pagosInfo.get('pasajeros') as FormArray;
+    let detalleCompras = [];
+    for (let i = 0; i < pasajeros.length; i++) {
+      let detalleCompra = {
+        fecha: Date.now,
+        compra:compra.idCompra,
+        valorUnit:this.tourSeleccionado.paquete.precio,
+        pasajero:this.pasajerosTotal[i],
+        paquete:this.tourSeleccionado.paquete
+      }
+
+      detalleCompras.push(detalleCompra);
+      console.log("DETALLES COMPRA:",detalleCompras);
+      
+    }
+
+    this.detalleCompra.post(detalleCompras).subscribe(det=>{
+      console.log("El resultado es: ",det);
+      form.submit();
+
+    });
+
+
+  })
+
 }
+
 
 }
 

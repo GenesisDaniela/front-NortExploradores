@@ -15,6 +15,8 @@ export class HeaderComponent implements OnInit {
   public isLogged!:boolean;
   public seleccionado!:string;
   public url_front!:string;
+  public isAdmin = false;
+  public roles: string[] = [];
   
   public nombreUser!:string;
   constructor(
@@ -25,7 +27,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.nombreUser=this.tokenS.getUserName(); 
     this.cargarUsuario();
-
+    this.roles = this.tokenS.getAuthorities();
+    this.isAdministrador();
     if (this.tokenS.getToken()) {
       this.isLogged = true;
     } else {
@@ -47,7 +50,14 @@ export class HeaderComponent implements OnInit {
 
   public cambiarSeleccionado(){
 
+  } 
+
+  isAdministrador(){
+    if(this.roles.length == 2){
+      this.isAdmin=true;
+    }
   }
+
 
   public inicializarUsuario() {
     this.usuarioSer

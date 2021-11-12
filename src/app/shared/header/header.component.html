@@ -51,7 +51,7 @@
         </ul>
       </nz-dropdown-menu>
 
-      <a routerLink="administracion/reportes">
+      <a *ngIf="isAdmin && isLogged" routerLink="administracion/reportes">
         <i class="fas fa-concierge-bell"></i>
         <span class="off">Admin</span></a>
 
