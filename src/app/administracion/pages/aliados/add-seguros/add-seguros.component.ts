@@ -49,10 +49,10 @@ export class AddSegurosComponent implements OnInit {
     if (this.id !== null) {
       this.seguroService
         .editarSeguro(this.id, this.form.value)
-        .subscribe((data) => {this.router.navigate(["/administracion/transportes"]);});
+        .subscribe((data) => {this.router.navigate(["/administracion/seguros"]);});
     } else {
       this.seguroService.post(this.form.value).subscribe((data) => {
-        this.router.navigate(["/administracion/transportes"]);
+        this.router.navigate(["/administracion/seguros"]);
       });
     }
   }

@@ -14,6 +14,7 @@ export class AddAliadoComponent implements OnInit {
   titulo = 'Agregar Aliado';
   boton = 'Agregar Aliado';
   id: string | null;
+  router: any;
 
   constructor(
     private empresaService: EmpresaService,
@@ -45,7 +46,8 @@ export class AddAliadoComponent implements OnInit {
         .editarEmpresa(this.id, this.form.value)
         .subscribe((data) => {});
     } else {
-      this.empresaService.post(this.form.value).subscribe();
+      this.empresaService.post(this.form.value)
+      .subscribe();
     }
       
   }
