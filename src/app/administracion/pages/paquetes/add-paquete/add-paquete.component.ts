@@ -3,7 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlojamientosService } from 'src/app/administracion/services/alojamientos.service';
 import { PaquetesService } from 'src/app/administracion/services/paquetes.service';
 import { ActividadesService } from 'src/app/administracion/services/actividades.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-paquete',
@@ -15,16 +15,23 @@ export class AddPaqueteComponent implements OnInit {
   public alojamientos: any = [];
   public actividades: any=[];
   public form!: FormGroup;
+  titulo = 'Agregar Paquete';
+  boton = 'Agregar Paquete';
+  id: string | null;
 
   constructor(
     private alojamientoservice: AlojamientosService,
     private actividadService: ActividadesService,
     private paqueteService: PaquetesService,
     private formBuilder: FormBuilder,
-    private router : Router
-  ) { }
+    private router : Router,
+    private aRouter: ActivatedRoute
+  ) { 
+    this.id = aRouter.snapshot.paramMap.get('idPaq');
+  }
 
   ngOnInit(): void {
+    this.esEditar();
     this.agregarAlojamiento();
     this.form=this.formBuilder.group({
       precio:['', Validators.required],
@@ -64,21 +71,44 @@ export class AddPaqueteComponent implements OnInit {
     console.log(actividadess.value);
     console.log('total acts', totalAct);
   }
+  
   get getActividades(){
     return this.form.get('acts') as FormArray;
   }
+  
   public enviarData() {
-    
-    console.log('actssss', this.getActividades.value);
-    
-
+    if(this.id !== null){
+     this.paqueteService.editarPaquete(this.id, this.form.value).subscribe((data) => {
+      this.router.navigate(["/administracion/paquetes"]);
+     });
+        
+   }else {
     this.paqueteService.post(this.form.value).subscribe(paquete=>{
       
       this.paqueteService.postAct(this.getActividades.value, paquete.idPaq).subscribe(data=>{
         this.router.navigate(["/administracion/paquetes"]);})
       })
    }
+   }
 
+   esEditar() {
+    if (this.id !== null) {
+      this.titulo = 'Editar Paquete';
+      this.boton = 'Editar Paquete';
+      this.paqueteService.obtenerPaquete(this.id).subscribe((data) => {
+        this.form.setValue({
+          precio: data.precio,
+          estado: data.estado,
+          urlImagen: data.urlImagen,
+          descripcion: data.descripcion,
+          recomendacion: data.recomendacion,
+          nombre: data.nombre,
+          alojamiento: data.alojamiento,
+          acts: data.acts,
+        });
+      });
+    }
+  }
 
    
 }
