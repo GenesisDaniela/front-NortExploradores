@@ -73,6 +73,10 @@ const routes : Routes = [
       
       {path:"tours", component:ToursComponent},
       {path:"nuevoTour", component:AddTourComponent},
+      {path:"editarTour/:idTour", component:AddTourComponent},
+
+
+
       {path:"calendario", component:CalendarioComponent},
       {path:"**", redirectTo:"reportes"}
   ]}

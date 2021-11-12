@@ -23,4 +23,12 @@ export class RutasService {
   public post(tour:any):Observable<any>{
     return this.http.post<any>(this.uri, tour)
   }
+  obtenerRuta(id:string): Observable<any>{
+    return this.http.get(this.uri+id);
+  }
+
+  editarRuta(ruta:any):Observable<any>{
+    return this.http.put(this.uri,ruta);
+  }
+
 }

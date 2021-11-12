@@ -19,4 +19,11 @@ export class ToursService {
   public post(tour:any):Observable<any>{
     return this.http.post<any>(this.uri, tour)
   }
+
+  obtenerTour(id:string): Observable<any>{
+    return this.http.get(this.uri+id);
+  }
+  editarTour(id:string,tour:any):Observable<any>{
+    return this.http.put<any>(this.uri,tour);
+  }
 }
