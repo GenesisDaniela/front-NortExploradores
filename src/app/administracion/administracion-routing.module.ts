@@ -68,8 +68,9 @@ const routes : Routes = [
       
       {path:"paquetes", component:PaquetesComponent},
       {path:"nuevoPaquete", component:AddPaqueteComponent},
-      
-        {path:"reportes", component:ReportesComponent},
+      {path:"editarPaquete/:idPaq", component:AddPaqueteComponent},
+        
+      {path:"reportes", component:ReportesComponent},
       
       {path:"tours", component:ToursComponent},
       {path:"nuevoTour", component:AddTourComponent},

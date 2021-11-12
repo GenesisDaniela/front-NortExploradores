@@ -84,7 +84,9 @@
                   <ul class="list-group">
   
                     <li class="list-group-item" formArrayName="pasajeros"
-                      *ngFor="let product of pasajerosDeGrupos.controls; let i = index;" style="margin-bottom: 20px;">
+                      *ngFor="let product of pasajerosDeGrupos.controls; let i = index;" 
+                      style="margin-bottom: 20px;">
+                      
                       <div [formGroupName]="i" class="row">
                         <div class="mb-2 row">
                           <h4 class="col-sm-10 col-form-label">Pasajero {{i+1}}</h4>

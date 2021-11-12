@@ -5,9 +5,11 @@
 
             <div class="mb-3 row">
                 <div class="col-sm-2"></div>
-                <h1 class="col-sm-10">Formulario de paquetes</h1>
+                <h1 class="col-sm-10">{{titulo | uppercase}}</h1>
             </div>
 
+            <input formControlName="idPaq" hidden type="text" class="form-control" id="inputPaq">
+            
             <div class="row mb-3">
                 <label for="inputPrecio" class="col-sm-2 col-form-label">Precio</label>
                 <div class="col-sm-10">
@@ -133,7 +135,7 @@
                 </div>
             </div>  -->
             <div class="d-grid gap-2 col-6 mx-auto">
-                <button class="btn btn-primary" type="submit">Agregar Paquete</button>
+                <button class="btn btn-primary" type="submit">{{boton | uppercase}}</button>
                 <div class="col-sm-3"></div>
             </div>
             <br>

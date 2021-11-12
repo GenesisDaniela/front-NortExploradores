@@ -80,13 +80,13 @@
     </nz-layout>
   </nz-layout>
  -->
-<nz-layout class="app-layout">
+<nz-layout  class="app-layout">
   <nz-sider class="menu-sidebar" nzCollapsible nzWidth="240px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
     [nzTrigger]="null">
     <div class="sidebar-logo">
 
       <img src="../../../assets/img/LOGO-01.png" alt="logo" />
-      <h1>NortExploradores</h1>
+      <h1>NorteXploradores</h1>
 
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline">
@@ -193,7 +193,7 @@
           <div class="item">
 
             <nz-button-group>
-              <button nz-button (click)="log()">Cristiano Ronaldo</button>
+              <button nz-button (click)="log()">Bienvenido, {{nombreUser}}</button>
               <button nz-button nz-dropdown [nzDropdownMenu]="menu" nzPlacement="bottomRight">
                 <i nz-icon nzType="user"></i>
               </button>
@@ -215,3 +215,6 @@
     </div>
   </nz-layout>
 </nz-layout>
+
+
+
