@@ -1,0 +1,36 @@
+.container{
+    margin-top: 25px;
+}
+
+.empresas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.empresa{
+    background-color: white;
+    box-shadow: 0px 12px 16px rgba(0,0, 0, 0.2);
+    width: 500px;
+    margin: 15px;
+    height: 250px;
+    border-radius: 8px;
+    display: flex;
+    border: 1px solid black;
+}
+
+.text{
+    width: 50%;
+    padding: 8px;
+}
+
+
+.imagen{
+    width: 50%;
+    background-image: url("../../../../../assets/img/deporte-extremo-4.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
