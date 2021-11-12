@@ -80,7 +80,7 @@
     </nz-layout>
   </nz-layout>
  -->
-<nz-layout *ngIf="isAdmin && isLogged" class="app-layout">
+<nz-layout  class="app-layout">
   <nz-sider class="menu-sidebar" nzCollapsible nzWidth="240px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
     [nzTrigger]="null">
     <div class="sidebar-logo">
@@ -216,7 +216,5 @@
   </nz-layout>
 </nz-layout>
 
-<div *ngIf="!isAdmin && !isLogged;">
-  No tienes permisos
-</div>
+
 
