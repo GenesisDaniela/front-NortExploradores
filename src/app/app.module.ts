@@ -31,6 +31,9 @@ import { TransaccionService } from './services/transaccion.service';
 import { interceptorProvider } from './security/interceptors/paq-interceptor.service';
 import { FooterComponent } from './shared/footer/footer.component';
 
+// toas tr
+import { ToastrModule } from 'ngx-toastr';
+
 // import { InformacionPagoComponent } from './home/informacion-pago/informacion-pago/informacion-pago.component';
 
 
@@ -54,7 +57,8 @@ registerLocaleData(es);
     NzButtonModule,
     AdministracionModule,
     ClientesModule,
-    DataTablesModule
+    DataTablesModule,
+    ToastrModule.forRoot(),
   ],
   providers: [{ provide: NZ_I18N, useValue: es_ES },
     PaqueteService,

@@ -68,13 +68,22 @@
 
       <div style="text-align: right; margin: 0;">
 
-        <button nz-button [nzType]="'primary'" (click)="showModal()"><span>Show Modal</span></button>
+        <!-- <button nz-button [nzType]="'primary'" (click)="showModal()"><span>Show Modal</span></button>
         <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
           <ng-container *nzModalContent>
             <app-add-cargo></app-add-cargo>
           </ng-container>
-        </nz-modal>
+        </nz-modal> -->
         
+
+    <div style="text-align: right; margin: 0;">
+      <a nz-button nzType="primary" routerLink="/administracion/nuevoCargo">
+        <i nz-icon nzType="user-add" nzTheme="outline"></i>Agregar Cargo
+      </a>
+    </div>
+
+    
+    
     </div>
 
       <div class="table">

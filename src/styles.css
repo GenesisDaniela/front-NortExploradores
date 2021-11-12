@@ -12,6 +12,9 @@ body{
     display: none;
 }
 
+/* toast tr */
+@import '~ngx-toastr/toastr';
+
 /* You can add global styles to this file, and also import other style files */
 
   .gestiones{
@@ -160,7 +163,7 @@ body{
 
 .titulo{
     position: absolute;
-    background-color: #ec4c48;
+    background-color: #155db1;
     font-family: 'Roboto', sans-serif;
     padding: 6px;
     width: 98%;
