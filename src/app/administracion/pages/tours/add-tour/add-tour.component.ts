@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { EmpleadosService } from 'src/app/administracion/services/empleados.service';
 //import { MunicipioService } from 'src/app/administracion/services/municipio.service';
 //import { RutasService } from 'src/app/administracion/services/rutas.service';
@@ -40,7 +41,8 @@ export class AddTourComponent implements OnInit {
   //  private transporteService:TransportesService,
     private formBuilder:FormBuilder,
     private aRouter: ActivatedRoute,
-    private router:Router
+    private router:Router,
+    private toastr: ToastrService,
 
   ) {  this.id = aRouter.snapshot.paramMap.get('idTour');
    }
@@ -138,7 +140,12 @@ export class AddTourComponent implements OnInit {
     //     this.router.navigate(["/administracion/tours"]);
     //   })
     // })
-    this.tourService.post(this.form.value).subscribe((data) => {this.router.navigate(["/administracion/tour"]);});
+    this.tourService.post(this.form.value).subscribe((data) => {
+      this.toastr.success("Tour Agregado Con Exito", "Tour Registrado", {
+        positionClass: 'toast-bottom-right'
+      })
+      this.router.navigate(["/administracion/tours"]);
+    });
   }
 }
 
