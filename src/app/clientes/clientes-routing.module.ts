@@ -25,9 +25,11 @@ const routes : Routes = [
     {path:"rutas", component:VerRutasComponent},
     {path:"verRuta/:idRuta", component:DesRutasComponent},
     {path:"contacto", component:ContactoComponent},
-    {path:"pasadia", component:PasadiaComponent},
+    {path:"pasadia", component:PasadiaComponent},  
+    {path:"pasadia/detalletour/:idTour", component:DetalleTourComponent},
     {path:"estadia", component:EstadiaComponent},
-    {path:"estadia/detalletour", component:DetalleTourComponent},
+    {path:"estadia/detalletour/:idTour", component:DetalleTourComponent},
+  
     {path:"recomendaciones", component:RecomendacionesComponent},
     {path:"viajesGrupales", component:ViajesGrupalesComponent},
     {path:"festividades", component:FestividadesComponent},
