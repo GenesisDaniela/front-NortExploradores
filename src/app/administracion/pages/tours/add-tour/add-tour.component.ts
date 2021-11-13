@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { EmpleadosService } from 'src/app/administracion/services/empleados.service';
 //import { MunicipioService } from 'src/app/administracion/services/municipio.service';
 //import { RutasService } from 'src/app/administracion/services/rutas.service';
 import { SegurosService } from 'src/app/administracion/services/seguros.service';
 import { ToursService } from 'src/app/administracion/services/tours.service';
-//import { TransportesService } from 'src/app/administracion/services/transportes.service';
+import { TransportesService } from 'src/app/administracion/services/transportes.service';
 import { PaqueteService } from 'src/app/services/paquete.service';
 
 @Component({
@@ -24,11 +23,11 @@ export class AddTourComponent implements OnInit {
   public seguros:any = [];
   //public rutas:any = [];
   public empleados:any = [];
- // public transportes:any = [];
+ public transportes:any = [];
  // public municipios:any = [];
   public form !: FormGroup;
   //public formRut !: FormGroup;
-  //public formTrans !: FormGroup;
+  public formTrans !: FormGroup;
   
  
   constructor(
@@ -38,11 +37,10 @@ export class AddTourComponent implements OnInit {
     private empleadoService:EmpleadosService,
     private tourService:ToursService,
     //private rutaService:RutasService,
-  //  private transporteService:TransportesService,
+   private transporteService:TransportesService,
     private formBuilder:FormBuilder,
     private aRouter: ActivatedRoute,
-    private router:Router,
-    private toastr: ToastrService,
+    private router:Router
 
   ) {  this.id = aRouter.snapshot.paramMap.get('idTour');
    }
@@ -54,7 +52,7 @@ export class AddTourComponent implements OnInit {
    // this.agregarRutas();
     this.agregarEmpleados();
     //this.agregarMunicipio();
-   // this.agregarTransporte();  
+   this.agregarTransporte();  
     this.esEditartour();
     this.form=this.formBuilder.group({ 
       idTour: ['', Validators.required],
@@ -73,9 +71,9 @@ export class AddTourComponent implements OnInit {
     //   idMuni:['', Validators.required],
     //   municipio: ['', Validators.required],
     // });
-    // this.formTrans=this.formBuilder.group({ 
-    //   idTransporte: ['', Validators.required],
-    // });
+    this.formTrans=this.formBuilder.group({ 
+      idTransporte: ['', Validators.required],
+    });
   }
   
 
@@ -91,11 +89,11 @@ export class AddTourComponent implements OnInit {
   //   })
   // }
 
-  // public agregarTransporte(){
-  //   this.transporteService.listarTransporte().subscribe(transportes=>{
-  //    this.transportes = transportes; 
-  //   })
-  // }
+  public agregarTransporte(){
+    this.transporteService.listarTransporte().subscribe(transportes=>{
+     this.transportes = transportes; 
+    })
+  }
 
  
   public agregarSeguros(){
@@ -141,10 +139,14 @@ export class AddTourComponent implements OnInit {
     //   })
     // })
     this.tourService.post(this.form.value).subscribe((data) => {
-      this.toastr.success("Tour Agregado Con Exito", "Tour Registrado", {
-        positionClass: 'toast-bottom-right'
-      })
-      this.router.navigate(["/administracion/tours"]);
+      console.log(data);
+      
+      this.tourService.guardarTransporteTour(data.idTour,  this.formTrans.controls.idTransporte.value).subscribe((data) => {
+        console.log(data);
+      });
+     
+      
+      //this.router.navigate(["/administracion/tour"]);
     });
   }
 }
@@ -171,9 +173,9 @@ public esEditartour() {
     //     idMuni:data.municipio,
     //    municipio:data.municipio.idMuni
     //   });
-    //   this.formTrans.setValue({
-    //  idTransporte:data.idTransporte
-    //   });
+      this.formTrans.setValue({
+     idTransporte:data.idTransporte
+      });
     });
     
     }
