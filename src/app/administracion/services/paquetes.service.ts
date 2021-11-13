@@ -22,14 +22,15 @@ export class PaquetesService {
   }
   
   public postAct(actividades: any [], paquete:any):Observable<any>{
-    return this.http.post<any>(this.url+paquete+'guardarActividades', actividades);
+    console.log('las actividades sisi',actividades);
+    return this.http.post<any>(this.url+paquete+'/guardarActividades/', actividades);
   }
 
   obtenerPaquete(id:string): Observable<any>{
     return this.http.get(this.url+id)
   }
   
-  editarPaquete(id:string,paquete:any):Observable<any>{
+  editarPaquete(paquete:any):Observable<any>{
       return this.http.put(this.url,paquete)
   }
 }
