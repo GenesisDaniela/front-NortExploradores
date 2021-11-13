@@ -90,14 +90,15 @@
         class="table table-striped table-bordered row-border hover">
         <thead class="table-dark">
           <tr>
-            <th>ID</th>
+            <th>ID</th>   
+            <th>PAQUETE</th>
             <th>MIN CUPOS</th>
             <th>MAX CUPOS</th>
             <th>FEC LLEGADA</th>
             <th>FEC SALIDA</th>
             <th>PRECIO</th>
             <th>EMPLEADO</th>
-            <th>PAQUETE</th>
+         
             <!-- <th>RUTA</th>
         <th>SEGURO</th> -->
             <th>OPCIÓN</th>
@@ -105,7 +106,8 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of data; let indice = index">
-            <td>{{ indice + 1 }}</td>
+            <td>{{ indice + 1 }}</td>   
+            <td>{{ item.paquete.nombre }}</td>
             <td>{{ item.minCupos }}</td>
             <td>{{ item.maxCupos }}</td>
             <td>{{ item.fechaLlegada }}</td>
@@ -115,7 +117,7 @@
               {{ item.empleado.persona.nombre }}
               {{ item.empleado.persona.apellido }}
             </td>
-            <td>{{ item.paquete.idPaq }}</td>
+         
             <!-- <td>{{ item.ruta.idRuta }}</td>
         <td>{{ item.seguro.nombre }}</td> -->
             <td nzAlign="center">
