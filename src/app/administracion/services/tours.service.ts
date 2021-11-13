@@ -16,6 +16,11 @@ export class ToursService {
     return this.http.get<any>(this.uri);
   }
 
+  public guardarTransporteTour(idTour:number, idTransporte:string){
+    return this.http.post<any>(`${global.url}/tour/${idTour}/${idTransporte}`, null);
+  }
+
+
   public post(tour:any):Observable<any>{
     return this.http.post<any>(this.uri, tour)
   }
