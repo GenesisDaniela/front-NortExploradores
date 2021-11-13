@@ -89,6 +89,7 @@ export class FormPagosComponent implements OnInit {
     ){}
 
   ngOnInit(): void {
+    console.log(Date);
     this.nombreUser = this.tokenS.getUserName();
     this.cargarUsuario();
     this.agregarPaquetes();
@@ -451,13 +452,15 @@ cargarPayu(){
 }
 
 guardarCompra(form:HTMLFormElement){
+   
+
+
 
   var compra={
     idCompra:this.referenciaUnic,
     cantidadPasajeros:this.total,
     totalCompra:this.totalCompra,
     estado:"PENDIENTE",
-    fecha:Date.now,
     usuario:this.usuario.id_Usuario
   }
 
@@ -467,7 +470,7 @@ guardarCompra(form:HTMLFormElement){
     let detalleCompras = [];
     for (let i = 0; i < pasajeros.length; i++) {
       let detalleCompra = {
-        fecha: Date.now,
+        fecha: Date.UTC,
         compra:compra.idCompra,
         valorUnit:this.tourSeleccionado.paquete.precio,
         pasajero:this.pasajerosTotal[i],

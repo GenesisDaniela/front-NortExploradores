@@ -45,6 +45,8 @@ export class HeaderComponent implements OnInit {
   cargarUsuario(){
     this.usuarioSer.usuarioPorUsername(this.nombreUser).subscribe(usuario=>{
       this.usuario=usuario;
+      const output = document.getElementById('nombreUser');
+      if (output) output.innerHTML = "Bienvenido, "+this.nombreUser
     })
   }
 

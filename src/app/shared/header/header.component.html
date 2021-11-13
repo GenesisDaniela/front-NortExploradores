@@ -64,11 +64,10 @@
         ><i class="fab fa-weixin"></i><span class="off">Registarse</span></a
       >
       <a href="" *ngIf="isLogged" 
-        ><i class="fab fa-weixin"></i><span class="off">Bienvenido, {{usuario.username}}</span></a
+        ><i class="fab fa-weixin"></i><span class="off" id="nombreUser"></span></a
       >
       <a href="" (click)="onLogOut()" *ngIf="isLogged" 
-        ><i class="fab fa-weixin"></i><span class="off">Cerrar Sesion</span></a
-      >
+        ><i class="fab fa-weixin"></i><span class="off">Cerrar Sesion</span></a>
     </div>
   </div>
 
