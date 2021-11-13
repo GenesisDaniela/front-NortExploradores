@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { TransportesService } from 'src/app/administracion/services/transportes.service';
 import { EmpresaService } from 'src/app/services/empresa.service';
 
@@ -22,7 +23,8 @@ export class AddTransportesComponent implements OnInit {
     private transporteService:TransportesService,
     private formBuilder: FormBuilder,
     private aRouter: ActivatedRoute ,
-    private router : Router
+    private router : Router,
+    private toastr: ToastrService,
   ){
     this.id = aRouter.snapshot.paramMap.get('idTransporte');
   }
@@ -51,12 +53,16 @@ export class AddTransportesComponent implements OnInit {
     if (this.id !== null) {
       this.transporteService
         .editarTransporte(this.id, this.form.value)
-        .subscribe((data) => { this.router.navigate(["/administracion/transportes"]);
-          });
-
-    } else {
-      this.transporteService.post(this.form.value).subscribe((data) => {
-        this.router.navigate(["/administracion/transportes"]);
+        .subscribe((data) => { 
+          this.router.navigate(["/administracion/transportes"]);
+        });
+        
+      } else {
+        this.transporteService.post(this.form.value).subscribe((data) => {
+          this.toastr.success("Transporte Agregado Con Exito!", "Transporte Registrado", {
+            positionClass: 'toast-bottom-right'
+          })
+          this.router.navigate(["/administracion/transportes"]);
       });
     }
   }

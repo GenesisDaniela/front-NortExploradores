@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+// import { ToastrService } from 'ngx-toastr';
 import { EmpresaService } from 'src/app/services/empresa.service';
 
 @Component({
@@ -14,19 +16,21 @@ export class AddAliadoComponent implements OnInit {
   titulo = 'Agregar Aliado';
   boton = 'Agregar Aliado';
   id: string | null;
-  router: any;
+  // router: any; TODO: puedo borrar este? lo estan usando?
 
   constructor(
     private empresaService: EmpresaService,
-    private formBuilder:FormBuilder,
-    private aRouter: ActivatedRoute
+    private formBuilder: FormBuilder,
+    private aRouter: ActivatedRoute,
+    private toastr: ToastrService,
+    private router: Router
   ) {
     this.id = aRouter.snapshot.paramMap.get('idAliado');
   }
 
   ngOnInit(): void {
     this.esEditar();
-    this.form=this.formBuilder.group({ 
+    this.form = this.formBuilder.group({
       nombre: ['', Validators.required],
       direccion: ['', Validators.required],
       mision: ['', Validators.required],
@@ -40,16 +44,20 @@ export class AddAliadoComponent implements OnInit {
     });
   }
 
-  public enviarData(){
+  public enviarData() {
     if (this.id !== null) {
-      this.empresaService
-        .editarEmpresa(this.id, this.form.value)
-        .subscribe((data) => {});
+      this.empresaService.editarEmpresa(this.id, this.form.value).subscribe((data) => {
+        });
     } else {
       this.empresaService.post(this.form.value)
-      .subscribe();
+        .subscribe(data=>{
+          this.toastr.success("Aliado Agregado Con Exito", "Aliado Registrado", {
+            positionClass: 'toast-bottom-right'
+          })
+        });
+      this.router.navigateByUrl("/administracion/aliados");
     }
-      
+
   }
 
   esEditar() {
