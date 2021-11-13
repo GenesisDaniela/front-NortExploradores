@@ -45,6 +45,10 @@ import { UpdateEmpleadoComponent } from './pages/empleados/update-empleado/updat
 import { TransportesComponent } from './pages/aliados/transportes/transportes.component';
 import { SegurosComponent } from './pages/aliados/seguros/seguros.component';
 
+// toas tr
+import { ToastrModule } from 'ngx-toastr';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     PrincipalComponent,
@@ -88,7 +92,9 @@ import { SegurosComponent } from './pages/aliados/seguros/seguros.component';
     NzBadgeModule,
     FormsModule,
     ReactiveFormsModule,
-    NzModalModule
+    NzModalModule,
+    ToastrModule.forRoot(),
+    // BrowserAnimationsModule,
   ],
   exports:[
     PrincipalComponent

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RutasService } from 'src/app/administracion/services/rutas.service';
 import { Subject } from 'rxjs';
+import { PaqueteService } from '../../../services/paquete.service';
 
 @Component({
   selector: 'app-ver-rutas',
@@ -9,31 +10,27 @@ import { Subject } from 'rxjs';
 })
 export class VerRutasComponent implements OnInit {
 
-  dtOptions: DataTables.Settings = {};
-  
-  dtTrigger = new Subject<any>();
   public data: any[]=[];
 
-  constructor(private rutaService: RutasService){
+  public activos: any[]=[];
+
+  constructor(private rutaService: PaqueteService){
 
   }
-  ngOnInit(): void {
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 6,
-      language:{
-        url:"//cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
-      }
-    };
-    this.rutaService.listarRuta().subscribe((data:any)=>{
-      this.data = data;
-      this.dtTrigger.next();
+  ngOnInit(): void {    
+   
+    this.rutaService.listar().subscribe((data:any)=>{
+      this.data = data;  
+      
+      
+      for (const activo of this.data) {
+        if(activo.estado==="ACTIVO"){
+          this.activos.push(activo);
+         
+        }      
+      }      
     })
-  }
-
-  ngOnDestroy(): void {
-    // Do not forget to unsubscribe the event
-    this.dtTrigger.unsubscribe();
-  }
+    
+  } 
 
 }

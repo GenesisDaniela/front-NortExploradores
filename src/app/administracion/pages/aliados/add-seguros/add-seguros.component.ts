@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { SegurosService } from 'src/app/administracion/services/seguros.service';
 import { EmpresaService } from 'src/app/services/empresa.service';
 
@@ -22,7 +23,8 @@ export class AddSegurosComponent implements OnInit {
     private seguroService:SegurosService,
     private formBuilder: FormBuilder,
     private aRouter: ActivatedRoute ,
-    private router : Router
+    private router : Router,
+    private toastr: ToastrService,
   ){
     this.id = aRouter.snapshot.paramMap.get('idSeguro');
   }
@@ -52,6 +54,9 @@ export class AddSegurosComponent implements OnInit {
         .subscribe((data) => {this.router.navigate(["/administracion/seguros"]);});
     } else {
       this.seguroService.post(this.form.value).subscribe((data) => {
+        this.toastr.success('Seguro Agregado Con Exito!', 'Seguro Registrado', {
+          positionClass: 'toast-bottom-right' 
+        })
         this.router.navigate(["/administracion/seguros"]);
       });
     }

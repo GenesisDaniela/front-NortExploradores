@@ -5,6 +5,7 @@ import { EmpleadosService } from 'src/app/administracion/services/empleados.serv
 import { CargoService } from 'src/app/services/cargo.service';
 import { PersonaService } from 'src/app/administracion/services/persona.service';
 import { TipoidService } from 'src/app/services/tipoid.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-empleado',
@@ -12,27 +13,28 @@ import { TipoidService } from 'src/app/services/tipoid.service';
   styleUrls: ['./add-empleado.component.css']
 })
 export class AddEmpleadoComponent implements OnInit {
-  
+
   titulo = 'Agregar Empleado';
   boton = 'Agregar Empleado';
   id: string | null;
   idPer: string | null;
-  public cargos:any = [];
-  public personas:any = [];
-  public empleados:any = [];
-  public tipos:any = [];
+  public cargos: any = [];
+  public personas: any = [];
+  public empleados: any = [];
+  public tipos: any = [];
   public form!: FormGroup;
   public formPer!: FormGroup;
 
   constructor(
-    private cargoService:CargoService,
-    private empleadoService:EmpleadosService,
-    private personaService:PersonaService,
+    private cargoService: CargoService,
+    private empleadoService: EmpleadosService,
+    private personaService: PersonaService,
     private formBuilder: FormBuilder,
     private tipoIdService: TipoidService,
     private aRouter: ActivatedRoute,
-    private router : Router
-  ){
+    private router: Router,
+    private toastr: ToastrService
+  ) {
     this.id = aRouter.snapshot.paramMap.get('idEmpleado');
     this.idPer = aRouter.snapshot.paramMap.get('idPersona');
   }
@@ -42,7 +44,7 @@ export class AddEmpleadoComponent implements OnInit {
     this.agregarTipo();
     //this.agregarPersonas();
     this.esEditarEmpleado();
-    this.formPer=this.formBuilder.group({
+    this.formPer = this.formBuilder.group({
       idPersona: ['', Validators.required],
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
@@ -52,7 +54,7 @@ export class AddEmpleadoComponent implements OnInit {
       correo: ['', Validators.required],
       idTipo: ['', Validators.required]
     });
-    this.form=this.formBuilder.group({
+    this.form = this.formBuilder.group({
       idEmpleado: ['', Validators.required],
       fechaContratacion: ['', Validators.required],
       urlImagen: ['', Validators.required],
@@ -60,28 +62,31 @@ export class AddEmpleadoComponent implements OnInit {
       persona: ['', Validators.required]
     });
   }
-  public agregarCargos(){
-    this.cargoService.listarCargo().subscribe(cargos=>{
-      this.cargos = cargos; 
+  public agregarCargos() {
+    this.cargoService.listarCargo().subscribe(cargos => {
+      this.cargos = cargos;
     })
   }
-  public agregarTipo(){
-    this.tipoIdService.listarTipo().subscribe(tipos=>{
+  public agregarTipo() {
+    this.tipoIdService.listarTipo().subscribe(tipos => {
       this.tipos = tipos;
     })
   }
-  public enviarData(){
+  public enviarData() {
     if (this.id !== null) {
-      this.personaService.editarPersona(this.formPer.value).subscribe(persona=>{
+      this.personaService.editarPersona(this.formPer.value).subscribe(persona => {
         this.form.controls.persona.setValue(this.formPer.value);
-        this.empleadoService.editarEmpleado(this.form.value).subscribe(data=>{
+        this.empleadoService.editarEmpleado(this.form.value).subscribe(data => {
           this.router.navigate(["/administracion/empleados"]);
         })
       });
     } else {
       this.form.controls.persona.setValue(this.formPer.value);
-      this.personaService.post(this.formPer.value).subscribe(persona=>{
-        this.empleadoService.post(this.form.value).subscribe(data=>{
+      this.personaService.post(this.formPer.value).subscribe(persona => {
+        this.empleadoService.post(this.form.value).subscribe(data => {
+          this.toastr.success("Empleado Agregado Con Exito!", "Empleado Registrado", {
+            positionClass: 'toast-bottom-right'
+          })
           this.router.navigate(["/administracion/empleados"]);
         })
       });
@@ -110,7 +115,7 @@ export class AddEmpleadoComponent implements OnInit {
           idTipo: data.persona.idTipo.idTipo
         });
       });
-      
+
     }
   }
 }

@@ -16,6 +16,14 @@ export class ToursService {
     return this.http.get<any>(this.uri);
   }
 
+  public guardarTransporteTour(idTour:number, idTransporte:string){
+    return this.http.post<any>(`${global.url}/tour/${idTour}/${idTransporte}`, null);
+  }
+
+  public editarTransporteTour(idTour:number, idTransporte:any):Observable<any>{
+    return this.http.put<any>(`${global.url}/tour/${idTour}/${idTransporte}`,idTransporte);
+  }
+
   public post(tour:any):Observable<any>{
     return this.http.post<any>(this.uri, tour)
   }
@@ -23,7 +31,7 @@ export class ToursService {
   obtenerTour(id:string): Observable<any>{
     return this.http.get(this.uri+id);
   }
-  editarTour(id:string,tour:any):Observable<any>{
+  editarTour(tour:any):Observable<any>{
     return this.http.put<any>(this.uri,tour);
   }
 }
