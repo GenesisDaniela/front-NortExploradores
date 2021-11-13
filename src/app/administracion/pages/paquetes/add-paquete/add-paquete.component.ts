@@ -4,6 +4,7 @@ import { AlojamientosService } from 'src/app/administracion/services/alojamiento
 import { PaquetesService } from 'src/app/administracion/services/paquetes.service';
 import { ActividadesService } from 'src/app/administracion/services/actividades.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MunicipioService } from 'src/app/administracion/services/municipio.service';
 
 @Component({
   selector: 'app-add-paquete',
@@ -13,6 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AddPaqueteComponent implements OnInit {
 
   public alojamientos: any = [];
+  public municipios: any = [];
   public actividades: any=[];
   public form!: FormGroup;
   titulo = 'Agregar Paquete';
@@ -21,6 +23,7 @@ export class AddPaqueteComponent implements OnInit {
 
   constructor(
     private alojamientoservice: AlojamientosService,
+    private municipioService: MunicipioService,
     private actividadService: ActividadesService,
     private paqueteService: PaquetesService,
     private formBuilder: FormBuilder,
@@ -33,7 +36,9 @@ export class AddPaqueteComponent implements OnInit {
   ngOnInit(): void {
     this.esEditar();
     this.agregarAlojamiento();
+    this.agregarMunicipio();
     this.form=this.formBuilder.group({
+      idPaq:['', Validators.required],
       precio:['', Validators.required],
       estado:['', Validators.required],
       urlImagen:['', Validators.required],
@@ -41,18 +46,24 @@ export class AddPaqueteComponent implements OnInit {
       recomendacion:['', Validators.required],
       nombre:['', Validators.required],
       alojamiento:['', Validators.required],
+      municipio:['', Validators.required],
       acts: this.formBuilder.array([])
     });
   
 }
-
-
 
   public agregarAlojamiento() {
     this.alojamientoservice.listarAlojamiento().subscribe(alojamientos => {
       this.alojamientos = alojamientos;
     })
   }
+
+  public agregarMunicipio() {
+    this.municipioService.listarMunicipio().subscribe(municipios => {
+      this.municipios = municipios;
+    })
+  }
+
   public cargarActividades(evento: any){
     let totalAct = evento.target.value;
     let actividadess = this.form.get('acts') as FormArray;
