@@ -34,4 +34,9 @@ export class ToursService {
   editarTour(tour:any):Observable<any>{
     return this.http.put<any>(this.uri,tour);
   }
+
+  public tourDelMes():Observable<any>{
+    const mes = "tourDelMes"
+    return this.http.get<any>(`${this.uri}${mes}`);
+  }
 }

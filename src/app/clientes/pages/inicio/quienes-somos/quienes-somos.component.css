@@ -1,6 +1,9 @@
 .quienes-somos{
-    margin-top: 15px;
-    margin-bottom: 100px;
+    margin-top: 25px;
+    margin-bottom: 50px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
   }
 
   .quienes-somos h2{
