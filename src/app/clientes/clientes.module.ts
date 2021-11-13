@@ -26,6 +26,7 @@ import { RecomendacionesComponent } from './pages/recomendaciones/recomendacione
 import { NuestrosAliadosComponent } from './pages/inicio/nuestros-aliados/nuestros-aliados.component';
 import { ToursDelMesComponent } from './pages/inicio/tours-del-mes/tours-del-mes.component';
 import { DesRutasComponent } from './pages/des-rutas/des-rutas.component';
+import { DetalleTourComponent } from './pages/tours/detalle-tour/detalle-tour.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { DesRutasComponent } from './pages/des-rutas/des-rutas.component';
     RecomendacionesComponent,
     NuestrosAliadosComponent,
     ToursDelMesComponent,
-    DesRutasComponent
+    DesRutasComponent,
+    DetalleTourComponent
   ],
   imports: [
     CommonModule,

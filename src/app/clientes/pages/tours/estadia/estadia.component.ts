@@ -11,28 +11,21 @@ export class EstadiaComponent implements OnInit {
 
 
   constructor(
-    private paqueteService:PaqueteService,
     private tourService:TourService
     ) { }
-
-  paquetes:any =[];
   tours: any= [];
 
   ngOnInit(): void {
-    this.listarPaquetes();
     this.listarTour();
   }
 
 
   public listarTour(){
-    this.tourService.listarTourActivo().subscribe(tour=>{
+    this.tourService.listarTourEstadia().subscribe(tour=>{
       this.tours=tour
+      console.log(this.tours);
+      
     })
   }
 
-  public listarPaquetes(){
-    this.paqueteService.listarPaqEstadia().subscribe(listaPaquetes=>{
-      this.paquetes = listaPaquetes;
-    })
-  }
 }

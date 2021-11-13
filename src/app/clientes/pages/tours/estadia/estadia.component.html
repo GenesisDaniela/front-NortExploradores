@@ -1,11 +1,9 @@
-<div class="container-fluid">
-    <br>
-    <br>
-    <div>
+<div class="body-estadia">
+    <div class="m-3">
         <h3 style="text-align: center">Paquetes Estadia</h3>
     </div>
-
-    <div class="contenedor">
+    <div class=" contenedor">
+        
         <div class="col-md-3" *ngFor="let tour of tours" style="margin: 15px;">
             <div class="card-sl">
                 <div class="card-image">
@@ -26,7 +24,7 @@
                 </div>
                 
                 
-                <a href="#" class="card-button"> Ver más </a>
+                <a [routerLink]="['estadia/detalleTour']" class="card-button"> Ver más </a>
             </div>
         </div>
 

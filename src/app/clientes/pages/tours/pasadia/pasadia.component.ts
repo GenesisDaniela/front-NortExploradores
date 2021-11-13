@@ -11,30 +11,19 @@ import { TourService } from 'src/app/services/tour.service';
 export class PasadiaComponent implements OnInit {
 
   constructor(
-    private paqueteService:PaqueteService,
     private tourService:TourService
     ) { }
 
-  paquetes:any =[];
   tours: any= [];
 
   ngOnInit(): void {
-    this.listarPaquetes();
     this.listarTour();
   }
 
 
   public listarTour(){
-    this.tourService.listarTourActivo().subscribe(tour=>{
+    this.tourService.listarTourPasadia().subscribe(tour=>{
       this.tours=tour
     })
   }
-
-  public listarPaquetes(){
-    this.paqueteService.listarPaqPasadia().subscribe(listaPaquetes=>{
-      this.paquetes = listaPaquetes;
-    })
-  }
-
-
 }

@@ -16,13 +16,13 @@ export class PaqueteService {
     return this.http.get<any>(this.uri);
   }
 
-  public listarPaqEstadia():Observable<any>{
-    return this.http.get<any>(this.uri+'estadia');
-  }
+  // public listarPaqEstadia():Observable<any>{
+  //   return this.http.get<any>(this.uri+'estadia');
+  // }
 
-  public listarPaqPasadia():Observable<any>{
-    return this.http.get<any>(this.uri+'pasadia');
-  }
+  // public listarPaqPasadia():Observable<any>{
+  //   return this.http.get<any>(this.uri+'pasadia');
+  // }
 
   public encontrar(id:number):Observable<any>{
     return this.http.get<any>(`${this.uri}/${id}`);
