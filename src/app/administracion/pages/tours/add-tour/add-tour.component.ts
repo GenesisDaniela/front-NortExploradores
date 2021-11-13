@@ -16,44 +16,39 @@ import { PaqueteService } from 'src/app/services/paquete.service';
 })
 export class AddTourComponent implements OnInit {
   
-  titulo = 'Agregar Empleado';
-  boton = 'Agregar Empleado';
+  titulo = 'Agregar Tour';
+  boton = 'Agregar Tour';
   id: string | null;
+  idTrans: string | null;
   public paquetes:any = [];
   public seguros:any = [];
-  //public rutas:any = [];
   public empleados:any = [];
- public transportes:any = [];
- // public municipios:any = [];
+  public transportes:any = [];
   public form !: FormGroup;
-  //public formRut !: FormGroup;
-  public formTrans !: FormGroup;
+  //public formTrans !: FormGroup;
   
  
   constructor(
     private paqueteService:PaqueteService,
     private seguroService:SegurosService,
-  //  private MunicipioService:MunicipioService,
     private empleadoService:EmpleadosService,
     private tourService:ToursService,
-    //private rutaService:RutasService,
-   private transporteService:TransportesService,
+    private transporteService:TransportesService,
     private formBuilder:FormBuilder,
     private aRouter: ActivatedRoute,
     private router:Router
 
-  ) {  this.id = aRouter.snapshot.paramMap.get('idTour');
+  ) {  
+    this.id = aRouter.snapshot.paramMap.get('idTour');
+    this.idTrans = aRouter.snapshot.paramMap.get('idTour/idTransporte');
    }
 
   ngOnInit(): void {
-  
+    this.esEditartour();
     this.agregarPaquetes();
     this.agregarSeguros();
-   // this.agregarRutas();
     this.agregarEmpleados();
-    //this.agregarMunicipio();
-   this.agregarTransporte();  
-    this.esEditartour();
+    this.agregarTransporte();  
     this.form=this.formBuilder.group({ 
       idTour: ['', Validators.required],
       minCupos: ['', Validators.required],
@@ -61,19 +56,14 @@ export class AddTourComponent implements OnInit {
       fechaLlegada: ['', Validators.required],
       fechaSalida: ['', Validators.required],
       // estado: ['', Validators.required],
-      //cantCupos: ['', Validators.required],
       empleado: ['', Validators.required],
       paquete: ['', Validators.required],
-     // ruta: ['', Validators.required],
+      idTransporte: ['', Validators.required],
       seguro: ['', Validators.required],
     });
-    // this.formRut=this.formBuilder.group({ 
-    //   idMuni:['', Validators.required],
-    //   municipio: ['', Validators.required],
+    // this.formTrans=this.formBuilder.group({ 
+    //   transporte: ['', Validators.required],
     // });
-    this.formTrans=this.formBuilder.group({ 
-      idTransporte: ['', Validators.required],
-    });
   }
   
 
@@ -82,12 +72,6 @@ export class AddTourComponent implements OnInit {
       this.paquetes = paquetes; 
     })
   }
-
-  // public agregarMunicipio(){
-  //   this.MunicipioService.listarMunicipio().subscribe(municipios=>{
-  //     this.municipios = municipios; 
-  //   })
-  // }
 
   public agregarTransporte(){
     this.transporteService.listarTransporte().subscribe(transportes=>{
@@ -101,12 +85,6 @@ export class AddTourComponent implements OnInit {
      this.seguros = seguros; 
     })
   }
-
-  // public agregarRutas(){
-  //   this.rutaService.listarRuta().subscribe((rutas: any)=>{
-  //    this.rutas = rutas; 
-  //   })
-  // }
   
   public agregarEmpleados(){
     this.empleadoService.listarEmpleado().subscribe(empleados=>{
@@ -115,38 +93,18 @@ export class AddTourComponent implements OnInit {
   }
 
   public enviarData(){
-    // console.log(this.form.value);
-    // console.log(this.formRut.value);
     if (this.id !== null) {
-      // this.rutaService.editarRuta(this.formRut.value).subscribe(ruta=>{
-      // this.form.controls.ruta.setValue(this.formRut.value);
-      // this.tourService.editarTour(this.form.value).subscribe(data=>{
-      //     this.router.navigate(["/administracion/tour"]);
-      //   })
-      // });
-      this.tourService
-      .editarTour(this.id, this.form.value)
-      .subscribe((data) => {this.router.navigate(["/administracion/tour"]);  });
-
-
+      this.tourService.editarTour(this.form.value).subscribe((data) => {
+        this.tourService.guardarTransporteTour(data.idTour,  this.form.controls.idTransporte.value).subscribe((data) => {
+          this.router.navigate(["/administracion/tours"]);
+        });
+      });
 
     } else {
-    // this.rutaService.post(this.formRut.value).subscribe(ruta=>{
-    //   this.form.controls.ruta.setValue(ruta);
-    //   this.rutaService.guardarTransporteRuta(ruta.idRuta,  this.formTrans.controls.idTransporte)
-    //   this.tourService.post(this.form.value).subscribe(data=>{
-    //     this.router.navigate(["/administracion/tours"]);
-    //   })
-    // })
     this.tourService.post(this.form.value).subscribe((data) => {
-      console.log(data);
-      
-      this.tourService.guardarTransporteTour(data.idTour,  this.formTrans.controls.idTransporte.value).subscribe((data) => {
-        console.log(data);
+      this.tourService.guardarTransporteTour(data.idTour,  this.form.controls.idTransporte.value).subscribe((data) => {
+        this.router.navigate(["/administracion/tours"]);
       });
-     
-      
-      //this.router.navigate(["/administracion/tour"]);
     });
   }
 }
@@ -154,8 +112,9 @@ export class AddTourComponent implements OnInit {
 
 public esEditartour() {
   if (this.id !== null) {
-    this.titulo = 'Editar tour';
-    this.boton = 'Editar tur';
+    this.titulo = 'Editar Tour';
+    this.boton = 'Editar Tour';
+    
     this.tourService.obtenerTour(this.id).subscribe((data) => {
       this.form.setValue({
         idTour: data.idTour,
@@ -163,18 +122,10 @@ public esEditartour() {
         maxCupos: data.maxCupos,
         fechaLlegada: data.fechaLlegada,
         fechaSalida:data.fechaSalida,
-        //cantCupos: data.cantCupos,
         empleado: data.empleado.idEmpleado,
         paquete: data.paquete.idPaq,
- 
-        seguro:data.seguro.idSeguros
-      });
-    //   this.formRut.setValue({
-    //     idMuni:data.municipio,
-    //    municipio:data.municipio.idMuni
-    //   });
-      this.formTrans.setValue({
-     idTransporte:data.idTransporte
+        idTransporte: null,
+        seguro:data.seguro.idSeguro
       });
     });
     

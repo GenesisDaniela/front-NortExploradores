@@ -5,8 +5,9 @@
       <form [formGroup]="form" (submit)="enviarData()">
         <div class="mb-3 row">
           <div class="col-sm-2"></div>
-          <h1 class="col-sm-10">Formulario de tours</h1>
+          <h4 class="col-sm-10">{{titulo | uppercase}}</h4>
         </div>
+        
         
        
         <input formControlName="idTour" hidden type="text" class="form-control" id="inputRuta">
@@ -44,14 +45,7 @@
             <input formControlName = "estado" type="text" class="form-control" id="inputEstado">
           </div>
         </div> -->
-  
-        <!-- <div class="row mb-3">
-          <label for="inputCantCupos" class="col-sm-2 col-form-label">Cantidad Cupos</label>
-          <div class="col-sm-10">
-            <input  formControlName = "cantCupos" type="number" class="form-control" id="inputCantCupos">
-          </div>
-        </div>
-         -->
+
         <div class="mb-3 row">
           <div class="col-sm-0"></div>
           <label class="col-sm-2 col-form-label">Empleado</label>
@@ -75,31 +69,8 @@
             </select>
           </div>
         </div>
-        
-        <!-- <div [formGroup]="formRut" class="mb-3 row">
-          <div class="col-sm-0"></div>
-          <label class="col-sm-2 col-form-label">Municipio</label>
-          <div class="col-sm-10">
-            <select formControlName = "idRuta" class="form-select" aria-label="Default select example">
-              <option *ngFor="let ruta of rutas" name="ruta" id="rut{{ruta.idRuta}}"
-                value={{ruta.idRuta}}> Ruta 
-                {{ruta.municipio.nombre}}</option>
-            </select>
-          </div>
-        </div> -->
-        <!-- <div [formGroup]="formRut" class="mb-3 row">
-          <div class="col-sm-0"></div>
-          <label class="col-sm-2 col-form-label">municipio</label>
-          <div class="col-sm-10">
-            <select formControlName = "municipio" class="form-select" aria-label="Default select example">
-              <option *ngFor="let municipio of municipios" name="idMun" id="mun{{municipio.idMuni}}" 
-              value={{municipio.idMuni}}>
-             {{municipio.nombre}}</option>
-            </select>
-          </div>
-        </div>
-      -->  
-        <div [formGroup]="formTrans" class="mb-3 row">
+  
+        <div  class="mb-3 row">
           <div class="col-sm-0"></div>
           <label class="col-sm-2 col-form-label">Transporte</label>
           <div class="col-sm-10">
@@ -124,7 +95,7 @@
         </div>
   
         <div class="d-grid gap-2 col-6 mx-auto">
-          <button class="btn btn-primary" type="submit">Agregar Tour</button>
+          <button class="btn btn-primary" type="submit">{{boton | uppercase}}</button>
           <div class="col-sm-0"></div>
         </div>
       </form>
