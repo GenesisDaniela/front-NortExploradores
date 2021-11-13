@@ -65,9 +65,10 @@ export class AddPaqueteComponent implements OnInit {
   }
 
   public cargarActividades(evento: any){
+    
     let totalAct = evento.target.value;
     let actividadess = this.form.get('acts') as FormArray;
-    
+    actividadess.clear();
 
     for (let i = 0; i < totalAct; i++) {
       actividadess.push(
@@ -89,13 +90,14 @@ export class AddPaqueteComponent implements OnInit {
   
   public enviarData() {
     if(this.id !== null){
-     this.paqueteService.editarPaquete(this.id, this.form.value).subscribe((data) => {
+     this.paqueteService.editarPaquete(this.form.value).subscribe((data) => {
       this.router.navigate(["/administracion/paquetes"]);
      });
         
    }else {
+    console.log('actssss', this.getActividades.value);
     this.paqueteService.post(this.form.value).subscribe(paquete=>{
-      
+      console.log(paquete);
       this.paqueteService.postAct(this.getActividades.value, paquete.idPaq).subscribe(data=>{
         this.router.navigate(["/administracion/paquetes"]);})
       })
