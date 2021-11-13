@@ -25,7 +25,7 @@ export class PaqueteService {
   // }
 
   public encontrar(id:number):Observable<any>{
-    return this.http.get<any>(`${this.uri}/${id}`);
+    return this.http.get<any>(`${this.uri}${id}`);
   }
   
 

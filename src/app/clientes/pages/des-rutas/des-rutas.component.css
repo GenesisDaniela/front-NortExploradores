@@ -1,0 +1,36 @@
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    width: auto;      
+}
+
+.imgRutas{
+    width: 100%;        
+}
+
+.imgRutas img{
+    width: 100%;    
+}
+
+.imgRutas h1{
+    background-color: #C4CDD2;  
+    text-align: center;
+    font-weight: bold;
+    color: #2A6184;
+    margin-bottom: 10px;
+}
+
+.informacion .descripcion{
+     margin-bottom: 10px;
+}
+
+.informacion .descripcion h1{
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: bold;
+    color: #2A6184;
+}
+.informacion .descripcion p{
+    text-align: center;
+    font-size: 22px;
+}
