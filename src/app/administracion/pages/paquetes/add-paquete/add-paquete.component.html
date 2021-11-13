@@ -9,7 +9,7 @@
             </div>
 
             <input formControlName="idPaq" hidden type="text" class="form-control" id="inputPaq">
-            
+
             <div class="row mb-3">
                 <label for="inputPrecio" class="col-sm-2 col-form-label">Precio</label>
                 <div class="col-sm-10">
@@ -36,9 +36,9 @@
 
             <div class="row mb-3">
                 <label for="inputDescripcion" class="col-sm-2 col-form-label">Descripcion</label>
-                <div  class="col-sm-10">
-                    <textarea style="resize: none" formControlName="descripcion" class="form-control" id="inputDescripcion"
-                        rows="3"></textarea>
+                <div class="col-sm-10">
+                    <textarea style="resize: none" formControlName="descripcion" class="form-control"
+                        id="inputDescripcion" rows="3"></textarea>
                 </div>
             </div>
 
@@ -66,50 +66,64 @@
                             {{alojamiento.nombre}}</option>
                     </select>
                 </div>
+            </div>
+
+            <div class="mb-3 row">
+                <div class="col-sm-0"></div>
+                <label class="col-sm-2 col-form-label">Municipio</label>
+                <div class="col-sm-10">
+                    <select formControlName="municipio" class="form-select" aria-label="Default select example">
+                        <option *ngFor="let municipio of municipios" name="municipio" id="muni{{municipio.idMuni}}"
+                            value={{municipio.idMuni}}>
+                            {{municipio.nombre}}</option>
+                    </select>
+                </div>
 
             </div>
-            <div class="mb-3 row">
-                <label for="inputcantAtcs" class="col-sm-2 col-form-label">Cantidad actividades</label>
-                <div class="col-sm-10">
-                  <input (input)="cargarActividades($event)" type="number" class="form-control" id="inputcantAtcs">
+
+    
+    <div class="mb-3 row">
+        <label for="inputcantAtcs" class="col-sm-2 col-form-label">Cantidad actividades</label>
+        <div class="col-sm-10">
+            <input (input)="cargarActividades($event)" type="number" class="form-control" id="inputcantAtcs">
+        </div>
+    </div>
+
+
+    <ul class="list-group">
+        <li class="list-group-item" formArrayName="acts"
+            *ngFor="let actividad of getActividades.controls; let i = index;" style="margin-bottom: 20px;">
+
+            <div [formGroupName]="i" class="row">
+                <div class="mb-2 row">
+                    <label class="col-sm-10 col-form-label">Actividad</label>
+                    <div class="col-sm-8">
+                        <input type="text" formControlName="nombre" name="nombre" class="form-control"
+                            placeholder="Nombre actividad" required>
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label class="col-sm-4 col-form-label">Descripcion</label>
+                    <div class="col-sm-8">
+                        <input type="text" formControlName="descripcion" name="descripcion" class="form-control"
+                            placeholder="descripcion" required>
+                    </div>
+                </div>
+
+                <div class="mb-2 row">
+                    <label class="col-sm-4 col-form-label">Imagen</label>
+                    <div class="col-sm-8">
+                        <input type="text" formControlName="urlImg" name="urlImg" class="form-control"
+                            placeholder="urlImg" required>
+                    </div>
                 </div>
             </div>
 
+        </li>
+    </ul>
 
-            <ul class="list-group">
-                <li class="list-group-item" formArrayName="acts"
-                  *ngFor="let actividad of getActividades.controls; let i = index;" style="margin-bottom: 20px;">
-
-                  <div [formGroupName]="i" class="row">
-                    <div class="mb-2 row">
-                      <label class="col-sm-10 col-form-label">Actividad</label>
-                      <div class="col-sm-8">
-                        <input type="text" formControlName="nombre" name="nombre" class="form-control"
-                          placeholder="Nombre actividad" required>
-                      </div>
-                    </div>
-
-                    <div class="mb-2 row">
-                      <label class="col-sm-4 col-form-label">Descripcion</label>
-                      <div class="col-sm-8">
-                        <input type="text" formControlName="descripcion" name="descripcion" class="form-control"
-                          placeholder="descripcion" required>
-                      </div>
-                    </div>
-
-                    <div class="mb-2 row">
-                        <label class="col-sm-4 col-form-label">Imagen</label>
-                        <div class="col-sm-8">
-                          <input type="text" formControlName="urlImg" name="urlImg" class="form-control"
-                            placeholder="urlImg" required>
-                        </div>
-                      </div>
-                  </div>
-
-                </li>
-            </ul>
-
-            <!-- <div formArrayName="acts" class="row mb-3" *ngFor="let actividad of getActividades.controls; let i = index;">
+    <!-- <div formArrayName="acts" class="row mb-3" *ngFor="let actividad of getActividades.controls; let i = index;">
                 <div [formGroupName]="i">
                     <div class="row mb-3">
                         <label for="inputNombre" class="col-sm-2 col-form-label">Actividad</label>
@@ -134,13 +148,13 @@
                     </div>
                 </div>
             </div>  -->
-            <div class="d-grid gap-2 col-6 mx-auto">
-                <button class="btn btn-primary" type="submit">{{boton | uppercase}}</button>
-                <div class="col-sm-3"></div>
-            </div>
-            <br>
-
-        </form>
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-primary" type="submit">{{boton | uppercase}}</button>
+        <div class="col-sm-3"></div>
     </div>
-    <div class="col"></div>
+    <br>
+
+    </form>
+</div>
+<div class="col"></div>
 </div>

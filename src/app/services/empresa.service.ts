@@ -26,4 +26,14 @@ export class EmpresaService {
   editarEmpresa(id:string,empresa:any):Observable<any>{
       return this.http.put(this.uri,empresa)
   }
+
+  public listarTransportes():Observable<any>{
+    const trans = "transportes"
+    return this.http.get<any>(`${this.uri}${trans}`);
+  }
+
+  public listarSeguros():Observable<any>{
+    const seguro = "seguros";
+    return this.http.get<any>(`${this.uri}${seguro}`);
+  }
 }

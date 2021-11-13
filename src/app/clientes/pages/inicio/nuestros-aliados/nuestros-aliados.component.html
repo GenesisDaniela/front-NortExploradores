@@ -1,12 +1,29 @@
-<div class="container">
+
+
+<!-- <div class="container" style="background-color:white; border-radius: 10px; padding-top: 15px; padding-bottom: 15px; margin-bottom: 50px;">
 
     <h1 style="text-align: center; font-family: 'Mochiy Pop P One', sans-serif;">Nuestros Aliados</h1>
     
     <hr>
 
-
+    
+    <h3 style="font-family: 'Roboto', sans-serif; font-weight: bold;">Empresas De Transporte</h3>
     <div class="empresas">
-        <div class="empresa" *ngFor="let empresa of data">
+        <div class="empresa" *ngFor="let empresa of transportes">
+            <div class="text">
+                <h4 style="text-align: center; font-family: 'Mochiy Pop P One', sans-serif;">{{empresa.nombre}}</h4>
+                <p style="text-align: justify; ">{{empresa.descripcion}}</p>
+            </div>
+        
+            <div class="imagen" style="background-image: url({{empresa.urlImagen}});">
+
+            </div>
+        </div>
+    </div>
+
+    <h3 style="font-family: 'Roboto', sans-serif; font-weight: bold;">Empresas De Seguros</h3>
+    <div class="empresas">
+        <div class="empresa" *ngFor="let empresa of seguros">
             <div class="text">
                 <h4 style="text-align: center; font-family: 'Mochiy Pop P One', sans-serif;">{{empresa.nombre}}</h4>
                 <p style="text-align: justify; ">{{empresa.descripcion}}</p>
@@ -19,4 +36,40 @@
     </div>
 
    
+</div> -->
+
+<div class="container">
+    <h1 style="text-align: center; font-family: 'Mochiy Pop P One', sans-serif;">Nuestros Aliados</h1>
+</div>
+
+<div class="container">
+    <h3 style="font-family: 'Roboto', sans-serif; font-weight: bold;">Empresas De Transporte</h3>
+    <div class="empresas">
+        <div class="empresa" *ngFor="let empresa of transportes">
+            <div class="text">
+                <h4 style="text-align: center; font-family: 'Mochiy Pop P One', sans-serif;">{{empresa.nombre}}</h4>
+                <p style="text-align: justify; ">{{empresa.descripcion}}</p>
+            </div>
+        
+            <div class="imagen" style="background-image: url({{empresa.urlImagen}});">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h3 style="font-family: 'Roboto', sans-serif; font-weight: bold;">Empresas De Seguros</h3>
+    <div class="empresas">
+        <div class="empresa" *ngFor="let empresa of seguros">
+            <div class="text">
+                <h4 style="text-align: center; font-family: 'Mochiy Pop P One', sans-serif;">{{empresa.nombre}}</h4>
+                <p style="text-align: justify; ">{{empresa.descripcion}}</p>
+            </div>
+        
+            <div class="imagen" style="background-image: url({{empresa.urlImagen}});">
+
+            </div>
+        </div>
+    </div>
 </div>

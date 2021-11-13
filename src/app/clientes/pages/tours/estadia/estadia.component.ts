@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PaqueteService } from 'src/app/services/paquete.service';
+import { TourService } from 'src/app/services/tour.service';
 
 @Component({
   selector: 'app-estadia',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EstadiaComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(
+    private paqueteService:PaqueteService,
+    private tourService:TourService
+    ) { }
+
+  paquetes:any =[];
+  tours: any= [];
 
   ngOnInit(): void {
+    this.listarPaquetes();
+    this.listarTour();
   }
 
+
+  public listarTour(){
+    this.tourService.listarTourActivo().subscribe(tour=>{
+      this.tours=tour
+    })
+  }
+
+  public listarPaquetes(){
+    this.paqueteService.listarPaqEstadia().subscribe(listaPaquetes=>{
+      this.paquetes = listaPaquetes;
+    })
+  }
 }

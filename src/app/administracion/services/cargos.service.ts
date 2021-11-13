@@ -25,4 +25,8 @@ export class CargosService {
   editarCargo(id:string,cargo:any):Observable<any>{
     return this.http.put(this.uri,cargo)
   }
+
+  desabilitar(cargo:any):Observable<any>{
+    return this.http.get(this.uri+cargo+'/deshabilitar')
+  }
 }
