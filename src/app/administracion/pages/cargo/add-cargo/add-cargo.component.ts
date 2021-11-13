@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { data } from 'jquery';
+import { ToastrService } from 'ngx-toastr';
 import { CargosService } from 'src/app/administracion/services/cargos.service';
 import { CargoComponent } from '../cargo.component';
 
@@ -22,7 +23,8 @@ export class AddCargoComponent implements OnInit {
     private cargoService: CargosService,
     private formBuilder: FormBuilder,
     private aRouter: ActivatedRoute,
-    private router : Router
+    private router : Router,
+    private toastr: ToastrService
   ) {
     this.id = aRouter.snapshot.paramMap.get('idCargo');
   }
@@ -44,6 +46,9 @@ export class AddCargoComponent implements OnInit {
       });
     } else {
       this.cargoService.post(this.form.value).subscribe((data) => {
+        this.toastr.success('Cargo Agregado Con Exito!', 'Cargo Registrado',{
+          positionClass: 'toast-bottom-right'
+        });
         this.router.navigate(["/administracion/cargos"]);
       });
     }

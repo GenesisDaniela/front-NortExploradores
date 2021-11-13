@@ -111,13 +111,8 @@
             <td>{{ ali.correo }}</td>
             <td>{{ ali.fecha }}</td>                        
           <td nzAlign="center">
-            <a>
-              <i
-                nz-icon
-                nzType="delete"
-                nzTheme="outline"
-                style="font-size: 20px; color: red"
-              ></i>
+            <a style="margin-right: 10px;">
+              <i nz-icon nzType="stop" nzTheme="outline" style="font-size: 20px; color: red;"></i>
             </a>
   
             <a [routerLink]="['/administracion/editarAliado',ali.idEmpresa]" >

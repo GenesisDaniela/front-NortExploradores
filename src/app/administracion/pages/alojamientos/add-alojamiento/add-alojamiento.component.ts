@@ -1,6 +1,7 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ActivatedRoute, Router} from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AlojamientosService } from 'src/app/administracion/services/alojamientos.service';
 
 
@@ -21,7 +22,9 @@ export class AddAlojamientoComponent implements OnInit {
     private alojamientosservice: AlojamientosService,
     private formBuilder: FormBuilder,
     private aRouter: ActivatedRoute,
-    private router : Router
+    private router : Router,
+    private toastr: ToastrService,
+
   ) {
     this.id = aRouter.snapshot.paramMap.get('idAlojamiento');
   }
@@ -47,6 +50,9 @@ export class AddAlojamientoComponent implements OnInit {
         });
     } else {
       this.alojamientosservice.post(this.form.value).subscribe((data)=>{
+        this.toastr.success("Alojamiento Agregado Con Exito!", "Alojamiento Registrado", {
+          positionClass: 'toast-bottom-right'
+        })
         this.router.navigate(["/administracion/alojamientos"]);
       });
     }

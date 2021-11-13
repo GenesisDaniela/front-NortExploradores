@@ -12,9 +12,9 @@ import { PaquetesService } from 'src/app/administracion/services/paquetes.servic
 })
 export class AddActividadComponent implements OnInit {
 
-  public form !: FormGroup;
+  public form !     : FormGroup;
   public actividades: any = [];
-  public paquetes: any = [];
+  public paquetes   : any = [];
   titulo = 'Agregar Actividad';
   boton = 'Agregar Actividad';
   id: string | null;
@@ -26,6 +26,7 @@ export class AddActividadComponent implements OnInit {
     private aRouter: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService
+    
   ) {
     this.id = aRouter.snapshot.paramMap.get('idActividad');
 
@@ -57,12 +58,17 @@ export class AddActividadComponent implements OnInit {
       this.actividadService
         .editarActividad(this.id, this.form.value)
         .subscribe((data) => { 
-          this.toastr.success('Actividad Agregada con exito!', 'Empleado Registrado!');
-          this.router.navigate(["/administracion/actividades"]); });
+          
+          this.router.navigate(["/administracion/actividades"]); 
+        });
 
-      //agrga alojamiento
+      //agrega alojamiento
     } else {
-      this.actividadService.post(this.form.value).subscribe((data) => { this.router.navigate(["/administracion/actividades"]); });
+      this.actividadService.post(this.form.value).subscribe((data) => { 
+        this.toastr.success("Actividad Agregada Con Exito!", "Actividad Registrada", {
+          positionClass: 'toast-bottom-right'
+        })
+        this.router.navigate(["/administracion/actividades"]); });
     }
   }
 

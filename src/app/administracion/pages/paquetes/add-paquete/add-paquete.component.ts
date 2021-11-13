@@ -4,6 +4,7 @@ import { AlojamientosService } from 'src/app/administracion/services/alojamiento
 import { PaquetesService } from 'src/app/administracion/services/paquetes.service';
 import { ActividadesService } from 'src/app/administracion/services/actividades.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-paquete',
@@ -25,7 +26,8 @@ export class AddPaqueteComponent implements OnInit {
     private paqueteService: PaquetesService,
     private formBuilder: FormBuilder,
     private router : Router,
-    private aRouter: ActivatedRoute
+    private aRouter: ActivatedRoute,
+    private toastr: ToastrService,
   ) { 
     this.id = aRouter.snapshot.paramMap.get('idPaq');
   }
@@ -86,7 +88,11 @@ export class AddPaqueteComponent implements OnInit {
     this.paqueteService.post(this.form.value).subscribe(paquete=>{
       
       this.paqueteService.postAct(this.getActividades.value, paquete.idPaq).subscribe(data=>{
-        this.router.navigate(["/administracion/paquetes"]);})
+        this.router.navigate(["/administracion/paquetes"]);
+        this.toastr.success("Paquete Agregado Con Exito", "Paquete Registrado", {
+          positionClass: 'toast-bottom-right'
+       })
+      })
       })
    }
    }
