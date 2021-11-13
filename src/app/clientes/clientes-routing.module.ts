@@ -13,6 +13,7 @@ import { FestividadesComponent } from './pages/festividades/festividades.compone
 import { NuestrosAliadosComponent } from './pages/inicio/nuestros-aliados/nuestros-aliados.component';
 import { ToursDelMesComponent } from './pages/inicio/tours-del-mes/tours-del-mes.component';
 import { DesRutasComponent } from './pages/des-rutas/des-rutas.component';
+import { DetalleTourComponent } from './pages/tours/detalle-tour/detalle-tour.component';
 
 const routes : Routes = [
   {path:"",
@@ -26,6 +27,7 @@ const routes : Routes = [
     {path:"contacto", component:ContactoComponent},
     {path:"pasadia", component:PasadiaComponent},
     {path:"estadia", component:EstadiaComponent},
+    {path:"estadia/detalletour", component:DetalleTourComponent},
     {path:"recomendaciones", component:RecomendacionesComponent},
     {path:"viajesGrupales", component:ViajesGrupalesComponent},
     {path:"festividades", component:FestividadesComponent},
