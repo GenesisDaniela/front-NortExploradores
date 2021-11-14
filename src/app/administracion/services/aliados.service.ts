@@ -15,4 +15,8 @@ export class AliadosService {
   public listarAliados():Observable<any>{    
     return this.http.get<any>(this.url);
   }
+
+  deshabilitar(empresa:any):Observable<any>{
+    return this.http.get(this.url+empresa+'/deshabilitar')
+  }
 }

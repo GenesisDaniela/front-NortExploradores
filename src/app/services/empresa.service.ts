@@ -36,4 +36,8 @@ export class EmpresaService {
     const seguro = "seguros";
     return this.http.get<any>(`${this.uri}${seguro}`);
   }
+
+  deshabilitar(empresa:any):Observable<any>{
+    return this.http.get(this.uri+empresa+'/deshabilitar')
+  }
 }
