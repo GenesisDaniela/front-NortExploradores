@@ -16,45 +16,13 @@
           </div>
 
           <div class="col-md-6 col-xs-12">
-            <h2><strong class="text-primary">€300 - €4000</strong></h2>
+            <h2><strong class="text-primary">{{data.paquete.nombre}}</strong></h2>
 
-            <h2><small><i class="fa fa-map-marker"></i> 6 Regeneration Road, SE16 2NX, London</small></h2>
+            <h2><small><i class="fa fa-map-marker"></i>   Precio:{{data.paquete.precio}}</small></h2>
 
             <br>
 
-            <div class="row">
-              <div class="col-sm-4 col-xs-6">
-                <div class="form-group">
-                  <img src="img/product-1-720x480.jpg" alt="" class="img-fluid">
-                </div>
-              </div>
-              <div class="col-sm-4 col-xs-6">
-                <div class="form-group">
-                  <img src="img/product-2-720x480.jpg" alt="" class="img-fluid">
-                </div>
-              </div>
-              <div class="col-sm-4 col-xs-6">
-                <div class="form-group">
-                  <img src="img/product-3-720x480.jpg" alt="" class="img-fluid">
-                </div>
-              </div>
-
-              <div class="col-sm-4 col-xs-6">
-                <div class="form-group">
-                  <img src="img/product-4-720x480.jpg" alt="" class="img-fluid">
-                </div>
-              </div>
-              <div class="col-sm-4 col-xs-6">
-                <div class="form-group">
-                  <img src="img/product-5-720x480.jpg" alt="" class="img-fluid">
-                </div>
-              </div>
-              <div class="col-sm-4 col-xs-6">
-                <div class="form-group">
-                  <img src="img/product-6-720x480.jpg" alt="" class="img-fluid">
-                </div>
-              </div>
-            </div>
+        
           </div>
         </div>
         <!-- <div class="container">
@@ -73,11 +41,8 @@
               <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                  <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin
-                  adds the appropriate classes that we use to style each element. These classes control the overall appearance,
-                  as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or
-                  overriding our default variables. It's also worth noting that just about any HTML can go within the
-                  <code>.accordion-body</code>, though the transition does limit overflow.
+                  {{data.paquete.descripcion}}
+                 
                 </div>
               </div>
             </div>
@@ -91,11 +56,7 @@
               <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                  <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin
-                  adds the appropriate classes that we use to style each element. These classes control the overall appearance,
-                  as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or
-                  overriding our default variables. It's also worth noting that just about any HTML can go within the
-                  <code>.accordion-body</code>, though the transition does limit overflow.
+                  {{data.paquete.recomendacion}}
                 </div>
               </div>
             </div>

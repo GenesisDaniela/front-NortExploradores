@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { TourService } from 'src/app/services/tour.service';
 
 @Component({
@@ -8,14 +9,18 @@ import { TourService } from 'src/app/services/tour.service';
 })
 export class DetalleTourComponent implements OnInit {
 
-  public tour: any= [];
+  id: any|null = "";
+  data: any;
 
   constructor(
-    private tourService:TourService
-  ) { }
+    private aRoutes: ActivatedRoute, private tour: TourService ) {   this.id = this.aRoutes.snapshot.paramMap.get("idTour");
+  }
   
 
   ngOnInit(): void {
+    this.tour.encontrarTour(this.id).subscribe(data => {
+      this.data=data;      
+    })
   }
 
 }
