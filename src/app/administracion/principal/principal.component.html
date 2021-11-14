@@ -80,7 +80,8 @@
     </nz-layout>
   </nz-layout>
  -->
-<nz-layout  class="app-layout">
+ 
+<!-- <nz-layout  class="app-layout">
   <nz-sider class="menu-sidebar" nzCollapsible nzWidth="240px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
     [nzTrigger]="null">
     <div class="sidebar-logo">
@@ -214,7 +215,150 @@
       <router-outlet></router-outlet>
     </div>
   </nz-layout>
+</nz-layout> -->
+
+
+
+
+
+<nz-layout class="app-layout">
+  <nz-sider
+    class="menu-sidebar"
+    nzCollapsible
+    nzWidth="256px"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+  >
+  <div class="sidebar-logo">
+
+    <img src="../../../assets/img/LOGO-01.png" alt="logo" />
+    <h1>NorteXploradores</h1>
+
+  </div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item>
+        <i nz-icon nzType="container" nzTheme="outline" style="font-size: 20px"></i>
+        <span>Inf Corporativa</span>
+        <a routerLink="infoCorporativa"></a>
+      </li>
+
+      <li nz-menu-item>
+        <i nz-icon nzType="user" nzTheme="outline" style="font-size: 20px"></i>
+        <span>Empleados</span>
+        <a routerLink="empleados"></a>
+      </li>
+
+      <li nz-menu-item>
+        <i nz-icon nzType="car" nzTheme="outline" style="font-size: 20px"></i>
+        <span>Cargos</span>
+        <a routerLink="cargos"></a>
+      </li>
+
+      <li nz-menu-item>
+        <i nz-icon nzType="cluster" nzTheme="outline" style="font-size: 20px"></i>
+        <span>Tours</span>
+        <a routerLink="tours"></a>
+      </li>
+
+      <li nz-menu-item>
+        <i nz-icon nzType="idcard" nzTheme="outline" style="font-size: 20px"></i>
+        <span>Aliados</span>
+        <a routerLink="aliados"></a>
+      </li>
+
+      <li nz-menu-item>
+        <i nz-icon nzType="team" nzTheme="outline" style="font-size: 20px"></i>
+        <span>Clientes</span>
+        <a routerLink="clientes"></a>
+      </li>
+
+      <li nz-menu-item>
+        <i nz-icon nzType="shopping-cart" nzTheme="outline" style="font-size: 20px"></i>
+        <span>Alojamientos</span>
+        <a routerLink="alojamientos"></a>
+      </li>
+
+      <li nz-menu-item>
+        <i nz-icon nzType="mobile" nzTheme="outline" style="font-size: 20px"></i>
+        <span>Paquetes</span>
+        <a routerLink="paquetes"></a>
+      </li>
+
+      <li nz-menu-item>
+        <i nz-icon nzType="file-search" nzTheme="outline" style="font-size: 20px"></i>
+        <span>Actividades</span>
+        <a routerLink="actividades"></a>
+      </li>
+      
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <div class="miremos" style="display: flex; justify-content: space-between;">
+
+          <div class="col-1">
+            <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+              <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+            </span>
+          </div>
+
+            <div class="item">
+              <a routerLink="/inicio">
+                <i class="fas fa-home"></i>
+                INICIO
+              </a>
+            </div>
+  
+            <div class="item">
+              <a routerLink="calendario">
+                <i class="fas fa-calendar-alt"></i>
+                CALENDARIO
+              </a>
+            </div>
+  
+            <div class="item">
+              <a routerLink="descuentos">
+                <i class="fas fa-tags"></i>
+                DESCUENTOS
+              </a>
+            </div>
+  
+            <div class="item">
+              <a routerLink="reportes">
+                <i class="fas fa-file-chart-line"></i>
+                REPORTES
+              </a>
+            </div>
+  
+            <div class="item">
+              <a routerLink="notificaciones"><i nz-icon nzType="bell" nzTheme="outline" style="font-size: 30px;"></i></a>
+            </div>
+
+            <div class="item">
+
+              <nz-button-group>
+                <button nz-button (click)="log()">{{nombreUser}}</button>
+                <button nz-button nz-dropdown [nzDropdownMenu]="menu" nzPlacement="bottomRight">
+                  <i nz-icon nzType="user"></i>
+                </button>
+              </nz-button-group>
+  
+              <nz-dropdown-menu #menu="nzDropdownMenu">
+                <ul nz-menu>
+                  <li nz-menu-item>Editar Perfil</li>
+                  <li nz-menu-item routerLink="/inicio">Cerrar Sesión</li>
+                </ul>
+              </nz-dropdown-menu>
+            </div>
+        </div>
+       
+      </div>
+    </nz-header>
+    <div class="contenido" style="width: 100%; height: 100%; overflow: scroll">
+      <router-outlet></router-outlet>
+    </div>
+
+  </nz-layout>
 </nz-layout>
-
-
-

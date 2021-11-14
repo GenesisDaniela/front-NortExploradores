@@ -72,7 +72,7 @@ export class FormPagosComponent implements OnInit {
   apikeyTest= "4Vj8eK4rloUd272L48hsrarnUA";
 
   firmaElectronicaTest = `${this.apikeyTest}~508029~${this.referenciaUnic}~${this.total}~${this.moneda}`;
-  /* firmaElectronicaMD5Test = crypto.MD5(this.firmaElectronicaTest).toString(); */
+  firmaElectronicaMD5Test = crypto.MD5(this.firmaElectronicaTest).toString(); 
   
 
   constructor(
@@ -85,7 +85,7 @@ export class FormPagosComponent implements OnInit {
     private formBuilder : FormBuilder,
     private tourService:TourService,
     private compraService: CompraService,
-    private detalleCompra: DetcompraService
+    private detalleCompra: DetcompraService 
     ){}
 
   ngOnInit(): void {
@@ -95,7 +95,7 @@ export class FormPagosComponent implements OnInit {
     this.cargarToken();
     this.listarTour();
     this.generarReferencia();
-    this.cargarPasajerosClasificados()
+    this.cargarPasajerosClasificados();
     this.referenciaUnic = this.generarReferencia()
     if(this.idPaquete ==null) this.idPaquete="paq-1";
     this.idPaquete = this.route.snapshot.paramMap.get("idPaq");
@@ -120,7 +120,7 @@ export class FormPagosComponent implements OnInit {
   agregarPasajero(tipoid = "", documento = "", nombre="", apellido="", sexo="", fechaNac="", celular="",correo=""){
     this.total++;
     let persona = this.pagosInfo.get('pasajeros') as FormArray;
-
+    console.log("aaaa");
     persona.push(this.formBuilder.group({
       idTipo : [tipoid, [Validators.required]],
       idPersona : [documento, [Validators.required]],
@@ -237,7 +237,33 @@ export class FormPagosComponent implements OnInit {
         }
 
 
+        this.personaService.getPersona(pasajero.idPersona).subscribe(persona=>{
+          var pasajeroPost;
+          let pasajero = persona;
+          if(pasajero==null){
+              pasajeroPost = {
+              "idPasajero": null,
+              "esCotizante":false,
+              "persona":pasajero,
+              "usuario":this.usuario.id_Usuario
+              }
+          }else{
+              pasajeroPost = {
+                "idPasajero": pasajero.idPasajero,
+                "esCotizante":false,
+                "persona":pasajero,
+                "usuario":this.usuario.id_Usuario
+              }
+          }
+
+          
+  
+          this.pasajerosTotal.push(pasajeroPost);
+          pasajeros.push(pasajeroPost)
+        });
+
         var pasajeroPost = {
+          "idPasajero": null,
           "esCotizante":false,
           "persona":pasajero,
           "usuario":this.usuario.id_Usuario
@@ -245,6 +271,7 @@ export class FormPagosComponent implements OnInit {
         this.pasajerosTotal.push(pasajeroPost);
         pasajeros.push(pasajeroPost)
     }
+    console.log(this.pasajerosClasificados);
     const output = document.getElementById("errorPresentado");
     if(datosIncorrectos==true){
       if (output) output.innerHTML = "Campos mal puestos!";
@@ -255,19 +282,10 @@ export class FormPagosComponent implements OnInit {
     }
 
     // Guardo los pasajeros asociados al usuario -->
-    this.usuarioService.guardarPasajerosDeUsuario(this.usuario.id_Usuario,pasajeros).subscribe(pasajeros=>{
+    this.usuarioService.guardarPasajerosDeUsuario(this.usuario.id_Usuario, pasajeros).subscribe(pasajeros=>{
       this.pasajerosTotal = pasajeros;
     });
     
-
-
-    //Primero tengo que guardar los detalles compra.
-    //Tengo que enviar el tour por ID /compraReservada/{idtour}
-    
-
-    //Falta agregar estos pasajeros y hacer una peticion al backend de compra, toca calcular el precio total dependiendo si es niño y tales, tambien recordar la relacion muchos a muchos con compra, 
-
-    // Revisar bien los atributos que voy a mandar.
     this.infoPagina=2;
     this.pagosInfo.markAllAsTouched();
   }
@@ -295,6 +313,7 @@ export class FormPagosComponent implements OnInit {
   cargarUsuario(){
     this.usuarioService.usuarioPorUsername(this.nombreUser).subscribe(usuario=>{
       this.usuario=usuario;
+
       this.agregarPasajerosFrec();
     })
   }
@@ -321,24 +340,21 @@ export class FormPagosComponent implements OnInit {
 
   public agregarPasajerosFrec(){
     this.usuarioService.clientesPorUsuario(this.usuario.id_Usuario).subscribe(pasajeros=>{
-      this.cargarPasajeros(pasajeros)
-      console.log(pasajeros);
+      this.cargarPasajeros(pasajeros);
     })
-
-
   }
 
   public cargarPasajeros(pasajeros:any){
-    for (let i = 0; i < pasajeros.length; i++) {
 
-      let pasajero = pasajeros[i]
+    for (let i = 0; i < pasajeros.length; i++) {
+      let pasajero = pasajeros[i];
       if(pasajero.esCotizante==false){
-        this.pasajerosFrec.push(pasajero)
+        this.pasajerosFrec.push(pasajero);
+
       }else{
-        this.persona = pasajeros[i].persona
+        this.persona = pasajeros[i].persona;
         this.total++;
         let pasajeroX = this.pagosInfo.get('pasajeros') as FormArray;
-        
         pasajeroX.push(
           this.formBuilder.group({
           idTipo : [this.persona.idTipo.idTipo, [Validators.required]],
@@ -349,9 +365,8 @@ export class FormPagosComponent implements OnInit {
           fechaNac : [this.persona.fechaNac, [Validators.required]],
           cel : [this.persona.cel, [Validators.required]],
           correo : [this.persona.correo, [Validators.required]],
+          idPasajero: [pasajeros[i].idPasajero]
         }));
-
-         
       }    
   }
   }  
@@ -359,11 +374,11 @@ export class FormPagosComponent implements OnInit {
     let pasajeros = this.pagosInfo.get('pasajeros') as FormArray;
     
     console.log(pasajeros.value);
-    let cedula = event.target.value;
+    let idPasajero = event.target.value;
     let yaResgistrado = false;
     let posEliminar = -1 //posicion del pasajero que se encontro y se va a eliminar.
     for (let i = 0; i < pasajeros.length; i++) {
-      if(pasajeros.at(i).value.documento == cedula ){
+      if(pasajeros.at(i).value.documento == idPasajero ){
         yaResgistrado = true;
         posEliminar = i; // la posicion que eliminare del form builder
         break;
@@ -377,10 +392,10 @@ export class FormPagosComponent implements OnInit {
     }else{
       //busco a la persona y cargo sus datos en el form.
       this.total++;
-      this.personaService.getPersona(cedula).subscribe(persona=>{
-        console.log(persona);
+      this.personaService.getPasajero(idPasajero).subscribe(pasajero=>{
+        let persona = pasajero.persona;
         pasajeros = this.pagosInfo.get('pasajeros') as FormArray;
-        
+        console.log("aaaa");
         pasajeros.push(this.formBuilder.group({
           idTipo : [persona.idTipo.idTipo, [Validators.required]],
           idPersona : [persona.idPersona, [Validators.required]],
@@ -390,10 +405,12 @@ export class FormPagosComponent implements OnInit {
           fechaNac : [persona.fechaNac, [Validators.required]],
           cel : [persona.cel, [Validators.required]],
           correo : [persona.correo, [Validators.required]],
+          idPasajero: [pasajero.idPasajero]
         }));
       })
+
+     
     }
-    console.log(pasajeros.value);
   }
   
 // Segunda vista ----->
@@ -435,6 +452,7 @@ volverPag(){
 }
 
 cargarPayu(){
+
   this.infoPagina=3
   this.totalCompra=this.totalCompra-this.totalCompra*0.5
   this.idUsuario = this.usuario.id_Usuario
@@ -442,35 +460,59 @@ cargarPayu(){
   this.nombrePersona= this.persona.nombre +" "+this.persona.apellido
   
   let pasajeros = this.pagosInfo.get('pasajeros') as FormArray;
-  this.descripcion = "Pago de ("+pasajeros.length+") paquete(s) turistico(s) destino: "+this.tourSeleccionado.ruta.municipio.nombre
+  this.descripcion = "Pago de ("+pasajeros.length+") paquete(s) turistico(s) destino: "+this.tourSeleccionado.paquete.municipio.nombre
 
   this.firmaElectronica = `${this.apikey}~${this.idMercado}~${this.idCompra}~${this.totalCompra}~${this.moneda}`;
   this.firmaElectronicaMD5 = crypto.MD5(this.firmaElectronica).toString();
   
+  // Pruebas
+
+  this.firmaElectronicaTest = `${this.apikeyTest}~508029~${this.idCompra}~${this.totalCompra}~${this.moneda}`;
+  this.firmaElectronicaMD5Test = crypto.MD5(this.firmaElectronicaTest).toString();
 
 }
 
 guardarCompra(form:HTMLFormElement){
-
+   
   var compra={
-    idCompra:this.referenciaUnic,
+    idCompra:this.idCompra,
     cantidadPasajeros:this.total,
     totalCompra:this.totalCompra,
     estado:"PENDIENTE",
-    fecha:Date.now,
-    usuario:this.usuario.id_Usuario
+    usuario:this.usuario.id_Usuario,
+    tour: this.tourSeleccionado.idTour
   }
 
   this.compraService.post(compra,this.tourSeleccionado.idTour).subscribe(compra=>{
+    
     console.log("La compra es:",compra);
+    
     let pasajeros = this.pagosInfo.get('pasajeros') as FormArray;
     let detalleCompras = [];
+    let personas = this.pagosInfo.value.pasajeros;
+
+
+
     for (let i = 0; i < pasajeros.length; i++) {
+      let edadPasajero =this.calcularfecha(personas[i].fechaNac);
+      let valorUnit = 0;
+      let valorPaquete = this.tourSeleccionado.paquete.precio;
+
+      if(edadPasajero<=4){
+        valorUnit=10000;
+      }
+      if(edadPasajero>4 && edadPasajero<13){
+          valorUnit=(valorPaquete-10000); //por confirmar
+        }
+      
+      if(edadPasajero>12){
+        valorUnit = valorPaquete;
+      }
+
       let detalleCompra = {
-        fecha: Date.now,
         compra:compra.idCompra,
-        valorUnit:this.tourSeleccionado.paquete.precio,
-        pasajero:this.pasajerosTotal[i],
+        valorUnit:valorUnit,
+        pasajero:pasajeros.at(i).value.idPasajero,
         paquete:this.tourSeleccionado.paquete
       }
 
@@ -482,7 +524,6 @@ guardarCompra(form:HTMLFormElement){
     this.detalleCompra.post(detalleCompras).subscribe(det=>{
       console.log("El resultado es: ",det);
       form.submit();
-
     });
 
 
