@@ -15,23 +15,29 @@
         >
           <thead class="table-dark">
             <tr>
-              <th>ID</th>
               <th>NOMBRE</th>
+              <th>CORREO</th>
+              <th>TELEFONO</th>
               <th>DESCRIPCIÓN</th>
+              <th>MISIÓN</th>
+              <th>VISIÓN</th>
             </tr>
           </thead>
           <tbody>
             <tr >
-              <td></td>
-              <td></td>
-              <td></td>              
+              <td>{{info.nombre}}</td>
+              <td>{{info.correo}}</td>
+              <td>{{info.telefono}}</td>
+              <td>{{info.descripcion}}</td>  
+              <td>{{info.mision}}</td>
+              <td>{{info.vision}}</td>            
             </tr>
           </tbody>
         </table>
       </div>
 
       <div style="text-align: right; margin: 0; display: flex; justify-content: space-around;">
-        <a routerLink="/administracion/transportes" nz-button nzType="primary"><i nz-icon nzType="user-add" nzTheme="outline" style="padding-bottom: 2px;"></i>Editar</a>
+        <a routerLink="/administracion/editInfo" nz-button nzType="primary"><i nz-icon nzType="user-add" nzTheme="outline" style="padding-bottom: 2px;"></i>Editar</a>
 
        
     </div>

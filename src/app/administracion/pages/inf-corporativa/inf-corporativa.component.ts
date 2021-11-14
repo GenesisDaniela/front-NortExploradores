@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { CargosService } from '../../services/cargos.service';
+import { EmpresaService } from '../../../services/empresa.service';
 
 @Component({
   selector: 'app-inf-corporativa',
@@ -12,9 +13,9 @@ export class InfCorporativaComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   
   dtTrigger = new Subject<any>();
-  public data: any[]=[];
+  info: any=[];
 
-  constructor(){
+  constructor(private empresa : EmpresaService){
 
   }
 
@@ -26,6 +27,12 @@ export class InfCorporativaComponent implements OnInit {
         url:"//cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
       }
     };
+
+    this.empresa.obtenerEmpresa("1").subscribe(data=>{
+      console.log(data);
+      this.info = data;
+    });
+
   }
 
   ngOnDestroy(): void {

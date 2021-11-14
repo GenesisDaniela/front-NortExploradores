@@ -25,12 +25,14 @@ import { AddTransportesComponent } from './pages/aliados/add-transportes/add-tra
 import { UpdateEmpleadoComponent } from './pages/empleados/update-empleado/update-empleado.component';
 import { TransportesComponent } from './pages/aliados/transportes/transportes.component';
 import { SegurosComponent } from './pages/aliados/seguros/seguros.component';
+import { EditInfoComponent } from './pages/inf-corporativa/edit-info/edit-info.component';
 
 const routes : Routes = [
   {path:"", 
     component:PrincipalComponent,
     children:[
       {path:"infoCorporativa", component:InfCorporativaComponent},
+        {path:"editInfo", component:EditInfoComponent},
       {path:"reportes", component:ReportesComponent},
       
         {path:"empleados", component:EmpleadosComponent},
