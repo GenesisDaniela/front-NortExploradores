@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmpresaService } from '../../../../services/empresa.service';
 
 @Component({
   selector: 'app-quienes-somos',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuienesSomosComponent implements OnInit {
 
-  constructor() { }
+  data:any;
+
+  constructor(private empresa: EmpresaService) { }
 
   ngOnInit(): void {
+    this.empresa.obtenerEmpresa("1").subscribe(data=>{
+      this.data=data;
+    })
   }
 
 }

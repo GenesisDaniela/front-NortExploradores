@@ -1,31 +1,49 @@
-<div class="container">
+<div style="display: flex; justify-content: center; margin-bottom: 25px;">
 
+  <div class="container" style="background-color: white; border-radius: 10px;" >
+    <h1 style="text-align: center; margin-top: 15px;">Experiencias Vividas</h1>
+    <div class="contenedor container" style="background-color: white;">
+      <div class="contenedor_tarjeta">
+        <a href="http://www.falconmasters.com">
+          <figure id="tarjeta">
+            <img src="../../../../../assets/img/deporte-extremo-4.jpg" class="frontal" alt="">
+            <figcaption class="trasera">
+              <h2 class="tit">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, vero!</h2>
+              <hr>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis cupiditate voluptates ipsum suscipit,
+                aspernatur eum, amet nemo architecto nihil corrupti.</p>
+            </figcaption>
+          </figure>
+        </a>
+      </div>
 
-  <h2 style="text-align: center; font-weight: bold;">Experiencias vividas</h2>
-  <!-- <h4 style="text-align: center; font-weight: bold;">Momentos magicos </h4> -->
+      <div class="contenedor_tarjeta">
+        <a href="http://www.falconmasters.com">
+          <figure id="tarjeta">
+            <img src="../../../../../assets/img/deporte-extremo-4.jpg" class="frontal" alt="">
+            <figcaption class="trasera">
+              <h2 class="tit">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, vero!</h2>
+              <hr>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis cupiditate voluptates ipsum suscipit,
+                aspernatur eum, amet nemo architecto nihil corrupti.</p>
+            </figcaption>
+          </figure>
+        </a>
+      </div>
 
-
-  <div class="contenedor">
-    
-    <div class="col-md-3" *ngFor="let exp of data" style="margin: 15px;">      
-      <div class="card-sl">
-        <div class="card-image">
-          <img style="height:100%; width: 840px" src="{{ exp.tour.paquete.urlImagen }}" />
-        </div>
-
-        <div class="card-heading" style="text-align: center;">
-          {{ exp.tour.paquete.municipio.nombre }}
-        </div>
-        <div class="card-text">
-          {{ exp.comentario }}
-        </div>
-        <div class="card-text" style=" border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;">
-          Calificación: {{ exp.puntuacion }}
-        </div>
-        
+      <div class="contenedor_tarjeta">
+        <a href="http://www.falconmasters.com">
+          <figure id="tarjeta">
+            <img src="../../../../../assets/img/deporte-extremo-4.jpg" class="frontal" alt="">
+            <figcaption class="trasera">
+              <h2 class="tit">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, vero!</h2>
+              <hr>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis cupiditate voluptates ipsum suscipit,
+                aspernatur eum, amet nemo architecto nihil corrupt.</p>
+            </figcaption>
+          </figure>
+        </a>
       </div>
     </div>
   </div>
-
 </div>
