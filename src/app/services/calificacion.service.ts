@@ -14,5 +14,17 @@ export class CalificacionService {
   public listar():Observable<any>{
     return this.http.get<any>(this.uri);
   }
+
+  public post(calificacion:any):Observable<any>{
+    return this.http.post<any>(this.uri, calificacion)
+  }
+
+  obtenerCalificacion(id:string): Observable<any>{
+    return this.http.get<any>(this.uri+id)
+  }
+
+  editarCalificacion(id:string,calificacion:any):Observable<any>{
+    return this.http.put<any>(this.uri,calificacion)
+  }
  
 }

@@ -24,7 +24,7 @@ export class EmpresaService {
   }
   
   editarEmpresa(id:string,empresa:any):Observable<any>{
-      return this.http.put(this.uri,empresa)
+      return this.http.put(`${global.url}/empresa`,empresa)
   }
 
   public listarTransportes():Observable<any>{

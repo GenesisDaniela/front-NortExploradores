@@ -32,7 +32,7 @@ const routes : Routes = [
     component:PrincipalComponent,
     children:[
       {path:"infoCorporativa", component:InfCorporativaComponent},
-        {path:"editInfo", component:EditInfoComponent},
+        {path:"editInfo/:idEmp", component:EditInfoComponent},
       {path:"reportes", component:ReportesComponent},
       
         {path:"empleados", component:EmpleadosComponent},
