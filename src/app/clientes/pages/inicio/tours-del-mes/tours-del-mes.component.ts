@@ -9,11 +9,14 @@ import { TourService } from '../../../../services/tour.service';
 })
 export class ToursDelMesComponent implements OnInit {
 
+  data:any;
+
   constructor(private tour: ToursService) { }
 
   ngOnInit(): void {
     this.tour.tourDelMes().subscribe(data=>{
       console.log(data);
+      this.data =data;
     })
   }
 

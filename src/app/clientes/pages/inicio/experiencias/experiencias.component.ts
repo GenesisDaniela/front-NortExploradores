@@ -15,9 +15,12 @@ export class ExperienciasComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.httpClient.listar().subscribe((data:any)=>{
+    this.httpClient.listar().subscribe(data=>{
       this.data = data;     
+      console.log(data);
     })
+
+    
   }
 
 }
