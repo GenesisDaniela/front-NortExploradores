@@ -47,6 +47,7 @@ import { SegurosComponent } from './pages/aliados/seguros/seguros.component';
 
 // toas tr
 import { ToastrModule } from 'ngx-toastr';
+import { EditInfoComponent } from './pages/inf-corporativa/edit-info/edit-info.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -74,7 +75,8 @@ import { ToastrModule } from 'ngx-toastr';
     AddTransportesComponent,
     UpdateEmpleadoComponent,
     TransportesComponent,
-    SegurosComponent
+    SegurosComponent,
+    EditInfoComponent
   ],
   imports: [
     CommonModule,

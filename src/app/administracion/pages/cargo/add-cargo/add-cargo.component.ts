@@ -52,6 +52,8 @@ export class AddCargoComponent implements OnInit {
         });
         this.router.navigate(["/administracion/cargos"]);
       });
+
+    
     }
 
     // CargoComponent.prototype.handleOk();

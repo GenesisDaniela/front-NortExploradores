@@ -14,7 +14,11 @@ import { NuestrosAliadosComponent } from './pages/inicio/nuestros-aliados/nuestr
 import { ToursDelMesComponent } from './pages/inicio/tours-del-mes/tours-del-mes.component';
 import { DesRutasComponent } from './pages/des-rutas/des-rutas.component';
 import { DetalleTourComponent } from './pages/tours/detalle-tour/detalle-tour.component';
+<<<<<<< HEAD
 import { AddExperienciaComponent } from './pages/inicio/experiencias/add-experiencia/add-experiencia.component';
+=======
+import { FormPagosComponent } from './pages/pagos/form-pagos/form-pagos.component';
+>>>>>>> ed86ca43f6382bbae87218e94571888595a825de
 
 const routes : Routes = [
   {path:"",
@@ -29,6 +33,7 @@ const routes : Routes = [
     {path:"contacto", component:ContactoComponent},
     {path:"pasadia", component:PasadiaComponent},  
     {path:"pasadia/detalletour/:idTour", component:DetalleTourComponent},
+    {path:"pago", component:FormPagosComponent},
     {path:"estadia", component:EstadiaComponent},
     {path:"estadia/detalletour/:idTour", component:DetalleTourComponent},
   
