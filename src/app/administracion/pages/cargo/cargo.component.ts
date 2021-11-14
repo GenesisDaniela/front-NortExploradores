@@ -39,6 +39,12 @@ export class CargoComponent implements OnInit, OnDestroy {
     this.dtTrigger.unsubscribe();
   }
 
+  deshabilitar(id:any){
+    this.httpClient.desabilitar(id).subscribe((data) => {  
+      console.log(id);
+      
+    });
+  }
 
 
 }

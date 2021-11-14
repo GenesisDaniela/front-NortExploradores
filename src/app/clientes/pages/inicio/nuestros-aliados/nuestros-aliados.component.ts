@@ -9,11 +9,20 @@ import { EmpresaService } from '../../../../services/empresa.service';
 export class NuestrosAliadosComponent implements OnInit {
 
   constructor(private empresas: EmpresaService) { }
-  data: any[]=[];
+  seguros: any[]=[];
+  transportes : any[]=[];
 
   ngOnInit(): void {
-    this.empresas.listarEmpresa().subscribe(empresa=>{
-      this.data=empresa;
+    // this.empresas.listarEmpresa().subscribe(empresa=>{
+    //   this.data=empresa;
+    // })
+
+    this.empresas.listarTransportes().subscribe(transportes=>{
+      this.transportes=transportes;
+    })
+
+    this.empresas.listarSeguros().subscribe(data=>{
+      this.seguros=data;
     })
   }
 

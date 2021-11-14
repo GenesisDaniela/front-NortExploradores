@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PasadiaComponent } from './pasadia.component';
+import { AddExperienciaComponent } from './add-experiencia.component';
 
-describe('PasadiaComponent', () => {
-  let component: PasadiaComponent;
-  let fixture: ComponentFixture<PasadiaComponent>;
+describe('AddExperienciaComponent', () => {
+  let component: AddExperienciaComponent;
+  let fixture: ComponentFixture<AddExperienciaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PasadiaComponent ]
+      declarations: [ AddExperienciaComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PasadiaComponent);
+    fixture = TestBed.createComponent(AddExperienciaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

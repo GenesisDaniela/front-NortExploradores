@@ -1,1 +1,29 @@
-<p>pasadia works!</p>
+<div class="body-pasadia">
+    <div>
+        <h3 style="text-align: center">Paquetes Pasadia</h3>
+    </div>
+
+    <div class="contenedor">
+        <div class="col-md-3" *ngFor="let tour of tours" style="margin: 15px;">
+            <div class="card-sl">
+                <div class="card-image">
+                    <img style="height:175px; width: 840px" src="{{tour.paquete.urlImagen }}" />
+                </div>
+
+                <div class="card-heading">
+                    {{tour.paquete.nombre}}
+                </div>
+                <div class="card-text">
+                    Precio:{{tour.paquete.precio}}
+                </div>
+                <div class="card-text">
+                   fechaSalida: {{tour.fechaSalida}}
+                  
+                </div>
+                <a routerLink="/estadia/detalletour/{{ tour.idTour }}"class="card-button"> Ver más </a>
+            </div>
+        </div>
+
+
+    </div>
+</div>

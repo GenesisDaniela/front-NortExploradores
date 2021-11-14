@@ -12,6 +12,10 @@ import { ViajesGrupalesComponent } from './pages/viajes-grupales/viajes-grupales
 import { FestividadesComponent } from './pages/festividades/festividades.component';
 import { NuestrosAliadosComponent } from './pages/inicio/nuestros-aliados/nuestros-aliados.component';
 import { ToursDelMesComponent } from './pages/inicio/tours-del-mes/tours-del-mes.component';
+import { DesRutasComponent } from './pages/des-rutas/des-rutas.component';
+import { DetalleTourComponent } from './pages/tours/detalle-tour/detalle-tour.component';
+import { AddExperienciaComponent } from './pages/inicio/experiencias/add-experiencia/add-experiencia.component';
+import { FormPagosComponent } from './pages/pagos/form-pagos/form-pagos.component';
 
 const routes : Routes = [
   {path:"",
@@ -20,10 +24,16 @@ const routes : Routes = [
     {path:"inicio", component:InicioComponent},
       {path:"nuestrosAliados", component:NuestrosAliadosComponent},
       {path:"toursDelMes", component:ToursDelMesComponent},
+      {path:"addExperiencia", component:AddExperienciaComponent},
     {path:"rutas", component:VerRutasComponent},
+    {path:"verRuta/:idRuta", component:DesRutasComponent},
     {path:"contacto", component:ContactoComponent},
-    {path:"pasadia", component:PasadiaComponent},
+    {path:"pasadia", component:PasadiaComponent},  
+    {path:"pasadia/detalletour/:idTour", component:DetalleTourComponent},
+    {path:"pago", component:FormPagosComponent},
     {path:"estadia", component:EstadiaComponent},
+    {path:"estadia/detalletour/:idTour", component:DetalleTourComponent},
+  
     {path:"recomendaciones", component:RecomendacionesComponent},
     {path:"viajesGrupales", component:ViajesGrupalesComponent},
     {path:"festividades", component:FestividadesComponent},

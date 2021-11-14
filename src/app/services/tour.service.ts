@@ -19,9 +19,19 @@ export class TourService {
    return this.http.get<any>(this.uri+"activos")
   }
 
+  public listarTourEstadia():Observable<any>{
+    return this.http.get<any>(this.uri+"estadia")
+   }
+
+  public listarTourPasadia():Observable<any>{
+    return this.http.get<any>(this.uri+"pasadia")
+  }
   public encontrarTour(idTour:any):Observable<any>{
     return this.http.get<any>(this.uri+idTour)
   }
+  // public encontrarT(id:number):Observable<any>{
+  //   return this.http.get<any>(`${this.uri}${id}`);
+  // }
 
   public post(tour:any):Observable<any>{
     return this.http.post<any>(this.uri, tour)

@@ -26,7 +26,9 @@ import { RecomendacionesComponent } from './pages/recomendaciones/recomendacione
 import { NuestrosAliadosComponent } from './pages/inicio/nuestros-aliados/nuestros-aliados.component';
 import { ToursDelMesComponent } from './pages/inicio/tours-del-mes/tours-del-mes.component';
 import { DesRutasComponent } from './pages/des-rutas/des-rutas.component';
-
+import { DetalleTourComponent } from './pages/tours/detalle-tour/detalle-tour.component';
+import { AddExperienciaComponent } from './pages/inicio/experiencias/add-experiencia/add-experiencia.component';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { DesRutasComponent } from './pages/des-rutas/des-rutas.component';
     RecomendacionesComponent,
     NuestrosAliadosComponent,
     ToursDelMesComponent,
-    DesRutasComponent
+    DesRutasComponent,
+    DetalleTourComponent,
+    AddExperienciaComponent
   ],
   imports: [
     CommonModule,
@@ -55,7 +59,8 @@ import { DesRutasComponent } from './pages/des-rutas/des-rutas.component';
     NzCarouselModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NzButtonModule
   ],
   exports:[]
 })

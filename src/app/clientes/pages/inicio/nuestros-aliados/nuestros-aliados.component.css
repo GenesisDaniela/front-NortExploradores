@@ -1,11 +1,16 @@
 .container{
     margin-top: 25px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 10px;
+    margin-bottom: 50px;
 }
 
 .empresas{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 30px;
 }
 
 .empresa{
