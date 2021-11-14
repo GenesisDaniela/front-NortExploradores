@@ -28,7 +28,7 @@ import { ToursDelMesComponent } from './pages/inicio/tours-del-mes/tours-del-mes
 import { DesRutasComponent } from './pages/des-rutas/des-rutas.component';
 import { DetalleTourComponent } from './pages/tours/detalle-tour/detalle-tour.component';
 import { AddExperienciaComponent } from './pages/inicio/experiencias/add-experiencia/add-experiencia.component';
-
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @NgModule({
   declarations: [
@@ -59,7 +59,8 @@ import { AddExperienciaComponent } from './pages/inicio/experiencias/add-experie
     NzCarouselModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NzButtonModule
   ],
   exports:[]
 })
