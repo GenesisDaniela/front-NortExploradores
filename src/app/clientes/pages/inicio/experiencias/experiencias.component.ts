@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CalificacionService } from '../../../../services/calificacion.service';
 
 @Component({
   selector: 'app-experiencias',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExperienciasComponent implements OnInit {
 
-  constructor() { }
+  data: any[] = [];
+
+  constructor(private httpClient: CalificacionService) { 
+    
+  }
 
   ngOnInit(): void {
+    this.httpClient.listar().subscribe((data:any)=>{
+      this.data = data;     
+    })
   }
 
 }
