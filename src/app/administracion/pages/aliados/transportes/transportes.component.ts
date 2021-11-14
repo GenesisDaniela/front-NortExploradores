@@ -39,4 +39,11 @@ export class TransportesComponent implements OnInit {
     this.dtTrigger.unsubscribe();
   }
 
+  deshabilitar(id:any){
+    this.tranporteService.deshabilitar(id).subscribe((data) => {  
+      console.log(id);
+      
+    });
+  }
+
 }

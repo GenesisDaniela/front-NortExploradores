@@ -26,4 +26,8 @@ export class SegurosService {
   editarSeguro(id:string,seguro:any):Observable<any>{
       return this.http.put(this.uri,seguro)
   }
+
+  deshabilitar(seguro:any):Observable<any>{
+    return this.http.get(this.uri+seguro+'/deshabilitar')
+  }
 }

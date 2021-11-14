@@ -27,6 +27,10 @@ export class TransportesService {
       return this.http.put(this.uri,transporte)
   }
 
+  deshabilitar(transporte:any):Observable<any>{
+    return this.http.get(this.uri+transporte+'/deshabilitar')
+  }
+
 
 
 
