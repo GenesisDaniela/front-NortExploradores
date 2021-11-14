@@ -54,6 +54,7 @@ export class HeaderComponent implements OnInit {
 
   } 
 
+
   isAdministrador(){
     if(this.roles.length == 2){
       this.isAdmin=true;

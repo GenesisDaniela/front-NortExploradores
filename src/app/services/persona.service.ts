@@ -15,5 +15,7 @@ export class PersonaService {
   public getPersona(idPersona:number):Observable<any>{
     return this.http.get<any>(this.uri+"/"+idPersona);
   }
-
+  public getPasajero(idPasajero:number):Observable<any>{
+    return this.http.get<any>(global.url+"/pasajero/"+idPasajero);
+  }
 }

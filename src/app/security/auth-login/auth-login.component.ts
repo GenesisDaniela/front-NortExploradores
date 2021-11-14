@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenService } from 'src/app/services/token.service';
 import { LoginUsuario } from '../models/login-usuario';
+
 @Component({
   selector: 'app-auth-login',
   templateUrl: './auth-login.component.html',
@@ -21,7 +23,7 @@ export class AuthLoginComponent implements OnInit {
     private tokenService: TokenService,
     private authService: AuthService,
     private router: Router,
-    // private toastr:ToastrService
+    private toastr:ToastrService
   ) { }
 
   ngOnInit() {
@@ -54,6 +56,7 @@ export class AuthLoginComponent implements OnInit {
         // this.toastr.success('Bienvenido ' + data.nombreUsuario, 'OK', {
         //   timeOut: 3000, positionClass: 'toast-top-center'
         // });
+        
         this.isAdministrador();
 
         if(this.isAdmin){
@@ -65,10 +68,10 @@ export class AuthLoginComponent implements OnInit {
       err => {
         this.isLogged = false;
         this.errMsj = err.error.message;
-        // this.toastr.error(this.errMsj, 'Fail', {
-        //   timeOut: 3000,  positionClass: 'toast-top-center',
-        // });
-        // console.log(err.error.message);
+        this.toastr.error(this.errMsj, 'Fail', {
+          timeOut: 3000,  positionClass: 'toast-top-center',
+        });
+        console.log(err.error.message);
       }
     );
   }
