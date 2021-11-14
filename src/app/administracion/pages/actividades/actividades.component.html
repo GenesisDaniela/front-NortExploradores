@@ -87,9 +87,28 @@
           <td>{{ acti.descripcion }}</td>
           <td> <img [src]="acti.urlImg" width="30%"  alt=""> </td>
           <td nzAlign="center">
-          <a style="margin-right: 10px;">
-            <i nz-icon nzType="stop" nzTheme="outline" style="font-size: 20px; color: red;"></i>
-          </a>
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+              tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Deshabilitar Actividad</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    Se ha deshabilitado la actividad
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Button trigger modal -->
+            <a style="margin-right: 10px;" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="deshabilitar(acti.idActividad)">
+              <i nz-icon nzType="stop" nzTheme="outline" style="font-size: 20px; color: red;"></i>
+            </a>
 
           <a [routerLink]="['/administracion/editarActividad',acti.idActividad]">
             <i

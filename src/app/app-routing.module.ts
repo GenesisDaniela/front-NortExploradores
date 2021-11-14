@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SolicitudComponent } from './administracion/pages/solicitud/solicitud.component';
 import { InicioComponent } from './clientes/pages/inicio/inicio.component';
 import { FormPagosComponent } from './clientes/pages/pagos/form-pagos/form-pagos.component';
+import { InformacionPagoComponent } from './clientes/pages/pagos/informacion-pago/informacion-pago/informacion-pago.component';
 import { AuthLoginComponent } from './security/auth-login/auth-login.component';
 import { AuthRegisterComponent } from './security/auth-register/auth-register.component';
 import { LoginUsuario } from './security/models/login-usuario';
@@ -15,7 +17,13 @@ const routes: Routes = [
     path:"registro",component:AuthRegisterComponent
   },
   {
+    path:"infpago",component:InformacionPagoComponent
+  },
+  {
     path:"pago",component:FormPagosComponent
+  },
+  {
+    path:"solicitudes",component:SolicitudComponent
   },
   {
     path:"administracion", 

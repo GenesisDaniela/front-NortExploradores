@@ -1,4 +1,3 @@
-<app-header></app-header>
 <!-- Pagina 1 -->
 <div class="glass form-pagos" *ngIf="infoPagina==1">
   <div class="row">
@@ -57,10 +56,11 @@
           <label for="firstName" class="form-label">Pasajeros que has llevado antes</label>
           <select class="form-select" (change)="actualizarPasajeros($event)" formControlName="paquete"
             aria-label="Default select example">
-            <option name="paquete" id="paq{{pasajero.idPasajero}}" *ngFor="let pasajero of pasajerosFrec"
-              value={{pasajero.persona.idPersona}}> {{pasajero.persona.nombre}} {{pasajero.persona.apellido}} -
+            <option name="paquete" id="paq{{pasajero.idPasajero}}" *ngFor="let pasajero of pasajerosFrec; let i=index"
+              value={{pasajero.idPasajero}}> {{pasajero.persona.nombre}} {{pasajero.persona.apellido}} -
               {{pasajero.persona.idPersona}}
             </option>
+            
           </select>
         </div>
 
@@ -289,7 +289,33 @@
 
       </div>
     </div>
+    <!-- FIN PAYU -->
+    <hr>
+    <p>PRUEBAS</p>
+    <!-- PAYU PRUEBAS -->
+
+    <form #formPrueb method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
+      <input name="merchantId"    type="hidden"  value="508029"   >
+      <input name="accountId"     type="hidden"  value={{idCuentaTest}} >
+      <input name="description"   type="hidden"  value="[TEST] {{descripcion}}"  >
+      <input name="referenceCode" type="hidden"  value={{idCompra}} >
+      <input name="amount"        type="hidden"  value={{totalCompra}}  >
+      <input name="tax"           type="hidden"  value={{iva}} >
+      <input name="taxReturnBase" type="hidden"  value={{iva*totalCompra}}  >
+      <input name="currency"      type="hidden"  value={{moneda}} >
+      <input name="signature"     type="hidden"  value={{firmaElectronicaMD5Test}}   >
+      <input name="test"          type="hidden"  value="1" >
+      <input name="buyerEmail"    type="hidden"  value="test@test.com" >
+      <input name="responseUrl"    type="hidden"  value="http://localhost:4200/infpago">
+      <input name="confirmationUrl" type="hidden"  value="https://nortexploradores.herokuapp.com/pagos/confirmacion" >
+
+      <button type="submit" class="" target="_blank" (click)="guardarCompra(formPrueb)" style="width: 140px;height: 40px;border-radius: 200px;border: 0px; background-color: white;" value="Pagar con PayU">
+        <img  style="width: 140px;height: 40px;" src="https://universidadreformadademiami.org/wp-content/uploads/2020/10/boton.png" />
+      </button>
+    </form>
+
+    <!--FIN PAYU PRUEBAS -->
+
   </div>
 </div>
-<app-footer></app-footer>
 

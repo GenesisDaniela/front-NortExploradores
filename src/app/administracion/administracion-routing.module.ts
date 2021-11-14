@@ -26,6 +26,7 @@ import { UpdateEmpleadoComponent } from './pages/empleados/update-empleado/updat
 import { TransportesComponent } from './pages/aliados/transportes/transportes.component';
 import { SegurosComponent } from './pages/aliados/seguros/seguros.component';
 import { EditInfoComponent } from './pages/inf-corporativa/edit-info/edit-info.component';
+import { SolicitudComponent } from './pages/solicitud/solicitud.component';
 
 const routes : Routes = [
   {path:"", 
@@ -35,6 +36,10 @@ const routes : Routes = [
         {path:"editInfo/:idEmp", component:EditInfoComponent},
       {path:"reportes", component:ReportesComponent},
       
+      {
+        path:"solicitudes",component:SolicitudComponent
+      },
+
         {path:"empleados", component:EmpleadosComponent},
         {path:"nuevoEmpleado", component:AddEmpleadoComponent},
         {path:"editarEmpleado/:idEmpleado", component:AddEmpleadoComponent},

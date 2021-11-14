@@ -39,4 +39,10 @@ export class EmpleadosComponent implements OnDestroy, OnInit {
     this.dtTrigger.unsubscribe();
   }
 
+  deshabilitar(id:any){
+    this.httpClient.deshabilitar(id).subscribe((data) => {  
+      console.log(id);
+    });
+  }
+
 }
