@@ -73,23 +73,23 @@
       >
         <thead class="table-dark">
           <tr>
-            <th>NOMBRE</th>
-            <th>APELLIDO</th>
-            <th>GÉNERO</th>
-            <th>FECHA DE NACIMIENTO</th>
-            <th>CELULAR</th>          
+            <th>ID</th>
+            <th>USERNAME</th>
+            <th>NOMBRE Y APPELIDO</th>
+            <th>TELEFONO</th>
             <th>CORREO</th>
             <th>OPCIÓN</th>      
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let clien of data">
-              <td>{{ clien.persona.nombre }}</td>
-              <td>{{ clien.persona.apellido }}</td>
-              <td>{{ clien.persona.sexo }}</td>
-              <td>{{ clien.persona.fechaNac }}</td>
-              <td>{{ clien.persona.cel }}</td>            
+            <td>{{clien.idPasajero}}</td>
+              <td>{{clien.usuario.username}}</td>
+              <td>{{clien.persona.nombre}} {{clien.persona.apellido}}</td>
+              <td>{{clien.persona.cel}}</td>
               <td>{{ clien.persona.correo }}</td>                       
+              
+              <!-- <td>{{ clien.persona.cel }}</td>             -->
             <td nzAlign="center">
               <a style="margin-right: 10px;">
                 <i nz-icon nzType="stop" nzTheme="outline" style="font-size: 20px; color: red;"></i>

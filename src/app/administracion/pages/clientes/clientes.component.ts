@@ -30,6 +30,7 @@ export class ClientesComponent implements OnInit {
     };
     this.httpClient.listarCliente().subscribe((data:any)=>{
       this.data = data;
+      console.log(data)
       this.dtTrigger.next();
     })
   }
