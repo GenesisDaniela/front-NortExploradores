@@ -34,6 +34,10 @@ export class PrincipalComponent implements OnInit {
 
   }
 
+  onLogOut(): void {
+    this.tokenS.logOut();
+  }
+
   onBack(): void {
     console.log('onBack');
   }
