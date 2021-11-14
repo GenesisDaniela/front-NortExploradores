@@ -26,4 +26,8 @@ export class EmpleadosService {
   editarEmpleado(empleado:any):Observable<any>{
     return this.http.put(this.url,empleado);
   }
+
+  deshabilitar(cargo:any):Observable<any>{
+    return this.http.get(this.url+cargo+'/deshabilitar')
+  }
 }

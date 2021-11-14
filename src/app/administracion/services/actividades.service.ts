@@ -24,5 +24,8 @@ export class ActividadesService {
   editarActividad(id:string,actividad:any):Observable<any>{
     return this.http.put<any>(this.url,actividad)
   }
+  desabilitar(actividad:any):Observable<any>{
+    return this.http.get(this.url+actividad+'/deshabilitar')
+  }
 
 }

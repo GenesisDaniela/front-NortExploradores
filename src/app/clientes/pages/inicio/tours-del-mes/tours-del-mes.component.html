@@ -21,19 +21,20 @@
     <div class="row">
         <div class="col-lg-7 info">
             <!-- TODO: NOMBRE DEL PUEBLO -->
-            <h3 style="font-weight: bold; font-family: 'Roboto', sans-serif;">Cacota - Norte De Santander</h3>
+            <h3 style="font-weight: bold; font-family: 'Roboto', sans-serif;">{{data.paquete.municipio.nombre}} - {{data.paquete.municipio.idDepto.nombre}}</h3>
             <!-- TODO: DESCRIPCION -->
-            <h5 style="font-family: 'Roboto', sans-serif;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident omnis neque delectus et minus dignissimos nostrum. Assumenda, consequatur sunt quas temporibus quod explicabo. Exercitationem nisi rem saepe eaque, consequuntur sed?
-            Itaque animi iusto sit impedit beatae similique expedita fugiat saepe ea tenetur fuga sint, eum ipsum nisi dolores, dolorem magni modi eaque deleniti blanditiis ducimus quam doloremque vitae! Facere, nemo.</h5>
+            <h5 style="font-family: 'Roboto', sans-serif;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque nisi possimus repellendus recusandae temporibus numquam harum corporis fuga distinctio consequuntur molestias quia eum eos, dicta vero mollitia omnis. Esse, tempora!
+            Nobis eveniet aliquid facere voluptates sint! Voluptates, perspiciatis? Soluta, perspiciatis inventore deserunt voluptatum obcaecati dolor laudantium accusantium? Vero corrupti explicabo cupiditate facere expedita dolorem velit, beatae adipisci provident molestias sunt.
+            Hic itaque sapiente sint. Vero harum est tempore quod excepturi recusandae vitae, consectetur, ipsam eveniet exercitationem dolore incidunt iste, reprehenderit doloribus delectus facere repudiandae impedit accusamus esse laudantium doloremque! In.</h5>
 
-            <h4>Alojamiento: Nombre del Alojamiento</h4>
+            <h4>Alojamiento: {{data.paquete.alojamiento.nombre}}</h4>
 
-            <h4>Recomendaciones: </h4>
+            <h4>Recomendaciones: {{data.paquete.recomendacion}}</h4>
 
-            <h4>Precio: $$$</h4>
+            <h4>Precio: $ {{data.paquete.precio}}</h4>
         </div>
 
-        <div class="col-lg-5 img" style="background-color: green;">
+        <div class="col-lg-5 img" style="background-image: url({{data.paquete.urlImagen}});">
             
         </div>
     </div>

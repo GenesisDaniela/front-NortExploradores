@@ -2,22 +2,27 @@
 
   <div class="container" style="background-color: white; border-radius: 10px;" >
     <h1 style="text-align: center; margin-top: 15px;">Experiencias Vividas</h1>
+
     <div class="contenedor container" style="background-color: white;">
-      <div class="contenedor_tarjeta">
+
+      <div class="contenedor_tarjeta" *ngFor="let experiencia of data">
         <a href="http://www.falconmasters.com">
           <figure id="tarjeta">
-            <img src="../../../../../assets/img/deporte-extremo-4.jpg" class="frontal" alt="">
+            <img src="{{experiencia.tour.paquete.urlImagen}}" class="frontal" alt="">
             <figcaption class="trasera">
-              <h2 class="tit">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, vero!</h2>
+              <h2 class="tit" style="text-align: center;">{{experiencia.tour.paquete.municipio.nombre}} - {{experiencia.tour.paquete.municipio.idDepto.nombre}}</h2>
               <hr>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis cupiditate voluptates ipsum suscipit,
-                aspernatur eum, amet nemo architecto nihil corrupti.</p>
+              <h5>Puntuación: {{experiencia.puntuacion}} / 5</h5>
+              <h5>Usuario : {{experiencia.usuario.username}}</h5>
+              <hr>
+              <!-- <p>{{experiencia.comentario}}</p> -->
+              <p style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est voluptatem neque rem facilis deserunt. Aspernatur, maiores, culpa debitis dicta magnam pariatur optio doloremque, inventore modi in magni eligendi assumenda ut.</p>
             </figcaption>
           </figure>
         </a>
       </div>
 
-      <div class="contenedor_tarjeta">
+      <!-- <div class="contenedor_tarjeta">
         <a href="http://www.falconmasters.com">
           <figure id="tarjeta">
             <img src="../../../../../assets/img/deporte-extremo-4.jpg" class="frontal" alt="">
@@ -43,7 +48,7 @@
             </figcaption>
           </figure>
         </a>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

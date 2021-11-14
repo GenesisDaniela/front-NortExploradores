@@ -38,5 +38,12 @@ export class AlojamientosComponent implements OnInit {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
   }
+  
+  deshabilitar(id:any){
+    this.httpClient.desabilitar(id).subscribe((data) => {  
+      console.log(id);
+      
+    });
+  }
 
 }

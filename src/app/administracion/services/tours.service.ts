@@ -39,4 +39,7 @@ export class ToursService {
     const mes = "tourDelMes"
     return this.http.get<any>(`${this.uri}${mes}`);
   }
+  deshabilitar(tour:any):Observable<any>{
+    return this.http.get(this.uri+tour+'/deshabilitar')
+  }
 }

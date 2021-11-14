@@ -8,11 +8,15 @@ import * as global from 'global';
 })
 export class ClientesService {
 
-  url = `${global.url}/pasajero/`;
+  // TODO: CAMBIE ESTA RUTA POR LA DE ABAJO
+  // url = `${global.url}/pasajero/`;
+
+  url = `${global.url}/pasajero/clientes`;
 
   constructor(private http: HttpClient) { }
 
   public listarCliente():Observable<any>{    
     return this.http.get<any>(this.url);
   }
+  
 }

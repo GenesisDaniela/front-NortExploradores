@@ -26,7 +26,7 @@ export class CargosService {
     return this.http.put(this.uri,cargo)
   }
 
-  desabilitar(cargo:any):Observable<any>{
+  deshabilitar(cargo:any):Observable<any>{
     return this.http.get(this.uri+cargo+'/deshabilitar')
   }
 }

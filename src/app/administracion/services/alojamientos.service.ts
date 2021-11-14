@@ -25,5 +25,8 @@ export class AlojamientosService {
   editarAlojamiento(id:string,alojamiento:any):Observable<any>{
     return this.http.put<any>(this.url,alojamiento)
   }
+  desabilitar(alojamiento:any):Observable<any>{
+    return this.http.get(this.url+alojamiento+'/deshabilitar')
+  }
 
 }
