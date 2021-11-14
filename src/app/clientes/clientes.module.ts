@@ -27,6 +27,7 @@ import { NuestrosAliadosComponent } from './pages/inicio/nuestros-aliados/nuestr
 import { ToursDelMesComponent } from './pages/inicio/tours-del-mes/tours-del-mes.component';
 import { DesRutasComponent } from './pages/des-rutas/des-rutas.component';
 import { DetalleTourComponent } from './pages/tours/detalle-tour/detalle-tour.component';
+import { AddExperienciaComponent } from './pages/inicio/experiencias/add-experiencia/add-experiencia.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { DetalleTourComponent } from './pages/tours/detalle-tour/detalle-tour.co
     NuestrosAliadosComponent,
     ToursDelMesComponent,
     DesRutasComponent,
-    DetalleTourComponent
+    DetalleTourComponent,
+    AddExperienciaComponent
   ],
   imports: [
     CommonModule,

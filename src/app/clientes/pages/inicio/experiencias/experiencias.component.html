@@ -1,8 +1,8 @@
-<div class="container">
+<!-- <div class="container">
 
 
   <h2 style="text-align: center; font-weight: bold;">Experiencias vividas</h2>
-  <!-- <h4 style="text-align: center; font-weight: bold;">Momentos magicos </h4> -->
+  
 
 
   <div class="contenedor">
@@ -28,4 +28,29 @@
     </div>
   </div>
 
+</div> -->
+
+<div class="container-fluid" style="margin-top: 25px;">
+  
+  
+
+  <div class="container" style="padding-bottom: 10px;">
+
+    <h1 style="text-align: center;">Experiencias Vividas</h1>
+   
+    <div class="alicar">
+
+      <div class="card" *ngFor="let exp of data" style="background-image: url({{exp.tour.paquete.urlImagen}});">
+          <h1>{{ exp.tour.paquete.municipio.nombre }}</h1>
+          <p>{{ exp.comentario }}</p>
+          <div class="card-text">
+            Puntaje: {{ exp.puntuacion}}
+        </div>
+      </div>
+      
+      <a routerLink="/cliente/addExperiencia" nz-button nzType="primary"><i nz-icon nzType="user-add" nzTheme="outline" style="padding-bottom: 2px;"></i>¡Coméntanos tu experiencia!</a>
+      
+    </div>
+      
+    </div>
 </div>
