@@ -121,9 +121,30 @@
             <!-- <td>{{ item.ruta.idRuta }}</td>
         <td>{{ item.seguro.nombre }}</td> -->
             <td nzAlign="center">
-              <a style="margin-right: 10px;">
+              <!-- Modal -->
+              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">Deshabilitar Tour</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Se ha deshabilitado el Tour: {{item.paquete.nombre}}
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Button trigger modal -->
+              <a style="margin-right: 10px;" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                (click)="deshabilitar(item.idTour)">
                 <i nz-icon nzType="stop" nzTheme="outline" style="font-size: 20px; color: red;"></i>
               </a>
+
 
               <a [routerLink]="['/administracion/editarTour',item.idTour]">
                 <i nz-icon nzType="edit" nzTheme="outline" style="font-size: 20px"></i>
