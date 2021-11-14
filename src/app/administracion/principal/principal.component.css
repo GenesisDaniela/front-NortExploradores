@@ -62,7 +62,7 @@
 }
 
  */
- :host {
+:host {
   display: flex;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -72,6 +72,7 @@
 
 .app-layout {
   height: 100vh;
+  width: 100%;
 }
 
 .menu-sidebar {
@@ -128,18 +129,14 @@ nz-header {
   padding: 0;
   width: 100%;
   z-index: 2;
-  /* position: absolute; */
 }
 
 .app-header {
   position: relative;
   height: 64px;
   padding: 0;
-  /* background: #fff; */
   background: #27293d;
   box-shadow: 0 1px 4px rgba(0,21,41,.08);
-  /* display: flex;
-  flex-wrap: wrap; */
 }
 
 nz-content {
