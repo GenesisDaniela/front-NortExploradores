@@ -1,63 +1,3 @@
-<!-- <div class="container-fluid">
-    <h3 style="text-align: center" class="gestiones">ADMINISTRACIÓN DE CARGOS</h3>
-  
-    <div style="text-align: right; margin: 0;">
-      <a nz-button nzType="primary" routerLink="/administracion/nuevoCargo">
-        <i nz-icon nzType="user-add" nzTheme="outline"></i>Agregar Cargo
-      </a>
-    </div>
-  
-    <br />
-    <table
-      datatable
-      [dtOptions]="dtOptions"
-      [dtTrigger]="dtTrigger"
-      class="table table-striped table-bordered row-border hover"
-    >
-      <thead class="table-dark">
-        <tr>
-          <th>ID</th>
-          <th>NOMBRE</th>
-          <th>DESCRIPCIÓN</th>
-          <th>SUELDO</th>
-          <th>OPCIONES</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of data">
-            <td>{{ item.idCargo}}</td>
-            <td>{{ item.nombre }}</td>
-            <td>{{ item.descripcion}}</td>
-            <td>{{ item.sueldo }}</td>
-            
-          <td nzAlign="center">
-            <a href="http://localhost:4200/empleado/{{item.idEmpleado}}" style="margin-right: 2px; margin-right: 10px">
-              <i
-                nz-icon
-                nzType="delete"
-                nzTheme="outline"
-                style="font-size: 20px; color: red"
-              ></i>
-            </a>
-  
-           
-              <i [routerLink]="['/administracion/editarCargo',item.idCargo]" 
-                nz-icon
-                nzType="edit"
-                nzTheme="outline"
-                style="font-size: 20px"
-              ></i>
-          
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-   -->
-
-
-<!-- TODO: MOSTRAR A TODOS PARA LA APROBACIÓN -->
-
 <div class="container-fluid">
   <div class="cajon">
     <div class="titulo">
@@ -67,27 +7,15 @@
     </div>
 
     <div style="text-align: right; margin: 0;">
-
-      <!-- <button nz-button [nzType]="'primary'" (click)="showModal()"><span>Show Modal</span></button>
-        <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
-          <ng-container *nzModalContent>
-            <app-add-cargo></app-add-cargo>
-          </ng-container>
-        </nz-modal> -->
-
-
       <div style="text-align: right; margin: 0;">
         <a nz-button nzType="primary" routerLink="/administracion/nuevoCargo">
           <i nz-icon nzType="user-add" nzTheme="outline"></i>Agregar Cargo
         </a>
       </div>
-
-
-
     </div>
 
     <div class="table">
-      
+
       <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
         class="table table-striped table-bordered row-border hover">
         <thead class="table-dark">
@@ -107,59 +35,37 @@
             <td>{{ item.sueldo }}</td>
 
             <td nzAlign="center">
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        ...
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                      </div>
+              <!-- Modal -->
+              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">Deshabilitar Cargo</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Se ha deshabilitado el cargo: {{item.nombre}}
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
                     </div>
                   </div>
+                </div>
               </div>
-
               <!-- Button trigger modal -->
-
-<a style="margin-right: 10px;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <a style="margin-right: 10px;" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="deshabilitar(item.idCargo)">
                 <i nz-icon nzType="stop" nzTheme="outline" style="font-size: 20px; color: red;"></i>
               </a>
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Deshabilitar Cargo</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Estas seguro de deshabilitar el Cargo
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Guadar</button>
-      </div>
-    </div>
-  </div>
-</div>
-              
-
               <a [routerLink]="['/administracion/editarCargo',item.idCargo]">
                 <i nz-icon nzType="edit" nzTheme="outline" style="font-size: 20px"></i>
               </a>
             </td>
           </tr>
+
         </tbody>
       </table>
+
     </div>
   </div>
 </div>
