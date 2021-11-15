@@ -1,0 +1,41 @@
+.container{
+    margin-top: 25px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.tarjetas{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.mes{
+    width: 350px;
+    height: 500px;
+    /* background-color: yellow; */
+    margin: 5px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 1px 38px rgba(0, 0, 0, 0.15), 0 5px 12px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+}
+
+.img{
+    height: 50%;
+    /* background-color: violet; */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.contenido{
+    height: 50%;
+    padding: 10px;
+    /* background-color: violet; */
+}
