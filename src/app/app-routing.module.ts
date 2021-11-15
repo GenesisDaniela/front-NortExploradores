@@ -10,12 +10,12 @@ import { LoginUsuario } from './security/models/login-usuario';
 import { ErrorPagesComponent } from './shared/error-pages/error-pages.component';
 
 const routes: Routes = [
-  {
-    path:"login",component:AuthLoginComponent
-  },
-  {
-    path:"registro",component:AuthRegisterComponent
-  },
+  // {
+  //   path:"login",component:AuthLoginComponent
+  // },
+  // {
+  //   path:"registro",component:AuthRegisterComponent
+  // },
   {
     path:"infpago",component:InformacionPagoComponent
   },

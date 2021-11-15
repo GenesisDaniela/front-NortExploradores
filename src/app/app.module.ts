@@ -37,6 +37,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 
 
 
+
 registerLocaleData(es);
 
 @NgModule({
@@ -57,6 +58,7 @@ registerLocaleData(es);
     AdministracionModule,
     ClientesModule,
     DataTablesModule,
+    // SecurityModule
   ],
   providers: [{ provide: NZ_I18N, useValue: es_ES },
     PaqueteService,

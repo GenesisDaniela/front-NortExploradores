@@ -49,6 +49,7 @@ import { SegurosComponent } from './pages/aliados/seguros/seguros.component';
 import { ToastrModule } from 'ngx-toastr';
 import { EditInfoComponent } from './pages/inf-corporativa/edit-info/edit-info.component';
 import { SolicitudComponent } from './pages/solicitud/solicitud.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -78,7 +79,8 @@ import { SolicitudComponent } from './pages/solicitud/solicitud.component';
     TransportesComponent,
     SegurosComponent,
     EditInfoComponent,
-    SolicitudComponent
+    SolicitudComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,

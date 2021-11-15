@@ -27,6 +27,7 @@ import { TransportesComponent } from './pages/aliados/transportes/transportes.co
 import { SegurosComponent } from './pages/aliados/seguros/seguros.component';
 import { EditInfoComponent } from './pages/inf-corporativa/edit-info/edit-info.component';
 import { SolicitudComponent } from './pages/solicitud/solicitud.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes : Routes = [
   {path:"", 
@@ -83,7 +84,7 @@ const routes : Routes = [
       {path:"nuevoTour", component:AddTourComponent},
       {path:"editarTour/:idTour", component:AddTourComponent},
 
-
+      {path:"dashboard", component:DashboardComponent},
 
       {path:"calendario", component:CalendarioComponent},
       {path:"**", redirectTo:"reportes"}

@@ -9,7 +9,7 @@ import { NzButtonSize } from 'ng-zorro-antd/button';
   styleUrls: ['./actividades.component.css']
 })
 export class ActividadesComponent implements OnInit {
-
+  deshabilitado=false;
   size: NzButtonSize = 'large';
   dtOptions: DataTables.Settings = {};
   

@@ -16,6 +16,8 @@ import { DesRutasComponent } from './pages/des-rutas/des-rutas.component';
 import { DetalleTourComponent } from './pages/tours/detalle-tour/detalle-tour.component';
 import { AddExperienciaComponent } from './pages/inicio/experiencias/add-experiencia/add-experiencia.component';
 import { FormPagosComponent } from './pages/pagos/form-pagos/form-pagos.component';
+import { AuthLoginComponent } from '../security/auth-login/auth-login.component';
+import { AuthRegisterComponent } from '../security/auth-register/auth-register.component';
 
 const routes : Routes = [
   {path:"",
@@ -37,6 +39,8 @@ const routes : Routes = [
     {path:"recomendaciones", component:RecomendacionesComponent},
     {path:"viajesGrupales", component:ViajesGrupalesComponent},
     {path:"festividades", component:FestividadesComponent},
+    {path:"login", component:AuthLoginComponent},
+    {path:"registro", component:AuthRegisterComponent},
     {path:"**", redirectTo:"inicio"}
   ]}
 ]
