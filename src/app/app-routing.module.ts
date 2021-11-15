@@ -23,7 +23,7 @@ const routes: Routes = [
     path:"pago",component:FormPagosComponent
   },
   {
-    path:"solicitudes",component:SolicitudComponent
+    path:"pago/:idPago",component:FormPagosComponent
   },
   {
     path:"administracion", 

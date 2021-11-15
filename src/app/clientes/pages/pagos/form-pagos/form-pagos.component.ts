@@ -11,6 +11,7 @@ import { TokenService } from 'src/app/services/token.service';
 import { TourService } from 'src/app/services/tour.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
  import * as crypto from "crypto-js"; 
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-form-pagos',
@@ -85,7 +86,9 @@ export class FormPagosComponent implements OnInit {
     private formBuilder : FormBuilder,
     private tourService:TourService,
     private compraService: CompraService,
-    private detalleCompra: DetcompraService 
+    private detalleCompra: DetcompraService,
+    private toastr:ToastrService
+
     ){}
 
   ngOnInit(): void {
@@ -188,13 +191,23 @@ export class FormPagosComponent implements OnInit {
   createpagosInfo(){
     console.log('data is ', this.pagosInfo.value.pasajeros);
     let datosIncorrectos:Boolean = false;
+    let msg = "";
 
     let personas = this.pagosInfo.value.pasajeros;
     let pasajeros = [];
 
-    if(this.tourSeleccionado ==undefined){
+    if(this.tourSeleccionado ==undefined ){
       datosIncorrectos=true
+      msg="¡Debes seleccionar un tour!";
+    }else{
+      if(this.tourSeleccionado.cantCupos ==0 ){
+        datosIncorrectos=true
+        msg="¡No hay cupos disponibles para el tour!";
+      }
     }
+
+    
+
 
     for (let i = 0; i < personas.length && datosIncorrectos==false; i++) {
         let pasajero =personas[i];
@@ -207,6 +220,7 @@ export class FormPagosComponent implements OnInit {
 
         if(pasajero =='' || idPerson =='' || nombre =='' || fechaNac=='' || cel =='' || correo ==''){
           datosIncorrectos =true;
+          msg="!Los campos no pueden ser vacíos!"
           break;
         }
 
@@ -273,11 +287,16 @@ export class FormPagosComponent implements OnInit {
     }
     console.log(this.pasajerosClasificados);
     const output = document.getElementById("errorPresentado");
+        
     if(datosIncorrectos==true){
-      if (output) output.innerHTML = "Campos mal puestos!";
+      this.toastr.error(msg, 'ERROR', {
+            timeOut: 3000, positionClass: 'toast-top-center'
+      });
+      // if (output) output.innerHTML = msg;
       return;
 
     }else{
+      
       if (output) output.innerHTML = "";
     }
 
@@ -286,6 +305,10 @@ export class FormPagosComponent implements OnInit {
       this.pasajerosTotal = pasajeros;
     });
     
+    this.toastr.success("Datos correctos", 'Ok', {
+      timeOut: 3000, positionClass: 'toast-top-center'
+    });
+
     this.infoPagina=2;
     this.pagosInfo.markAllAsTouched();
   }
@@ -355,6 +378,9 @@ export class FormPagosComponent implements OnInit {
         this.persona = pasajeros[i].persona;
         this.total++;
         let pasajeroX = this.pagosInfo.get('pasajeros') as FormArray;
+
+
+
         pasajeroX.push(
           this.formBuilder.group({
           idTipo : [this.persona.idTipo.idTipo, [Validators.required]],
@@ -482,6 +508,10 @@ guardarCompra(form:HTMLFormElement){
     usuario:this.usuario.id_Usuario,
     tour: this.tourSeleccionado.idTour
   }
+
+  this.toastr.warning("Cargando...", 'Espere', {
+    timeOut: 3000, positionClass: 'toast-top-center'
+  });
 
   this.compraService.post(compra,this.tourSeleccionado.idTour).subscribe(compra=>{
     

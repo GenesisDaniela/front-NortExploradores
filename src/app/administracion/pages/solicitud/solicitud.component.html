@@ -1,14 +1,15 @@
-
 <div class="row mt-4">
     <div class="col"></div>
-    <div class="col-8 bg-light rounded-3">
-
-    <form [formGroup]="formTour" (submit)="enviarData()">
+    <div class="col-8 bg-light ">
+  
+      <form [formGroup]="form" (submit)="enviarData()">
         <div class="mb-3 row">
           <div class="col-sm-2"></div>
-          <h4 class="col-sm-10">Guardar tour</h4>
+          <h4 class="col-sm-10">{{titulo | uppercase}}</h4>
         </div>
-
+        
+        
+       
         <input formControlName="idTour" hidden type="text" class="form-control" id="inputRuta">
         <div class="row mb-3">
           <label for="inputMinCupo" class="col-sm-2 col-form-label">Min Cupo</label>
@@ -37,6 +38,13 @@
             <input formControlName = "fechaSalida" type="date" class="form-control" id="inputFechaSalida">
           </div>
         </div>
+  
+        <!-- <div class="row mb-3">
+          <label for="inputEstado" class="col-sm-2 col-form-label">Estado</label>
+          <div class="col-sm-10">
+            <input formControlName = "estado" type="text" class="form-control" id="inputEstado">
+          </div>
+        </div> -->
 
         <div class="mb-3 row">
           <div class="col-sm-0"></div>
@@ -49,18 +57,7 @@
             </select>
           </div>
         </div>
-  
-        <div class="mb-3 row">
-          <div class="col-sm-0"></div>
-          <label class="col-sm-2 col-form-label">Paquete</label>
-          <div class="col-sm-10">
-            <select formControlName = "paquete" class="form-select" aria-label="Default select example">
-              <option *ngFor="let paquete of paquetes" name="paquete" id="paq{{paquete.idPaq}}" 
-              value={{paquete.idPaq}}>
-                {{paquete.nombre}}</option>
-            </select>
-          </div>
-        </div>
+  <hr>
   
         <div  class="mb-3 row">
           <div class="col-sm-0"></div>
@@ -85,14 +82,85 @@
             </select>
           </div>
         </div>
+
+        <input formControlName="idPaq" hidden type="number" class="form-control" id="inputPaq">
+
+        <div class="row mb-3">
+            <label for="inputPrecio" class="col-sm-2 col-form-label">Precio</label>
+            <div class="col-sm-10">
+                <input formControlName="precio" type="number" class="form-control" id="inputPrecio">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="inputEstado" class="col-sm-2 col-form-label">Estado</label>
+            <div class="col-sm-10">
+                <select formControlName="estado" type="text" class="form-control" id="inputEstado">
+                    <option value="false">Inactivo</option>
+                    <option value="true">Activo</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="inputIMG" class="col-sm-2 col-form-label"> URL IMG</label>
+            <div class="col-sm-10">
+                <input formControlName="urlImagen" type="text" class="form-control" id="inputIMG">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="inputDescripcion" class="col-sm-2 col-form-label">Descripcion</label>
+            <div class="col-sm-10">
+                <textarea style="resize: none" formControlName="descripcion" class="form-control"
+                    id="inputDescripcion" rows="3"></textarea>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="inputRecomendacion" class="col-sm-2 col-form-label">Recomendacion</label>
+            <div class="col-sm-10">
+                <input formControlName="recomendacion" type="text" class="form-control" id="inputRecomendacion">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="inputNombre" class="col-sm-2 col-form-label">Nombre</label>
+            <div class="col-sm-10">
+                <input formControlName="nombre" type="text" class="form-control" id="inputNombre">
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <div class="col-sm-0"></div>
+            <label class="col-sm-2 col-form-label">Alojamiento</label>
+            <div class="col-sm-10">
+                <select formControlName="alojamiento" class="form-select" aria-label="Default select example">
+                    <option *ngFor="let alojamiento of alojamientos" name="alojamiento"
+                        id="aloj{{alojamiento.idAlojamiento}}" value={{alojamiento.idAlojamiento}}>
+                        {{alojamiento.nombre}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <div class="col-sm-0"></div>
+            <label class="col-sm-2 col-form-label">Municipio</label>
+            <div class="col-sm-10">
+                <select formControlName="municipio" class="form-select" aria-label="Default select example">
+                    <option *ngFor="let municipio of municipios" name="municipio" id="muni{{municipio.idMuni}}"
+                        value={{municipio.idMuni}}>
+                        {{municipio.nombre}}</option>
+                </select>
+            </div>
+
+        </div>
   
         <div class="d-grid gap-2 col-6 mx-auto">
           <button class="btn btn-primary" type="submit">{{boton | uppercase}}</button>
           <div class="col-sm-0"></div>
         </div>
-    </form>
-
+      </form>
     </div>
     <div class="col"></div>
-</div>
-  <!--  -->
+  </div>
