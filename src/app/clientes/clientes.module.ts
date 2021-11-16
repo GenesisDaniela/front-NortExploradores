@@ -29,6 +29,7 @@ import { DesRutasComponent } from './pages/des-rutas/des-rutas.component';
 import { DetalleTourComponent } from './pages/tours/detalle-tour/detalle-tour.component';
 import { AddExperienciaComponent } from './pages/inicio/experiencias/add-experiencia/add-experiencia.component';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { MaletaComponent } from './pages/maleta/maleta.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     ToursDelMesComponent,
     DesRutasComponent,
     DetalleTourComponent,
-    AddExperienciaComponent
+    AddExperienciaComponent,
+    MaletaComponent
   ],
   imports: [
     CommonModule,

@@ -9,9 +9,9 @@ font-family: Arial, Helvetica, sans-serif;
 background-color: rgba(229, 229, 229, 1);
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   display: none;
-}
+} */
 
 /* toast tr */
 /* @import '~ngx-toastr/toastr'; */
