@@ -1,9 +1,32 @@
-<!-- Pagina 1 -->
+<!-- Pagina 1  -->
 <app-header></app-header>
-<div class="glass form-pagos" *ngIf="infoPagina==1">
-  <div class="row">
-    <h1>Formulario de Reserva</h1>
 
+
+<div class="md-stepper-horizontal orange" style="margin-bottom: 20px;">
+  <div class="md-step active">
+    <div class="md-step-circle" id="comprastep"><span><i class="fas fa-cash-register"></i></span></div>
+    <div class="md-step-title">Información de compra</div>
+    <div class="md-step-bar-left"></div>
+    <div class="md-step-bar-right"></div>
+  </div>
+  <div class="md-step">
+    <div class="md-step-circle" id="facturastep"><span><i class="fas fa-receipt"></i></span></div>
+    <div class="md-step-title">Verificar factura</div>
+    <div class="md-step-bar-left"></div>
+    <div class="md-step-bar-right"></div>
+  </div>
+  <div class="md-step">
+    <div class="md-step-circle" id="pagostep"><span><i class="fas fa-shopping-cart"></i></span></div>
+    <div class="md-step-title">Realizar pago</div>
+    <div class="md-step-bar-left"></div>
+    <div class="md-step-bar-right"></div>
+  </div>
+</div>
+
+<div class="glass form-pagos" style="margin:50px" *ngIf="infoPagina==1">
+  <h1>Formulario de Reserva</h1>
+
+  <div class="row">
     <div class="mb-2 row" *ngIf="pasajerosFrecElegidos.length!=0">
       <table class="table table-striped">
         <div class="col-sm-2"></div>
@@ -36,12 +59,12 @@
             </div>
 
             <div class="col-sm-3">
-              <label for="lastName" class="form-label">Cantidad de pasajeros [</label>
-              <code>{{total}}</code>]
+              <label for="lastName" class="form-label">Cantidad de pasajeros: </label>
+              <code>{{total}}</code>
             </div>
             <div class="col-sm-3" *ngIf="tourSeleccionado!=undefined">
-              <label for="lastName" class="form-label">Cupos disponibles</label>
-              [<code id="cantidadCupos"></code>]
+              <label for="lastName" class="form-label">Cupos disponibles: </label>
+              <code id="cantidadCupos"></code>
             </div>
           </div>
           <hr>
@@ -69,10 +92,10 @@
             <div class="card-header">
               <div class="header-container">
                 <span class="product-header">
-                  Agregar pasajeros
+                 
                 </span>
-                <button (click)="agregarPasajero()" class="button-34 black">
-                  Agregar
+                <button (click)="agregarPasajero()" class="button-34 green">
+                  Agregar <i class="fas fa-plus"></i>
                 </button>
               </div>
 
@@ -92,7 +115,7 @@
                         <div class="mb-2 row">
                           <h4 class="col-sm-10 col-form-label">Pasajero {{i+1}}</h4>
                           <h4 class="col-sm-2"><button (click)="eliminarPasajero(i,product)"
-                              class="button-34 red">Eliminar</button></h4>
+                              class="button-34 red"><i class="fas fa-trash"></i> </button></h4>
                         </div>
 
                         <div class="mb-2 row">
@@ -178,101 +201,154 @@
   </div>
 </div>
 <!-- Pagina 2 -->
-<div class="glass form-pagos" *ngIf="infoPagina==2">
-  <div class="row">
-    <div class="mb-2 row">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Costo total</th>
-          </tr>
-        </thead>
 
-        <tr>
-          <td><b>Costo:</b>{{tourSeleccionado.paquete.precio}} $ X Paquete</td>
-        </tr>
 
-        <tr>
-          <td><b>|{{pasajerosClasificados[0].cantidad}}|</b> 0 a 4 años= {{pasajerosClasificados[0].precio}}</td> 
-          <!-- Multiplicar por la cantidad de pasajeros -->
-        </tr>
 
-        <tr>
-          <td><b>|{{pasajerosClasificados[1].cantidad}}|</b> Niño(s) = {{pasajerosClasificados[1].precio}}</td>
-        </tr>
+<div class="glass form-pagos" style="margin:80px" *ngIf="infoPagina==2" >
 
-        <tr>
-          <td><b>|{{pasajerosClasificados[2].cantidad}}|</b> Adulto(s) = {{pasajerosClasificados[2].precio}}</td>
-        </tr>
+  <div class="invoice-content">
+    <!-- begin table-responsive -->
+    <div class="table-responsive">
+       <table class="table table-invoice">
+          <thead>
+             <tr>
+                <th>Costo total</th>
+                <th class="text-center" width="10%">Total</th>
+                <th class="text-center" width="10%">Cantidad</th>
+             </tr>
+          </thead>
+          <tbody>
+             <tr>
+                <td>
+                   <span class="text-inverse">0 a 4 años Infantes</span><br>
+                </td>
+                <td class="text-center">${{pasajerosClasificados[0].precio}}</td>
+                <td class="text-center">{{pasajerosClasificados[0].cantidad}}</td>
 
-      
+             </tr>
+             <tr>
+                <td>
+                   <span class="text-inverse">5 a 13 años Niño(s)</span><br>
+                </td>
+                <td class="text-center">${{pasajerosClasificados[1].precio}}</td>
+                <td class="text-center">{{pasajerosClasificados[1].cantidad}}</td>
+             </tr>
+             <tr>
+                <td>
+                   <span class="text-inverse">Adulto(s)</span><br>
+                </td>
+                <td class="text-center">${{pasajerosClasificados[2].precio}}</td>
+                <td class="text-center">{{pasajerosClasificados[2].cantidad}}</td>
+             </tr>
 
-        
-        <tr>
-          <td><b>Total: </b> {{totalCompra}}</td>
-        </tr>
-
-        <tr>
-          <td>
-            <b>-50% valor de reserva</b>: -{{(totalCompra)-totalCompra*0.5}}
-          </td>
-        </tr>
-
-        <hr>
-        <tr>
-          <td><b>Total pago parcial: </b> {{(totalCompra)-totalCompra*0.5}}</td>
-        </tr>
-
-      </table>
+             <tr>
+              <td>
+                <span class="text-inverse">Costo {{tourSeleccionado.paquete.precio}} $ X Paquete
+                </span>
+             </td>
+             </tr>
+          </tbody>
+       </table>
     </div>
-    <div class="row">
-      <div class="col-6" style="width: auto;">
-        <button (click)="volverPag()" class="btn-lg button-34" type="button">Volver</button>
+    <!-- end table-responsive -->
+    <!-- begin invoice-price -->
+    <div class="invoice-price">
+       <div class="invoice-price-left">
+          <div class="invoice-price-row">
+             <div class="sub-price">
+                <small>SUBTOTAL</small>
+                <span class="text-inverse">${{totalCompra}}</span>
+             </div>
+             <div class="sub-price">
+                <i class="fa fa-plus text-muted"></i>
+             </div>
+             <div class="sub-price">
+                <small>RESERVA (-50%)</small>
+                <span class="text-inverse">${{totalCompra50p}}</span>
+             </div>
+          </div>
+       </div>
+       <div class="invoice-price-right">
+          <small>TOTAL PAGO PARCIAL</small> <span class="f-w-400">${{totalCompra50p}}</span>
+       </div>
+    </div>
+    <div class="row" style="margin-top: 20px;">
+      <div class="col-4" style="width: auto;">
+        <button (click)="volverPag()" class="btn-lg button-34" type="button"> <i class="fas fa-chevron-circle-left"></i>Volver</button>
       </div>
-      <div class="col-6">
-        <button (click)="cargarPayu()" class="btn-lg button-34" type="button">Siguiente</button>
+      <div class="col-4"></div>
+
+      <div class="col-4">
+        <button (click)="cargarPayu()" class="btn-lg button-34" type="button">Siguiente <i class="fas fa-chevron-circle-right"></i></button>
       </div>
     </div>
-  </div>
+    <!-- end invoice-price -->
+ </div>
+
 </div>
 
-<!-- Pagina 3 -->
-<div class="glass form-pagos" *ngIf="infoPagina==3">
+<!-- Pagina 3  -->
+<div class="glass form-pagos" style="margin:80px" *ngIf="infoPagina==3">
   <div class="row">
-    <div class="mb-2 row">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Resumen de la compra</th>
-          </tr>
-        </thead>
-        <tr>
-          <td><b>Referencia de pago:</b> {{idCompra}}</td>
-        </tr>
-        <tr>
-          <td><b>Descripción:</b> Paquete {{idPaquete}}</td>
-        </tr>
-        <tr>
-          <td><b>Cant de pasajeros:</b>  {{total}}</td>
-        </tr>
-        <tr>
-          <td><b>Total a pagar :</b>  {{totalCompra}}</td>
-        </tr>
-      </table>
-    </div>
+
+    <div class="invoice-content">
+      <!-- begin table-responsive -->
+      <div class="table-responsive">
+         <table class="table table-invoice">
+            <thead>
+               <tr>
+                  <th>Resumen de la compra</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>
+                     <span class="text-inverse">Referencia de pago</span><br>
+                     <small>Identificativo unico de la compra</small>
+                  </td>
+                  <td class="text-center">{{idCompra}}</td>
+               </tr>
+               <tr>
+                  <td>
+                     <span class="text-inverse">Descripcion</span><br>
+                     <small>Descripción detallada de la compra</small>
+                  </td>
+                  <td class="text-center">{{descripcion}}</td>
+               </tr>
+               <tr>
+                  <td>
+                     <span class="text-inverse">Cantidad de pasajeros</span><br>
+                     <small>Cantidad total de pasajeros que llevaras en el viaje.</small>
+                  </td>
+                  <td class="text-center">{{total}}</td>
+               </tr>
+               <tr>
+                <td>
+                   <span class="text-inverse"> <strong>Total</strong> </span><br>
+                </td>
+                <td class="text-center">${{totalCompra}}</td>
+             </tr>
+            </tbody>
+         </table>
+      </div>
+      <!-- end table-responsive -->
+      <!-- end invoice-price -->
+   </div>
+
+    
 
     <!-- PAYU -->
     <div class="row">
       <div class="col-6" style="width: auto;">
-        <button (click)="infoPagina=2" class="btn-lg button-34" type="button">Volver</button>
+        <button (click)="volverPag2(); 
+        " class="btn-lg button-34" type="button">Volver</button>
       </div>
       <div class="col-6">
-        <form #form method="post" action="https://gateway.payulatam.com/ppp-web-gateway/">
+        <!-- <form #form method="post" action="https://gateway.payulatam.com/ppp-web-gateway/">
           <input name="merchantId"    type="hidden"  value={{idMercado}}   >
           <input name="accountId"     type="hidden"  value={{idCuenta}} >
           <input name="description"   type="hidden"  value={{descripcion}}>
           <input name="referenceCode" type="hidden"  value={{idCompra}} > 
-          <!-- CODIGO UNICO -->
           <input name="amount"        type="hidden"  value={{totalCompra}}   >
           <input name="tax"           type="hidden"  value={{iva}}  >
           <input name="taxReturnBase" type="hidden"  value={{iva*totalCompra}} >
@@ -286,36 +362,34 @@
           <button type="submit" class="" target="_blank" (click)="guardarCompra(form)" style="width: 140px;height: 40px;border-radius: 200px;border: 0px; background-color: white;" value="Pagar con PayU">
             <img  style="width: 140px;height: 40px;" src="https://universidadreformadademiami.org/wp-content/uploads/2020/10/boton.png" />
           </button>
-        </form>
+        </form> -->
 
+        <form #formPrueb method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
+          <input name="merchantId"    type="hidden"  value="508029"   >
+          <input name="accountId"     type="hidden"  value={{idCuentaTest}} >
+          <input name="description"   type="hidden"  value="[TEST] {{descripcion}}"  >
+          <input name="referenceCode" type="hidden"  value={{idCompra}} >
+          <input name="amount"        type="hidden"  value={{totalCompra}}  >
+          <input name="tax"           type="hidden"  value={{iva}} >
+          <input name="taxReturnBase" type="hidden"  value={{iva*totalCompra}}  >
+          <input name="currency"      type="hidden"  value={{moneda}} >
+          <input name="signature"     type="hidden"  value={{firmaElectronicaMD5Test}}   >
+          <input name="test"          type="hidden"  value="1" >
+          <input name="buyerEmail"    type="hidden"  value="test@test.com" >
+          <input name="responseUrl"    type="hidden"  value="http://localhost:4200/infpago">
+          <input name="confirmationUrl" type="hidden"  value="https://nortexploradores.herokuapp.com/pagos/confirmacion" >
+    
+          <button type="submit" class="" formtarget="_blank" (click)="guardarCompra(formPrueb)" style="width: 140px;height: 40px;border-radius: 200px;border: 0px; background-color: white;" value="Pagar con PayU">
+            <img  style="width: 140px;height: 40px;" src="https://universidadreformadademiami.org/wp-content/uploads/2020/10/boton.png" />
+          </button>
+        </form>
       </div>
     </div>
     <!-- FIN PAYU -->
-    <hr>
-    <p>PRUEBAS</p>
-    <!-- PAYU PRUEBAS -->
+  
 
-    <form #formPrueb method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
-      <input name="merchantId"    type="hidden"  value="508029"   >
-      <input name="accountId"     type="hidden"  value={{idCuentaTest}} >
-      <input name="description"   type="hidden"  value="[TEST] {{descripcion}}"  >
-      <input name="referenceCode" type="hidden"  value={{idCompra}} >
-      <input name="amount"        type="hidden"  value={{totalCompra}}  >
-      <input name="tax"           type="hidden"  value={{iva}} >
-      <input name="taxReturnBase" type="hidden"  value={{iva*totalCompra}}  >
-      <input name="currency"      type="hidden"  value={{moneda}} >
-      <input name="signature"     type="hidden"  value={{firmaElectronicaMD5Test}}   >
-      <input name="test"          type="hidden"  value="1" >
-      <input name="buyerEmail"    type="hidden"  value="test@test.com" >
-      <input name="responseUrl"    type="hidden"  value="http://localhost:4200/infpago">
-      <input name="confirmationUrl" type="hidden"  value="https://nortexploradores.herokuapp.com/pagos/confirmacion" >
+    
 
-      <button type="submit" class="" target="_blank" (click)="guardarCompra(formPrueb)" style="width: 140px;height: 40px;border-radius: 200px;border: 0px; background-color: white;" value="Pagar con PayU">
-        <img  style="width: 140px;height: 40px;" src="https://universidadreformadademiami.org/wp-content/uploads/2020/10/boton.png" />
-      </button>
-    </form>
-
-    <!--FIN PAYU PRUEBAS -->
 
   </div>
 </div>

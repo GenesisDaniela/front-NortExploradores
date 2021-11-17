@@ -27,13 +27,13 @@ export class UsuarioService {
     return this.http.get<any>(`${this.url}/${idUsuario}/reservas`)
   }
 
-  public clientesPorUsuario(idUsuario:number):Observable<any>{
+  public pasajerosPorCliente(idUsuario:number):Observable<any>{
     return this.http.get<any>(`${this.url}/${idUsuario}/pasajeros`);
   }
 
 
 
-  public clientesPersonaPorUsuario(idUsuario:number):Observable<any>{
+  public pasajeroPersonaPorCliente(idUsuario:number):Observable<any>{
     return this.http.get<any>(`${this.url}/${idUsuario}/pasajerospersonas`);
   }
 

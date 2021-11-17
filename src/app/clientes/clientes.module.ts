@@ -52,7 +52,8 @@ import { MaletaComponent } from './pages/maleta/maleta.component';
     DesRutasComponent,
     DetalleTourComponent,
     AddExperienciaComponent,
-    MaletaComponent
+    MaletaComponent,
+    InformacionPagoComponent
   ],
   imports: [
     CommonModule,

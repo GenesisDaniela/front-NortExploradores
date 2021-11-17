@@ -138,6 +138,21 @@ background-color: rgba(229, 229, 229, 1);
   border-radius: 999px;
   color: #FFFFFF;
 }
+.green{
+  background: #65d807;
+  border-radius: 999px;
+  color: #ffffff;
+  box-shadow: #1dfd09a9 0 10px 20px -10px;
+
+}
+#payu-payment-form button[type=submit] {
+    border: 0px;
+    height: 35px;
+    width: 140px;
+    background: url('http://static.payu.com/pl/standard/partners/buttons/payu_account_button_long_03.png');
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
 
 
 /* ESTILOS DE LOS CAJONES DE ADMINISTRACIÓN */
