@@ -34,7 +34,7 @@ export class AddPaqueteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.esEditar();
+  
     this.agregarAlojamiento();
     this.agregarMunicipio();
     this.form=this.formBuilder.group({
@@ -76,7 +76,7 @@ export class AddPaqueteComponent implements OnInit {
           nombre: ['', Validators.required],
           descripcion: ['', Validators.required], 
           urlImg: ['', Validators.required],
-          paquete: ['', Validators.required]
+          paquete: [null, Validators.required]
         })
       )
     }
@@ -89,39 +89,34 @@ export class AddPaqueteComponent implements OnInit {
   }
   
   public enviarData() {
-    if(this.id !== null){
-     this.paqueteService.editarPaquete(this.form.value).subscribe((data) => {
-      this.router.navigate(["/administracion/paquetes"]);
-     });
-        
-   }else {
+   
     console.log('actssss', this.getActividades.value);
     this.paqueteService.post(this.form.value).subscribe(paquete=>{
       console.log(paquete);
       this.paqueteService.postAct(this.getActividades.value, paquete.idPaq).subscribe(data=>{
         this.router.navigate(["/administracion/paquetes"]);})
       })
-   }
+   
    }
 
-   esEditar() {
-    if (this.id !== null) {
-      this.titulo = 'Editar Paquete';
-      this.boton = 'Editar Paquete';
-      this.paqueteService.obtenerPaquete(this.id).subscribe((data) => {
-        this.form.setValue({
-          precio: data.precio,
-          estado: data.estado,
-          urlImagen: data.urlImagen,
-          descripcion: data.descripcion,
-          recomendacion: data.recomendacion,
-          nombre: data.nombre,
-          alojamiento: data.alojamiento,
-          acts: data.acts,
-        });
-      });
-    }
-  }
+  //  esEditar() {
+  //   if (this.id !== null) {
+  //     this.titulo = 'Editar Paquete';
+  //     this.boton = 'Editar Paquete';
+  //     this.paqueteService.obtenerPaquete(this.id).subscribe((data) => {
+  //       this.form.setValue({
+  //         precio: data.precio,
+  //         estado: data.estado,
+  //         urlImagen: data.urlImagen,
+  //         descripcion: data.descripcion,
+  //         recomendacion: data.recomendacion,
+  //         nombre: data.nombre,
+  //         alojamiento: data.alojamiento,
+  //         acts: data.acts,
+  //       });
+  //     });
+  //   }
+  // }
 
    
 }
