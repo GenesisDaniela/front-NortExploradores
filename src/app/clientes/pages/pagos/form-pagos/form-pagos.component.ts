@@ -21,8 +21,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class FormPagosComponent implements OnInit {
   pagosInfo!: FormGroup;
-  public paquetes: any = [];
   public tours: any = [];
+  public cedulas: number[] = [];
   public persona: any
   public tourSeleccionado: any;
   public cuposDisponibles: any;
@@ -32,6 +32,8 @@ export class FormPagosComponent implements OnInit {
   public totalCompra50p = 0
 
   public pasajerosFrec: any = [];
+  public tiposC:any = ['CC',"TI"];
+  public generos:any = ['FEMENINO',"MASCULINO"];
   public tipoId: any = [];
   public pasajerosFrecElegidos: any = [];
   public pasajerosTotal: any = [];
@@ -98,7 +100,6 @@ export class FormPagosComponent implements OnInit {
   ngOnInit(): void {
     this.nombreUser = this.tokenS.getUserName();
     this.cargarUsuario();
-    this.agregarPaquetes();
     this.cargarToken();
     this.listarTour();
     this.generarReferencia();
@@ -127,7 +128,6 @@ export class FormPagosComponent implements OnInit {
   agregarPasajero(tipoid = "", documento = "", nombre = "", apellido = "", sexo = "", fechaNac = "", celular = "", correo = "") {
     this.total++;
     let persona = this.pagosInfo.get('pasajeros') as FormArray;
-    console.log("aaaa");
     persona.push(this.formBuilder.group({
       idTipo: [tipoid, [Validators.required]],
       idPersona: [documento, [Validators.required]],
@@ -196,13 +196,24 @@ export class FormPagosComponent implements OnInit {
     console.log("pasajeros clasificados:" + this.pasajerosClasificados);
   }
 
-  createpagosInfo() {
-    const compra = document.getElementById("comprastep");
+  esRepetido(arreglo:number[]):boolean{
+    const tempArray = [...arreglo].sort();
+    for (let i = 0; i < tempArray.length; i++) {
+      if (tempArray[i + 1] === tempArray[i]) {
+        this.toastr.error("Cédula "+tempArray[i + 1]+" repetida", 'ERROR', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
+        return true;
+    }
+  }
+  return false;
 
-    console.log('data is ', this.pagosInfo.value.pasajeros);
+}
+
+  createpagosInfo(){
+    const compra = document.getElementById("comprastep");
     let datosIncorrectos: Boolean = false;
     let msg = "";
-
     let personas = this.pagosInfo.value.pasajeros;
     let pasajeros = [];
 
@@ -210,11 +221,14 @@ export class FormPagosComponent implements OnInit {
       datosIncorrectos = true
       if (compra) compra?.classList.add("fail")
       msg = "¡Debes seleccionar un tour!";
+      this.cedulas = [];
     } else {
       if (this.tourSeleccionado.cantCupos == 0) {
         datosIncorrectos = true
         if (compra) compra?.classList.add("fail")
         msg = "¡No hay cupos disponibles para el tour!";
+      this.cedulas = [];
+
       } else {
         if (compra) compra?.classList.remove("fail")
       }
@@ -223,6 +237,7 @@ export class FormPagosComponent implements OnInit {
     for (let i = 0; i < personas.length && datosIncorrectos == false; i++) {
       let pasajero = personas[i];
       let idPerson = pasajero.idPersona;
+        this.cedulas.push(idPerson); //agrego las cedulas de los pasajeros para buscar si hay alguna repetida
       let nombre = pasajero.nombre;
       let sexo = pasajero.sexo;
       let fechaNac = pasajero.fechaNac;
@@ -232,10 +247,10 @@ export class FormPagosComponent implements OnInit {
       if (pasajero == '' || idPerson == '' || nombre == '' || fechaNac == '' || cel == '' || correo == '') {
         datosIncorrectos = true;
         if (compra) compra?.classList.add("fail")
+        this.cedulas = [];
         msg = "!Los campos no pueden ser vacíos!"
         break;
       }
-
 
       let fechaNacPasajero = pasajero.fechaNac;
       let edadPasajero = this.calcularfecha(fechaNacPasajero);
@@ -264,6 +279,7 @@ export class FormPagosComponent implements OnInit {
 
 
       this.personaService.getPersona(pasajero.idPersona).subscribe(persona => {
+        
         var pasajeroPost;
         let pasajero = persona;
         if (pasajero == null) {
@@ -284,7 +300,11 @@ export class FormPagosComponent implements OnInit {
 
         this.pasajerosTotal.push(pasajeroPost);
         pasajeros.push(pasajeroPost)
-      });
+      },
+        error=>{
+          console.log(error);
+        }
+      );
 
       var pasajeroPost = {
         "idPasajero": null,
@@ -295,6 +315,12 @@ export class FormPagosComponent implements OnInit {
       this.pasajerosTotal.push(pasajeroPost);
       pasajeros.push(pasajeroPost)
     }
+
+    if(this.esRepetido(this.cedulas)){
+      this.cedulas = [];
+      return;
+    }
+
     const output = document.getElementById("errorPresentado");
     if (output) output.innerHTML = "";
 
@@ -323,7 +349,7 @@ export class FormPagosComponent implements OnInit {
         compra?.classList.remove("pendiente")
       }
 
-      this.toastr.success("Datos correctos", 'Ok', {
+      this.toastr.success("Pasajeros ingresados", 'Ok', {
         timeOut: 3000, positionClass: 'toast-top-center'
       });
 
@@ -339,11 +365,7 @@ export class FormPagosComponent implements OnInit {
       this.descripcion = "Pago de (" + pasajeross.length + ") paquete(s) turistico(s) destino: " + this.tourSeleccionado.paquete.municipio.nombre
       this.pagosInfo.markAllAsTouched();
     });
-
-
-
   }
-
 
   cargarPasajerosClasificados() {
     this.pasajerosClasificados = []
@@ -380,11 +402,6 @@ export class FormPagosComponent implements OnInit {
     }
   }
 
-  public agregarPaquetes() {
-    this.paqueteService.listar().subscribe(paquetes => {
-      this.paquetes = paquetes;
-    })
-  }
 
   public listarTour() {
     this.tourService.listarTourActivo().subscribe(tour => {
@@ -404,12 +421,11 @@ export class FormPagosComponent implements OnInit {
       let pasajero = pasajeros[i];
       if (pasajero.esCotizante == false) {
         this.pasajerosFrec.push(pasajero);
-
       } else {
         this.persona = pasajeros[i].persona;
         this.total++;
         let pasajeroX = this.pagosInfo.get('pasajeros') as FormArray;
-
+    
         pasajeroX.push(
           this.formBuilder.group({
             idTipo: [this.persona.idTipo.idTipo, [Validators.required]],
@@ -420,8 +436,18 @@ export class FormPagosComponent implements OnInit {
             fechaNac: [this.persona.fechaNac, [Validators.required]],
             cel: [this.persona.cel, [Validators.required]],
             correo: [this.persona.correo, [Validators.required]],
-            idPasajero: [pasajeros[i].idPasajero]
+            idPasajero: [pasajeros[i].idPasajero],
+            esCotizante: true
           }));
+
+          const output = document.getElementById('btnagregar');
+          if (output){
+            output.removeAttribute("disabled");
+            output.classList.add("green")
+            output.classList.remove("gray")
+
+          }
+
       }
     }
   }
@@ -430,7 +456,6 @@ export class FormPagosComponent implements OnInit {
 
 
     let idPasajero = event.target.value;
-    console.log(idPasajero);
     let yaResgistrado = false;
     let posEliminar = -1 //posicion del pasajero que se encontro y se va a eliminar.
     for (let i = 0; i < pasajeros.length; i++) {
@@ -475,11 +500,14 @@ export class FormPagosComponent implements OnInit {
 
   cargarTour(event: any) {
     let idTourSeleccionado = event.target.value;
+
     this.tourSeleccionado = this.tourService.encontrarTour(idTourSeleccionado).subscribe(tour => {
       this.tourSeleccionado = tour;
       this.cuposDisponibles = tour.cantCupos;
       const output = document.getElementById('cantidadCupos');
       if (output) output.innerHTML = tour.cantCupos;
+      const output2 = document.getElementById('imagenTour');
+      if (output2) output2.setAttribute("src",tour.paquete.urlImagen);
     })
   }
 

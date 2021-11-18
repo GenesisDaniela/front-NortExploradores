@@ -154,8 +154,10 @@ body{
 	display:none;
 }
 .md-stepper-horizontal .md-step .md-step-circle {
-	width:30px;
-	height:30px;
+	width:50px;
+    padding-top: 10px;
+	height:50px;
+    margin-right: 5px;
 	margin:0 auto;
 	background-color:#999999;
 	border-radius: 50%;
@@ -244,3 +246,14 @@ background-color:#04c95c !important
 .pendiente{
     background-color:#F96302 !important
     }
+
+    .gray{
+        background-color:#afafaf !important;
+        box-shadow: 0 3px 8px -6px rgba(160, 160, 160, 0.5);
+        }
+.imgTour{
+        width: 200px;
+        height: auto;
+        box-shadow: 0 3px 8px -6px rgba(160, 160, 160, 0.5);
+        border-radius: 10px;
+}
