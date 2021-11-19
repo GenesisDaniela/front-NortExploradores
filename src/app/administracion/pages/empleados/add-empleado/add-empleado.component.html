@@ -1,112 +1,84 @@
+<div class="container-contact100">
+  <div class="wrap-contact100">
 
-<div class="row mt-4">
-  <div class="col"></div>
-  <div class="col-8 bg-light rounded-3">
-    <form [formGroup]="formPer" (submit)="enviarData()">
-      <div class="mb-3 mt-3 row text-center">
-        <div class="col-2"></div>
+    <form [formGroup]="formPer" (submit)="enviarData()" class="contact100-form validate-form">
+      <span class="contact100-form-title">
         <h4 class="col-sm-10">{{titulo | uppercase}}</h4>
-      </div>
+      </span>
 
-      <div class="mb-2 row">
-        <div class="col-sm-0"></div>
-        <label class="col-sm-2 col-form-label">Tipo de documento</label>
-        <div class="col-sm-10">
-          <select formControlName="idTipo" class="form-select" aria-label="Default select example">
-            <option *ngFor="let tipo of tipos" name="tipo" id="tipo{{tipo.idTipo}}"
+
+      <div class="wrap-input100">
+        <select formControlName="idTipo" class="input100" type="text" id="inputTipo">
+          <option *ngFor="let tipo of tipos" name="tipo" id="tipo{{tipo.idTipo}}"
               value={{tipo.idTipo}}>
               {{tipo.descripcion}}</option>
           </select>
-        </div>
+        <span class="focus-input100"></span>
+      </div>
+      <div class="wrap-input100" data-validate="Numero de Identificacion">
+        <input formControlName="idPersona" class="input100" type="number" id="inputIdPer" placeholder="Numero de Identificacion">
+        <span class="focus-input100"></span>
       </div>
 
-      <div class="row mb-3">
-        <label for="inputIdent" class="col-sm-2 col-form-label">Identificacion</label>
-        <div class="col-sm-10">
-          <input formControlName="idPersona" type="number" class="form-control" id="inputIdent" >
-        </div>
+      <div class="wrap-input100 validate-input">
+        <input formControlName="nombre" class="input100" type="text" placeholder="Ingrese el nombre" id="inputNombre">
+        <span class="focus-input100"></span>
       </div>
 
-      <div class="row mb-3">
-        <label for="inputNombre" class="col-sm-2 col-form-label">Nombre</label>
-        <div class="col-sm-10">
-          <input formControlName="nombre" type="text" class="form-control" id="inputNombre" >
-        </div>
+      <div class="wrap-input100">
+        <input formControlName="apellido" class="input100" type="text" placeholder="Ingrese el apellido" id="inputApellido">
+        <span class="focus-input100"></span>
       </div>
 
-      <div class="row mb-3">
-        <label for="inputApellido" class="col-sm-2 col-form-label">Apellido</label>
-        <div class="col-sm-10">
-          <input formControlName="apellido" type="text" class="form-control" id="inputApellido" >
-        </div>
+      <div class="wrap-input100">
+        <select formControlName="sexo" class="input100" type="number" id="inputTipo">
+            <option value="1">Masculino</option> 
+            <option value="0">Femenino</option>
+          </select>
+        <span class="focus-input100"></span>
       </div>
 
-      <div class="row mb-3">
-        <label for="inputSexo" class="col-sm-2 col-form-label">Sexo</label>
-        <div class="col-sm-10">
-            <select formControlName="sexo" type="number" class="form-control" id="inputSexo">
-                <option value="1">Masculino</option> 
-                <option value="0">Femenino</option>
-            </select>
-        </div>
-       </div>
-
-      <div class="row mb-3">
-        <label for="inputFechaNac" class="col-sm-2 col-form-label">Fecha de nacimiento</label>
-        <div class="col-sm-10">
-          <input formControlName="fechaNac" type="DATE" class="form-control" id="inputFechaNac" >
-        </div>
+      <div class="wrap-input100">
+        <input formControlName="fechaNac" class="input100" type="DATE" placeholder="Fecha de nacimiento" id="inputFechaNac">
+        <span class="focus-input100"></span>
       </div>
 
-      <div class="row mb-3">
-        <label for="inputCelular" class="col-sm-2 col-form-label">Celular</label>
-        <div class="col-sm-10">
-          <input formControlName="cel" type="text" class="form-control" id="inputCelular" >
-        </div>
+      <div class="wrap-input100">
+        <input formControlName="cel" class="input100" type="text" placeholder="Numero de cel" id="inputCelular">
+        <span class="focus-input100"></span>
       </div>
 
-      <div class="row mb-3">
-        <label for="inputEmail" class="col-sm-2 col-form-label">Correo</label>
-        <div class="col-sm-10">
-          <input formControlName="correo" type="email" class="form-control" id="inputEmail" >
-        </div>
+      <div class="wrap-input100">
+        <input formControlName="correo" class="input100" type="email" placeholder="Correo" id="inputEmail">
+        <span class="focus-input100"></span>
       </div>
 
       <div [formGroup]="form">
         <input formControlName="idEmpleado" hidden type="number" class="form-control" id="inputIdEmpleado">
       </div>
-      <div [formGroup]="form" class="row mb-3">
-        <label for="inputFecha" class="col-sm-2 col-form-label">Fecha de contratacion</label>
-        <div class="col-sm-10">
-          <input formControlName="fechaContratacion" type="date" class="form-control" id="inputFecha" >
-        </div>
+
+      <div class="wrap-input100" [formGroup]="form" >
+        <input formControlName="fechaContratacion" class="input100" type="DATE" placeholder="Fecha de contratacion" id="inputFecha">
+        <span class="focus-input100"></span>
       </div>
 
-      <div [formGroup]="form" class="row mb-3">
-        <label for="inputImage" class="col-sm-2 col-form-label">Imagen</label>
-        <div class="col-sm-10">
-          <input formControlName="urlImagen" type="url" class="form-control" id="inputImage">
-        </div>
+      <div class="wrap-input100">
+        <input formControlName="urlImagen" class="input100" type="email" placeholder="Imagen" id="inputImage">
+        <span class="focus-input100"></span>
       </div>
 
-
-      <div [formGroup]="form" class="mb-2 row">
-        <div class="col-sm-0"></div>
-        <label class="col-sm-2 col-form-label">Cargo</label>
-        <div class="col-sm-10">
-          <select formControlName="cargo" class="form-select" aria-label="Default select example">
-            <option *ngFor="let cargo of cargos" name="cargo" id="car{{cargo.idCargo}}"
-              value={{cargo.idCargo}}>
-              {{cargo.nombre}}</option>
+      <div class="wrap-input100" [formGroup]="form">
+        <select formControlName="cargo" class="input100" type="text" id="inputTipo">
+          <option *ngFor="let cargo of cargos" name="cargo" id="car{{cargo.idCargo}}"
+          value={{cargo.idCargo}}>
+          {{cargo.nombre}}</option>
           </select>
-        </div>
+        <span class="focus-input100"></span>
       </div>
 
-      <div class="d-grid gap-2 col-6 mx-auto">
-        <button class="btn btn-primary" type="submit">{{boton | uppercase}}</button>
-        <div class="col-sm-0"></div>
+      <div class="container-contact100-form-btn">
+        <button class="contact100-form-btn" type="submit">{{boton | uppercase}}</button>
       </div>
     </form>
   </div>
-  <div class="col"></div>
 </div>
