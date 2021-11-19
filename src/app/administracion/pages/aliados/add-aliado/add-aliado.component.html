@@ -1,91 +1,78 @@
-<div class="row mt-4">
-    <div class="col"></div>
-    <div class="col-8 bg-light ">
-  
-      <form [formGroup]="form" (submit)="enviarData()">
-        <div class="mb-3 row">
-          <div class="col-sm-2"></div>
+
+<body>
+  <div class="container-contact100">
+    <div class="wrap-contact100">
+
+      <form [formGroup]="form" (submit)="enviarData()" class="contact100-form validate-form">
+        <span class="contact100-form-title">
           <h4 class="col-sm-10">{{titulo | uppercase}}</h4>
-        </div>
-  
-        <div class="row mb-3">
-          <label for="inputIdEmpresa" class="col-sm-2 col-form-label">NIT</label>
-          <div class="col-sm-10">
-            <input formControlName="idEmpresa" type="number" class="form-control" id="inputIdEmpresa" >
-          </div>
-        </div>
-  
-        <div class="row mb-3">
-          <label for="inputNombre" class="col-sm-2 col-form-label">Nombre</label>
-          <div class="col-sm-10">
-            <input formControlName = "nombre" type="text" class="form-control" id="inputNombre">
-          </div>
-        </div>
-  
-        <div class="row mb-3">
-          <label for="inputDir" class="col-sm-2 col-form-label">Dirección</label>
-          <div class="col-sm-10">
-              <input formControlName="direccion" type="text" class="form-control" id="inputDir">
-          </div>
-      </div>
-  
-      <div class="row mb-3">
-          <label for="inputMision" class="col-sm-2 col-form-label">Misión</label>
-          <div class="col-sm-10">
-              <textarea style="resize: none" formControlName="mision" class="form-control" id="inputMision"
-                  rows="3"></textarea>
-          </div>
-      </div>
-  
-      <div class="row mb-3">
-          <label for="inputVision" class="col-sm-2 col-form-label">Visión</label>
-          <div class="col-sm-10">
-              <textarea style="resize: none" formControlName="vision" class="form-control" id="inputVision"
-                  rows="3"></textarea>
-          </div>
-      </div>
-  
-      <div class="row mb-3">
-          <label for="inputCorreo" class="col-sm-2 col-form-label">Correo</label>
-          <div class="col-sm-10">
-            <input formControlName="correo" type="email" class="form-control" id="inputCorreo" >
-          </div>
-        </div>
-  
-      <div class="row mb-3">
-          <label for="inputTelefono" class="col-sm-2 col-form-label">Telefono</label>
-          <div class="col-sm-10">
-            <input formControlName="telefono" type="number" class="form-control" id="inputTelefono" >
-          </div>
+        </span>
+
+
+        <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+          <input formControlName="idEmpresa" class="input100" type="number" placeholder="NIT " id="inputIdEmpresa">
+          <span class="focus-input100"></span>
         </div>
 
-        <div class="row mb-3">
-            <label for="inputFecha" class="col-sm-2 col-form-label">Fecha</label>
-            <div class="col-sm-10">
-              <input formControlName = "fecha" type="date" class="form-control" id="inputFecha">
-            </div>
-          </div>
-  
-        <div class="row mb-3">
-          <label for="inputDescripcion" class="col-sm-2 col-form-label">Descripción</label>
-          <div class="col-sm-10">
-              <textarea style="resize: none" formControlName="descripcion" class="form-control" id="inputDescripcion"
-                  rows="3"></textarea>
-          </div>
+        <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+          <input formControlName="nombre" class="input100" type="text" placeholder="Nombre de la empresa" id="inputNombre">
+          <span class="focus-input100"></span>
+        </div>
+
+        
+        <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+          <input formControlName="direccion" class="input100" type="text" placeholder="Direccion" id="inputNombre">
+          <span class="focus-input100"></span>
+        </div>
+
+
+      <div class="wrap-input100 validate-input" data-validate="Por favor ingrese su descripcion">
+        <textarea formControlName="mision" class="input100" placeholder="Misión de la empresa"
+          id="inputMision"></textarea>
+        <span class="focus-input100"></span>
       </div>
   
-      <div class="row mb-3">
-          <label for="inputImagen" class="col-sm-2 col-form-label">Imagen</label>
-          <div class="col-sm-10">
-            <input formControlName = "urlImagen" type="text" class="form-control" id="inputImagen">
-          </div>
-        </div>
+      <div class="wrap-input100 validate-input" data-validate="Por favor ingrese su descripcion">
+        <textarea formControlName="vision" class="input100" placeholder="visión de la empresa"
+          id="inputVision"></textarea>
+        <span class="focus-input100"></span>
+      </div>
+
+      <div class="wrap-input100 validate-input" data-validate="Por favor ingrese su descripcion">
+        <textarea formControlName="descripcion" class="input100" placeholder="Descripcion de la empresa"
+          id="inputDescripcion"></textarea>
+        <span class="focus-input100"></span>
+      </div>
+
+
+      <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+        <input formControlName="correo" class="input100" type="email" placeholder="Correo" id="inputCorreo">
+        <span class="focus-input100"></span>
+      </div>
+        
+
   
-        <div class="d-grid gap-2 col-6 mx-auto">
-          <button class="btn btn-primary" type="submit">{{boton | uppercase}}</button>
-          <div class="col-sm-0"></div>
+      <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+        <input formControlName="telefono" class="input100" type="number" placeholder="Telefono" id="inputNombre">
+        <span class="focus-input100"></span>
+      </div>
+        
+
+      <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+        <input formControlName="fecha" class="input100" type="date" placeholder="FechaConvenio" id="inputFecha">
+        <span class="focus-input100"></span>
+      </div>
+
+
+      <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+        <input formControlName="urlImagen" class="input100" type="text" placeholder="urlImagen" id="inputImagen">
+        <span class="focus-input100"></span>
+      </div>
+
+        <div class="container-contact100-form-btn">
+          <button class="contact100-form-btn" type="submit">{{boton | uppercase}}</button>
         </div>
       </form>
     </div>
-    <div class="col"></div>
   </div>
+</body>

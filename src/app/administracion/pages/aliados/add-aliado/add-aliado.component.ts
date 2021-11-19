@@ -47,6 +47,7 @@ export class AddAliadoComponent implements OnInit {
   public enviarData() {
     if (this.id !== null) {
       this.empresaService.editarEmpresa(this.id, this.form.value).subscribe((data) => {
+        this.router.navigate(["/administracion/aliados"]);
         });
     } else {
       this.empresaService.post(this.form.value)
