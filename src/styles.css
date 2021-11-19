@@ -370,12 +370,13 @@ iframe {
 
 .contact100-form-title {
   display: block;
-   font-family: SourceSansPro-Bold; 
+  font-family: SourceSansPro-Bold; 
   font-size: 30px;
   color: #333333;
   line-height: 1.2;
-  text-align: left;
+  text-align: center;
   padding-bottom: 24px;
+  margin-left: 70px;
 }
 .contact100-form-combo {
 
@@ -384,7 +385,7 @@ iframe {
   color: #2ecc71;
   line-height: 1.2;
   text-align: center;
-  margin-left: 10px;
+  margin-left: 18px;
 }
 
 /*------------------------------------------------------------------
