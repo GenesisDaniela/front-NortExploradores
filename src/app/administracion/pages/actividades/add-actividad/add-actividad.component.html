@@ -1,57 +1,49 @@
 
-<div class="row mt-4">
-    <div class="col"></div>
-    <div class="col-8 bg-light ">
+  <div class="container-contact100">
+    <div class="wrap-contact100">
   
-      <form [formGroup]="form" (submit)="enviarData()">
-        <div class="mb-3 row">
-          <div class="col-sm-2"></div>
+      <form [formGroup]="form" (submit)="enviarData()" class="contact100-form validate-form">
+        <span class="contact100-form-title">
           <h4 class="col-sm-10">{{titulo | uppercase}}</h4>
-        </div>
-  
+        </span>
+        <hr style="color: rgb(5, 168, 5);">
+
         <input formControlName="idActividad" hidden type="text" class="form-control" id="inputidAct">
-
-        <div class="row mb-3">
-          <label for="inputNombre" class="col-sm-2 col-form-label">Nombre</label>
-          <div class="col-sm-10">
-            <input formControlName = "nombre" type="text" class="form-control" id="inputNombre">
-          </div>
+  
+        <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+          <span class="contact100-form-combo">Nombre de la actividad</span>
+          <input formControlName="nombre" class="input100" type="text" placeholder="Nombre de la actividad" id="inputNombre">
+          <span class="focus-input100"></span>
         </div>
   
-        <div class="row mb-3">
-          <label for="inputDescripcion" class="col-sm-2 col-form-label">Descripción</label>
-          <div class="col-sm-10">
-              <textarea  style="resize: none" formControlName="descripcion" class="form-control" id="inputDescripcion"
-                  rows="3"></textarea>
-          </div>
-      </div>
-  
-
-        <div class="row mb-3">
-          <label for="inputImagen" class="col-sm-2 col-form-label">Imagen</label>
-          <div class="col-sm-10">
-            <input formControlName = "urlImg" type="text" class="form-control" id="inputImagen">
-          </div>
+        <div class="wrap-input100 validate-input" data-validate="Por favor ingrese su descripcion">
+          <span class="contact100-form-combo">Descripcion</span>
+          <textarea formControlName="descripcion" class="input100" placeholder="Descripcion de la actividad"
+            id="inputDescripcion"></textarea>
+          <span class="focus-input100"></span>
         </div>
-  
-        <div class="mb-3 row">
-            <div class="col-sm-0"></div>
-            <label class="col-sm-2 col-form-label">paquete</label>
-            <div class="col-sm-10">
-              <select formControlName = "paquete" class="form-select" aria-label="Default select example">
-                <option *ngFor="let paquete of paquetes" name="paquete" id="paquete{{paquete.idPaq}}" 
-                value={{paquete.idPaq}}>
-                {{paquete.nombre}} </option>
-              </select>
-            </div>
-        </div>
-          
 
-        <div class="d-grid gap-2 col-6 mx-auto">
-          <button class="btn btn-primary" type="submit">{{boton | uppercase}}</button>
-          <div class="col-sm-0"></div>
+        <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+          <span class="contact100-form-combo"> Imagen</span>
+          <input formControlName="urlImg" class="input100" type="text" placeholder="urlImagen" id="inputImagen">
+          <span class="focus-input100"></span>
+        </div>
+      
+      <div class="wrap-input100">
+        <span class="contact100-form-combo"> Paquete</span>
+        <select formControlName = "paquete" class="form-select" aria-label="Default select example" class="input100"
+        placeholder="paquete">
+          <option *ngFor="let paquete of paquetes" name="paquete"id="paquete{{paquete.idPaq}}" 
+          value={{paquete.idPaq}}>
+          {{paquete.nombre}} </option>
+        </select>
+    </div>
+     
+
+        <hr style="color: rgb(5, 168, 5);">
+        <div class="container-contact100-form-btn">
+          <button class="contact100-form-btn" type="submit">{{boton | uppercase}}</button>
         </div>
       </form>
     </div>
-    <div class="col"></div>
   </div>
