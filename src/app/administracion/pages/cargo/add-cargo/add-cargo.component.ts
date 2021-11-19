@@ -40,6 +40,8 @@ export class AddCargoComponent implements OnInit {
   }
 
   public enviarData() {
+    console.log('asdadadaidaidjajd',this.form.value);
+    
     if (this.id !== null) {
       this.cargoService.editarCargo(this.id, this.form.value).subscribe((data) => {
         this.router.navigate(["/administracion/cargos"]);
