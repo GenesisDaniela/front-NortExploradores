@@ -68,7 +68,7 @@
       </div>
 
       <div class="wrap-input100" [formGroup]="form">
-        <select formControlName="cargo" class="input100" type="text" id="inputTipo">
+        <select formControlName="cargo" class="input100" type="text" id="inputCargo">
           <option *ngFor="let cargo of cargos" name="cargo" id="car{{cargo.idCargo}}"
           value={{cargo.idCargo}}>
           {{cargo.nombre}}</option>
