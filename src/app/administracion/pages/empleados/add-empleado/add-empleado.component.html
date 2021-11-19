@@ -5,9 +5,10 @@
       <span class="contact100-form-title">
         <h4 class="col-sm-10">{{titulo | uppercase}}</h4>
       </span>
-
+      <hr style="color: rgb(5, 168, 5);">
 
       <div class="wrap-input100">
+        <span class="contact100-form-combo">Tipo de Identificacion</span>
         <select formControlName="idTipo" class="input100" type="text" id="inputTipo">
           <option *ngFor="let tipo of tipos" name="tipo" id="tipo{{tipo.idTipo}}"
               value={{tipo.idTipo}}>
@@ -16,21 +17,25 @@
         <span class="focus-input100"></span>
       </div>
       <div class="wrap-input100" data-validate="Numero de Identificacion">
+        <span class="contact100-form-combo">Numero de Identificacion</span>
         <input formControlName="idPersona" class="input100" type="number" id="inputIdPer" placeholder="Numero de Identificacion">
         <span class="focus-input100"></span>
       </div>
 
       <div class="wrap-input100 validate-input">
+        <span class="contact100-form-combo">Nombre</span>
         <input formControlName="nombre" class="input100" type="text" placeholder="Ingrese el nombre" id="inputNombre">
         <span class="focus-input100"></span>
       </div>
 
       <div class="wrap-input100">
+        <span class="contact100-form-combo">Apellido</span>
         <input formControlName="apellido" class="input100" type="text" placeholder="Ingrese el apellido" id="inputApellido">
         <span class="focus-input100"></span>
       </div>
 
       <div class="wrap-input100">
+        <span class="contact100-form-combo">Sexo</span>
         <select formControlName="sexo" class="input100" type="number" id="inputTipo">
             <option value="1">Masculino</option> 
             <option value="0">Femenino</option>
@@ -39,16 +44,19 @@
       </div>
 
       <div class="wrap-input100">
+        <span class="contact100-form-combo">Fecha nacimiento</span>
         <input formControlName="fechaNac" class="input100" type="DATE" placeholder="Fecha de nacimiento" id="inputFechaNac">
         <span class="focus-input100"></span>
       </div>
 
       <div class="wrap-input100">
+        <span class="contact100-form-combo">Celular</span>
         <input formControlName="cel" class="input100" type="text" placeholder="Numero de cel" id="inputCelular">
         <span class="focus-input100"></span>
       </div>
 
       <div class="wrap-input100">
+        <span class="contact100-form-combo">Correo</span>
         <input formControlName="correo" class="input100" type="email" placeholder="Correo" id="inputEmail">
         <span class="focus-input100"></span>
       </div>
@@ -58,16 +66,19 @@
       </div>
 
       <div class="wrap-input100" [formGroup]="form" >
+        <span class="contact100-form-combo">Fecha contratacion</span>
         <input formControlName="fechaContratacion" class="input100" type="DATE" placeholder="Fecha de contratacion" id="inputFecha">
         <span class="focus-input100"></span>
       </div>
 
       <div class="wrap-input100">
+        <span class="contact100-form-combo">Imagen Empleado</span>
         <input formControlName="urlImagen" class="input100" type="email" placeholder="Imagen" id="inputImage">
         <span class="focus-input100"></span>
       </div>
 
       <div class="wrap-input100" [formGroup]="form">
+        <span class="contact100-form-combo">Cargo</span>
         <select formControlName="cargo" class="input100" type="text" id="inputCargo">
           <option *ngFor="let cargo of cargos" name="cargo" id="car{{cargo.idCargo}}"
           value={{cargo.idCargo}}>
@@ -75,7 +86,7 @@
           </select>
         <span class="focus-input100"></span>
       </div>
-
+      <hr style="color: rgb(5, 168, 5);">
       <div class="container-contact100-form-btn">
         <button class="contact100-form-btn" type="submit">{{boton | uppercase}}</button>
       </div>
