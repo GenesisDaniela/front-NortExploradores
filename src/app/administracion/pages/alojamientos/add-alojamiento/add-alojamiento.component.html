@@ -8,35 +8,39 @@
           <span class="contact100-form-title">
             <h4 class="col-sm-10">{{titulo | uppercase}}</h4>
           </span>
-
+          <hr style="color: rgb(5, 168, 5);">
           <input formControlName="idAlojamiento" hidden type="text" class="form-control" id="inputidAloj">
 
           <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+            <span class="contact100-form-combo">Nombre del alojamiento</span>
             <input formControlName="nombre" class="input100" type="text" placeholder="Nombre del alojamiento" id="inputNombre">
             <span class="focus-input100"></span>
           </div>
 
 
           <div class="wrap-input100 validate-input" data-validate="Por favor ingrese su descripcion">
+            <span class="contact100-form-combo">Descripción</span>
             <textarea formControlName="descripcion" class="input100" placeholder="Descripcion del alojamiento"
               id="inputDescripcion"></textarea>
             <span class="focus-input100"></span>
           </div>
 
 
-          <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+          <div class="wrap-input100 validate-input" data-validate="Por favor ingrese la direccion completo">
+            <span class="contact100-form-combo">Dirección</span>
             <input formControlName="dir" class="input100" type="text" placeholder="Direccion" id="inputDir">
             <span class="focus-input100"></span>
           </div>
 
   
-          <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+          <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el precio">
+            <span class="contact100-form-combo">Precio</span>
             <input formControlName="precio" class="input100" type="number" placeholder="Precio" id="inputPrecio">
             <span class="focus-input100"></span>
           </div>
   
 
-
+          <hr style="color: rgb(5, 168, 5);">
           <div class="container-contact100-form-btn">
             <button class="contact100-form-btn" type="submit">{{boton | uppercase}}</button>
           </div>
