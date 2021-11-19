@@ -9,29 +9,34 @@
         </span>
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
-          <input formControlName="idTransporte" class="input100" type="text" placeholder="ID" id="inputTransporte">
+          <span class="contact100-form-combo"> Id Transporte</span>
+          <input formControlName="idTransporte" class="input100" type="text" placeholder="Id" id="inputTransporte">
           <span class="focus-input100"></span>
         </div>
 
         
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+          <span class="contact100-form-combo"> Modelo</span>
           <input formControlName="modelo" class="input100" type="text" placeholder="Modelo" id="inputModelo">
           <span class="focus-input100"></span>
         </div>
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+          <span class="contact100-form-combo"> Puestos</span>
           <input formControlName="puestos" class="input100" type="number" placeholder="Numero de puestos" id="inputPuestos">
           <span class="focus-input100"></span>
         </div>
 
         
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+          <span class="contact100-form-combo"> Color</span>
           <input formControlName="color" class="input100" type="text" placeholder="Color" id="inputColor">
           <span class="focus-input100"></span>
         </div>
   
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+          <span class="contact100-form-combo"> Precio</span>
           <input formControlName="precio" class="input100" type="number" placeholder="Precio" id="inputColor">
           <span class="focus-input100"></span>
         </div>
@@ -39,6 +44,7 @@
 
 
         <div class="wrap-input100">
+          <span class="contact100-form-combo"> Empresa</span>
           <select formControlName = "empresa" class="form-select" aria-label="Default select example" class="input100"
           placeholder="empresa">
             <option *ngFor="let empresa of empresas" name="empresa"id="emp{{empresa.idEmpresa}}"

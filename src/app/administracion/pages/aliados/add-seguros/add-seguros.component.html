@@ -11,28 +11,33 @@
   
 
           <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+            <span class="contact100-form-combo">Id seguro</span>
             <input formControlName="idSeguro" class="input100" type="number" placeholder="ID" id="inputIdSeguro">
             <span class="focus-input100"></span>
           </div>
           
           <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+            <span class="contact100-form-combo">Nombre de seguro</span>
             <input formControlName="nombre" class="input100" type="text" placeholder="Nombre del seguro" id="inputNombre">
             <span class="focus-input100"></span>
           </div>
 
           <div class="wrap-input100 validate-input" data-validate="Por favor ingrese su descripcion">
+            <span class="contact100-form-combo">Descripcion</span>
             <textarea formControlName="descripcion" class="input100" placeholder="Descripcion del seguro"
               id="inputDescripcion"></textarea>
             <span class="focus-input100"></span>
           </div>
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+          <span class="contact100-form-combo">Precio</span>
           <input formControlName="precio" class="input100" type="number" placeholder="Precio" id="inputPrecio">
           <span class="focus-input100"></span>
         </div>
 
   
         <div class="wrap-input100">
+          <span class="contact100-form-combo"> Empresa</span>
           <select formControlName = "empresa" class="form-select" aria-label="Default select example" class="input100"
           placeholder="empresa">
             <option *ngFor="let empresa of empresas" name="empresa"id="emp{{empresa.idEmpresa}}"
