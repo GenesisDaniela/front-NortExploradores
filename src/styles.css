@@ -333,7 +333,7 @@ iframe {
   height: 100%;
   top: 0;
   left: 0;
-  background: rgba(54, 206, 99, 0.226);
+  background: rgba(0, 128, 128, 0.6);
   pointer-events: none;
 }
 
@@ -392,7 +392,7 @@ iframe {
 
   font-family: SourceSansPro-Bold; 
   font-size: 18px;
-  color: #2ecc71;
+  color: rgb(0, 128, 128);
   line-height: 1.2;
   text-align: center;
   margin-left: 18px;
@@ -495,7 +495,7 @@ textarea.input100 {
   padding: 0 20px;
   min-width: 160px;
   height: 42px;
-  background-color: #2ecc71;
+  background-color: rgba(0, 128, 128, 0.9);
   border-radius: 21px;
 
   font-family: JosefinSans-Bold;
@@ -518,12 +518,12 @@ textarea.input100 {
 }
 
 .contact100-form-btn:hover {
-  background-color: #1c7c44;
-  box-shadow: 0 10px 30px 0px rgba(43, 224, 26, 0.8);
-  -moz-box-shadow: 0 10px 30px 0px rgba(43, 224, 26, 0.8);
-  -webkit-box-shadow: 0 10px 30px 0px rgba(43, 224, 26, 0.8);
-  -o-box-shadow: 0 10px 30px 0px rgba(43, 224, 26, 0.8);
-  -ms-box-shadow: 0 10px 30px 0px rgba(43, 224, 26, 0.8);
+  background-color: rgb(0, 95, 95);
+  box-shadow: 0 10px 30px 0px rgba(0, 128, 128, 0.8);
+  -moz-box-shadow: 0 10px 30px 0px rgba(0, 128, 128, 0.8);
+  -webkit-box-shadow: 0 10px 30px 0px rgba(0, 128, 128, 0.8);
+  -o-box-shadow: 0 10px 30px 0px rgba(0, 128, 128, 0.8);
+  -ms-box-shadow: 0 10px 30px 0px rgba(0, 128, 128, 0.8);
 }
 
 .act-group{
