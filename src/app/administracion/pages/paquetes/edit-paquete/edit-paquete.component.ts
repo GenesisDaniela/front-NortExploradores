@@ -37,7 +37,7 @@ export class EditPaqueteComponent implements OnInit {
     this.form=this.formBuilder.group({
       idPaq:['', Validators.required],
       precio:['', Validators.required],
-      // estado:['', Validators.required],
+      estado:['', Validators.required],
       urlImagen:['', Validators.required],
       descripcion:['', Validators.required],
       recomendacion:['', Validators.required],
@@ -82,7 +82,7 @@ export class EditPaqueteComponent implements OnInit {
         this.form.setValue({
           idPaq:data.idPaq,
           precio: data.precio,
-          // estado: data.estado,
+           estado: data.estado,
           urlImagen: data.urlImagen,
           descripcion: data.descripcion,
           recomendacion: data.recomendacion,

@@ -33,4 +33,10 @@ export class PaquetesService {
   editarPaquete(id:string,paquete:any):Observable<any>{
       return this.http.put(this.url,paquete)
   }
+
+  deshabilitar(paquete:any):Observable<any>{
+    return this.http.get(this.url+paquete+'/deshabilitar')
+  }
+
+
 }

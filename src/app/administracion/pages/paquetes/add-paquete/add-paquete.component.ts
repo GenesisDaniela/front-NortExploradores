@@ -11,6 +11,7 @@ import { MunicipioService } from 'src/app/administracion/services/municipio.serv
   templateUrl: './add-paquete.component.html',
   styleUrls: ['./add-paquete.component.css']
 })
+
 export class AddPaqueteComponent implements OnInit {
 
   public alojamientos: any = [];
