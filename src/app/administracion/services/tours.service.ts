@@ -31,6 +31,12 @@ export class ToursService {
   obtenerTour(id:string): Observable<any>{
     return this.http.get(this.uri+id);
   }
+
+  obtenerTrans(id:any): Observable<any>{
+    return this.http.get(this.uri+id+'/transporte');
+  }
+
+
   editarTour(tour:any):Observable<any>{
     return this.http.put<any>(this.uri,tour);
   }

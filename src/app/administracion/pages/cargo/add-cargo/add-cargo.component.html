@@ -1,44 +1,35 @@
-<div class="row mt-4">
-    <div class="col"></div>
-    <div class="col-8 bg-light ">
-  
-      <form [formGroup]="form" (submit)="enviarData()">
-        <div class="mb-3 row">
-          <div class="col-sm-2"></div>
-          <h4 class="col-sm-10">{{titulo | uppercase}}</h4>
-        </div>
+<div class="container-contact100">
+  <div class="wrap-contact100">
 
+    <form [formGroup]="form" (submit)="enviarData()" class="contact100-form validate-form">
+      <span class="contact100-form-title">
+        <h4 class="col-sm-10">{{titulo | uppercase}}</h4>
+      </span>
+      <hr style="color: rgb(5, 168, 5);">
+      <input formControlName="idCargo" hidden type="text" class="form-control" id="inputCargo">
 
-        <input formControlName="idCargo" hidden type="text" class="form-control" id="inputCargo">
-               
-  
-        <div class="row mb-3">
-          <label for="inputNombre" class="col-sm-2 col-form-label">Cargo</label>
-          <div class="col-sm-10">
-            <input formControlName = "nombre" type="text" class="form-control" id="inputNombre">
-          </div>
-        </div>
-  
-        <div class="row mb-3">
-          <label for="inputDescripcion" class="col-sm-2 col-form-label">Descripción</label>
-          <div class="col-sm-10">
-              <textarea formControlName="descripcion" class="form-control" id="inputDescripcion"
-                  rows="3"></textarea>
-          </div>
+      <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+        <span class="contact100-form-combo">Nombre del cargo</span>
+        <input formControlName="nombre" class="input100" type="text" placeholder="Nombre del Cargo" id="inputNombre">
+        <span class="focus-input100"></span>
       </div>
-  
-        <div class="row mb-3">
-          <label for="inputSueldo" class="col-sm-2 col-form-label">Sueldo</label>
-          <div class="col-sm-10">
-            <input formControlName = "sueldo" type="number" class="form-control" id="inputSueldo">
-          </div>
-        </div>
-  
-        <div class="d-grid gap-2 col-6 mx-auto">
-          <button class="btn btn-primary" type="submit">{{boton | uppercase}}</button>
-          <div class="col-sm-0"></div>
-        </div>
-      </form>
-    </div>
-    <div class="col"></div>
+
+      <div class="wrap-input100 validate-input" data-validate="Por favor ingrese su descripcion">
+        <span class="contact100-form-combo">Descripcion</span>
+        <textarea formControlName="descripcion" class="input100" placeholder="Descripcion del Cargo"
+          id="inputDescripcion"></textarea>
+        <span class="focus-input100"></span>
+      </div>
+
+      <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+        <span class="contact100-form-combo">Sueldo</span>
+        <input formControlName="sueldo" class="input100" type="number" placeholder="Sueldo" id="inputSueldo">
+        <span class="focus-input100"></span>
+      </div>
+      <hr style="color: rgb(5, 168, 5);">
+      <div class="container-contact100-form-btn">
+        <button class="contact100-form-btn" type="submit">{{boton | uppercase}}</button>
+      </div>
+    </form>
   </div>
+</div>

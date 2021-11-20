@@ -1,0 +1,69 @@
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 100%;
+  background-color: #fff;
+  background-image: url(../../../../assets/img/recomen.jpg);
+}
+
+.contenedor h1 {
+  text-align: center;
+  font-weight: bold;  
+}
+
+.descripcion {
+  background-color: #e9e5d9;
+  width: 40%;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 30px;
+  margin: auto;
+  filter: drop-shadow(2px 2px 2px black);
+  position: relative;
+}
+
+.forms {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.form1 {
+  background-color: #e9e5d9;
+  width: 45%;
+  border-radius: 20px;
+  padding: 10px;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  filter: drop-shadow(2px 2px 2px black);
+  position: relative;
+}
+
+.form1 .mb-3{
+    padding: 20px;
+}
+
+.form2 {
+  background-color: #e9e5d9;
+  border-radius: 20px;
+  width: 45%;
+  padding: 20px;
+  margin-left: 40px;
+  margin-bottom: 30px;
+  filter: drop-shadow(2px 2px 2px black);
+  position: relative;  
+}
+
+.forms h4{
+    text-align: center;
+}
+
+.forms h6{
+    text-align: left;
+}
+
+.boton {
+  text-align: center;
+}

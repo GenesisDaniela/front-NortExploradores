@@ -1,64 +1,63 @@
-<div class="row mt-4">
-    <div class="col"></div>
-    <div class="col-8 bg-light rounded-3">
-      <form [formGroup]="form" (submit)="enviarData()">
-        <div class="mb-3 row">
-          <div class="col-2"></div>
-          <h4 class="col-10">{{titulo | uppercase}}</h4>
+
+<body>
+  <div class="container-contact100">
+    <div class="wrap-contact100">
+
+      <form [formGroup]="form" (submit)="enviarData()" class="contact100-form validate-form">
+        <span class="contact100-form-title">
+          <h4 class="col-sm-10">{{titulo | uppercase}}</h4>
+        </span>
+
+        <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+          <span class="contact100-form-combo"> Id Transporte</span>
+          <input formControlName="idTransporte" class="input100" type="text" placeholder="Id" id="inputTransporte">
+          <span class="focus-input100"></span>
         </div>
+
         
-        <div class="row mb-3">
-            <label for="inputTransporte" class="col-sm-2 col-form-label">Identificacion del transporte</label>
-            <div class="col-sm-10">
-              <input formControlName="idTransporte" type="text" class="form-control" id="inputTransporte" >
-            </div>
-          </div>
+        <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+          <span class="contact100-form-combo"> Modelo</span>
+          <input formControlName="modelo" class="input100" type="text" placeholder="Modelo" id="inputModelo">
+          <span class="focus-input100"></span>
+        </div>
+
+        <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+          <span class="contact100-form-combo"> Puestos</span>
+          <input formControlName="puestos" class="input100" type="number" placeholder="Numero de puestos" id="inputPuestos">
+          <span class="focus-input100"></span>
+        </div>
+
         
-        <div class="row mb-3">
-          <label for="inputPuestos" class="col-sm-2 col-form-label">Puestos</label>
-          <div class="col-sm-10">
-            <input formControlName="puestos" type="number" class="form-control" id="inputPuestos" >
-          </div>
+        <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+          <span class="contact100-form-combo"> Color</span>
+          <input formControlName="color" class="input100" type="text" placeholder="Color" id="inputColor">
+          <span class="focus-input100"></span>
         </div>
   
-        <div class="row mb-3">
-          <label for="inputModelo" class="col-sm-2 col-form-label">Modelo</label>
-          <div class="col-sm-10">
-            <input formControlName="modelo" type="text" class="form-control" id="inputModelo" >
-          </div>
+
+        <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+          <span class="contact100-form-combo"> Precio</span>
+          <input formControlName="precio" class="input100" type="number" placeholder="Precio" id="inputColor">
+          <span class="focus-input100"></span>
         </div>
   
-        <div class="row mb-3">
-          <label for="inputColor" class="col-sm-2 col-form-label">Color</label>
-          <div class="col-sm-10">
-            <input formControlName="color" type="text" class="form-control" id="inputColor" >
-          </div>
-        </div>
-  
-        <div class="row mb-3">
-          <label for="inputPrecio" class="col-sm-2 col-form-label">Precio</label>
-          <div class="col-sm-10">
-            <input formControlName="precio" type="number" class="form-control" id="inputPrecio" >
-          </div>
-        </div>
-  
-        <div class="mb-2 row">
-          <div class="col-sm-0"></div>
-          <label class="col-sm-2 col-form-label">Empresa</label>
-          <div class="col-sm-10">
-            <select formControlName="empresa" class="form-select" aria-label="Default select example">
-              <option *ngFor="let empresa of empresas" name="empresa" id="emp{{empresa.idEmpresa}}"
-                value={{empresa.idEmpresa}}>
-                {{empresa.nombre}}</option>
-            </select>
-          </div>
-        </div>
-  
-        <div class="d-grid gap-2 col-6 mx-auto">
-          <button class="btn btn-secondary" type="submit">{{boton | uppercase}}</button>
-          <div class="col-sm-0"></div>
+
+
+        <div class="wrap-input100">
+          <span class="contact100-form-combo"> Empresa</span>
+          <select formControlName = "empresa" class="form-select" aria-label="Default select example" class="input100"
+          placeholder="empresa">
+            <option *ngFor="let empresa of empresas" name="empresa"id="emp{{empresa.idEmpresa}}"
+            value={{empresa.idEmpresa}}>
+            {{empresa.nombre}}</option>
+          </select>
+      </div>
+       
+
+        <div class="container-contact100-form-btn">
+          <button class="contact100-form-btn" type="submit">{{boton | uppercase}}</button>
         </div>
       </form>
     </div>
-    <div class="col"></div>
   </div>
+</body>

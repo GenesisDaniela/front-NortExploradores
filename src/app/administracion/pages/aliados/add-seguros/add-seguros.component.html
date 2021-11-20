@@ -1,57 +1,57 @@
-<div class="row mt-4">
-    <div class="col"></div>
-    <div class="col-8 bg-light rounded-3">
-      <form [formGroup]="form" (submit)="enviarData()">
-        <div class="mb-3 row">
-          <div class="col-2"></div>
-          <h4 class="col-10">{{titulo | uppercase}}</h4>
-        </div>
+
+
+  <body>
+    <div class="container-contact100">
+      <div class="wrap-contact100">
   
-        <div class="row mb-3">
-            <label for="inputIdSeguro" class="col-sm-2 col-form-label">Id seguro</label>
-            <div class="col-sm-10">
-              <input formControlName="idSeguro" type="number" class="form-control" id="inputIdSeguro" >
-            </div>
+        <form [formGroup]="form" (submit)="enviarData()" class="contact100-form validate-form">
+          <span class="contact100-form-title">
+            <h4 class="col-sm-10">{{titulo | uppercase}}</h4>
+          </span>
+  
+
+          <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+            <span class="contact100-form-combo">Id seguro</span>
+            <input formControlName="idSeguro" class="input100" type="number" placeholder="ID" id="inputIdSeguro">
+            <span class="focus-input100"></span>
           </div>
           
-        <div class="row mb-3">
-          <label for="inputNombre" class="col-sm-2 col-form-label">Nombre</label>
-          <div class="col-sm-10">
-            <input formControlName="nombre" type="text" class="form-control" id="inputNombre" >
+          <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+            <span class="contact100-form-combo">Nombre de seguro</span>
+            <input formControlName="nombre" class="input100" type="text" placeholder="Nombre del seguro" id="inputNombre">
+            <span class="focus-input100"></span>
           </div>
-        </div>
-  
-        <div class="row mb-3">
-          <label for="inputDescrip" class="col-sm-2 col-form-label">Descripcion</label>
-          <div class="col-sm-10">
-            <input formControlName="descripcion" type="text" class="form-control" id="inputDescrip" >
+
+          <div class="wrap-input100 validate-input" data-validate="Por favor ingrese su descripcion">
+            <span class="contact100-form-combo">Descripcion</span>
+            <textarea formControlName="descripcion" class="input100" placeholder="Descripcion del seguro"
+              id="inputDescripcion"></textarea>
+            <span class="focus-input100"></span>
           </div>
+
+        <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+          <span class="contact100-form-combo">Precio</span>
+          <input formControlName="precio" class="input100" type="number" placeholder="Precio" id="inputPrecio">
+          <span class="focus-input100"></span>
         </div>
+
   
-        <div class="row mb-3">
-          <label for="inputSexo" class="col-sm-2 col-form-label">Precio</label>
-          <div class="col-sm-10">
-            <input formControlName="precio" type="number" class="form-control" id="inputSexo" >
+        <div class="wrap-input100">
+          <span class="contact100-form-combo"> Empresa</span>
+          <select formControlName = "empresa" class="form-select" aria-label="Default select example" class="input100"
+          placeholder="empresa">
+            <option *ngFor="let empresa of empresas" name="empresa"id="emp{{empresa.idEmpresa}}"
+            value={{empresa.idEmpresa}}>
+            {{empresa.nombre}}</option>
+          </select>
+      </div>
+       
+  
+        
+          <div class="container-contact100-form-btn">
+            <button class="contact100-form-btn" type="submit">{{boton | uppercase}}</button>
           </div>
-        </div>
-  
-        <div class="mb-2 row">
-          <div class="col-sm-0"></div>
-          <label class="col-sm-2 col-form-label">Empresa</label>
-          <div class="col-sm-10">
-            <select formControlName="empresa" class="form-select" aria-label="Default select example">
-              <option *ngFor="let empresa of empresas" name="empresa" id="emp{{empresa.idEmpresa}}"
-                value={{empresa.idEmpresa}}>
-                {{empresa.nombre}}</option>
-            </select>
-          </div>
-        </div>
-  
-        <div class="d-grid gap-2 col-6 mx-auto">
-          <button class="btn btn-secondary" type="submit">{{boton | uppercase}}</button>
-          <div class="col-sm-0"></div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
-    <div class="col"></div>
-  </div>
+  </body>
