@@ -28,6 +28,7 @@ import { SegurosComponent } from './pages/aliados/seguros/seguros.component';
 import { EditInfoComponent } from './pages/inf-corporativa/edit-info/edit-info.component';
 import { SolicitudComponent } from './pages/solicitud/solicitud.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { EditPaqueteComponent } from './pages/paquetes/edit-paquete/edit-paquete.component';
 
 const routes : Routes = [
   {path:"", 
@@ -76,7 +77,7 @@ const routes : Routes = [
       
       {path:"paquetes", component:PaquetesComponent},
       {path:"nuevoPaquete", component:AddPaqueteComponent},
-      {path:"editarPaquete/:idPaq", component:AddPaqueteComponent},
+      {path:"editarPaquete/:idPaq", component:EditPaqueteComponent},
         
       {path:"reportes", component:ReportesComponent},
       

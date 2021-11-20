@@ -44,6 +44,7 @@ import { AddTransportesComponent } from './pages/aliados/add-transportes/add-tra
 import { UpdateEmpleadoComponent } from './pages/empleados/update-empleado/update-empleado.component';
 import { TransportesComponent } from './pages/aliados/transportes/transportes.component';
 import { SegurosComponent } from './pages/aliados/seguros/seguros.component';
+import { EditPaqueteComponent } from './pages/paquetes/edit-paquete/edit-paquete.component';
 
 // toas tr
 import { ToastrModule } from 'ngx-toastr';
@@ -80,7 +81,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     SegurosComponent,
     EditInfoComponent,
     SolicitudComponent,
-    DashboardComponent
+    DashboardComponent,
+    EditPaqueteComponent
   ],
   imports: [
     CommonModule,

@@ -30,7 +30,7 @@ export class PaquetesService {
     return this.http.get(this.url+id)
   }
   
-  editarPaquete(paquete:any):Observable<any>{
+  editarPaquete(id:string,paquete:any):Observable<any>{
       return this.http.put(this.url,paquete)
   }
 }
