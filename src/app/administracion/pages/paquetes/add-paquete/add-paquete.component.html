@@ -79,6 +79,7 @@
                 <br>
                 <li class="act-group" formArrayName="acts" 
                     *ngFor="let actividad of getActividades.controls; let i = index;" >
+                  
                     <div [formGroupName]="i" class="row" >
 
                         <label class="contact100-form-subtitle">Actividad {{i+1}}</label>
