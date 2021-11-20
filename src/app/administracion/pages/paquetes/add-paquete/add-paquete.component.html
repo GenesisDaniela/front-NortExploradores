@@ -77,11 +77,11 @@
 
             <ul class="list-group">
                 <br>
-                <li class="list-group-item" formArrayName="acts"
-                    *ngFor="let actividad of getActividades.controls; let i = index;" style="margin-bottom: 20px;">
-                    <div [formGroupName]="i" class="row">
+                <li class="act-group" formArrayName="acts" 
+                    *ngFor="let actividad of getActividades.controls; let i = index;" >
+                    <div [formGroupName]="i" class="row" >
 
-                        <label class="contact100-form-title">Actividad</label>
+                        <label class="contact100-form-subtitle">Actividad {{i+1}}</label>
                         <div class="wrap-input100">
                             <input type="text" formControlName="nombre" name="nombre" class="input100"
                                 placeholder="Nombre actividad" required>
