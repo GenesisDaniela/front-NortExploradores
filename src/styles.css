@@ -372,6 +372,32 @@ iframe {
 }
 
 
+.container-user{
+  text-align: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.835);
+  border-radius: 2%;
+  padding: 80px;
+  margin: 100px;
+  margin-bottom: 0px;
+}
+
+.container-user-table {
+  width: 90%;
+  background-color: rgba(229, 229, 229, 1);
+  margin: 0 auto;
+  padding: 0 auto;
+}
+
+.container-user-table th{
+  color: #ebebeb;
+  background-color: rgb(49, 49, 49);
+}
+
+.container-user-table td{
+  background-color: rgb(240, 240, 240);
+}
+
 /*==================================================================
 [ Form ]*/
 
@@ -387,7 +413,8 @@ iframe {
   line-height: 1.2;
   text-align: center;
   padding-bottom: 24px;
-  margin-left: 70px;
+  margin: 0 auto;
+  /* margin-left: 70px; */
 }
 .contact100-form-subtitle {
   display: block;
