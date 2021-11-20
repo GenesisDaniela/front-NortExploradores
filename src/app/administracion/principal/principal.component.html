@@ -110,7 +110,34 @@
             </div> -->
   
             <div class="item">
-              <a routerLink="notificaciones"><i nz-icon nzType="bell" nzTheme="outline" style="font-size: 30px;"></i></a>
+              <a  nz-dropdown [nzDropdownMenu]="notificaciones"><i nz-icon nzType="bell" nzTheme="outline" style="font-size: 30px;"></i></a>
+
+              <nz-dropdown-menu #notificaciones="nzDropdownMenu">
+                <ul class="list-group">
+                <li class="act-group" formArrayName="acts" 
+                    *ngFor="let actividad of getActividades.controls; let i = index;" >
+                  
+                    <div [formGroupName]="i" class="row" >
+
+                        <label class="contact100-form-subtitle">Actividad {{i+1}}</label>
+                        <div class="wrap-input100">
+                            <input type="text" formControlName="nombre" name="nombre" class="input100"
+                                placeholder="Nombre actividad" required>
+                        </div>
+
+                        <div class="wrap-input100">
+                            <input type="text" formControlName="descripcion" name="descripcion" class="input100"
+                                placeholder="Descripcion" required>
+                        </div>
+
+                        <div class="wrap-input100">
+                            <input type="text" formControlName="urlImg" name="urlImg" class="input100"
+                                placeholder="Imagen del paquete" required>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+              </nz-dropdown-menu>
             </div>
 
             <div class="item">

@@ -243,7 +243,7 @@
         .footer-20192 .links li a {
           color: #666873; }
           .footer-20192 .links li a:hover {
-            color: #fff; }
+            color: #2ecc77; }
       .footer-20192 .social li {
         display: inline-block;
         position: relative; }
@@ -254,7 +254,7 @@
           border-radius: 50%;
           display: inline-block;
           margin: 0;
-          padding: 0;
+          /* padding: 0; */
           background-color: #2ecc77;
           color: #fff; }
           .footer-20192 .social li a > span {
