@@ -41,7 +41,7 @@ export class InformacionTransaccionComponent implements OnInit {
         this.transaction_id = params.transactionId;
         this.reference_sale = params.referenceCode;
         
-        this.compraService.encontrar(this.reference_sale).subscribe(compra=>{
+        this.compraService.encontrar(parseInt(this.reference_sale)+1).subscribe(compra=>{
           this.compra = compra;
           console.log(compra);
           if(compra.estado=="CANCELADO" || compra.estado=="PENDIENTE" ) this.isPagoCancelado=true

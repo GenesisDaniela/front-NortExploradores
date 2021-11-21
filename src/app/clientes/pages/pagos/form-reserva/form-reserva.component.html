@@ -1,5 +1,5 @@
 
-<div class="glass form-pagos" style="margin:80px">
+<div class="glass form-pagos" style="margin:80px" *ngIf="!isPagadoTotal">
     <h1 style="text-align: center;">Segundo pago del 50%</h1>
     <div class="row">
   
@@ -74,7 +74,7 @@
             <input name="merchantId"    type="hidden"  value="508029"   >
             <input name="accountId"     type="hidden"  value={{idCuentaTest}} >
             <input name="description"   type="hidden"  value="[TEST] {{descripcion}}"  >
-            <input name="referenceCode" type="hidden"  value={{id}} >
+            <input name="referenceCode" type="hidden"  value={{id-1}} >
             <input name="amount"        type="hidden"  value={{totalCompra}}  >
             <input name="currency"      type="hidden"  value={{moneda}} >
             <input name="signature"     type="hidden"  value={{firmaElectronicaMD5Test}}   >
@@ -93,3 +93,14 @@
   
     </div>
   </div>
+
+
+<div class="glass form-pagos" style="margin:80px" *ngIf="isPagadoTotal">
+    <h1 style="text-align: center;">La compra de este tour se encuentra pagada al 100%, !disfruta tu viaje!</h1>
+    <div id="content" class="notify successbox">
+        <span ><img class="alerticon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Check_green_icon.svg/2048px-Check_green_icon.svg.png" alt="checkmark" /></span><br />
+        <br>
+    <button class="btn button-34" routerLink="/misReservas">Volver</button>
+
+    </div>
+</div>

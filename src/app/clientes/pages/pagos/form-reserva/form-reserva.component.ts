@@ -17,7 +17,7 @@ export class FormReservaComponent implements OnInit {
   totalCompra:any;
   idCuenta = "957106";
   idMercado = "949518";
-
+  isPagadoTotal = false;
   email = ""
   nombrePersona = "";
 
@@ -46,12 +46,16 @@ export class FormReservaComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.activeRoute.snapshot.paramMap.get("idCompra");
     this.compraService.encontrar(this.id).subscribe(compra=>{
-      this.firmaElectronica = `${this.apikey}~${this.idMercado}~${this.id}~${compra.totalCompra/2}~${this.moneda}`;
+      if(compra.estado == "PAGADO"){
+        this.isPagadoTotal=true;
+        return;
+      }
+      this.firmaElectronica = `${this.apikey}~${this.idMercado}~${this.id-1}~${compra.totalCompra/2}~${this.moneda}`;
       this.firmaElectronicaMD5 = crypto.MD5(this.firmaElectronica).toString();
       this.totalCompra = compra.totalCompra/2;
       this.totalPasajeros= compra.cantidadPasajeros;
       // Pruebas
-      this.firmaElectronicaTest = `${this.apikeyTest}~508029~${this.id}~${compra.totalCompra/2}~${this.moneda}`;
+      this.firmaElectronicaTest = `${this.apikeyTest}~508029~${this.id-1}~${compra.totalCompra/2}~${this.moneda}`;
 
       this.descripcion="Pago de (" + this.totalPasajeros + ") paquete(s) turistico(s) destino: " + compra.tour.paquete.municipio.nombre;
 
