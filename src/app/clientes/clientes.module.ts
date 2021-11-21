@@ -32,6 +32,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { MaletaComponent } from './pages/maleta/maleta.component';
 import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.component';
 import { InformacionTransaccionComponent } from './pages/pagos/informacion-transaccion/informacion-transaccion.component';
+import { FormReservaComponent } from './pages/pagos/form-reserva/form-reserva.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { InformacionTransaccionComponent } from './pages/pagos/informacion-trans
     MaletaComponent,
     InformacionPagoComponent,
     MisReservasComponent,
-    InformacionTransaccionComponent
+    InformacionTransaccionComponent,
+    FormReservaComponent
   ],
   imports: [
     CommonModule,

@@ -21,6 +21,7 @@ import { AuthRegisterComponent } from '../security/auth-register/auth-register.c
 import { InformacionPagoComponent } from './pages/pagos/informacion-pago/informacion-pago/informacion-pago.component';
 import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.component';
 import { InformacionTransaccionComponent } from './pages/pagos/informacion-transaccion/informacion-transaccion.component';
+import { FormReservaComponent } from './pages/pagos/form-reserva/form-reserva.component';
 
 const routes : Routes = [
   {path:"",
@@ -45,6 +46,7 @@ const routes : Routes = [
     {path:"registro", component:AuthRegisterComponent},
     {path:"misReservas", component:MisReservasComponent},
     {path:"inftransaccion", component:InformacionTransaccionComponent},
+    {path:"pagoreserva/:idCompra", component:FormReservaComponent},
     {path:"**", redirectTo:"inicio"},
     
     

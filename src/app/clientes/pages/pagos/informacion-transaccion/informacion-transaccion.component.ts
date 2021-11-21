@@ -44,7 +44,7 @@ export class InformacionTransaccionComponent implements OnInit {
         this.compraService.encontrar(this.reference_sale).subscribe(compra=>{
           this.compra = compra;
           console.log(compra);
-          if(compra.estado=="CANCELADO") this.isPagoCancelado=true
+          if(compra.estado=="CANCELADO" || compra.estado=="PENDIENTE" ) this.isPagoCancelado=true
           if(compra.estado=="PAGADO") this.isPagoTotal =true;
           if(compra.estado =="PAGO_PARCIAL") this.isPagoParcial =true;
 

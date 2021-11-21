@@ -609,10 +609,6 @@ export class FormPagosComponent implements OnInit {
       tour: this.tourSeleccionado.idTour
     }
 
-    this.toastr.warning("Cargando pasajeros...", 'Espere', {
-      timeOut: 5000, positionClass: 'toast-top-center'
-    });
-
     this.usuarioService.guardarPasajerosDeUsuario(this.usuario.id_Usuario, this.pasajeros).subscribe(pasajeros => {
       this.pasajerosTotal = pasajeros;
       this.toastr.success("Pasajeros ingresados", 'Ok', {
