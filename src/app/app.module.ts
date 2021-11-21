@@ -45,6 +45,8 @@ registerLocaleData(es);
   declarations: [
     AppComponent,
     ErrorPagesComponent,
+    AuthLoginComponent,
+    AuthRegisterComponent,
   
   ],
   imports: [
