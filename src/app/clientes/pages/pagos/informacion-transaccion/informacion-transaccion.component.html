@@ -1,66 +1,38 @@
-<app-header></app-header>
 
 <div>
-    <div id="content">
+    <div id="content" *ngIf="isPagoParcial" >
         <div class="notify successbox">
-            <h1>Transaction Successful!</h1><br />
-            <span class="alerticon"><img src="http://s22.postimg.org/i5iji9hv1/check.png" alt="checkmark" /></span><br />
-        </div>
-
-        <div id="Box">
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Amount)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Amount)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Payment_method)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Payment_method)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.IsSuccessful)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.IsSuccessful)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Charge_id)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Charge_id)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Transaction_id)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Transaction_id)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Date)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Date)
-                </dd>
-
-            </dl>
+            <h1>Transaccion Exitosa, recuerda pagar el otro 50%</h1><br />
+            <span ><img class="alerticon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Check_green_icon.svg/2048px-Check_green_icon.svg.png" alt="checkmark" /></span><br />
         </div>
     </div>
-</div>
 
-<app-footer></app-footer>
+    <div id="content" *ngIf="isPagoTotal">
+        <div class="notify successbox">
+            <h1>Transaccion Exitosa disfruta tu viaje</h1><br />
+            <span ><img class="alerticon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Check_green_icon.svg/2048px-Check_green_icon.svg.png" alt="checkmark" /></span><br />
+        </div>
+    </div>
+
+    <div id="content" >
+        <div class="notify successbox" *ngIf="isPagoCancelado">
+            <h1>Transaccion Cancelada</h1><br />
+            <span ><img class="alerticon" src="https://cdn2.iconfinder.com/data/icons/web-and-apps-interface/32/Cancel-512.png" alt="checkmark" /></span><br />
+        </div>
+    </div>
+    
+</div>
+<!-- <form #formPrueb method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
+    <input name="merchantId"    type="hidden"  value="508029"   >
+    <input name="accountId"     type="hidden"  value={{idCuentaTest}} >
+    <input name="description"   type="hidden"  value="Test PAYU"  >
+    <input name="referenceCode" type="hidden"  value={{referenciaUnic}} >
+    <input name="amount"        type="hidden"  value={{total}}  >
+    <input name="currency"      type="hidden"  value={{moneda}} >
+    <input name="signature"     type="hidden"  value={{firmaElectronicaMD5Test}}   >
+    <input name="test"          type="hidden"  value="1" >
+    <input name="buyerEmail"    type="hidden"  value="test@test.com" >
+    <input name="responseUrl"    type="hidden"  value="http://localhost:4200/infpago">
+    <input name="confirmationUrl" type="hidden"  value="https://nortexploradores.herokuapp.com/pagos/confirmacion" >
+    <input name="Submit" value="PRUEBAS" class="btn boton-compra" type="submit" (click)="formPrueb.submit()">
+  </form> -->
