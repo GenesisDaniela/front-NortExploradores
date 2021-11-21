@@ -18,6 +18,7 @@ import { AddExperienciaComponent } from './pages/inicio/experiencias/add-experie
 import { FormPagosComponent } from './pages/pagos/form-pagos/form-pagos.component';
 import { AuthLoginComponent } from '../security/auth-login/auth-login.component';
 import { AuthRegisterComponent } from '../security/auth-register/auth-register.component';
+import { InformacionPagoComponent } from './pages/pagos/informacion-pago/informacion-pago/informacion-pago.component';
 import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.component';
 
 const routes : Routes = [
@@ -36,14 +37,15 @@ const routes : Routes = [
     {path:"pago", component:FormPagosComponent},
     {path:"estadia", component:EstadiaComponent},
     {path:"estadia/detalletour/:idTour", component:DetalleTourComponent},
-  
     {path:"recomendaciones", component:RecomendacionesComponent},
     {path:"viajesGrupales", component:ViajesGrupalesComponent},
     {path:"festividades", component:FestividadesComponent},
     {path:"login", component:AuthLoginComponent},
     {path:"registro", component:AuthRegisterComponent},
     {path:"misReservas", component:MisReservasComponent},
-    {path:"**", redirectTo:"inicio"}
+    {path:"**", redirectTo:"inicio"},
+    {path:"**", redirectTo:"inicio"},
+
   ]}
 ]
 
