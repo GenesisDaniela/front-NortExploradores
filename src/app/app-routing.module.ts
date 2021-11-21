@@ -17,6 +17,9 @@ const routes: Routes = [
   //   path:"registro",component:AuthRegisterComponent
   // },
   {
+    path:"infpago/:idTransaccion",component:InformacionPagoComponent
+  },
+  {
     path:"infpago",component:InformacionPagoComponent
   },
   {

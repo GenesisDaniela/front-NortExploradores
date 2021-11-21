@@ -38,6 +38,7 @@ export class FormPagosComponent implements OnInit {
   public pasajerosFrecElegidos: any = [];
   public pasajerosTotal: any = [];
   public pasajerosClasificados: any = [];
+  public pasajeros :any= [];
 
   public idPaquete: any;
 
@@ -126,6 +127,8 @@ export class FormPagosComponent implements OnInit {
 
 
   agregarPasajero(tipoid = "", documento = "", nombre = "", apellido = "", sexo = "", fechaNac = "", celular = "", correo = "") {
+    if(this.total==0) return;
+
     this.total++;
     let persona = this.pagosInfo.get('pasajeros') as FormArray;
     persona.push(this.formBuilder.group({
@@ -279,7 +282,6 @@ export class FormPagosComponent implements OnInit {
 
 
       this.personaService.getPersona(pasajero.idPersona).subscribe(persona => {
-        
         var pasajeroPost;
         let pasajero = persona;
         if (pasajero == null) {
@@ -341,30 +343,23 @@ export class FormPagosComponent implements OnInit {
     for (let i = 0; i < pasajeros.length; i++) {
       pasajeros[i].idPasajero = pasajeross.at(i).value.idPasajero;
     }
-    this.usuarioService.guardarPasajerosDeUsuario(this.usuario.id_Usuario, pasajeros).subscribe(pasajeros => {
-      this.pasajerosTotal = pasajeros;
 
-      if (compra) {
-        compra?.classList.add("complete")
-        compra?.classList.remove("pendiente")
-      }
+    this.pasajeros = pasajeros;
+    if (compra) {
+      compra?.classList.add("complete")
+      compra?.classList.remove("pendiente")
+    }
 
-      this.toastr.success("Pasajeros ingresados", 'Ok', {
-        timeOut: 3000, positionClass: 'toast-top-center'
-      });
+    this.infoPagina = 2;
+    this.totalCompra50p = (this.totalCompra)-this.totalCompra*0.5;
 
-      this.infoPagina = 2;
-      this.totalCompra50p = (this.totalCompra)-this.totalCompra*0.5;
-
-      window.scroll(0,0);
-      const factura = document.getElementById("facturastep");
-      if (factura) factura?.classList.add("pendiente")
-
-
-      let pasajeross = this.pagosInfo.get('pasajeros') as FormArray;
-      this.descripcion = "Pago de (" + pasajeross.length + ") paquete(s) turistico(s) destino: " + this.tourSeleccionado.paquete.municipio.nombre
+    window.scroll(0,0);
+    const factura = document.getElementById("facturastep");
+    if (factura) factura?.classList.add("pendiente")
+    
+    let pasajerosX = this.pagosInfo.get('pasajeros') as FormArray;
+      this.descripcion = "Pago de (" + pasajerosX.length + ") paquete(s) turistico(s) destino: " + this.tourSeleccionado.paquete.municipio.nombre
       this.pagosInfo.markAllAsTouched();
-    });
   }
 
   cargarPasajerosClasificados() {
@@ -389,7 +384,7 @@ export class FormPagosComponent implements OnInit {
   cargarUsuario() {
     this.usuarioService.usuarioPorUsername(this.nombreUser).subscribe(usuario => {
       this.usuario = usuario;
-
+      console.log(usuario);
       this.agregarPasajerosFrec();
     })
   }
@@ -411,6 +406,7 @@ export class FormPagosComponent implements OnInit {
 
   public agregarPasajerosFrec() {
     this.usuarioService.pasajerosPorCliente(this.usuario.id_Usuario).subscribe(pasajeros => {
+      console.log(pasajeros);
       this.cargarPasajeros(pasajeros);
     })
   }
@@ -532,10 +528,20 @@ export class FormPagosComponent implements OnInit {
   }
 
   volverPag() {
+
     this.cargarPasajerosClasificados()
     this.infoPagina = 1
+    this.cedulas=[];
     window.scroll(0,0);
     const compra = document.getElementById("comprastep");
+    const output = document.getElementById('btnagregar');
+    console.log(output);
+          if (output){
+            output.removeAttribute("disabled");
+            output.classList.add("green")
+            output.classList.remove("gray")
+
+          }
     if (compra) {
       compra?.classList.add("pendiente")
       compra?.classList.remove("complete")
@@ -597,61 +603,68 @@ export class FormPagosComponent implements OnInit {
     var compra = {
       idCompra: this.idCompra,
       cantidadPasajeros: this.total,
-      totalCompra: this.totalCompra,
+      totalCompra: this.totalCompra+this.totalCompra,
       estado: "PENDIENTE",
       usuario: this.usuario.id_Usuario,
       tour: this.tourSeleccionado.idTour
     }
 
-    this.toastr.warning("Cargando...", 'Espere', {
-      timeOut: 3000, positionClass: 'toast-top-center'
+    this.toastr.warning("Cargando pasajeros...", 'Espere', {
+      timeOut: 5000, positionClass: 'toast-top-center'
     });
 
-    this.compraService.post(compra, this.tourSeleccionado.idTour).subscribe(compra => {
-
-      console.log("La compra es:", compra);
-
-      let pasajeros = this.pagosInfo.get('pasajeros') as FormArray;
-      let detalleCompras = [];
-      let personas = this.pagosInfo.value.pasajeros;
-
-
-
-      for (let i = 0; i < pasajeros.length; i++) {
-        let edadPasajero = this.calcularfecha(personas[i].fechaNac);
-        let valorUnit = 0;
-        let valorPaquete = this.tourSeleccionado.paquete.precio;
-
-        if (edadPasajero <= 4) {
-          valorUnit = 10000;
-        }
-        if (edadPasajero > 4 && edadPasajero < 13) {
-          valorUnit = (valorPaquete - 10000); //por confirmar
-        }
-
-        if (edadPasajero > 12) {
-          valorUnit = valorPaquete;
-        }
-
-        let detalleCompra = {
-          compra: compra.idCompra,
-          valorUnit: valorUnit,
-          pasajero: pasajeros.at(i).value.idPasajero,
-          paquete: this.tourSeleccionado.paquete
-        }
-
-        detalleCompras.push(detalleCompra);
-        console.log("DETALLES COMPRA:", detalleCompras);
-
-      }
-
-      this.detalleCompra.post(detalleCompras).subscribe(det => {
-        console.log("El resultado es: ", det);
-        form.submit();
+    this.usuarioService.guardarPasajerosDeUsuario(this.usuario.id_Usuario, this.pasajeros).subscribe(pasajeros => {
+      this.pasajerosTotal = pasajeros;
+      this.toastr.success("Pasajeros ingresados", 'Ok', {
+        timeOut: 3000, positionClass: 'toast-top-center'
       });
+      this.toastr.warning("Cargando compra....", 'Espere', {
+        timeOut: 3000, positionClass: 'toast-top-center'
+      });
+      this.compraService.post(compra, this.tourSeleccionado.idTour).subscribe(compra => {
+        console.log("La compra es:", compra);
+        let pasajeros = this.pagosInfo.get('pasajeros') as FormArray;
+        let detalleCompras = [];
+        let personas = this.pagosInfo.value.pasajeros;
+  
+        for (let i = 0; i < pasajeros.length; i++) {
+          let edadPasajero = this.calcularfecha(personas[i].fechaNac);
+          let valorUnit = 0;
+          let valorPaquete = this.tourSeleccionado.paquete.precio;
+  
+          if (edadPasajero <= 4) {
+            valorUnit = 10000;
+          }
+          if (edadPasajero > 4 && edadPasajero < 13) {
+            valorUnit = (valorPaquete - 10000); //por confirmar
+          }
+  
+          if (edadPasajero > 12) {
+            valorUnit = valorPaquete;
+          }
+  
+          let detalleCompra = {
+            compra: compra.idCompra,
+            valorUnit: valorUnit,
+            pasajero: pasajeros.at(i).value.idPasajero,
+            paquete: this.tourSeleccionado.paquete
+          }
+  
+          detalleCompras.push(detalleCompra);
+          console.log("DETALLES COMPRA:", detalleCompras);
+  
+        }
+  
+        this.detalleCompra.post(detalleCompras).subscribe(det => {
+          console.log("El resultado es: ", det);
+          form.submit();
+        });
+      })
 
 
-    })
+    });
+
+
 
   }
 

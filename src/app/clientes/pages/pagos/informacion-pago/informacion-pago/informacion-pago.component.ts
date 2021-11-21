@@ -22,13 +22,26 @@ export class InformacionPagoComponent implements OnInit {
   public persona:any;
   public empresa:any
 
+  public transaccion:any;
+
+  public idTransaccion:any
+  public transaction_id:any;
+  public reference_sale:any;
+  public date:any;
+  public payment_method_type:any;
+  public payment_method:any;
+  public value:any
+  public response_message_pol:any;
+
   constructor(
     private route:ActivatedRoute,
     private pagoService: TransaccionService,
     private usuarioService:UsuarioService,
     private tokenS: TokenService,
     private personaService: PersonaService,
-    private empresaService: EmpresaService
+    private empresaService: EmpresaService,
+    private transaccionService: TransaccionService,
+    private routes: ActivatedRoute
 
     
     ) { }
@@ -38,27 +51,48 @@ export class InformacionPagoComponent implements OnInit {
     this.nombreUser = this.tokenS.getUserName();
     this.cargarUsuario();
     this.cargarEmpresa();
-    this.route.queryParams.subscribe(params=>{
-      let body = new URLSearchParams();
-        body.set("transaction_id",params.transactionId);
-        body.set("reference_sale",params.referenceCode);     
-        body.set("date",params.processingDate);     
-        body.set("payment_method_type",params.polPaymentMethodType);     
-        body.set("payment_method",params.polPaymentMethod);
-        body.set("attempts","1");     
-        body.set("tax",params.TX_TAX);     
-        body.set("shipping_country",params.currency);     
-        body.set("description",params.description); 
-        body.set("currency",params.currency);     
-        body.set("value",params.TX_VALUE);     
-        body.set("payment_method_name",params.lapPaymentMethodType);     
-        body.set("email_buyer",params.buyerEmail);     
-        body.set("payment_method_id",params.polPaymentMethod);  
-        body.set("response_message_pol",params.lapTransactionState);
-        body.forEach((data)=>{
-          this.infoTransaccion.push(data);
-        });
-    })
+    this.idTransaccion = this.routes.snapshot.paramMap.get("idTransaccion");
+    if(this.idTransaccion==null){
+      this.route.queryParams.subscribe(params=>{
+        let body = new URLSearchParams();
+          this.date = params.processingDate;
+          this.payment_method = params.polPaymentMethod;
+          this.payment_method_type = params.lapPaymentMethodType;
+          this.response_message_pol = params.lapTransactionState;
+          this.transaction_id = params.transactionId;
+          this.reference_sale = params.referenceCode;
+          
+          body.set("transaction_id",params.transactionId);
+          body.set("reference_sale",params.referenceCode);     
+          body.set("date",params.processingDate);     
+          body.set("payment_method_type",params.polPaymentMethodType);     
+          body.set("payment_method",params.polPaymentMethod);
+          body.set("attempts","1");     
+          body.set("tax",params.TX_TAX);     
+          body.set("shipping_country",params.currency);     
+          body.set("description",params.description); 
+          body.set("currency",params.currency);     
+          body.set("value",params.TX_VALUE);     
+          body.set("payment_method_name",params.lapPaymentMethodType);     
+          body.set("email_buyer",params.buyerEmail);     
+          body.set("payment_method_id",params.polPaymentMethod);  
+          body.set("response_message_pol",params.lapTransactionState);
+  
+          body.forEach((data)=>{
+            this.infoTransaccion.push(data);
+            console.log(data);
+          });
+      })
+    }else{
+        console.log("aaa");
+          this.transaccionService.encontrar(this.idTransaccion).subscribe(transaccion=>{
+            this.transaccion = transaccion;
+            console.log(transaccion);
+          })
+    }
+    
+    
+
   }
 
   cargarEmpresa(){

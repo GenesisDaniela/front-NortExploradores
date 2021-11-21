@@ -31,6 +31,7 @@ import { AddExperienciaComponent } from './pages/inicio/experiencias/add-experie
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { MaletaComponent } from './pages/maleta/maleta.component';
 import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.component';
+import { InformacionTransaccionComponent } from './pages/pagos/informacion-transaccion/informacion-transaccion.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.componen
     AddExperienciaComponent,
     MaletaComponent,
     InformacionPagoComponent,
-    MisReservasComponent
+    MisReservasComponent,
+    InformacionTransaccionComponent
   ],
   imports: [
     CommonModule,

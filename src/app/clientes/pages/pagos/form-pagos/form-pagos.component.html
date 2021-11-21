@@ -68,7 +68,7 @@
             </div>
 
             <div class="col-sm-1" *ngIf="tourSeleccionado!=undefined;">
-             <img id="imagenTour" class="imgTour" src="" alt="">
+             <img id="imagenTour" class="imgTour" src="https://turismonortedesantander.com/wp-content/uploads/Cacota_Plaza_norte-de-santander_2.jpg" alt="">
             </div>
           </div>
 
@@ -93,13 +93,13 @@
           </select>
         </div>
 
-          <div class="card mt-2r pasajero-usuario" style="margin-top: 20px;margin-bottom: 20px;">
+          <div class=" mt-2r pasajero-usuario" style="margin-top: 20px;margin-bottom: 20px;">
             <div class="card-header">
               <div class="header-container">
                 <span class="product-header">
                  
                 </span>
-                <button (click)="agregarPasajero()" id="btnagregar" class="button-34 gray" disabled>
+                <button (click)="agregarPasajero()" id="btnagregar" class="button-34 gray">
                   Agregar <i class="fas fa-plus"></i>
                 </button>
               </div>
@@ -271,7 +271,7 @@
                 <span class="text-inverse">${{totalCompra}}</span>
              </div>
              <div class="sub-price">
-                <i class="fa fa-plus text-muted"></i>
+              <i class="fas fa-minus"></i>
              </div>
              <div class="sub-price">
                 <small>RESERVA (-50%)</small>
@@ -285,7 +285,7 @@
     </div>
     <div class="row" style="margin-top: 20px;">
       <div class="col-4" style="width: auto;">
-        <button (click)="volverPag()" class="btn-lg button-34" type="button"> <i class="fas fa-chevron-circle-left"></i>Volver</button>
+        <button (click)="volverPag()" class="btn-lg button-34" type="button"> <i class="fas fa-chevron-circle-left"></i> Volver</button>
       </div>
       <div class="col-4"></div>
 
