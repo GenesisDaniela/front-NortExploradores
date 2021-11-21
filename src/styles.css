@@ -50,7 +50,7 @@ background-color: rgba(229, 229, 229, 1);
 }
 
 .boton-compra {
-    background: rgb(51, 49, 49);
+  background: rgb(51, 49, 49);
   box-shadow: 0 8px 32px 0 rgba(161, 5, 201, 0.37);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
@@ -179,7 +179,7 @@ background-color: rgba(229, 229, 229, 1);
 
 .titulo{
   position: absolute;
-  background-color: #155db1;
+  background-color: rgb(0, 128, 128);
   font-family: 'Roboto', sans-serif;
   padding: 6px;
   width: 98%;
@@ -198,6 +198,17 @@ font-weight: bold;
 .table{
   width: 100%;
 }
+.boton {
+  background: rgb(0, 128, 128);
+  
+  color: rgb(231, 231, 231);
+  margin: 5px;}
+  .boton:hover {
+    background: rgb(0, 85, 85);
+    box-shadow: 0 4px 10px 0 rgba(0, 99, 99, 0.8);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);}
+    
 
 /* TODO: FIN DE ESTILOS DE CAJONES DE ADMINISTRACIÓN */
 
@@ -333,7 +344,7 @@ iframe {
   height: 100%;
   top: 0;
   left: 0;
-  background: rgba(54, 206, 99, 0.226);
+  background: rgba(0, 128, 128, 0.6);
   pointer-events: none;
 }
 
@@ -361,6 +372,32 @@ iframe {
 }
 
 
+.container-user{
+  text-align: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.835);
+  border-radius: 2%;
+  padding: 80px;
+  margin: 100px;
+  margin-bottom: 0px;
+}
+
+.container-user-table {
+  width: 90%;
+  background-color: rgba(229, 229, 229, 1);
+  margin: 0 auto;
+  padding: 0 auto;
+}
+
+.container-user-table th{
+  color: #ebebeb;
+  background-color: rgb(49, 49, 49);
+}
+
+.container-user-table td{
+  background-color: rgb(240, 240, 240);
+}
+
 /*==================================================================
 [ Form ]*/
 
@@ -376,7 +413,8 @@ iframe {
   line-height: 1.2;
   text-align: center;
   padding-bottom: 24px;
-  margin-left: 70px;
+  margin: 0 auto;
+  /* margin-left: 70px; */
 }
 .contact100-form-subtitle {
   display: block;
@@ -392,7 +430,7 @@ iframe {
 
   font-family: SourceSansPro-Bold; 
   font-size: 18px;
-  color: #2ecc71;
+  color: rgb(0, 128, 128);
   line-height: 1.2;
   text-align: center;
   margin-left: 18px;
@@ -495,7 +533,7 @@ textarea.input100 {
   padding: 0 20px;
   min-width: 160px;
   height: 42px;
-  background-color: #2ecc71;
+  background-color: rgba(0, 128, 128, 0.9);
   border-radius: 21px;
 
   font-family: JosefinSans-Bold;
@@ -518,17 +556,16 @@ textarea.input100 {
 }
 
 .contact100-form-btn:hover {
-  background-color: #1c7c44;
-  box-shadow: 0 10px 30px 0px rgba(43, 224, 26, 0.8);
-  -moz-box-shadow: 0 10px 30px 0px rgba(43, 224, 26, 0.8);
-  -webkit-box-shadow: 0 10px 30px 0px rgba(43, 224, 26, 0.8);
-  -o-box-shadow: 0 10px 30px 0px rgba(43, 224, 26, 0.8);
-  -ms-box-shadow: 0 10px 30px 0px rgba(43, 224, 26, 0.8);
+  background-color: rgb(0, 95, 95);
+  box-shadow: 0 10px 30px 0px rgba(0, 128, 128, 0.8);
+  -moz-box-shadow: 0 10px 30px 0px rgba(0, 128, 128, 0.8);
+  -webkit-box-shadow: 0 10px 30px 0px rgba(0, 128, 128, 0.8);
+  -o-box-shadow: 0 10px 30px 0px rgba(0, 128, 128, 0.8);
+  -ms-box-shadow: 0 10px 30px 0px rgba(0, 128, 128, 0.8);
 }
 
 .act-group{
   padding: 50px;
-  border-left: #2ecc71;
   border: 1px solid #ebebeb;
   border-radius: 6%;
   box-shadow: 0 10px 30px 0px rgba(43, 224, 26, 0.1);

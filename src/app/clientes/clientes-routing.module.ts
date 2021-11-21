@@ -18,6 +18,7 @@ import { AddExperienciaComponent } from './pages/inicio/experiencias/add-experie
 import { FormPagosComponent } from './pages/pagos/form-pagos/form-pagos.component';
 import { AuthLoginComponent } from '../security/auth-login/auth-login.component';
 import { AuthRegisterComponent } from '../security/auth-register/auth-register.component';
+import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.component';
 
 const routes : Routes = [
   {path:"",
@@ -41,6 +42,7 @@ const routes : Routes = [
     {path:"festividades", component:FestividadesComponent},
     {path:"login", component:AuthLoginComponent},
     {path:"registro", component:AuthRegisterComponent},
+    {path:"misReservas", component:MisReservasComponent},
     {path:"**", redirectTo:"inicio"}
   ]}
 ]

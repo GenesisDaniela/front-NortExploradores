@@ -3,9 +3,10 @@
 
         <form [formGroup]="form" (submit)="enviarData()" class="contact100-form validate-form">
             <span class="contact100-form-title">
-                <h4 class="col-sm-10">{{titulo | uppercase}}</h4>
+                <h4 class="col-sm-10">Editar Paquete</h4>
             </span>
             <hr style="color: rgb(5, 168, 5);">
+
             <input formControlName="idPaq" hidden type="number" class="form-control" id="inputPaq">
 
             <div class="wrap-input100">
@@ -14,14 +15,14 @@
                     placeholder="Precio">
             </div>
 
-            <div class="wrap-input100">
+            <!-- <div class="wrap-input100">
                 <span class="contact100-form-combo">Estado del paquete</span>
                 <select formControlName="estado" type="text" class="form-control" id="inputEstado" class="input100"
                     placeholder="Estado">
-                    <option value="false">INACTVO</option>
-                    <option value="true">ACTIVO</option>
+                    <option value="INACTVO">INACTVO</option>
+                    <option value="ACTIVO">ACTIVO</option>
                 </select>
-            </div>
+            </div> -->
 
             <div class="wrap-input100">
                 <span class="contact100-form-combo">Imagen Paquete</span>
@@ -70,39 +71,9 @@
                 <span class="focus-input100"></span>
             </div>
 
-            <div class="wrap-input100">
-                <input (input)="cargarActividades($event)" type="number" class="form-control" id="inputcantAtcs"
-                    class="input100" placeholder="Cantidad de actividades">
-            </div>
-
-            <ul class="list-group">
-                <br>
-                <li class="act-group" formArrayName="acts" 
-                    *ngFor="let actividad of getActividades.controls; let i = index;" >
-                  
-                    <div [formGroupName]="i" class="row" >
-
-                        <label class="contact100-form-subtitle">Actividad {{i+1}}</label>
-                        <div class="wrap-input100">
-                            <input type="text" formControlName="nombre" name="nombre" class="input100"
-                                placeholder="Nombre actividad" required>
-                        </div>
-
-                        <div class="wrap-input100">
-                            <input type="text" formControlName="descripcion" name="descripcion" class="input100"
-                                placeholder="Descripcion" required>
-                        </div>
-
-                        <div class="wrap-input100">
-                            <input type="text" formControlName="urlImg" name="urlImg" class="input100"
-                                placeholder="Imagen del paquete" required>
-                        </div>
-                    </div>
-                </li>
-            </ul>
             <hr style="color: rgb(5, 168, 5);">
             <div class="container-contact100-form-btn">
-                <button class="contact100-form-btn" type="submit">{{boton | uppercase}}</button>
+                <button class="contact100-form-btn" type="submit">Editar</button>
             </div>
         </form>
     </div>
