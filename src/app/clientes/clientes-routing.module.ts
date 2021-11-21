@@ -20,6 +20,7 @@ import { AuthLoginComponent } from '../security/auth-login/auth-login.component'
 import { AuthRegisterComponent } from '../security/auth-register/auth-register.component';
 import { InformacionPagoComponent } from './pages/pagos/informacion-pago/informacion-pago/informacion-pago.component';
 import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.component';
+import { InformacionTransaccionComponent } from './pages/pagos/informacion-transaccion/informacion-transaccion.component';
 
 const routes : Routes = [
   {path:"",
@@ -43,10 +44,9 @@ const routes : Routes = [
     {path:"login", component:AuthLoginComponent},
     {path:"registro", component:AuthRegisterComponent},
     {path:"misReservas", component:MisReservasComponent},
+    {path:"inftransaccion", component:InformacionTransaccionComponent},
     {path:"**", redirectTo:"inicio"},
-    {path:"**", redirectTo:"inicio"},
-
-    {path:"**", redirectTo:"inicio"},
+    
     
   ]}
 ]
