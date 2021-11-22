@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as crypto from "crypto-js";
 import { CompraService } from 'src/app/services/compra.service';
+import { TokenService } from 'src/app/services/token.service';
 import { TransaccionService } from 'src/app/services/transaccion.service';
 
 @Component({
@@ -24,15 +25,20 @@ export class InformacionTransaccionComponent implements OnInit {
   public isPagoParcial = false;
   public isPagoTotal = false;
   public isPagoCancelado = false;
-
+  public isLogged = false;
 
   constructor(
     private route: ActivatedRoute,
     private compraService: CompraService,
-    private transaccionService: TransaccionService
+    private transaccionService: TransaccionService,
+    private tokenS: TokenService,
+    private router: Router
+
+
     ) { }
 
   ngOnInit(): void {
+    this.cargarToken();
     this.route.queryParams.subscribe(params=>{
       let body = new URLSearchParams();
         this.date = params.processingDate;
@@ -88,5 +94,14 @@ export class InformacionTransaccionComponent implements OnInit {
   generarReferencia():string{
     const fecha = new Date();
     return Math.round((Math.random()*25544))+""+Math.round(fecha.getMilliseconds());
+  }
+
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+      this.router.navigateByUrl("/inicio");
+    }
   }
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as crypto from "crypto-js";
 import { CompraService } from 'src/app/services/compra.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-form-reserva',
@@ -18,6 +19,8 @@ export class FormReservaComponent implements OnInit {
   idCuenta = "957106";
   idMercado = "949518";
   isPagadoTotal:any;
+  public isLogged!: boolean;
+
   email = ""
   nombrePersona = "";
 
@@ -40,10 +43,14 @@ export class FormReservaComponent implements OnInit {
 
   constructor(
     private activeRoute: ActivatedRoute,
-    private compraService: CompraService
+    private compraService: CompraService,
+    private tokenS: TokenService,
+    private router: Router
+
     ) { }
 
   ngOnInit(): void {
+    this.cargarToken();
     this.id = this.activeRoute.snapshot.paramMap.get("idCompra");
     this.compraService.encontrar(this.id).subscribe(compra=>{
       if(compra.estado == "PAGADO"){
@@ -82,5 +89,14 @@ export class FormReservaComponent implements OnInit {
   generarReferencia(): string {
     const fecha = new Date();
     return Math.round((Math.random() * 45644)) + "" + Math.round(fecha.getMilliseconds());
+  }
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+      this.router.navigateByUrl("/inicio");
+
+    }
   }
 }

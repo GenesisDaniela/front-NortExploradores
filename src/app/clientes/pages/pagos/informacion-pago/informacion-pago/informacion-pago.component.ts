@@ -1,6 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmpresaService } from 'src/app/services/empresa.service';
 import { PersonaService } from 'src/app/services/persona.service';
 import { TokenService } from 'src/app/services/token.service';
@@ -23,7 +23,7 @@ export class InformacionPagoComponent implements OnInit {
   public empresa:any
 
   public transaccion:any;
-
+  public isLogged = false;
   public idTransaccion:any
   public transaction_id:any;
   public reference_sale:any;
@@ -32,7 +32,7 @@ export class InformacionPagoComponent implements OnInit {
   public payment_method:any;
   public value:any
   public response_message_pol:any;
-
+  
   constructor(
     private route:ActivatedRoute,
     private pagoService: TransaccionService,
@@ -41,7 +41,9 @@ export class InformacionPagoComponent implements OnInit {
     private personaService: PersonaService,
     private empresaService: EmpresaService,
     private transaccionService: TransaccionService,
-    private routes: ActivatedRoute
+    private routes: ActivatedRoute,
+    private router: Router
+
 
     
     ) { }
@@ -50,6 +52,7 @@ export class InformacionPagoComponent implements OnInit {
 
     this.nombreUser = this.tokenS.getUserName();
     this.cargarUsuario();
+    this.cargarToken();
     this.cargarEmpresa();
     this.idTransaccion = this.routes.snapshot.paramMap.get("idTransaccion");
     if(this.idTransaccion==null){
@@ -120,6 +123,17 @@ export class InformacionPagoComponent implements OnInit {
       console.log(usuario);
       this.cargarPersona();
     })
+  }
+
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+      console.log("aaaaa");
+      this.router.navigateByUrl("/inicio");
+
+    }
   }
 
 }

@@ -2,7 +2,7 @@
 <app-header></app-header>
 
 
-<div class="md-stepper-horizontal orange" style="margin-bottom: 20px;">
+<div class="md-stepper-horizontal orange" *ngIf="isLogged" style="margin-bottom: 20px;">
   <div class="md-step active">
     <div class="md-step-circle" id="comprastep"><span><i class="fas fa-cash-register"></i></span></div>
     <div class="md-step-title">Información de compra</div>
@@ -23,7 +23,7 @@
   </div>
 </div>
 
-<div class="glass form-pagos" style="margin:50px" *ngIf="infoPagina==1">
+<div class="glass form-pagos" style="margin:50px" *ngIf="infoPagina==1 && isLogged">
   <h1>Formulario de Reserva</h1>
 
   <div class="row">
@@ -215,7 +215,7 @@
 
 
 
-<div class="glass form-pagos" style="margin:80px" *ngIf="infoPagina==2" >
+<div class="glass form-pagos" style="margin:80px" *ngIf="infoPagina==2&& isLogged" >
 
   <div class="invoice-content">
     <!-- begin table-responsive -->
@@ -299,7 +299,7 @@
 </div>
 
 <!-- Pagina 3  -->
-<div class="glass form-pagos" style="margin:80px" *ngIf="infoPagina==3">
+<div class="glass form-pagos" style="margin:80px" *ngIf="infoPagina==3&& isLogged">
   <div class="row">
 
     <div class="invoice-content">
