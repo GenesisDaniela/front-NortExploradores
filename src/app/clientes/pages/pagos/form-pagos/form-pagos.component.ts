@@ -94,7 +94,8 @@ export class FormPagosComponent implements OnInit {
     private tourService: TourService,
     private compraService: CompraService,
     private detalleCompra: DetcompraService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
 
   ) { }
 
@@ -391,6 +392,7 @@ export class FormPagosComponent implements OnInit {
       this.isLogged = true;
     } else {
       this.isLogged = false;
+      this.router.navigateByUrl("/inicio");
     }
   }
 

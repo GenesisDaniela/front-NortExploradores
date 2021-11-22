@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' style='margin-top: 20px;' rel='stylesheet'>
-<div class='container' style='margin-top: 40px;margin-bottom: 40px;'>
+<div class='container' *ngIf="isLogged" style='margin-top: 40px;margin-bottom: 40px;'>
    <div class='col-md-12' style='box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;' >
       <div class='invoice'>
          <div class='invoice-company text-inverse f-w-600'>
