@@ -20,7 +20,7 @@ export class InformacionTransaccionComponent implements OnInit {
   public value:any
   public response_message_pol:any;
   public compra:any;
-
+  public idCompra:any;
   public isPagoParcial = false;
   public isPagoTotal = false;
   public isPagoCancelado = false;
@@ -28,7 +28,8 @@ export class InformacionTransaccionComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private compraService: CompraService
+    private compraService: CompraService,
+    private transaccionService: TransaccionService
     ) { }
 
   ngOnInit(): void {
@@ -40,15 +41,30 @@ export class InformacionTransaccionComponent implements OnInit {
         this.response_message_pol = params.lapTransactionState;
         this.transaction_id = params.transactionId;
         this.reference_sale = params.referenceCode;
-        
-        this.compraService.encontrar(parseInt(this.reference_sale)+1).subscribe(compra=>{
-          this.compra = compra;
-          console.log(compra);
-          if(compra.estado=="CANCELADO" || compra.estado=="PENDIENTE" ) this.isPagoCancelado=true
-          if(compra.estado=="PAGADO") this.isPagoTotal =true;
-          if(compra.estado =="PAGO_PARCIAL") this.isPagoParcial =true;
+        this.idCompra = params.extra1;
+        console.log(this.idCompra,"COMPRA");
 
+        this.transaccionService.encontrar(this.transaction_id).subscribe(transaccion=>{
+          console.log(transaccion);
+          console.log(transaccion.responseMessagePol =="APPROVED");
+
+          if(transaccion.responseMessagePol !="APPROVED" && transaccion.responseMessagePol !="PENDING"){
+              this.isPagoCancelado=true
+              return;
+          }
+  
+          this.compraService.encontrar(parseInt(this.idCompra)).subscribe(compra=>{
+            this.compra = compra;
+            if(compra.estado=="CANCELADO" || compra.estado=="PENDIENTE" ) this.isPagoCancelado=true
+            if(compra.estado=="PAGADO") this.isPagoTotal =true;
+            if(compra.estado =="PAGO_PARCIAL") this.isPagoParcial =true;
+  
+          })
         })
+
+        
+
+
 
         body.set("transaction_id",params.transactionId);
         body.set("reference_sale",params.referenceCode);     

@@ -364,6 +364,7 @@
           <input name="tax"           type="hidden"  value={{iva}}  >
           <input name="taxReturnBase" type="hidden"  value={{iva*totalCompra}} >
           <input name="currency"      type="hidden"  value={{moneda}} >
+          <input name="extra1"          type="hidden"  value="{{idCompra}}" >
           <input name="signature"     type="hidden"  value={{firmaElectronicaMD5}}  >
           <input name="test"          type="hidden"  value="0" >
           <input name="buyerEmail"    type="hidden"  value={{email}} >
@@ -380,6 +381,7 @@
           <input name="accountId"     type="hidden"  value={{idCuentaTest}} >
           <input name="description"   type="hidden"  value="[TEST] {{descripcion}}"  >
           <input name="referenceCode" type="hidden"  value={{idCompra}} >
+          <input name="extra1"          type="hidden"  value="{{idCompra}}" >
           <input name="amount"        type="hidden"  value={{totalCompra}}  >
           <input name="currency"      type="hidden"  value={{moneda}} >
           <input name="signature"     type="hidden"  value={{firmaElectronicaMD5Test}}   >

@@ -50,12 +50,13 @@ export class FormReservaComponent implements OnInit {
         this.isPagadoTotal=true;
         return;
       }
-      this.firmaElectronica = `${this.apikey}~${this.idMercado}~${this.id-1}~${compra.totalCompra/2}~${this.moneda}`;
-      this.firmaElectronicaMD5 = crypto.MD5(this.firmaElectronica).toString();
       this.totalCompra = compra.totalCompra/2;
       this.totalPasajeros= compra.cantidadPasajeros;
+
+      this.firmaElectronica = `${this.apikey}~${this.idMercado}~${this.referenciaUnic}~${this.totalCompra/2}~${this.moneda}`;
+      this.firmaElectronicaMD5 = crypto.MD5(this.firmaElectronica).toString();
       // Pruebas
-      this.firmaElectronicaTest = `${this.apikeyTest}~508029~${this.id-1}~${compra.totalCompra/2}~${this.moneda}`;
+      this.firmaElectronicaTest = `${this.apikeyTest}~508029~${this.referenciaUnic}~${this.totalCompra/2}~${this.moneda}`;
 
       this.descripcion="Pago de (" + this.totalPasajeros + ") paquete(s) turistico(s) destino: " + compra.tour.paquete.municipio.nombre;
 

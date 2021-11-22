@@ -195,8 +195,6 @@ export class FormPagosComponent implements OnInit {
     }
 
     pasajeros.removeAt(i);
-    console.log("pasajeros eliminados form:" + pasajeros.value);
-    console.log("pasajeros clasificados:" + this.pasajerosClasificados);
   }
 
   esRepetido(arreglo:number[]):boolean{
@@ -384,7 +382,6 @@ export class FormPagosComponent implements OnInit {
   cargarUsuario() {
     this.usuarioService.usuarioPorUsername(this.nombreUser).subscribe(usuario => {
       this.usuario = usuario;
-      console.log(usuario);
       this.agregarPasajerosFrec();
     })
   }
@@ -406,7 +403,6 @@ export class FormPagosComponent implements OnInit {
 
   public agregarPasajerosFrec() {
     this.usuarioService.pasajerosPorCliente(this.usuario.id_Usuario).subscribe(pasajeros => {
-      console.log(pasajeros);
       this.cargarPasajeros(pasajeros);
     })
   }
@@ -535,7 +531,6 @@ export class FormPagosComponent implements OnInit {
     window.scroll(0,0);
     const compra = document.getElementById("comprastep");
     const output = document.getElementById('btnagregar');
-    console.log(output);
           if (output){
             output.removeAttribute("disabled");
             output.classList.add("green")
@@ -608,17 +603,16 @@ export class FormPagosComponent implements OnInit {
       usuario: this.usuario.id_Usuario,
       tour: this.tourSeleccionado.idTour
     }
-
+    this.toastr.warning("Cargando compra....", 'Espere', {
+      timeOut: 3000, positionClass: 'toast-top-center'
+    });
     this.usuarioService.guardarPasajerosDeUsuario(this.usuario.id_Usuario, this.pasajeros).subscribe(pasajeros => {
       this.pasajerosTotal = pasajeros;
       this.toastr.success("Pasajeros ingresados", 'Ok', {
         timeOut: 3000, positionClass: 'toast-top-center'
       });
-      this.toastr.warning("Cargando compra....", 'Espere', {
-        timeOut: 3000, positionClass: 'toast-top-center'
-      });
+      
       this.compraService.post(compra, this.tourSeleccionado.idTour).subscribe(compra => {
-        console.log("La compra es:", compra);
         let pasajeros = this.pagosInfo.get('pasajeros') as FormArray;
         let detalleCompras = [];
         let personas = this.pagosInfo.value.pasajeros;
@@ -638,21 +632,17 @@ export class FormPagosComponent implements OnInit {
           if (edadPasajero > 12) {
             valorUnit = valorPaquete;
           }
-  
+          console.log(pasajeros.at(i));
           let detalleCompra = {
             compra: compra.idCompra,
             valorUnit: valorUnit,
             pasajero: pasajeros.at(i).value.idPasajero,
             paquete: this.tourSeleccionado.paquete
           }
-  
           detalleCompras.push(detalleCompra);
-          console.log("DETALLES COMPRA:", detalleCompras);
-  
         }
   
         this.detalleCompra.post(detalleCompras).subscribe(det => {
-          console.log("El resultado es: ", det);
           form.submit();
         });
       })
