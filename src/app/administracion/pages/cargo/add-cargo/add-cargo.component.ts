@@ -34,6 +34,7 @@ export class AddCargoComponent implements OnInit {
    // this.deshabilitar();
     this.form = this.formBuilder.group({
       idCargo: ['', Validators.required],
+      estado: ['', Validators.required],
       nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
       sueldo: ['', Validators.required],
@@ -45,6 +46,9 @@ export class AddCargoComponent implements OnInit {
     
     if (this.id !== null) {
       this.cargoService.editarCargo(this.id, this.form.value).subscribe((data) => {
+        this.toastr.success('Cargo Editado Con Exito!', 'Cargo Editado',{
+          positionClass: 'toast-bottom-right'
+        });
         this.router.navigate(["/administracion/cargos"]);
       });
     } else {
@@ -70,8 +74,10 @@ export class AddCargoComponent implements OnInit {
         this.form.setValue({
           idCargo: data.idCargo,
           nombre: data.nombre,
+          estado: data.estado,
           descripcion: data.descripcion,
           sueldo: data.sueldo,
+          cargo: data.cargo,
         });
       });
     }
