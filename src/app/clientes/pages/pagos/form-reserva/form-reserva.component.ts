@@ -17,7 +17,7 @@ export class FormReservaComponent implements OnInit {
   totalCompra:any;
   idCuenta = "957106";
   idMercado = "949518";
-  isPagadoTotal = false;
+  isPagadoTotal:any;
   email = ""
   nombrePersona = "";
 
@@ -49,6 +49,8 @@ export class FormReservaComponent implements OnInit {
       if(compra.estado == "PAGADO"){
         this.isPagadoTotal=true;
         return;
+      }else{
+        this.isPagadoTotal=false;
       }
       this.totalCompra = compra.totalCompra/2;
       this.totalPasajeros= compra.cantidadPasajeros;

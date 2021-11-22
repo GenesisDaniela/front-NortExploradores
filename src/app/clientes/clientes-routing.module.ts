@@ -22,6 +22,7 @@ import { InformacionPagoComponent } from './pages/pagos/informacion-pago/informa
 import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.component';
 import { InformacionTransaccionComponent } from './pages/pagos/informacion-transaccion/informacion-transaccion.component';
 import { FormReservaComponent } from './pages/pagos/form-reserva/form-reserva.component';
+import { MaletaComponent } from './pages/maleta/maleta.component';
 
 const routes : Routes = [
   {path:"",
@@ -47,9 +48,9 @@ const routes : Routes = [
     {path:"misReservas", component:MisReservasComponent},
     {path:"inftransaccion", component:InformacionTransaccionComponent},
     {path:"pagoreserva/:idCompra", component:FormReservaComponent},
+  {path:"misViajes", component:MaletaComponent},
+    
     {path:"**", redirectTo:"inicio"},
-    
-    
   ]}
 ]
 
