@@ -78,7 +78,8 @@
       <thead class="table-dark">
         <tr>
           <th>ID</th>
-          <th>NOMBRE</th>
+          <th>NOMBRE</th> 
+          <th>ESTADO</th>
           <th>DIRECCIÓN</th>
           <th>DESCRIPCIÓN</th>
           <th>PRECIO</th>
@@ -89,13 +90,14 @@
         <tr *ngFor="let aloja of data">
             <td>{{ aloja.idAlojamiento }}</td>
             <td>{{ aloja.nombre }}</td>
+            <td>{{ aloja.estado }}</td>
             <td>{{ aloja.dir }}</td>
             <td>{{ aloja.descripcion }}</td>
             <td>{{ aloja.precio }}</td>                        
          
             <td nzAlign="center">
               <!-- Modal -->
-              <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+              <!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                 tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -112,10 +114,10 @@
                   </div>
                 </div>
               </div>
-              <!-- Button trigger modal -->
+             Button trigger modal 
               <a style="margin-right: 10px;" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="deshabilitar(aloja.idAlojamiento)">
                 <i nz-icon nzType="stop" nzTheme="outline" style="font-size: 20px; color: red;"></i>
-              </a>
+              </a> -->
   
             <a [routerLink]="['/administracion/editarAlojamiento',aloja.idAlojamiento]">
               <i

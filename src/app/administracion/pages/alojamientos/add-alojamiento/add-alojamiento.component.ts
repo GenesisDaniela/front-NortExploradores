@@ -34,6 +34,7 @@ export class AddAlojamientoComponent implements OnInit {
       this.form = this.formBuilder.group({
       idAlojamiento:['', Validators.required],
       nombre:['', Validators.required],
+      estado:['', Validators.required],
       dir:['', Validators.required],
       descripcion:['', Validators.required],
       precio:['', Validators.required]
@@ -46,6 +47,9 @@ export class AddAlojamientoComponent implements OnInit {
 
       this.alojamientosservice.editarAlojamiento(this.id, this.form.value)
         .subscribe((data) => {
+          this.toastr.success("Alojamiento Editado Con Exito!", "Alojamiento Editado", {
+          positionClass: 'toast-bottom-right'
+        })
           this.router.navigate(["/administracion/alojamientos"]);
         });
     } else {
@@ -66,6 +70,7 @@ export class AddAlojamientoComponent implements OnInit {
         this.form.setValue({
           idAlojamiento: data.idAlojamiento,
           nombre: data.nombre,
+          estado: data.estado,
           dir: data.dir,
           descripcion: data.descripcion,
           precio: data.precio,
