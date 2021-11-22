@@ -7,15 +7,23 @@
       </span>
       <hr style="color: rgb(5, 168, 5);">
 
+
+
       <div class="wrap-input100">
         <span class="contact100-form-combo">Tipo de Identificacion</span>
-        <select formControlName="idTipo" class="input100" type="text" id="inputTipo">
+        <select  *ngIf="id==null" formControlName="idTipo" class="input100" type="text" id="inputTipo">
           <option *ngFor="let tipo of tipos" name="tipo" id="tipo{{tipo.idTipo}}"
               value={{tipo.idTipo}}>
               {{tipo.descripcion}}</option>
-          </select>
-        <span class="focus-input100"></span>
-      </div>
+          </select>   
+          <input class="input100" *ngIf="id!=null" id="tipoCC" readonly>
+          <input class="input100" *ngIf="id!=null" formControlName="idTipo" type="hidden">
+          <span class="focus-input100"></span>
+          </div>
+       
+   
+
+
       <div class="wrap-input100" data-validate="Numero de Identificacion">
         <span class="contact100-form-combo">Numero de Identificacion</span>
         <input formControlName="idPersona" class="input100" type="number" id="inputIdPer" placeholder="Numero de Identificacion">

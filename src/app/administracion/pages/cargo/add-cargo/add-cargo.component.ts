@@ -31,6 +31,7 @@ export class AddCargoComponent implements OnInit {
 
   ngOnInit(): void {
     this.esEditar();
+   // this.deshabilitar();
     this.form = this.formBuilder.group({
       idCargo: ['', Validators.required],
       nombre: ['', Validators.required],
@@ -75,5 +76,10 @@ export class AddCargoComponent implements OnInit {
       });
     }
   }
+  // deshabilitar(){
+  //   this.cargoService.desabilitar(this.form.controls.idCargo.value).subscribe((data) => {
+      
+  //   });
+  // }
   
 }

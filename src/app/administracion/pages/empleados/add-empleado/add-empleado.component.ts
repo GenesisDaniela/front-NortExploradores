@@ -104,6 +104,10 @@ export class AddEmpleadoComponent implements OnInit {
           cargo: data.cargo.idCargo,
           persona: data.persona.idPersona
         });
+        const output = document.getElementById('tipoCC');
+          if (output){
+            output.setAttribute("value",data.persona.idTipo.tipo)
+          }
         this.formPer.setValue({
           idPersona: data.persona.idPersona,
           nombre: data.persona.nombre,
