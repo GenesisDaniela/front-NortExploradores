@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TokenService } from 'src/app/services/token.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -12,14 +13,25 @@ export class MisReservasComponent implements OnInit {
   public usuario:any;
   public nombreUser!:string;
   public reservas: any;
+  
   constructor(
     private usuarioSer: UsuarioService,
-    private tokenS: TokenService
+    private tokenS: TokenService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.nombreUser=this.tokenS.getUserName(); 
     this.cargarUsuario();
+    this.cargarToken();
+  }
+
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+    } else {
+      this.router.navigateByUrl("/inicio");
+
+    }
   }
 
   cargarUsuario(){

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-maleta',
@@ -6,10 +8,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./maleta.component.css']
 })
 export class MaletaComponent implements OnInit {
+  isLogged = false;
 
-  constructor() { }
+  constructor(    
+    private tokenS: TokenService,
+    private router: Router
+    ) { 
 
-  ngOnInit(): void {
   }
 
+  ngOnInit(): void {
+    this.cargarToken();
+
+  }
+
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+      this.router.navigateByUrl("/inicio");
+
+    }
+  }
 }
