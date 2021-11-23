@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlojamientosService } from 'src/app/administracion/services/alojamientos.service';
 import { PaquetesService } from 'src/app/administracion/services/paquetes.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { MunicipioService } from 'src/app/administracion/services/municipio.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class EditPaqueteComponent implements OnInit {
   public municipios: any = [];
   public actividades: any=[];
   public form!: FormGroup;
+  
   titulo = 'Agregar Paquete';
   boton = 'Agregar Paquete';
   id: string | null;
@@ -26,7 +28,8 @@ export class EditPaqueteComponent implements OnInit {
     private paqueteService: PaquetesService,
     private formBuilder: FormBuilder,
     private router : Router,
-    private aRouter: ActivatedRoute
+    private aRouter: ActivatedRoute,
+    private toastr: ToastrService
 
   ) { this.id = aRouter.snapshot.paramMap.get('idPaq');}
 
@@ -68,7 +71,10 @@ export class EditPaqueteComponent implements OnInit {
   public enviarData() {
     if (this.id !== null) {
     this.paqueteService.editarPaquete(this.id, this.form.value).subscribe((data)=>{
-      this.router.navigate(["/administracion/paquete"]);
+      this.toastr.success("Paquete editado Con Exito!", "Paquete Editado", {
+        positionClass: 'toast-bottom-right'
+      })
+      this.router.navigate(["/administracion/paquetes"]);
     // this.paqueteService.post(this.form.value).subscribe(paquete=>{
     //   console.log(paquete);
      
@@ -82,7 +88,7 @@ export class EditPaqueteComponent implements OnInit {
         this.form.setValue({
           idPaq:data.idPaq,
           precio: data.precio,
-           estado: data.estado,
+          estado: data.estado,
           urlImagen: data.urlImagen,
           descripcion: data.descripcion,
           recomendacion: data.recomendacion,
