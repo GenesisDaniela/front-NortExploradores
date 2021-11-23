@@ -220,6 +220,11 @@ body{
 .md-stepper-horizontal .md-step.active .md-step-optional {
 	color:rgba(0,0,0,.54);
 }
+
+.pasajeroX{
+    background-color: #00AE4D !important;
+}
+
 .md-stepper-horizontal .md-step .md-step-bar-left,
 .md-stepper-horizontal .md-step .md-step-bar-right {
 	position:absolute;

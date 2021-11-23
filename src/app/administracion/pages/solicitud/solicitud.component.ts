@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlojamientosService } from 'src/app/administracion/services/alojamientos.service';
-import { EmpleadosService } from 'src/app/administracion/services/empleados.service';
+import { PaquetesService } from 'src/app/administracion/services/paquetes.service';
+import { ActividadesService } from 'src/app/administracion/services/actividades.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MunicipioService } from 'src/app/administracion/services/municipio.service';
-//import { MunicipioService } from 'src/app/administracion/services/municipio.service';
-//import { RutasService } from 'src/app/administracion/services/rutas.service';
-import { SegurosService } from 'src/app/administracion/services/seguros.service';
-import { ToursService } from 'src/app/administracion/services/tours.service';
-import { TransportesService } from 'src/app/administracion/services/transportes.service';
-import { PaqueteService } from 'src/app/services/paquete.service';
+import { SegurosService } from '../../services/seguros.service';
+import { EmpleadosService } from '../../services/empleados.service';
+import { TourService } from 'src/app/services/tour.service';
+import { TransportesService } from '../../services/transportes.service';
+import { ToastrService } from 'ngx-toastr';
 import { SolicitudpaqueteService } from '../../services/solicitudpaquete.service';
 
 @Component({
@@ -17,139 +17,201 @@ import { SolicitudpaqueteService } from '../../services/solicitudpaquete.service
   templateUrl: './solicitud.component.html',
 })
 export class SolicitudComponent implements OnInit {
-  
-  titulo = 'Agregar Tour';
-  boton = 'Agregar Tour';
-  public idSolicitud:any;
-  id:any;
-  public seguros:any = [];
-  public empleados:any = [];
-  public transportes:any = [];
-  public form !: FormGroup;
+  public paquetes: any = [];
+  public seguros: any = [];
+  public empleados: any = [];
+  public transportes: any = [];
   public alojamientos: any = [];
   public municipios: any = [];
-  public actividades: any=[];
-  //public formTrans !: FormGroup;
-  
- 
-  constructor(
-    private paqueteService:PaqueteService,
-    private seguroService:SegurosService,
-    private empleadoService:EmpleadosService,
-    private tourService:ToursService,
-    private transporteService:TransportesService,
-    private formBuilder:FormBuilder,
-    private aRouter: ActivatedRoute,
-    private router:Router,
-    private solicitudService: SolicitudpaqueteService,
-    private alojamientoservice: AlojamientosService,
-    private municipioService: MunicipioService
+  public actividades: any = [];
+  public form!: FormGroup;
+  titulo = 'Agregar Paquete';
+  boton = 'Agregar Paquete';
+  public isAceptado = false;
+  public isRechazado=false;
+  public flag:any;
+  id: string | null;
 
-  ) {  
-    
-   }
+  constructor(
+    private alojamientoservice: AlojamientosService,
+    private municipioService: MunicipioService,
+    private actividadService: ActividadesService,
+    private paqueteService: PaquetesService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private aRouter: ActivatedRoute,
+    private seguroService: SegurosService,
+    private empleadoService: EmpleadosService,
+    private tourService: TourService,
+    private transporteService: TransportesService,
+    private toastr: ToastrService,
+    private solicitudPaqueteService: SolicitudpaqueteService
+  ) {
+    this.id = aRouter.snapshot.paramMap.get('idSolicitud');
+  }
 
   ngOnInit(): void {
-    this.idSolicitud = this.aRouter.snapshot.paramMap.get('idSolicitud');
-    this.esEditartour();
+    this.agregarPaquetes();
     this.agregarSeguros();
     this.agregarEmpleados();
-    this.agregarTransporte();  
-    this.form=this.formBuilder.group({ 
-      idTour: ['', Validators.required],
-      minCupos: ['', Validators.required],
-      maxCupos: ['', Validators.required],
-      fechaLlegada: ['', Validators.required],
-      fechaSalida: ['', Validators.required],
-      empleado: ['', Validators.required],
-      idTransporte: ['', Validators.required],
-      seguro: ['', Validators.required],
+    this.agregarTransporte();
+    this.agregarAlojamiento();
+    this.agregarMunicipio();
 
-      idPaq:['', Validators.required],
-      precio:['', Validators.required],
-      estado:['', Validators.required],
-      urlImagen:['', Validators.required],
-      descripcion:['', Validators.required],
-      recomendacion:['', Validators.required],
-      nombre:['', Validators.required],
-      alojamiento:['', Validators.required],
-      municipio:['', Validators.required],
+    this.form = this.formBuilder.group({
+      idPaq: ['', Validators.required],
+      precio: ['', Validators.required],
+      estado: ['', Validators.required],
+      urlImagen: ['', Validators.required],
+      descripcion: ['', Validators.required],
+      recomendacion: ['', Validators.required],
+      nombre: ['', Validators.required],
+      alojamiento: ['', Validators.required],
+      municipio: ['', Validators.required],
+      acts: this.formBuilder.array([]),
+      descripcionUsuario:['', Validators.required],
+      tour: this.formBuilder.group({
+        idTour: ['', Validators.required],
+        minCupos: ['', Validators.required],
+        maxCupos: ['', Validators.required],
+        fechaLlegada: ['', Validators.required],
+        fechaSalida: ['', Validators.required],
+        empleado: ['', Validators.required],
+        paquete: ['', Validators.required],
+        idTransporte: ['', Validators.required],
+        seguro: ['', Validators.required],
+      })
     });
-
-  }
-  
-
-  public agregarTransporte(){
-    this.transporteService.listarTransporte().subscribe(transportes=>{
-     this.transportes = transportes; 
-    })
-  }
-
- 
-  public agregarSeguros(){
-    this.seguroService.listarSeguro().subscribe(seguros=>{
-     this.seguros = seguros; 
-    })
-  }
-  
-  public agregarEmpleados(){
-    this.empleadoService.listarEmpleado().subscribe(empleados=>{
-     this.empleados = empleados;
-    })
-  }
-
-  public enviarData(){
-    if (this.id !== null) {
-      this.tourService.editarTour(this.form.value).subscribe((data) => {
-        this.tourService.guardarTransporteTour(data.idTour,  this.form.controls.idTransporte.value).subscribe((data) => {
-          this.router.navigate(["/administracion/tours"]);
-        });
-      });
-
-    } else {
-    this.tourService.post(this.form.value).subscribe((data) => {
-      this.tourService.guardarTransporteTour(data.idTour,  this.form.controls.idTransporte.value).subscribe((data) => {
-        this.router.navigate(["/administracion/tours"]);
-      });
-    });
-  }
-}
-
-
-public esEditartour() {
-    this.titulo = 'Llenar solicitud';
-    this.boton = 'Enviar solicitud';
-    
-    this.solicitudService.obtenerSolicitud(this.idSolicitud).subscribe(solicitud=>{
-      let tour = solicitud.tour;
-      let paquete = solicitud.tour.paquete;
-      console.log(tour);
+    this.solicitudPaqueteService.obtenerSolicitud(this.id).subscribe(solicitud => {
+      console.log(solicitud);
+      const out = document.getElementById("cliente");
+      if (out) out.innerHTML = solicitud.usuario.username
+      console.log(solicitud.tour.paquete.idPaq);
+      if(solicitud.tour.paquete.estado =="ACEPTADO"){
+        this.isAceptado=true;
+        return;
+      }
+      else if(solicitud.tour.paquete.estado =="RECHAZADO"){
+        this.isRechazado=true;
+        return;
+      }
+      this.flag=2;
       this.form.setValue({
-          idTour: tour.idTour,
-          minCupos: tour.minCupos,
-          maxCupos: tour.maxCupos,
-          fechaLlegada: tour.fechaLlegada,
-          fechaSalida:tour.fechaSalida,
-          empleado: tour.empleado.idEmpleado,
-          paquete: tour.paquete.idPaq,
-          idTransporte: null,
-          seguro:tour.seguro.idSeguro
-      });
+        idPaq: solicitud.tour.paquete.idPaq,
+        precio: solicitud.tour.paquete.precio,
+        estado: "ACEPTADO",
+        urlImagen: "",
+        descripcion: "",
+      alojamiento:"",
+        recomendacion: "",
+        nombre: "",
+        acts:[],
+        descripcionUsuario:solicitud.descripcion,
+        municipio: solicitud.tour.paquete.municipio.idMuni,
+        tour: {
+          idTour: solicitud.tour.idTour,
+          minCupos: solicitud.tour.minCupos,
+          maxCupos: solicitud.tour.maxCupos,
+          fechaLlegada: solicitud.tour.fechaLlegada,
+          fechaSalida: solicitud.tour.fechaSalida,
+          empleado: solicitud.tour.empleado,
+          paquete: solicitud.tour.paquete.idPaq,
+          idTransporte: "",
+          seguro: "",
+        }
+      })
+    })
+    console.log(this.form.value);
+
+  }
+
+  public agregarAlojamiento() {
+    this.alojamientoservice.listarAlojamiento().subscribe(alojamientos => {
+      this.alojamientos = alojamientos;
+    })
+  }
+
+  public agregarMunicipio() {
+    this.municipioService.listarMunicipio().subscribe(municipios => {
+      this.municipios = municipios;
+    })
+  }
+
+  public cargarActividades(evento: any) {
+
+    let totalAct = evento.target.value;
+    let actividadess = this.form.get('acts') as FormArray;
+    actividadess.clear();
+
+    for (let i = 0; i < totalAct; i++) {
+      actividadess.push(
+        this.formBuilder.group({
+          nombre: ['', Validators.required],
+          descripcion: ['', Validators.required],
+          urlImg: ['', Validators.required],
+          paquete: [null, Validators.required]
+        })
+      )
+    }
+    console.log(actividadess.value);
+    console.log('total acts', totalAct);
+  }
+
+  get getActividades() {
+    return this.form.get('acts') as FormArray;
+  }
+  get getTour() {
+    console.log(this.form.get('tour') as FormGroup);
+    return this.form.get('tour') as FormGroup;
+  }
+
+  public enviarData() {
+
+    this.paqueteService.post(this.form.value).subscribe(paquete => {
+      if (this.getActividades.value.length > 0) {
+        this.paqueteService.postAct(this.getActividades.value, paquete.idPaq).subscribe(data => {
+          this.tourService.post(this.form.value.tour).subscribe(tour => {
+            this.router.navigate(["/administracion/paquetes"]);
+          })
+        })
+      } else {
+        this.tourService.post(this.form.value.tour).subscribe(tour => {
+          this.toastr.success("La solicitud ha sido aceptada", 'OK', {
+            timeOut: 3000, positionClass: 'toast-top-center'
+          });
+          this.router.navigate(["/administracion/paquetes"]);
+        })
+
+      }
+
     })
 
-   
-    
-    }
+  }
 
-    public agregarAlojamiento() {
-      this.alojamientoservice.listarAlojamiento().subscribe(alojamientos => {
-        this.alojamientos = alojamientos;
-      })
-    }
-  
-    public agregarMunicipio() {
-      this.municipioService.listarMunicipio().subscribe(municipios => {
-        this.municipios = municipios;
-      })
-    }
+  public agregarPaquetes() {
+    this.paqueteService.listar().subscribe((paquetes) => {
+      this.paquetes = paquetes;
+    });
+  }
+
+  public agregarTransporte() {
+    this.transporteService.listarTransporte().subscribe((transportes) => {
+      this.transportes = transportes;
+    });
+  }
+
+  public agregarSeguros() {
+    this.seguroService.listarSeguro().subscribe((seguros) => {
+      this.seguros = seguros;
+    });
+  }
+
+  public agregarEmpleados() {
+    this.empleadoService.listarEmpleado().subscribe((empleados) => {
+      this.empleados = empleados;
+    });
+  }
+
+
+
 }

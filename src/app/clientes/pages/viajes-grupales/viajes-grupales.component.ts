@@ -21,7 +21,7 @@ export class ViajesGrupalesComponent implements OnInit {
   public cargarToken() {
     if (this.tokenS.getToken()) {
     } else {
-      this.router.navigateByUrl("/inicio");
+      this.router.navigateByUrl("/login");
     }
   }
 }

@@ -70,6 +70,16 @@
               {{seguro.nombre}}</option>
           </select>
       </div>
+
+      <div class="wrap-input100">
+        <span class="contact100-form-combo">Estado del tour</span>
+        <select formControlName="estado" type="text" class="form-control" id="inputEstado" class="input100"
+            placeholder="Estado">
+            <option value="false">INACTVO</option>
+            <option value="true">ACTIVO</option>
+        </select>
+    </div>
+
       <hr style="color: rgb(5, 168, 5);">
       <div class="container-contact100-form-btn">
         <button class="contact100-form-btn" type="submit">{{boton | uppercase}}</button>

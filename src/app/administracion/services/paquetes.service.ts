@@ -38,5 +38,19 @@ export class PaquetesService {
     return this.http.get(this.url+paquete+'/deshabilitar')
   }
 
+  public listar():Observable<any>{
+    return this.http.get<any>(this.url);
+  }
 
+  // public listarPaqEstadia():Observable<any>{
+  //   return this.http.get<any>(this.uri+'estadia');
+  // }
+
+  // public listarPaqPasadia():Observable<any>{
+  //   return this.http.get<any>(this.uri+'pasadia');
+  // }
+
+  public encontrar(id:number):Observable<any>{
+    return this.http.get<any>(`${this.url}${id}`);
+}
 }

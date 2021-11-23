@@ -8,7 +8,7 @@ import { SegurosService } from 'src/app/administracion/services/seguros.service'
 import { ToursService } from 'src/app/administracion/services/tours.service';
 import { TransportesService } from 'src/app/administracion/services/transportes.service';
 import { PaqueteService } from 'src/app/services/paquete.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-add-tour',
   templateUrl: './add-tour.component.html',
@@ -34,7 +34,8 @@ export class AddTourComponent implements OnInit {
     private transporteService: TransportesService,
     private formBuilder: FormBuilder,
     private aRouter: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {
     this.id = aRouter.snapshot.paramMap.get('idTour');
     this.idTrans = aRouter.snapshot.paramMap.get('idTour/idTransporte');
@@ -52,7 +53,7 @@ export class AddTourComponent implements OnInit {
       maxCupos: ['', Validators.required],
       fechaLlegada: ['', Validators.required],
       fechaSalida: ['', Validators.required],
-      // estado: ['', Validators.required],
+      estado: ['', Validators.required],
       empleado: ['', Validators.required],
       paquete: ['', Validators.required],
       idTransporte: ['', Validators.required],
@@ -95,19 +96,23 @@ export class AddTourComponent implements OnInit {
             data.idTour,
             this.form.controls.idTransporte.value
           )
-          .subscribe((data) => {
+          .subscribe((data) => { this.toastr.success('Cargo Editado Con Exito!', 'Cargo Editado',{
+            positionClass: 'toast-bottom-right'
+          });
             console.log(data);
             this.router.navigate(['/administracion/tours']);
           });
       });
     } else {
-      this.tourService.post(this.form.value).subscribe((data) => {
+      this.tourService.post(this.form.value).subscribe((data) => { 
         this.tourService
           .guardarTransporteTour(
             data.idTour,
             this.form.controls.idTransporte.value
           )
-          .subscribe((data) => {
+          .subscribe((data) => {this.toastr.success('Tour Agregaso Con Exito!', 'Tour Agregado',{
+            positionClass: 'toast-bottom-right'
+          });
             this.router.navigate(['/administracion/tours']);
           });
       });
@@ -133,6 +138,7 @@ let tour:any
             empleado: tour.empleado.idEmpleado,
             paquete: tour.paquete.idPaq,
             idTransporte: data.idTransporte,
+            estado: tour.estado,
             seguro: tour.seguro.idSeguro,
           });
         });
