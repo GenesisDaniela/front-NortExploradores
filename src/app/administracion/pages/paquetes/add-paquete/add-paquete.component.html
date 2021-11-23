@@ -8,6 +8,13 @@
             <hr style="color: rgb(5, 168, 5);">
             <input formControlName="idPaq" hidden type="number" class="form-control" id="inputPaq">
 
+            <div class="wrap-input100" data-validate="Por favor ingrese el nombre completo">
+                <span class="contact100-form-combo">Nombre del paquete</span>
+                <input formControlName="nombre" class="input100" type="text" placeholder="Nombre del paquete"
+                    id="inputNombre">
+                <span class="focus-input100"></span>
+            </div>
+
             <div class="wrap-input100">
                 <span class="contact100-form-combo">Precio</span>
                 <input formControlName="precio" type="number" class="form-control" id="inputPrecio" class="input100"
@@ -18,15 +25,9 @@
                 <span class="contact100-form-combo">Estado del paquete</span>
                 <select formControlName="estado" type="text" class="form-control" id="inputEstado" class="input100"
                     placeholder="Estado">
-                    <option value="false">INACTVO</option>
-                    <option value="true">ACTIVO</option>
+                    <option value="INACTVO">INACTVO</option>
+                    <option value="ACTIVO">ACTIVO</option>
                 </select>
-            </div>
-
-            <div class="wrap-input100">
-                <span class="contact100-form-combo">Imagen Paquete</span>
-                <input formControlName="urlImagen" class="input100" placeholder="Imagen" id="inputImage">
-                <span class="focus-input100"></span>
             </div>
 
             <div class="wrap-input100" data-validate="Por favor ingrese su descripcion">
@@ -43,10 +44,10 @@
                 <span class="focus-input100"></span>
             </div>
 
-            <div class="wrap-input100" data-validate="Por favor ingrese el nombre completo">
-                <span class="contact100-form-combo">Nombre del paquete</span>
-                <input formControlName="nombre" class="input100" type="text" placeholder="Nombre del paquete"
-                    id="inputNombre">
+
+            <div class="wrap-input100">
+                <span class="contact100-form-combo">Imagen Paquete</span>
+                <input formControlName="urlImagen" class="input100" placeholder="Imagen" id="inputImage">
                 <span class="focus-input100"></span>
             </div>
 
@@ -77,10 +78,10 @@
 
             <ul class="list-group">
                 <br>
-                <li class="act-group" formArrayName="acts" 
-                    *ngFor="let actividad of getActividades.controls; let i = index;" >
-                  
-                    <div [formGroupName]="i" class="row" >
+                <li class="act-group" formArrayName="acts"
+                    *ngFor="let actividad of getActividades.controls; let i = index;">
+
+                    <div [formGroupName]="i" class="row">
 
                         <label class="contact100-form-subtitle">Actividad {{i+1}}</label>
                         <div class="wrap-input100">
