@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NzButtonSize } from 'ng-zorro-antd/button';
 import { TokenService } from 'src/app/services/token.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { SolicitudpaqueteService } from '../services/solicitudpaquete.service';
 
 @Component({
   selector: 'app-principal',
@@ -19,19 +20,31 @@ export class PrincipalComponent implements OnInit {
   public isAdmin = false;
   public roles: string[] = [];
   public nombreUser="";
-
+  public totalSolicitudes = 0;
   log(): void {
     console.log('click dropdown button');
   }
   constructor(
     private usuarioSer: UsuarioService,
     private tokenS: TokenService,
-    private router: Router
+    private router: Router,
+    private soli: SolicitudpaqueteService,
   ) { }
 
   ngOnInit(): void {
-    this.nombreUser=this.tokenS.getUserName(); 
+    this.nombreUser=this.tokenS.getUserName();
+    this.cargarSolicitudes();
 
+  }
+
+  cargarSolicitudes(){
+    this.soli.cantidadSolicitudes().subscribe(total=>{
+      this.totalSolicitudes = total;
+      console.log(this.totalSolicitudes);
+      const out = document.getElementById("numeroTotal");
+      console.log(out);
+      if(out) out.innerHTML = this.totalSolicitudes+"";
+    })
   }
 
   onLogOut(): void {

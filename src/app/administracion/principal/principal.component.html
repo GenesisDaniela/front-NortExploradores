@@ -68,6 +68,14 @@
         <a routerLink="actividades"></a>
       </li>
       
+      <li nz-menu-item>
+          <div *ngIf="totalSolicitudes>0" class = "number"><span id="numeroTotal" class="numbero">{{totalSolicitudes}}</span></div>
+        <i nz-icon nzType="comment" nzTheme="outline" style="font-size: 20px"></i>
+        
+        <span>Solicitudes</span>
+        <a routerLink="solicitudes"></a>
+      </li>
+
     </ul>
   </nz-sider>
   <nz-layout>
