@@ -34,11 +34,11 @@ export class SegurosComponent implements OnInit {
     })
   }
 
-  deshabilitar(id:any){
-    this.seguros.deshabilitar(id).subscribe((data) => {  
-      console.log(id);
+  // deshabilitar(id:any){
+  //   this.seguros.deshabilitar(id).subscribe((data) => {  
+  //     console.log(id);
       
-    });
-  }
+  //   });
+  // }
 
 }
