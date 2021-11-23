@@ -21,6 +21,9 @@ export class SolicitudpaqueteService {
     return this.http.get(this.uri+"total");
   }
 
+  public listar():Observable<any>{
+    return this.http.get(this.uri);
+  }
   
   public aceptarSolicitud(id:any):Observable<any>{
     return this.http.get(this.uri+id+"/aceptar");
