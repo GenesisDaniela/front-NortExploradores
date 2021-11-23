@@ -39,10 +39,10 @@ export class AliadosComponent implements OnInit {
     this.dtTrigger.unsubscribe();
   }
 
-  deshabilitar(id:any){
-    this.httpClient.deshabilitar(id).subscribe((data) => {  
-      console.log(id);
+  // deshabilitar(id:any){
+  //   this.httpClient.deshabilitar(id).subscribe((data) => {  
+  //     console.log(id);
       
-    });
-  }
+  //   });
+  // }
 }
