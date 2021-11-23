@@ -40,6 +40,7 @@ export class AddActividadComponent implements OnInit {
       nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
       urlImg: ['', Validators.required],
+      estado: ['', Validators.required],
       paquete: ['', Validators.required]
     });
   }
@@ -82,6 +83,7 @@ export class AddActividadComponent implements OnInit {
           nombre: data.nombre,
           descripcion: data.descripcion,
           urlImg: data.urlImg,
+          estado: data.estado,
           paquete: data.paquete.idPaq
         });
       });
