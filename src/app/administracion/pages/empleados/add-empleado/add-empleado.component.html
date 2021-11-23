@@ -30,6 +30,15 @@
         <span class="focus-input100"></span>
       </div>
 
+      <div class="wrap-input100" [formGroup]="form">
+        <span class="contact100-form-combo">Estado del empleado</span>
+        <select formControlName="estado" type="text" class="form-control" id="inputEstado" class="input100"
+            placeholder="Estado">
+            <option value="false">INACTVO</option>
+            <option value="true">ACTIVO</option>
+        </select>
+    </div>
+
       <div class="wrap-input100 validate-input">
         <span class="contact100-form-combo">Nombre</span>
         <input formControlName="nombre" class="input100" type="text" placeholder="Ingrese el nombre" id="inputNombre">
@@ -79,9 +88,9 @@
         <span class="focus-input100"></span>
       </div>
 
-      <div class="wrap-input100">
+      <div class="wrap-input100"  [formGroup]="form">
         <span class="contact100-form-combo">Imagen Empleado</span>
-        <input formControlName="urlImagen" class="input100" type="email" placeholder="Imagen" id="inputImage">
+        <input formControlName="urlImagen" class="input100" type="text" placeholder="Imagen" id="inputImage">
         <span class="focus-input100"></span>
       </div>
 

@@ -12,7 +12,7 @@ import { EmpleadosService } from '../../services/empleados.service';
 export class EmpleadosComponent implements OnDestroy, OnInit {
   size: NzButtonSize = 'large';
   dtOptions: DataTables.Settings = {};
-  
+
   dtTrigger = new Subject<any>();
   public data: any[]=[];
 
@@ -39,10 +39,10 @@ export class EmpleadosComponent implements OnDestroy, OnInit {
     this.dtTrigger.unsubscribe();
   }
 
-  deshabilitar(id:any){
-    this.httpClient.deshabilitar(id).subscribe((data) => {  
-      console.log(id);
-    });
-  }
+  // deshabilitar(id:any){
+  //   this.httpClient.deshabilitar(id).subscribe((data) => {
+  //     console.log(id);
+  //   });
+  // }
 
 }

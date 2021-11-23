@@ -56,6 +56,7 @@ export class AddEmpleadoComponent implements OnInit {
     });
     this.form = this.formBuilder.group({
       idEmpleado: ['', Validators.required],
+      estado: ['', Validators.required],
       fechaContratacion: ['', Validators.required],
       urlImagen: ['', Validators.required],
       cargo: ['', Validators.required],
@@ -77,8 +78,11 @@ export class AddEmpleadoComponent implements OnInit {
       this.personaService.editarPersona(this.formPer.value).subscribe(persona => {
         this.form.controls.persona.setValue(this.formPer.value);
         this.empleadoService.editarEmpleado(this.form.value).subscribe(data => {
-          this.router.navigate(["/administracion/empleados"]);
+          this.toastr.success("Empleado Editado Con Exito!", "Empleado Editado", {
+            positionClass: 'toast-bottom-right'
+          })
         })
+        this.router.navigate(["/administracion/empleados"]);
       });
     } else {
       this.form.controls.persona.setValue(this.formPer.value);
@@ -99,6 +103,7 @@ export class AddEmpleadoComponent implements OnInit {
       this.empleadoService.obtenerEmpleado(this.id).subscribe((data) => {
         this.form.setValue({
           idEmpleado: data.idEmpleado,
+          estado: data.estado,
           fechaContratacion: data.fechaContratacion,
           urlImagen: data.urlImagen,
           cargo: data.cargo.idCargo,
