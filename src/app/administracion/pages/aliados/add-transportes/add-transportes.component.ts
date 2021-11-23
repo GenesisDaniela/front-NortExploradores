@@ -39,6 +39,7 @@ export class AddTransportesComponent implements OnInit {
      modelo: ['', Validators.required],
      color: ['', Validators.required],
      precio: ['', Validators.required],
+     estado: ['', Validators.required],
      empresa: ['', Validators.required]
       
     });
@@ -54,6 +55,9 @@ export class AddTransportesComponent implements OnInit {
       this.transporteService
         .editarTransporte(this.id, this.form.value)
         .subscribe((data) => { 
+          this.toastr.success("Transporte Editado Con Exito!", "Transporte Editado", {
+            positionClass: 'toast-bottom-right'
+          })
           this.router.navigate(["/administracion/transportes"]);
         });
         
@@ -80,6 +84,7 @@ export class AddTransportesComponent implements OnInit {
           modelo: data.modelo,
           color: data.color,
           precio: data.precio,
+          estado: data.estado,
           empresa: data.empresa.idEmpresa,
         });
       });

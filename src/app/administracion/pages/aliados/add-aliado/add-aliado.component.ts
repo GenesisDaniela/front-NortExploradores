@@ -41,18 +41,22 @@ export class AddAliadoComponent implements OnInit {
       urlImagen: ['', Validators.required],
       idEmpresa: ['', Validators.required],
       fecha: ['', Validators.required],
+      estado: ['', Validators.required],
     });
   }
 
   public enviarData() {
     if (this.id !== null) {
       this.empresaService.editarEmpresa(this.id, this.form.value).subscribe((data) => {
+        this.toastr.success("Aliado Editado Con Exito!", "Aliado Editado", {
+          positionClass: 'toast-bottom-right'
+        })
         this.router.navigate(["/administracion/aliados"]);
         });
     } else {
       this.empresaService.post(this.form.value)
         .subscribe(data=>{
-          this.toastr.success("Aliado Agregado Con Exito", "Aliado Registrado", {
+          this.toastr.success("Aliado Agregado Con Exito!", "Aliado Registrado", {
             positionClass: 'toast-bottom-right'
           })
         });
@@ -77,6 +81,7 @@ export class AddAliadoComponent implements OnInit {
           urlImagen: data.urlImagen,
           idEmpresa: data.idEmpresa,
           fecha: data.fecha,
+          estado: data.estado,
         });
       });
     }

@@ -37,6 +37,7 @@ export class AddSegurosComponent implements OnInit {
       descripcion: ['', Validators.required],
       precio: ['', Validators.required],
       idSeguro: ['', Validators.required],
+      estado: ['', Validators.required],
       empresa: ['', Validators.required]
       
     });
@@ -50,8 +51,12 @@ export class AddSegurosComponent implements OnInit {
   public enviarData(){
     if (this.id !== null) {
       this.seguroService
-        .editarSeguro(this.id, this.form.value)
-        .subscribe((data) => {this.router.navigate(["/administracion/seguros"]);});
+        .editarSeguro(this.id, this.form.value).subscribe((data) => {
+          this.toastr.success('Seguro Editado Con Exito!', 'Seguro Editado', {
+            positionClass: 'toast-bottom-right' 
+          })
+          this.router.navigate(["/administracion/seguros"]);
+        });
     } else {
       this.seguroService.post(this.form.value).subscribe((data) => {
         this.toastr.success('Seguro Agregado Con Exito!', 'Seguro Registrado', {
@@ -72,6 +77,7 @@ export class AddSegurosComponent implements OnInit {
           descripcion: data.descripcion,
           precio: data.precio,
           idSeguro: data.idSeguro,
+          estado: data.estado,
           empresa: data.empresa.idEmpresa,
         });
       });
