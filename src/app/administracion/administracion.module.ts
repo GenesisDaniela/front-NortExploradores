@@ -51,6 +51,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { EditInfoComponent } from './pages/inf-corporativa/edit-info/edit-info.component';
 import { SolicitudComponent } from './pages/solicitud/solicitud.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { SolicitudesComponent } from './pages/solicitud/solicitudes/solicitudes.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -82,7 +83,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     EditInfoComponent,
     SolicitudComponent,
     DashboardComponent,
-    EditPaqueteComponent
+    EditPaqueteComponent,
+    SolicitudesComponent
   ],
   imports: [
     CommonModule,
