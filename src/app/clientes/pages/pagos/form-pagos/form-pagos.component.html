@@ -127,7 +127,10 @@
                           <div class="mb-2 row">
                             <label class="col-sm-4 col-form-label">Identificación</label>
                             <div class="col-sm-8">
-                              <input type="number" [readonly]="product.value.esCotizante || product.value.idPasajero!=null" formControlName="idPersona" name="" class="form-control"
+                              <input type="number" 
+                              [class.is-invalid] ="pasajeroI(i).controls.idPersona.status!='VALID'"
+                              [class.is-valid] ="pasajeroI(i).controls.idPersona.status=='VALID'"
+                              [readonly]="product.value.esCotizante || product.value.idPasajero!=null" formControlName="idPersona" name="" class="form-control"
                                 placeholder="Ingresa tu identificacion" required>
                             </div>
                           </div>
@@ -135,12 +138,17 @@
                           <div class="mb-2 row">
                             <label class="col-sm-4 col-form-label">Tipo de id</label>
                             <div class="col-sm-8" >
-                              <select *ngIf="!product.value.esCotizante && product.value.idPasajero==null" value=""  class="form-select" formControlName="idTipo" required>
+                              <select 
+                              
+                              *ngIf="!product.value.esCotizante && product.value.idPasajero==null" value=""  class="form-select"
+                              [class.is-invalid] ="pasajeroI(i).controls.idTipo.status!='VALID'"
+                              [class.is-valid] ="pasajeroI(i).controls.idTipo.status=='VALID'"
+                              formControlName="idTipo" required>
                                 <option name=""  id="" *ngFor="let id of tipoId" value="{{id.idTipo}}">{{id.tipo}}</option>
                               </select>
                               
                               <input type="text" *ngIf="product.value.esCotizante || product.value.idPasajero!=null" 
-                              readonly   value="{{tiposC[product.value.idTipo-1]}}" name="" class="form-control"
+                              readonly   value="{{tipoId[product.value.idTipo-1]}}" name="" class="form-control"
                                  required>
   
                             </div>
@@ -149,15 +157,25 @@
                           <div class="mb-2 row">
                             <label class="col-sm-4 col-form-label">Nombre</label>
                             <div class="col-sm-8">
-                              <input type="text" [readonly]="product.value.esCotizante || product.value.idPasajero!=null" name="" formControlName="nombre" required class="form-control"
+                              <input type="text" 
+                              class="form-control"
+                              [class.is-invalid] ="pasajeroI(i).controls.nombre.status!='VALID'"
+                              [class.is-valid] ="pasajeroI(i).controls.nombre.status=='VALID'"
+
+                              [readonly]="product.value.esCotizante || product.value.idPasajero!=null" name="" formControlName="nombre" required 
                                 placeholder="Ingresa tu nombre">
+                            </div>
+                            <div>
                             </div>
                           </div>
   
                           <div class="mb-2 row">
                             <label class="col-sm-4 col-form-label">Apellidos</label>
                             <div class="col-sm-8">
-                              <input type="text" [readonly]="product.value.esCotizante || product.value.idPasajero!=null" formControlName="apellido" required class="form-control"
+                              <input type="text" 
+                              [class.is-invalid] ="pasajeroI(i).controls.apellido.status!='VALID'"
+                              [class.is-valid] ="pasajeroI(i).controls.apellido.status=='VALID'"
+                              [readonly]="product.value.esCotizante || product.value.idPasajero!=null" formControlName="apellido" required class="form-control"
                                 placeholder="Ingresa tus apellidos">
                             </div>
                           </div>
@@ -173,21 +191,30 @@
                           <div class="mb-2 row">
                             <label class="col-sm-4 col-form-label">Fecha nacimiento</label>
                             <div class="col-sm-8">
-                              <input type="date" [readonly]="product.value.esCotizante || product.value.idPasajero!=null" formControlName="fechaNac" required class="form-control">
+                              <input type="date"
+                              [class.is-invalid] ="pasajeroI(i).controls.fechaNac.status!='VALID'"
+                              [class.is-valid] ="pasajeroI(i).controls.fechaNac.status=='VALID'"
+                              [readonly]="product.value.esCotizante || product.value.idPasajero!=null" formControlName="fechaNac" required class="form-control">
                             </div>
                           </div>
   
                           <div class="mb-2 row">
                             <label class="col-sm-4 col-form-label">Celular</label>
                             <div class="col-sm-8">
-                              <input type="number" [readonly]="product.value.esCotizante || product.value.idPasajero!=null" formControlName="cel" class="form-control">
+                              <input type="number"
+                              [class.is-invalid] ="pasajeroI(i).controls.cel.status!='VALID'"
+                              [class.is-valid] ="pasajeroI(i).controls.cel.status=='VALID'"
+                              [readonly]="product.value.esCotizante || product.value.idPasajero!=null" formControlName="cel" class="form-control">
                             </div>
                           </div>
   
                           <div class="mb-2 row">
                             <label class="col-sm-4 col-form-label">Correo</label>
                             <div class="col-sm-8">
-                              <input type="email" [readonly]="product.value.esCotizante || product.value.idPasajero!=null" formControlName="correo" class="form-control"
+                              <input type="email" 
+                              [class.is-invalid] ="pasajeroI(i).controls.correo.status!='VALID'"
+                              [class.is-valid] ="pasajeroI(i).controls.correo.status=='VALID'"
+                              [readonly]="product.value.esCotizante || product.value.idPasajero!=null" formControlName="correo" class="form-control"
                                 style="margin-bottom: 10px;">
                             </div>
                             <div class="mb-2 row">

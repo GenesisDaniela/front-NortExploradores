@@ -32,7 +32,6 @@ export class FormPagosComponent implements OnInit {
   public totalCompra50p = 0
 
   public pasajerosFrec: any = [];
-  public tiposC:any = ['CC',"TI"];
   public generos:any = ['FEMENINO',"MASCULINO"];
   public tipoId: any = [];
   public pasajerosFrecElegidos: any = [];
@@ -95,7 +94,7 @@ export class FormPagosComponent implements OnInit {
     private compraService: CompraService,
     private detalleCompra: DetcompraService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
 
   ) { }
 
@@ -107,6 +106,7 @@ export class FormPagosComponent implements OnInit {
     this.generarReferencia();
     this.cargarPasajerosClasificados();
     this.referenciaUnic = this.generarReferencia()
+    
     if (this.idPaquete == null) this.idPaquete = "paq-1";
     this.idPaquete = this.route.snapshot.paramMap.get("idPaq");
 
@@ -134,13 +134,13 @@ export class FormPagosComponent implements OnInit {
     let persona = this.pagosInfo.get('pasajeros') as FormArray;
     persona.push(this.formBuilder.group({
       idTipo: [tipoid, [Validators.required]],
-      idPersona: [documento, [Validators.required]],
-      nombre: [nombre, [Validators.required]],
-      apellido: [apellido, [Validators.required]],
-      sexo: [sexo, [Validators.required]],
-      fechaNac: [fechaNac, [Validators.required]],
-      cel: [celular, [Validators.required]],
-      correo: [correo, [Validators.required]],
+      idPersona: [documento, Validators.compose([Validators.min(10000000), Validators.max(999999999)])],
+      nombre: [nombre, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)])],
+      apellido: [apellido, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)])],
+      sexo: [sexo, Validators.compose([Validators.required])],
+      fechaNac: [fechaNac, Validators.compose([Validators.required])],
+      cel: [celular, Validators.compose([Validators.required, Validators.minLength(7),Validators.maxLength(9)])],
+      correo: [correo, Validators.compose([Validators.required, Validators.email])],
       estado: [1, [Validators.required]]
     }));
 
@@ -211,29 +211,46 @@ export class FormPagosComponent implements OnInit {
   return false;
 
 }
-
+  public pasajeroI(i:any):any{
+    let nuevoFormato:any;
+     nuevoFormato =this.pagosInfo.controls.pasajeros;
+    return (nuevoFormato.controls[i]);
+  }
   createpagosInfo(){
     const compra = document.getElementById("comprastep");
     let datosIncorrectos: Boolean = false;
     let msg = "";
     let personas = this.pagosInfo.value.pasajeros;
     let pasajeros = [];
-
+    console.log(this.pagosInfo);
     if (this.tourSeleccionado == undefined) {
       datosIncorrectos = true
       if (compra) compra?.classList.add("fail")
-      msg = "¡Debes seleccionar un tour!";
       this.cedulas = [];
+      this.toastr.error("¡Debes seleccionar un tour!", 'ERROR', {
+        timeOut: 3000, positionClass: 'toast-top-center'
+      });
+      return;
     } else {
       if (this.tourSeleccionado.cantCupos == 0) {
         datosIncorrectos = true
         if (compra) compra?.classList.add("fail")
-        msg = "¡No hay cupos disponibles para el tour!";
+        this.toastr.error("¡Debes seleccionar un tour!", 'ERROR', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
       this.cedulas = [];
-
+        return;
       } else {
         if (compra) compra?.classList.remove("fail")
       }
+    }
+
+    if(this.pagosInfo.valid==false){
+      this.cedulas = [];
+      this.toastr.error("¡Campos incorrectos!", 'ERROR', {
+        timeOut: 3000, positionClass: 'toast-top-center'
+      });
+      return;
     }
 
     for (let i = 0; i < personas.length && datosIncorrectos == false; i++) {
@@ -246,11 +263,13 @@ export class FormPagosComponent implements OnInit {
       let cel = pasajero.cel;
       let correo = pasajero.correo;
 
+      console.log(personas[i]);
+
       if (pasajero == '' || idPerson == '' || nombre == '' || fechaNac == '' || cel == '' || correo == '') {
         datosIncorrectos = true;
         if (compra) compra?.classList.add("fail")
         this.cedulas = [];
-        msg = "!Los campos no pueden ser vacíos!"
+        msg = "¡Los campos no pueden ser vacíos!"
         break;
       }
 
@@ -278,7 +297,6 @@ export class FormPagosComponent implements OnInit {
         this.totalCompra += (valorPaquete);
         this.pasajerosClasificados[3].cantidad += 1;
       }
-
 
       this.personaService.getPersona(pasajero.idPersona).subscribe(persona => {
         var pasajeroPost;
@@ -319,20 +337,25 @@ export class FormPagosComponent implements OnInit {
 
     if(this.esRepetido(this.cedulas)){
       this.cedulas = [];
+      this.pasajerosClasificados = [];
       return;
     }
 
     const output = document.getElementById("errorPresentado");
     if (output) output.innerHTML = "";
 
-    if (datosIncorrectos == true) {
+    if (datosIncorrectos == true ) {
       if (compra) output?.classList.add("fail")
       this.toastr.error(msg, 'ERROR', {
         timeOut: 3000, positionClass: 'toast-top-center'
       });
+      this.pasajerosClasificados = []
       return;
 
     } else {
+
+
+
       if (compra) output?.classList.remove("fail")
       if (output) output.innerHTML = "";
     }

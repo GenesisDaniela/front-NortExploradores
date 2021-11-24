@@ -18,6 +18,19 @@ export class FooterComponent implements OnInit {
   public obtenerEmpresa(){
     this.empresaService.obtenerEmpresa("1").subscribe(data=>{
       this.empresa= data;
+      console.log(data.nombre);
+      // mismo problema de los errores en consola, solucionados -San
+      const nombre = document.getElementById("nombreEmpresa")
+      if(nombre) nombre.innerHTML =data.nombre;
+
+      const direccion = document.getElementById("direccionEmpresa")
+      if(direccion) direccion.innerHTML =data.direccion;
+
+      const correo = document.getElementById("correoEmpresa")
+      if(correo) correo.innerHTML =data.correo;
+
+      const telefono = document.getElementById("telefonoEmpresa")
+      if(telefono) telefono.innerHTML =data.telefono;
     })
   }
 }
