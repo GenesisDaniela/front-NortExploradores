@@ -1,10 +1,12 @@
 .container-contacts{
     display: flex;
-    width: 100%;
+    width: 95%;
     flex-wrap: wrap;
-    margin: auto;
-    padding: 10px;
+    margin: auto;    
+    padding: 40px;
     justify-content: center;
+    border-radius: 20px;
+    background-color: #fff;
 }
 
 .bloq-1{
