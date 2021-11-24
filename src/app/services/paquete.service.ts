@@ -9,6 +9,7 @@ import * as global from 'global'
 export class PaqueteService {
 
   uri=`${global.url}/paquete/`;
+  act:string='/actividades/'
 
   constructor(private http: HttpClient) { }
 
@@ -26,6 +27,10 @@ export class PaqueteService {
 
   public encontrar(id:number):Observable<any>{
     return this.http.get<any>(`${this.uri}${id}`);
+  }
+
+  public encontrarAct(id:number):Observable<any>{
+    return this.http.get<any>(`${this.uri}${id}${this.act}`);
   }
   
 

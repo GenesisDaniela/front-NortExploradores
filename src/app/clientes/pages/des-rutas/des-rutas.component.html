@@ -8,28 +8,26 @@
     <div class="informacion">
         <div class="descripcion">
             <h1>Descripción del Destino</h1>
-            <p>{{ data.descripcion }}</p>            
-        </div>
+            <p>{{ data.descripcion }}</p>
+        </div>        
+    </div>
 
-        <div class="actividades">
-            <div class="col-md-3"  style="margin: 15px;">
-                <div class="card-sl">
-                    <div class="card-image">
-                       <!--  <img style="height:175px; width: 840px" src="" /> -->
-                    </div>
-    
-                    <div class="card-heading">
-                        <!-- {{ car.municipio.nombre }} -->
-                    </div>
-                    <div class="card-text">
-                        <!-- Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in
-                        2018. -->
-                    </div>
-                    <div class="card-text">
-                       <!--  Precio: ${{ car.precio }} -->
-                    </div>
-                    
+    <div class="actividades">
+        <div class="col-md-3" *ngFor="let act of data2" style="margin: 15px;">
+            <div class="card-sl">
+                <div class="card-image">
+                    <img style="height:175px; width: 100%" src="{{ act.urlImagen }}" />
                 </div>
+
+                <div class="card-heading">
+                    {{ act.nombre }}
+                </div>
+                <div class="card-text">
+                    {{ act.descripcion }}
+                </div>
+                <div class="card-text">
+                    Precio: ${{ act.paquete.precio }}
+                </div>                
             </div>
         </div>
     </div>

@@ -11,6 +11,7 @@ export class DesRutasComponent implements OnInit {
 
   id: any|null = "";
   data: any;
+  data2: any; 
 
   constructor(private aRoutes: ActivatedRoute, private paquete: PaqueteService) { 
 
@@ -23,6 +24,11 @@ export class DesRutasComponent implements OnInit {
 
     this.paquete.encontrar(this.id).subscribe(data => {
       this.data=data;      
+    })
+
+    this.paquete.encontrarAct(this.id).subscribe(data2 => {
+      this.data2=data2;  
+      console.log(this.data2);    
     })
 
   }
