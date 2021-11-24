@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TokenService } from 'src/app/services/token.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import * as global from 'global'
 
 @Component({
   selector: 'app-header',
@@ -17,11 +19,12 @@ export class HeaderComponent implements OnInit {
   public url_front!:string;
   public isAdmin = false;
   public roles: string[] = [];
-  
+  public uri=global.url_front;
   public nombreUser!:string;
   constructor(
     private usuarioSer: UsuarioService,
-    private tokenS: TokenService
+    private tokenS: TokenService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -40,6 +43,10 @@ export class HeaderComponent implements OnInit {
     this.tokenS.logOut();
     window.location.reload();
     
+  }
+
+  redireccionar(ruta:String){
+    window.location.href=this.uri+"/"+ruta
   }
 
   cargarUsuario(){

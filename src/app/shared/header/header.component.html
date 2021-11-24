@@ -25,12 +25,12 @@
       </a>
       <nz-dropdown-menu #tours="nzDropdownMenu">
         <ul nz-menu nzSelectable>
-          <li nz-menu-item><a routerLink="pasadia">Pasadia</a></li>
-          <li nz-menu-item><a routerLink="estadia">Estadia</a></li>
+          <li nz-menu-item><a (click)="redireccionar('pasadia')">Pasadia</a></li>
+          <li nz-menu-item><a (click)="redireccionar('estadia')">Estadia</a></li>
         </ul>
       </nz-dropdown-menu>
 
-      <a routerLink="contacto">
+      <a (click)="redireccionar('contacto')">
         <span class="off">Contacto </span>
         <i class="fas fa-phone"></i>
       </a>
@@ -44,15 +44,15 @@
           <li nz-menu-item>
             <a routerLink="viajesGrupales">Viajes Grupales</a>
           </li>
-          <li nz-menu-item><a routerLink="festividades">Festividades</a></li>
+          <li nz-menu-item><a (click)="redireccionar('viajesGrupales')">Festividades</a></li>
           <li nz-menu-item>
-            <a routerLink="recomendaciones">Recomendaciones</a>
+            <a (click)="redireccionar('recomendaciones')">Recomendaciones</a>
           </li>
         </ul>
         
       </nz-dropdown-menu>
 
-      <a *ngIf="isAdmin && isLogged" style="margin-left: 20px;" routerLink="administracion/reportes">
+      <a *ngIf="isAdmin && isLogged" style="margin-left: 20px;"(click)="redireccionar('administracion/reportes')">
         <i class="fas fa-concierge-bell"></i>
         <span class="off">Admin</span></a>
 
@@ -62,18 +62,18 @@
         <nz-dropdown-menu #menuser="nzDropdownMenu">
           <ul nz-menu nzSelectable>
             <li nz-menu-item>
-              <a routerLink="misViajes">Mis viajes</a>
+              <a (click)="redireccionar('misViajes')">Mis viajes</a>
             </li>
-            <li nz-menu-item><a routerLink="misReservas">Mis reservas</a></li>
+            <li nz-menu-item><a (click)="redireccionar('misReservas')">Mis reservas</a></li>
     
           </ul>
         </nz-dropdown-menu>    
     </div>
     <div class="social">
-      <a href="" *ngIf="!isLogged" routerLink="login"
+      <a href="" *ngIf="!isLogged" (click)="redireccionar('login')"
         ><i class="fas fa-sign-in-alt" style="margin-right: 5px;"></i><span class="off">Inicio Sesión</span></a
       >
-      <a href="" *ngIf="!isLogged" routerLink="registro"
+      <a href="" *ngIf="!isLogged" (click)="redireccionar('registro')"
         ><i class="fas fa-cash-register" style="margin-right: 5px;"></i><span class="off">Registarse</span></a
       >
       <a style="display: none;" id="bienvenido" href="" 
