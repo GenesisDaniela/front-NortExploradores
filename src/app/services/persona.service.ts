@@ -18,4 +18,7 @@ export class PersonaService {
   public getPasajero(idPasajero:number):Observable<any>{
     return this.http.get<any>(global.url+"/pasajero/"+idPasajero);
   }
+  public post(pasajero:any):Observable<any>{
+    return this.http.post<any>(this.uri,pasajero);
+  }
 }

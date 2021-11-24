@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
+import { PasajeroService } from 'src/app/services/pasajero.service';
+import { PersonaService } from 'src/app/services/persona.service';
 import { TokenService } from 'src/app/services/token.service';
 import { NuevoUsuario } from '../models/nuevo-usuario';
 
@@ -20,6 +22,7 @@ export class AuthRegisterComponent implements OnInit {
   password=""
   errMsj?: string;
   isLogged = false;
+  public generos:any = ['FEMENINO',"MASCULINO"];
   registroInfo!:FormGroup;
 
   constructor(
@@ -27,12 +30,14 @@ export class AuthRegisterComponent implements OnInit {
     private authService: AuthService,
     private toastr: ToastrService,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private pser: PersonaService,
+    private paser: PasajeroService
     ) { }
 
   ngOnInit(): void {
     this.registroInfo = this.fb.group({
-      nuevoUsuario:{
+      
         nombreUsuario:['',Validators.compose([
           Validators.required,
           Validators.minLength(5),
@@ -45,10 +50,8 @@ export class AuthRegisterComponent implements OnInit {
         password:['',Validators.compose([
           Validators.required, 
           Validators.minLength(5),
-          Validators.pattern("^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$")
         ])]
-      },
-      persona:{
+      ,
         idPersona: ['', Validators.compose([
           Validators.required,
           Validators.min(10000000),
@@ -71,36 +74,74 @@ export class AuthRegisterComponent implements OnInit {
           Validators.min(3000000000),
           Validators.max(3999999999)]
         )],
-        correo: ['', Validators.compose([
-          Validators.required, 
-          Validators.email]
-        )],
         estado: [1, [Validators.required]]
-      }
     })
+    console.log(this.registroInfo);
     if (this.tokenService.getToken()) {
       this.isLogged = true;
     }
   }
 
+  enviarData(){
+    let informacion =(this.registroInfo.value);
+    console.log(this.registroInfo);
+    if(this.registroInfo.status=="INVALID"){
+      this.toastr.error('¡Datos incorrectos!', 'ERROR', {
+        timeOut: 3000, positionClass: 'toast-top-center'
+      });
+      return;
+    }
+    var usuarioNuevo = {
+      "nombreUsuario":informacion.nombreUsuario,
+      "email":informacion.email,
+      "password": informacion.password,
+    }
+
+    var persona ={
+      "idPersona":informacion.idPersona,
+      "nombre":informacion.nombre,
+      "apellido":informacion.apellido,
+      "sexo": informacion.sexo,
+      "fechaNac": informacion.fechaNac,
+      "cel": informacion.cel,
+      "correo":informacion.email,
+      "estado":1,
+      "idTipo":1
+    }
+
+    var pasajero = {
+      "esCotizante":1,
+      "persona":persona
+    }
+    
+
+    this.authService.nuevo(usuarioNuevo).subscribe( data => {
+      this.toastr.warning('Cargando...', '', {
+        timeOut: 3000, positionClass: 'toast-top-center'
+      });
+      console.log(data,"usuario");
+      this.pser.post(persona).subscribe(persona=>{
+      this.paser.post(pasajero,data.id_Usuario).subscribe(pasajero=>{
+        this.toastr.success("Cuentra creada", 'OK', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
+        this.router.navigate(["/login"]);
+
+      })
+      })
+    },msg=>{
+      console.log(msg);
+        this.toastr.error(msg.error, 'ERROR', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
+    }
+  );
+
+  }
   
   onRegister(): void {
     this.nuevoUsuario = new NuevoUsuario(this.nombreUsuario, this.email, this.password);
-    this.authService.nuevo(this.nuevoUsuario).subscribe( data => {
-      },msg=>{
-        console.log(msg);
-        if(msg.status ==200){
-          this.toastr.success('Cuenta Creada', 'OK', {
-            timeOut: 3000, positionClass: 'toast-top-center'
-          });
-        this.router.navigate(['/login']);
-        }else{
-          this.toastr.error(msg.error, 'OK', {
-            timeOut: 3000, positionClass: 'toast-top-center'
-          });
-        }
-      }
-    );
+    
   }
 
 }

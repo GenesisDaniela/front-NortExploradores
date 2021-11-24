@@ -13,4 +13,8 @@ export class PasajeroService {
   public getPasajero(idPasajero:number):Observable<any>{
     return this.http.get<any>(this.uri+"/"+idPasajero);
   }
+
+  public post(pasajero:any, idUsuario:any):Observable<any>{
+    return this.http.post<any>(this.uri+"/"+idUsuario,pasajero);
+  }
 }
