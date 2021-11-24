@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
@@ -13,28 +14,36 @@ export class AuthLoginComponent implements OnInit {
   isLogged = false;
   isLoginFail = false;
   isAdmin = false;
-  loginUsuario!: LoginUsuario;
-  nombreUsuario!: string;
-  password!: string;
   roles: string[] = [];
   errMsj!: string;
+  loginInfo!:FormGroup;
 
   constructor(
     private tokenService: TokenService,
     private authService: AuthService,
     private router: Router,
-    private toastr:ToastrService
+    private toastr:ToastrService,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit() {
-   
+    this.loginInfo = this.fb.group({
+      nombreUsuario:['',Validators.compose([
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(25)
+      ])],
+      password:['',Validators.compose([
+        Validators.required, 
+        Validators.minLength(3),
+      ])]
+    })
+
     if (this.tokenService.getToken()) {
       this.isLogged = true;
       this.isLoginFail = false;
       this.roles = this.tokenService.getAuthorities();
-    }
-
-  }
+    }}
 
   isAdministrador(){
     if(this.roles.length == 2){
@@ -42,9 +51,16 @@ export class AuthLoginComponent implements OnInit {
     }
   }
 
-  onLogin(): void {
-    this.loginUsuario = new LoginUsuario(this.nombreUsuario, this.password);
-    this.authService.login(this.loginUsuario).subscribe(
+  guardarData(){
+
+    if(!this.loginInfo.valid){
+      this.toastr.error('Datos incorrectos', 'ERROR', {
+        timeOut: 3000, positionClass: 'toast-top-center'
+      });
+      return;
+    }
+    
+    this.authService.login(this.loginInfo.value).subscribe(
       data => {
         this.isLogged = true;
 
