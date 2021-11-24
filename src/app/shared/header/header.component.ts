@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TokenService } from 'src/app/services/token.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import * as global from 'global'
 
 @Component({
   selector: 'app-header',
@@ -19,7 +18,6 @@ export class HeaderComponent implements OnInit {
   public url_front!:string;
   public isAdmin = false;
   public roles: string[] = [];
-  public uri=global.url_front;
   public nombreUser!:string;
   constructor(
     private usuarioSer: UsuarioService,
@@ -44,11 +42,6 @@ export class HeaderComponent implements OnInit {
     window.location.reload();
     
   }
-
-  redireccionar(ruta:String){
-    window.location.href=this.uri+"/"+ruta
-  }
-
   cargarUsuario(){
     this.usuarioSer.usuarioPorUsername(this.nombreUser).subscribe(usuario=>{
       this.usuario=usuario;

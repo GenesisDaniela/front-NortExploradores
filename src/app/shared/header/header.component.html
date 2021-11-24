@@ -8,12 +8,12 @@
     </div>
     <div class="nav">
 
-      <a routerLink="inicio">
+      <a routerLink="/inicio">
         <span class="off">Inicio </span>
         <i class="fas fa-home"></i>
         </a>
 
-      <a routerLink="rutas">
+      <a routerLink="/rutas">
         <span class="off">Rutas </span>
         <i class="fas fa-road"></i>
         </a>
@@ -25,12 +25,12 @@
       </a>
       <nz-dropdown-menu #tours="nzDropdownMenu">
         <ul nz-menu nzSelectable>
-          <li nz-menu-item><a (click)="redireccionar('pasadia')">Pasadia</a></li>
-          <li nz-menu-item><a (click)="redireccionar('estadia')">Estadia</a></li>
+          <li nz-menu-item><a routerLink="/pasadia">Pasadia</a></li>
+          <li nz-menu-item><a routerLink="/estadia">Estadia</a></li>
         </ul>
       </nz-dropdown-menu>
 
-      <a (click)="redireccionar('contacto')">
+      <a routerLink="/contacto">
         <span class="off">Contacto </span>
         <i class="fas fa-phone"></i>
       </a>
@@ -42,17 +42,17 @@
       <nz-dropdown-menu #menu="nzDropdownMenu">
         <ul nz-menu nzSelectable>
           <li nz-menu-item>
-            <a routerLink="viajesGrupales">Viajes Grupales</a>
+            <a routerLink="/viajesGrupales">Viajes Grupales</a>
           </li>
-          <li nz-menu-item><a (click)="redireccionar('viajesGrupales')">Festividades</a></li>
+          <li nz-menu-item><a routerLink="/festividades">Festividades</a></li>
           <li nz-menu-item>
-            <a (click)="redireccionar('recomendaciones')">Recomendaciones</a>
+            <a routerLink="/recomendaciones">Recomendaciones</a>
           </li>
         </ul>
         
       </nz-dropdown-menu>
 
-      <a *ngIf="isAdmin && isLogged" style="margin-left: 20px;"(click)="redireccionar('administracion/reportes')">
+      <a *ngIf="isAdmin && isLogged" style="margin-left: 20px;" routerLink="/administracion/reportes">
         <i class="fas fa-concierge-bell"></i>
         <span class="off">Admin</span></a>
 
@@ -62,18 +62,18 @@
         <nz-dropdown-menu #menuser="nzDropdownMenu">
           <ul nz-menu nzSelectable>
             <li nz-menu-item>
-              <a (click)="redireccionar('misViajes')">Mis viajes</a>
+              <a routerLink="/misViajes">Mis viajes</a>
             </li>
-            <li nz-menu-item><a (click)="redireccionar('misReservas')">Mis reservas</a></li>
+            <li nz-menu-item><a routerLink="/misReservas">Mis reservas</a></li>
     
           </ul>
         </nz-dropdown-menu>    
     </div>
     <div class="social">
-      <a href="" *ngIf="!isLogged" (click)="redireccionar('login')"
+      <a href="" *ngIf="!isLogged" routerLink="/login"
         ><i class="fas fa-sign-in-alt" style="margin-right: 5px;"></i><span class="off">Inicio Sesión</span></a
       >
-      <a href="" *ngIf="!isLogged" (click)="redireccionar('registro')"
+      <a href="" *ngIf="!isLogged" routerLink="/registro"
         ><i class="fas fa-cash-register" style="margin-right: 5px;"></i><span class="off">Registarse</span></a
       >
       <a style="display: none;" id="bienvenido" href="" 
