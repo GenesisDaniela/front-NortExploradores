@@ -6,7 +6,7 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { es_ES } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import es from '@angular/common/locales/es';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './shared/header/header.component';
 
@@ -60,6 +60,7 @@ registerLocaleData(es);
     AdministracionModule,
     ClientesModule,
     DataTablesModule,
+    ReactiveFormsModule
     // SecurityModule
   ],
   providers: [{ provide: NZ_I18N, useValue: es_ES },

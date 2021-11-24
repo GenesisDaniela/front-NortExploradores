@@ -38,6 +38,8 @@ const routes : Routes = [
     {path:"pasadia", component:PasadiaComponent},  
     {path:"pasadia/detalletour/:idTour", component:DetalleTourComponent},
     {path:"pago", component:FormPagosComponent},
+    {path:"pago/:idPaq", component:FormPagosComponent},
+
     {path:"estadia", component:EstadiaComponent},
     {path:"estadia/detalletour/:idTour", component:DetalleTourComponent},
     {path:"recomendaciones", component:RecomendacionesComponent},

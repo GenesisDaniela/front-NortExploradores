@@ -107,17 +107,17 @@ export class FormPagosComponent implements OnInit {
     this.cargarPasajerosClasificados();
     this.referenciaUnic = this.generarReferencia()
     
-    if (this.idPaquete == null) this.idPaquete = "paq-1";
     this.idPaquete = this.route.snapshot.paramMap.get("idPaq");
-
+    console.log(this.idPaquete);
     this.pagosInfo = this.formBuilder.group({
-      paquete: [],
+      paquete: this.idPaquete,
       total: [],
       pasajeros: this.formBuilder.array([])
     })
 
     this.tipoIdService.getTipoId().subscribe(ids => {
       this.tipoId = ids
+      console.log(this.tipoId);
     })
 
   }
@@ -134,13 +134,32 @@ export class FormPagosComponent implements OnInit {
     let persona = this.pagosInfo.get('pasajeros') as FormArray;
     persona.push(this.formBuilder.group({
       idTipo: [tipoid, [Validators.required]],
-      idPersona: [documento, Validators.compose([Validators.min(10000000), Validators.max(999999999)])],
-      nombre: [nombre, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)])],
-      apellido: [apellido, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)])],
+      idPersona: [documento, Validators.compose([
+        Validators.required,
+        Validators.min(10000000),
+        Validators.max(999999999)]
+      )],
+      nombre: [nombre, Validators.compose([
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(20)]
+      )],
+      apellido: [apellido, Validators.compose([
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(20)
+      ])],
       sexo: [sexo, Validators.compose([Validators.required])],
       fechaNac: [fechaNac, Validators.compose([Validators.required])],
-      cel: [celular, Validators.compose([Validators.required, Validators.minLength(7),Validators.maxLength(9)])],
-      correo: [correo, Validators.compose([Validators.required, Validators.email])],
+      cel: [celular, Validators.compose([
+        Validators.required,
+        Validators.min(3000000000),
+        Validators.max(3999999999)]
+      )],
+      correo: [correo, Validators.compose([
+        Validators.required, 
+        Validators.email]
+      )],
       estado: [1, [Validators.required]]
     }));
 
@@ -148,7 +167,19 @@ export class FormPagosComponent implements OnInit {
       timeOut: 3000, positionClass: 'toast-top-center'
     });
   }
+  verificarFecha(event:any, element:HTMLElement){
+    let edadPasajero = this.calcularfecha(event.target.value);
+    console.log(edadPasajero);
+    if(edadPasajero>=0 && edadPasajero<=200){
+      element.classList.add("is-valid");
+      element.classList.remove("is-invalid");
 
+    }else{
+      element.classList.remove("is-valid");
+      element.classList.add("is-invalid");
+
+    }
+  }
   eliminarPasajero(i: number, pasajero: any) {
     let pasajeros = this.pagosInfo.get('pasajeros') as FormArray;
     if (this.total > 0)
@@ -423,6 +454,9 @@ export class FormPagosComponent implements OnInit {
   public listarTour() {
     this.tourService.listarTourActivo().subscribe(tour => {
       this.tours = tour
+      this.pagosInfo.setValue({
+        paquete:this.idPaquete
+      })
     })
   }
 

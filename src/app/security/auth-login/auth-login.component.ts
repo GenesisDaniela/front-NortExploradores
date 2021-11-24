@@ -53,9 +53,9 @@ export class AuthLoginComponent implements OnInit {
         this.tokenService.setAuthorities(data.authorities);
         this.roles = data.authorities;
 
-        // this.toastr.success('Bienvenido ' + data.nombreUsuario, 'OK', {
-        //   timeOut: 3000, positionClass: 'toast-top-center'
-        // });
+        this.toastr.success('Bienvenido ' + data.nombreUsuario, 'OK', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
         
         this.isAdministrador();
 
