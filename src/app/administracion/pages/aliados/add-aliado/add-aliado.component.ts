@@ -33,8 +33,8 @@ export class AddAliadoComponent implements OnInit {
     this.form = this.formBuilder.group({
       idEmpresa: ['', Validators.compose([
         Validators.required,
-        Validators.minLength(9),
-        Validators.maxLength(10)
+        Validators.min(100000000),
+        Validators.max(9999999999)
       ])],
       nombre: ['', Validators.compose([
         Validators.required,
@@ -65,8 +65,8 @@ export class AddAliadoComponent implements OnInit {
       telefono: ['',
         Validators.compose([
           Validators.required,
-          Validators.minLength(7),
-          Validators.maxLength(12),
+          Validators.min(1000000),
+          Validators.max(9999999999),
         ])],
       descripcion: ['',
         Validators.compose([
@@ -129,6 +129,10 @@ export class AddAliadoComponent implements OnInit {
           fecha: data.fecha,
           estado: data.estado,
         });
+        const output = document.getElementById('idEmp');
+          if (output){
+            output.setAttribute("value",data.idEmpresa)
+          }
       });
     }
   }
