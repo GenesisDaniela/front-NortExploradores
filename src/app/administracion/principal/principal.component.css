@@ -73,11 +73,24 @@
   border-style: solid;
   border-width: 0px;
 }
+.number2{
+  height: 18px;
+  width:  18px;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  border-style: solid;
+  border-width: 0px;
+}
 
 .numbero{
   position: relative;
   top: -12px;
 font-size: smaller;}
+
+.numbero2{
+font-size: smaller;
+}
 nz-header {
   padding: 0;
   width: 100%;
@@ -128,4 +141,117 @@ nz-button-group [nz-button] {
 
 nz-button-group {
   margin: 0 8px 8px 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap');
+
+* {
+    padding: 0px;
+    margin: 0px
+}
+
+body {
+    background: #8E24AA;
+    color: #fff;
+    font-family: 'Manrope', sans-serif
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    background: #AB47BC;
+    height: 60px;
+    position: relative;
+    border-bottom: 1px solid #495057
+}
+
+.icon {
+    cursor: pointer;
+    margin-right: 50px;
+    line-height: 60px
+}
+
+.icon span {
+    background: #f00;
+    padding: 7px;
+    border-radius: 50%;
+    color: #fff;
+    vertical-align: top;
+    margin-left: -25px
+}
+
+.icon img {
+    display: inline-block;
+    width: 26px;
+    margin-top: 4px
+}
+
+.icon:hover {
+    opacity: .7
+}
+
+.logo {
+    flex: 1;
+    margin-left: 50px;
+    color: #eee;
+    font-size: 20px;
+    font-family: monospace
+}
+
+.notifications {
+    width: 250px;
+    height: 0px;
+    opacity: 0;
+    position: absolute;
+    top: 53px;
+    right: 242px;
+    border-radius: 5px 0px 5px 5px;
+    background-color: #27293df8!important;
+    box-shadow: 0 4px 8px 0 rgba(41, 41, 41, 0.63), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
+.notifications h2 {
+    font-size: 14px;
+    padding: 10px;
+    border-bottom: 1px solid rgb(32, 32, 32);
+
+    color: rgb(248, 248, 248);
+
+}
+
+.notifications h2 span {
+    color: #f00
+}
+
+.notifications-item {
+    display: flex;
+    border-bottom: 1px solid rgb(32, 32, 32);
+    padding: 6px 9px;
+    margin-bottom: 0px;
+    cursor: pointer
+}
+
+.notifications-item:hover {
+  background-color: #02284b!important;
+
+}
+
+.notifications-item img {
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin-right: 9px;
+    border-radius: 50%;
+    margin-top: 2px
+}
+
+.notifications-item .text h4 {
+    color: rgb(207, 205, 205);
+    font-size: 16px;
+    margin-top: 3px
+}
+
+.notifications-item .text p {
+    color: rgb(211, 210, 210);
+    font-size: 12px
 }

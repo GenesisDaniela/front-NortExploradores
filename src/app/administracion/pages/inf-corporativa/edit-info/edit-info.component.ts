@@ -24,8 +24,6 @@ export class EditInfoComponent implements OnInit {
       idEmpresa: ["", Validators.required],
       nombre: ['', Validators.compose([
         Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(50)
       ])],
       mision: ['',
         Validators.compose([
@@ -39,23 +37,20 @@ export class EditInfoComponent implements OnInit {
         ])],
       descripcion: ['',
         Validators.compose([
-          Validators.required,
-          Validators.maxLength(500)
+          Validators.maxLength(100)
         ])],
       direccion: ['',
         Validators.compose([
-          Validators.required,
           Validators.minLength(10),
           Validators.maxLength(50)
         ])],
       urlImagen: ['',
         Validators.compose([
-          Validators.required,
           Validators.maxLength(500)
         ])],
       correo: ['',
         Validators.compose([
-          Validators.required,
+          Validators.maxLength(50),
           Validators.email,
         ])],
       estado: ['',
