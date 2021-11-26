@@ -462,6 +462,7 @@ export class FormPagosComponent implements OnInit {
 
   public agregarPasajerosFrec() {
     this.usuarioService.pasajerosPorCliente(this.usuario.id_Usuario).subscribe(pasajeros => {
+      console.log(pasajeros);
       this.cargarPasajeros(pasajeros);
     })
   }
@@ -476,7 +477,7 @@ export class FormPagosComponent implements OnInit {
         this.persona = pasajeros[i].persona;
         this.total++;
         let pasajeroX = this.pagosInfo.get('pasajeros') as FormArray;
-    
+        console.log(this.persona);
         pasajeroX.push(
           this.formBuilder.group({
             idTipo: [this.persona.idTipo.idTipo, [Validators.required]],
