@@ -1,61 +1,56 @@
 <body>
-  <div class="container-contact100">
-    <div class="wrap-contact100">
+    <div class="container-contact100">
+        <div class="wrap-contact100">
 
-      <form [formGroup]="form" (submit)="enviarData()" class="contact100-form validate-form">
-        <span class="contact100-form-title">
+            <form [formGroup]="form" (submit)="enviarData()" class="contact100-form validate-form">
+                <span class="contact100-form-title">
           <h4 class="col-sm-10">{{titulo | uppercase}}</h4>
         </span>
-        <hr style="color: rgb(5, 168, 5);">
+                <hr style="color: rgb(5, 168, 5);">
 
-        <input formControlName="idActividad" hidden type="text" class="form-control" id="inputidAct">
+                <input formControlName="idActividad" hidden type="text" class="form-control" id="inputidAct">
 
-        <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
-          <span class="contact100-form-combo">Nombre de la actividad</span>
-          <input formControlName="nombre" class="input100" type="text" placeholder="Nombre de la actividad"
-            id="inputNombre">
-          <span class="focus-input100"></span>
-        </div>
+                <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+                    <span class="contact100-form-combo">Nombre de la actividad</span>
+                    <input formControlName="nombre" class="input100" type="text" placeholder="Nombre de la actividad" id="inputNombre">
+                    <span class="focus-input100"></span>
+                </div>
 
-        <div class="wrap-input100">
-          <span class="contact100-form-combo">Estado de la actividad</span>
-            <select formControlName="estado" type="text" class="form-control" id="inputEstado" class="input100"
-              placeholder="Estado">
+                <div class="wrap-input100">
+                    <span class="contact100-form-combo">Estado de la actividad</span>
+                    <select formControlName="estado" type="text" class="form-control" id="inputEstado" class="input100" placeholder="Estado">
               <option value="false">INACTVO</option>
               <option value="true">ACTIVO</option>
             </select>
-        </div>
+                </div>
 
-        <div class="wrap-input100 validate-input" data-validate="Por favor ingrese su descripcion">
-          <span class="contact100-form-combo">Descripcion</span>
-          <textarea formControlName="descripcion" class="input100" placeholder="Descripcion de la actividad"
-            id="inputDescripcion"></textarea>
-          <span class="focus-input100"></span>
-        </div>
+                <div class="wrap-input100 validate-input" data-validate="Por favor ingrese su descripcion">
+                    <span class="contact100-form-combo">Descripcion</span>
+                    <textarea formControlName="descripcion" class="input100" placeholder="Descripcion de la actividad" id="inputDescripcion"></textarea>
+                    <span class="focus-input100"></span>
+                </div>
 
-        <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
-          <span class="contact100-form-combo"> Imagen</span>
-          <input formControlName="urlImg" class="input100" type="text" placeholder="Imagen relacionada a la actividad"
-            id="inputImagen">
-          <span class="focus-input100"></span>
-        </div>
+                <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+                    <span class="contact100-form-combo"> Imagen</span>
+                    <input formControlName="urlImg" class="input100" type="text" placeholder="Imagen relacionada a la actividad" id="inputImagen">
+                    <span class="focus-input100"></span>
+                </div>
 
-        <div class="wrap-input100">
-          <span class="contact100-form-combo"> Paquete</span>
-          <select formControlName="paquete" class="form-select" aria-label="Default select example" class="input100"
-            placeholder="paquete">
+                <div class="wrap-input100">
+                    <span class="contact100-form-combo"> Paquete</span>
+                    <select formControlName="paquete" class="form-select" aria-label="Default select example" class="input100" placeholder="paquete">
             <option *ngFor="let paquete of paquetes" name="paquete" id="paquete{{paquete.idPaq}}"
               value={{paquete.idPaq}}>
               {{paquete.nombre}} </option>
           </select>
-        </div>
+                </div>
 
 
-        <hr style="color: rgb(5, 168, 5);">
-        <div class="container-contact100-form-btn">
-          <button class="contact100-form-btn" type="submit">{{boton | uppercase}}</button>
+                <hr style="color: rgb(5, 168, 5);">
+                <div class="container-contact100-form-btn">
+                    <button class="contact100-form-btn" type="submit">{{boton | uppercase}}</button>
+                </div>
+            </form>
         </div>
-      </form>
     </div>
-  </div>
 </body>

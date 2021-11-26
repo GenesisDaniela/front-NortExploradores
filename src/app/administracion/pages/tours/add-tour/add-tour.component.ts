@@ -24,6 +24,10 @@ export class AddTourComponent implements OnInit {
   public empleados: any = [];
   public transportes: any = [];
   public form!: FormGroup;
+
+  public fechaL!: Date;
+  public fechaS!: Date;
+
   //public formTrans !: FormGroup;
 
   constructor(
@@ -48,20 +52,53 @@ export class AddTourComponent implements OnInit {
     this.agregarEmpleados();
     this.agregarTransporte();
     this.form = this.formBuilder.group({
-      idTour: ['', Validators.required],
-      minCupos: ['', Validators.required],
-      maxCupos: ['', Validators.required],
-      fechaLlegada: ['', Validators.required],
-      fechaSalida: ['', Validators.required],
-      estado: ['', Validators.required],
-      empleado: ['', Validators.required],
-      paquete: ['', Validators.required],
-      idTransporte: ['', Validators.required],
-      seguro: ['', Validators.required],
+      idTour: ['', Validators.compose([
+        Validators.required
+      ])],
+      minCupos:['', Validators.compose([
+        Validators.required,
+        Validators.min(1)
+      ])],
+      maxCupos: ['', Validators.compose([
+        Validators.required,
+        Validators.min(1)
+      ])],
+      fechaLlegada: ['', Validators.compose([
+        Validators.required,
+      ])],
+      fechaSalida: ['', Validators.compose([
+        Validators.required,
+      ])],
+      estado: ['', Validators.compose([
+        Validators.required,
+      ])],
+      empleado:['', Validators.compose([
+        Validators.required,
+      ])],
+      paquete: ['', Validators.compose([
+        Validators.required,
+      ])],
+      idTransporte:['', Validators.compose([
+        Validators.required,
+      ])],
+      seguro: ['', Validators.compose([
+        Validators.required,
+      ])],
     });
     // this.formTrans=this.formBuilder.group({
     //   transporte: ['', Validators.required],
     // });
+  }
+
+
+  validarFecha(){
+    let fechaLlegada = new Date(this.fechaL);
+    let fechaSalida = new Date(this.fechaS);
+    let validar = false;
+    if(this.fechaL != undefined && this.fechaS != undefined && fechaLlegada >= fechaSalida)
+      validar = true
+    return validar;
+
   }
 
   public agregarPaquetes() {
