@@ -8,11 +8,11 @@
         </span>
                 <hr style="color: rgb(5, 168, 5);">
 
-                <input formControlName="idActividad" hidden type="text" class="form-control" id="inputidAct">
+                <input formControlName="idActividad" hidden type="text" [class.is-invalid]="form.controls.idActividad.status=='INVALID'" [class.is-valid]="form.controls.idActividad.status=='VALID'" class="form-control input100" class="form-control" id="inputidAct">
 
                 <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
                     <span class="contact100-form-combo">Nombre de la actividad</span>
-                    <input formControlName="nombre" class="input100" type="text" placeholder="Nombre de la actividad" id="inputNombre">
+                    <input formControlName="nombre" [class.is-invalid]="form.controls.nombre.status=='INVALID'" [class.is-valid]="form.controls.nombre.status=='VALID'" class="form-control input100" type="text" placeholder="Nombre de la actividad" id="inputNombre">
                     <span class="focus-input100"></span>
                 </div>
 
@@ -38,7 +38,8 @@
 
                 <div class="wrap-input100">
                     <span class="contact100-form-combo"> Paquete</span>
-                    <select formControlName="paquete" class="form-select" aria-label="Default select example" class="input100" placeholder="paquete">
+                    <select formControlName="paquete" [class.is-invalid]="form.controls.paquete.status=='INVALID'" [class.is-valid]="form.controls.paquete.status=='VALID'" class="form-control input100" class="form-select" aria-label="Default select example" class="form-control input100"
+                        placeholder="paquete">
             <option *ngFor="let paquete of paquetes" name="paquete" id="paquete{{paquete.idPaq}}"
               value={{paquete.idPaq}}>
               {{paquete.nombre}} </option>
