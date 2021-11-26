@@ -31,38 +31,84 @@ export class AddAliadoComponent implements OnInit {
   ngOnInit(): void {
     this.esEditar();
     this.form = this.formBuilder.group({
-      nombre: ['', Validators.required],
-      direccion: ['', Validators.required],
-      mision: ['', Validators.required],
-      vision: ['', Validators.required],
-      correo: ['', Validators.required],
-      telefono: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      urlImagen: ['', Validators.required],
-      idEmpresa: ['', Validators.required],
+      idEmpresa: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(9),
+        Validators.maxLength(10)
+      ])],
+      nombre: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(50)
+      ])],
+      direccion: ['',
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(50)
+        ])],
+      mision: ['',
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(500)
+        ])],
+      vision: ['',
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(500)
+        ])],
+      correo: ['',
+        Validators.compose([
+          Validators.required,
+          Validators.email,
+        ])],
+      telefono: ['',
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(7),
+          Validators.maxLength(12),
+        ])],
+      descripcion: ['',
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(500)
+        ])],
+      urlImagen: ['',
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(500)
+        ])],
       fecha: ['', Validators.required],
-      estado: ['', Validators.required],
+      estado: ['',
+        Validators.compose([
+          Validators.required
+        ])],
     });
   }
 
   public enviarData() {
-    if (this.id !== null) {
+    if (!this.form.valid) {
+      this.toastr.error('¡Datos incorrectos!', 'ERROR', {
+        timeOut: 3000, positionClass: 'toast-top-center'
+      });
+      return;
+    }
+    else if (this.id !== null) {
       this.empresaService.editarEmpresa(this.id, this.form.value).subscribe((data) => {
         this.toastr.success("Aliado Editado Con Exito!", "Aliado Editado", {
           positionClass: 'toast-bottom-right'
         })
         this.router.navigate(["/administracion/aliados"]);
-        });
+      });
     } else {
       this.empresaService.post(this.form.value)
-        .subscribe(data=>{
+        .subscribe(data => {
           this.toastr.success("Aliado Agregado Con Exito!", "Aliado Registrado", {
             positionClass: 'toast-bottom-right'
           })
         });
       this.router.navigateByUrl("/administracion/aliados");
     }
-
   }
 
   esEditar() {
@@ -86,7 +132,4 @@ export class AddAliadoComponent implements OnInit {
       });
     }
   }
-
-
-
 }
