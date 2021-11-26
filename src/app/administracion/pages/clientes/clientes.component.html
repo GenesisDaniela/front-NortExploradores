@@ -70,7 +70,6 @@
         <thead class="table-dark">
           <tr>
             <th>ID</th>
-            <th>USERNAME</th>
             <th>NOMBRE Y APPELIDO</th>
             <th>TELEFONO</th>
             <th>CORREO</th>
@@ -80,11 +79,11 @@
         <tbody>
           <tr *ngFor="let clien of data">
             <td>{{clien.idPasajero}}</td>
-            <td>{{clien.usuario.username}}</td>
             <td>{{clien.persona.nombre}} {{clien.persona.apellido}}</td>
             <td>{{clien.persona.cel}}</td>
-            <td>{{ clien.persona.correo }}</td>
+            <td>{{clien.persona.correo }}</td>
             <td nzAlign="center">
+              
               <a style="margin-right: 10px;">
                 <i nz-icon nzType="stop" nzTheme="outline" style="font-size: 20px; color: red;"></i>
               </a>

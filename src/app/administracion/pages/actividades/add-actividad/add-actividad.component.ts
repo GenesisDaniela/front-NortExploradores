@@ -59,7 +59,9 @@ export class AddActividadComponent implements OnInit {
       this.actividadService
         .editarActividad(this.id, this.form.value)
         .subscribe((data) => { 
-          
+          this.toastr.success("Actividad editada Con Exito!", "Actividad Editada", {
+            positionClass: 'toast-bottom-right'
+          })
           this.router.navigate(["/administracion/actividades"]); 
         });
 
