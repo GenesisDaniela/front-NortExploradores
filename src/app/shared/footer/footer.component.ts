@@ -16,7 +16,7 @@ export class FooterComponent implements OnInit {
     this.obtenerEmpresa();
   }
   public obtenerEmpresa(){
-    this.empresaService.obtenerEmpresa("1").subscribe(data=>{
+    this.empresaService.obtenerEmpresa("84950").subscribe(data=>{
       this.empresa= data;
       console.log(data.nombre);
       // mismo problema de los errores en consola, solucionados -San
