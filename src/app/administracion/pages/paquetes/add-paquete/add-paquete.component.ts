@@ -113,12 +113,6 @@ export class AddPaqueteComponent implements OnInit {
   }
   
   public enviarData() {
-    if (!this.form.valid) {
-      this.toastr.error('¡Datos incorrectos!', 'ERROR', {
-        timeOut: 3000, positionClass: 'toast-top-center'
-      });
-      return;
-    }
    
     console.log('actssss', this.getActividades.value);
     this.paqueteService.post(this.form.value).subscribe(paquete=>{
@@ -126,6 +120,8 @@ export class AddPaqueteComponent implements OnInit {
       this.paqueteService.postAct(this.getActividades.value, paquete.idPaq).subscribe(data=>{    this.toastr.success("Paquete Agregado Con Exito!", "Paquete Registrado", {
         positionClass: 'toast-bottom-right'
       })
+      console.log("id mun:", this.form.value.municipio);
+        this.municipioService.deshabilitar(this.form.value.municipio).subscribe(data=>{});
         this.router.navigate(["/administracion/paquetes"]);})
       })
    

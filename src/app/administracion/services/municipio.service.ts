@@ -14,4 +14,12 @@ export class MunicipioService {
   public listarMunicipio():Observable<any>{
       return this.http.get<any>(this.uri);
   }
+
+  public deshabilitar(id:string):Observable<any>{
+    return this.http.get<any>(`${this.uri}${id}/deshabilitar`);
+  }
+
+  public habilitar(id:string):Observable<any>{
+    return this.http.get<any>(`${this.uri}${id}/habilitar`);
+  }
 }

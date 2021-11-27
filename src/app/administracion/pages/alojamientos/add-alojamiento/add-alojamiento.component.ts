@@ -36,15 +36,13 @@ export class AddAlojamientoComponent implements OnInit {
       nombre:['', 
         Validators.compose([
           Validators.required, 
-          Validators.minLength(10)])],
+          Validators.maxLength(10)])],
       estado:['', 
-        Validators.compose([
-          Validators.required
-      ])],
+        Validators.required],
       dir:['', 
         Validators.compose([
           Validators.required, 
-          Validators.min(5)])],
+          Validators.minLength(5)])],
       descripcion:['', Validators.compose([
           Validators.required,
           Validators.minLength(20)
@@ -52,19 +50,13 @@ export class AddAlojamientoComponent implements OnInit {
       precio:['', 
         Validators.compose([
           Validators.required,
-          Validators.min(1000)
+          Validators.maxLength(6)
         ])]
     });
   }
 
   public enviarData() {
-    if (!this.form.valid) {
-      this.toastr.error('¡Datos incorrectos!', 'ERROR', {
-        timeOut: 3000, positionClass: 'toast-top-center'
-      });
-      return;
-    }
-      
+         
     if (this.id !== null) {
 
       this.alojamientosservice.editarAlojamiento(this.id, this.form.value)
