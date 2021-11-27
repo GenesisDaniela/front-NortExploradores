@@ -13,14 +13,14 @@ export class QuienesSomosComponent implements OnInit {
   constructor(private empresa: EmpresaService) { }
 
   ngOnInit(): void {
-    this.empresa.obtenerEmpresa("1").subscribe(data=>{
+    this.empresa.obtenerEmpresa("84950").subscribe(data=>{
       this.data=data;
       // Muestra muchos errores en consola, porque no se ha cargado aun, cortesia de la casa ;) -San
       const mision = document.getElementById("mision")
       if(mision) mision.innerHTML=data.mision
 
       const mision2 = document.getElementById("mision2")
-      if(mision2) mision2.innerHTML=data.mision
+      if(mision2) mision2.innerHTML=data.vision
     })
   }
 
