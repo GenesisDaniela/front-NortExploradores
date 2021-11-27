@@ -245,7 +245,7 @@
         line-height: 1.5;
         display: block; }
         .footer-20192 .links li a {
-          color: #666873; }
+          color: #b6b6b6; }
           .footer-20192 .links li a:hover {
             color: #2ecc77; }
       .footer-20192 .social li {
@@ -259,8 +259,8 @@
           display: inline-block;
           margin: 0;
           /* padding: 0; */
-          background-color: #2ecc77;
-          color: #fff; }
+          background-color: #ffffff;
+          color: rgb(59, 59, 59); }
           .footer-20192 .social li a > span {
             position: absolute;
             top: 50%;

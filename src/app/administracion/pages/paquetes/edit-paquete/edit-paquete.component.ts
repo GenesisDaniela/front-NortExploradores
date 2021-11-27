@@ -39,12 +39,30 @@ export class EditPaqueteComponent implements OnInit {
     this.agregarMunicipio();
     this.form=this.formBuilder.group({
       idPaq:['', Validators.required],
-      precio:['', Validators.required],
+      precio:['', 
+        Validators.compose([
+          Validators.required, 
+          Validators.min(1000)])],
       estado:['', Validators.required],
-      urlImagen:['', Validators.required],
-      descripcion:['', Validators.required],
-      recomendacion:['', Validators.required],
-      nombre:['', Validators.required],
+      urlImagen:['', 
+        Validators.compose([
+          Validators.required, 
+          Validators.minLength(5)])],
+      descripcion:['', 
+        Validators.compose([
+          Validators.required, 
+          Validators.minLength(10), 
+          Validators.maxLength(255)])],
+      recomendacion:['', 
+        Validators.compose([
+          Validators.required, 
+          Validators.minLength(10), 
+          Validators.maxLength(255)])],
+      nombre:['', 
+        Validators.compose([
+          Validators.required, 
+          Validators.minLength(3), 
+          Validators.maxLength(20)])],
       alojamiento:['', Validators.required],
       municipio:['', Validators.required],
     

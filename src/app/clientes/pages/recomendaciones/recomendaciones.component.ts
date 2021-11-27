@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router} from '@angular/router';
 import { TokenService } from 'src/app/services/token.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UsuarioService } from '../../../services/usuario.service';
+import { SugerenciasService } from '../../../services/sugerencias.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-recomendaciones',
@@ -10,65 +13,36 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RecomendacionesComponent implements OnInit {
 
-  public form !: FormGroup;
+  public idUsuario!:number;
+  public nombreUser!:string;
+  public usuario:any;
+
+  public form!: FormGroup;
 
   constructor(
+    private usuarioSer: UsuarioService,
     private tokenS: TokenService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private recomendacion: SugerenciasService,
+    private toastr: ToastrService    
   ) { }
 
   ngOnInit(): void {
-    this.cargarToken();
+    this.nombreUser=this.tokenS.getUserName(); 
+    this.cargarUsuario();
+    this.cargarToken();  
     
-    this.form = this.formBuilder.group({      
-      nombre: ['', Validators.compose([
-        Validators.required,
-        Validators.minLength(2),
-        Validators.maxLength(50)
-      ])],
-      direccion: ['',
-        Validators.compose([
-          Validators.required,
-          Validators.minLength(10),
-          Validators.maxLength(50)
-        ])],
-      mision: ['',
-        Validators.compose([
-          Validators.required,
-          Validators.maxLength(500)
-        ])],
-      vision: ['',
-        Validators.compose([
-          Validators.required,
-          Validators.maxLength(500)
-        ])],
-      correo: ['',
-        Validators.compose([
-          Validators.required,
-          Validators.email,
-        ])],
-      telefono: ['',
-        Validators.compose([
-          Validators.required,
-          Validators.min(1000000),
-          Validators.max(9999999999),
-        ])],
+    
+    this.form = this.formBuilder.group({   
       descripcion: ['',
         Validators.compose([
           Validators.required,
-          Validators.maxLength(500)
+          Validators.minLength(10),
+          Validators.maxLength(255)
         ])],
-      urlImagen: ['',
-        Validators.compose([
-          Validators.required,
-          Validators.maxLength(500)
-        ])],
-      fecha: ['', Validators.required],
-      estado: ['',
-        Validators.compose([
-          Validators.required
-        ])],
+        usuario: ['',Validators.required
+      ] 
     });
 
   }
@@ -79,8 +53,24 @@ export class RecomendacionesComponent implements OnInit {
     }
   }
 
+  cargarUsuario(){
+    this.usuarioSer.usuarioPorUsername(this.nombreUser).subscribe(usuario=>{
+      this.usuario=usuario;
+      this.idUsuario = usuario.id_Usuario; 
+      console.log(usuario)     
+    })
+  }
+
   public enviarData(){
-    console.log('hola');
+    
+    this.form.controls.usuario.setValue(this.idUsuario)
+    
+    this.recomendacion.enviarDatos(this.form.value).subscribe(data=>{
+      this.toastr.success("Sugerencia Agregada!", "Registrada", {
+        positionClass: 'toast-top-center'
+       }) 
+      this.router.navigateByUrl("/inicio")
+    })
   }
 
 }
