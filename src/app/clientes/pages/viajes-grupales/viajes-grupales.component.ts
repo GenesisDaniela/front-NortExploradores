@@ -50,7 +50,7 @@ export class ViajesGrupalesComponent implements OnInit {
       pasajeros: ['',
         Validators.compose([
           Validators.required,
-          Validators.min(10),
+          Validators.min(1),
           Validators.max(50)
         ])],
       fechaSalida: ['',
