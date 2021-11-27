@@ -1,0 +1,44 @@
+<div class="container-fluid">
+  <div class="cajon">
+    <div class="titulo">
+      <h5 class="gestiones">
+        Mis Viajes
+      </h5>
+    </div>
+    <div class="table"><table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID. Compra</th>
+                <th scope="col">Paquete</th>
+                <th scope="col">Fecha de Salida</th>
+                <th scope="col">Fecha de Llegada</th>
+                <th scope="col">Cant. Pasajeros</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Imagen</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+            <tr  *ngFor="let viajes of comprasUsuario">
+                <td>{{viajes.idCompra}}</td>
+                <td>{{viajes.tour.paquete.nombre}}</td>
+                <td>{{viajes.tour.fechaSalida}}</td>
+                <td>{{viajes.tour.fechaLlegada}}</td>
+                <td>{{viajes.cantidadPasajeros}}</td>
+                <td>{{viajes.tour.paquete.precio}}</td>
+                <td><img src="{{viajes.tour.paquete.precio}}" alt="maletas"></td>
+            </tr>
+        </tbody>
+    </table> 
+</div>
+
+    <div style="text-align: right; margin: 0; ">
+      <a routerLink="/administracion/nuevaActividad" nz-button nzType="primary" class="boton"><i class="fas fa-hiking fa-1x " style="margin-right: 5px; size: 5px;"></i>Agregar Actividad</a>
+  </div>
+
+  <div class="img-maleta">
+    <img src="../../../../assets/img/misMaletas.png" alt="maletas">
+    </div>
+
+  </div>
+</div>

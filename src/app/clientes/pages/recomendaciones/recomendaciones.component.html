@@ -1,4 +1,73 @@
-<div class="contenedor">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+            <h3>Bienvenido</h3>
+            <p>Para norteXploradores es muy importante saber tu opinión y así complacer a todos nuestros clientes.
+                En este apartado podras realizar una petición, queja, reclamo o sugerencia (PQRS).</p>
+
+        </div>
+        <form [formGroup]="form" (ngSubmit)="enviarData()">
+            <div class="col-md-9 register-right">
+                <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+    
+    
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3 class="register-heading">Recomendaciones</h3>
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <h5>Asunto</h5>
+                                <div class="form-group">
+                                    <textarea style="resize: none" formControlName="descripcion" class="form-control"
+                                        id="inputDescripcion" rows="6" placeholder="Descripción" value="" required></textarea>
+    
+                                </div>
+    
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Datos Cliente</h5>
+                                <div class="form-group needs-validation" novalidate>
+                                    <input formControlName="nombre" type="text" class="form-control" maxlength="100" placeholder="Nombre" value="" required/>                                    
+                                </div>
+                                <div class="form-group needs-validation" novalidate>
+                                    <input type="tel" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control"
+                                        placeholder="Teléfono" value="" required/>
+                                </div>
+    
+                                <div class="form-group needs-validation" novalidate>
+                                    <input type="email" class="form-control" maxlength="100" placeholder="Correo" value="" required/>
+                                </div>                                                     
+                                <input type="submit" class="btn-success btnRegister" value="Enviar">
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>  
+                
+            </div>
+        </form>
+        
+    </div>
+
+</div>
+<br>
+
+
+
+
+
+
+
+<!-- <div class="contenedor">
     <h1>Recomendaciones</h1>
     <div class="descripcion">
 
@@ -24,7 +93,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Digite su nombre">
+                    <input type="text" class="form-control" id="nombre" placeholder="Digite su nombre" minlength="5" maxlength="10" required="true">
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Teléfono</label>
@@ -41,4 +110,4 @@
             </form>
         </div>
     </div>
-</div>
+</div> -->
