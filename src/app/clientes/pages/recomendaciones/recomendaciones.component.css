@@ -2,8 +2,12 @@
   background: -webkit-linear-gradient(left, #2ecc71, #bbb3e7);
   margin-top: 3%;
   padding: 3%;
+   
   
 }
+
+
+
 .register-left{
   text-align: center;
   color: #fff;
@@ -25,6 +29,8 @@
   background: #f8f9fa;
   border-top-left-radius: 10% 50%;
   border-bottom-left-radius: 10% 50%;
+  
+  
 }
 .register-left img{
   margin-top: 15%;
@@ -46,10 +52,13 @@
   padding: 12%;
   margin-top: -9%;
   color: #fff;
+ 
 }
 .register .register-form{
   padding: 10%;
   margin-top: 10%;
+  
+  
 }
 .btnRegister{
   float: right;
@@ -97,7 +106,7 @@
 }
 
 form{
-  width: 75%;
+  width: 75%;   
 }
 
 
