@@ -6,3 +6,22 @@
     border-radius: 10px;
     padding: 15px;
   }
+
+  button{
+    font-size: medium;
+  }
+  .carousel-caption{
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 700px;
+  }
+  .carousel-caption hr{
+    text-align: center;
+    justify-content: center;
+    margin: 0 auto;
+  } .carousel-caption h3, p{
+    color: white;
+  }
+
+  .contact100-form-btn{
+    background-color: rgb(91, 150, 91);
+  }
