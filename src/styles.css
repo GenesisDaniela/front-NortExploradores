@@ -468,7 +468,7 @@ iframe {
   position: relative;
   background-color: rgb(250, 250, 250);
   border-radius: 20px;
-  box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 5px 20px 0px rgba(0, 0, 0, 0.18);
   margin-bottom: 30px;
 }
 
@@ -3716,7 +3716,11 @@ textarea.input100 {
 
 /* -- body styles ------------------------------------- */
 
+body {
+    /* font-family: "Roboto", 'Helvetica Neue, Helvetica, Arial', sans-serif;  */
+    /* background: #0277bd;  */
 
+}
 
 /* -- button styles ------------------------------------- */
 

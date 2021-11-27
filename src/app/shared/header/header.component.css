@@ -1,10 +1,11 @@
 .header{
-    background: url(../../../assets/img/fondo_header.jpg);
+    /* background: url(../../../assets/img/fondo_header.jpg); */
     background-position: center;
     background-attachment: contain;
     background-size: cover;
     display: flex;
     flex-flow: column nowrap;
+    background-color: rgb(255, 255, 255);
 }
 
 .menu{
@@ -17,7 +18,7 @@
 }
 
     .logo{
-        width: 100px;
+        width: 50px;
         margin: 0 30px;
     }
 
@@ -36,7 +37,7 @@
         padding: 0 15px;
     }
     .nav a{
-        color: teal;
+        color: rgb(91, 150, 91);
         text-transform: uppercase;
         font-size: 15px;
         padding: 0 10px;
@@ -55,19 +56,19 @@
 
         .social a{
             font-size: 18px;
-            color: white;
+            color: rgb(22, 22, 22);
             padding: 0 25px;
         }
 
         .social a:hover{
-            color: teal;
+            color: rgb(91, 150, 91);
         }
 
    
     h1{
         font-family: 'Lato', sans-serif;
         font-size: 21px;
-        color: grey;
+        color: rgb(255, 255, 255);
         font-weight: 400; /*Tamaño de la fuete que escoji en google font*/
         text-align: center;
         line-height: 1.6; /*Espaciado entre lineas*/
