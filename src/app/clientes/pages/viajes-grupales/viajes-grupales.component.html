@@ -4,64 +4,64 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="container register">
-    <div class="row">
-        <div class="col-md-3 register-left">
-            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
-            <h3>Bienvenido</h3>
-            <p>En norteXploradores nos gusta complacer a todos nuestros clientes.
-                En este apartado podras armar un paquete a tu gusto eligiendo el destino , fecha y una descripcion de
-                las actividades o lo que deseas realizar en el paquete</p>
-
-        </div>
-        <div class="col-md-9 register-right">
-            <form [formGroup]="form" (ngSubmit)="enviarData()">
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <h3 class="register-heading">Viajes Personalizados</h3>
-                        <div class="row register-form">
-                            <div class="col-md-6">
-                                <h5>Datos del tour</h5>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" formControlName="destino" [class.is-invalid]="form.controls.destino.status=='INVALID'" [class.is-valid]="form.controls.destino.status=='VALID'"  placeholder="Destino" value="" />
+                <div class="row">
+                    <div class="col-md-3 register-left">
+                        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                        <h3>Bienvenido</h3>
+                        <p>En norteXploradores nos gusta complacer a todos nuestros clientes. 
+                            En este apartado podras armar un paquete a tu gusto  eligiendo  el destino , fecha  y una descripcion de las actividades o lo que deseas realizar en el paquete</p>
+                       
+                    </div>
+                    <div class="col-md-9 register-right">
+                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                          
+                            
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading">Viajes Personalizados</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <h5>Datos del tour</h5>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Destino" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="N° de pasajeros" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Fecha de salida" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Fecha de Llegada" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea style="resize: none" formControlName="descripcion" class="form-control"
+                                            id="inputDescripcion" rows="3" placeholder="Descripcion" value=""  ></textarea>
+                                         
+                                        </div>
+                                     
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>Datos Cotizante</h5>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Nombre" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Telefono" value="" />
+                                        </div>
+                                       
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Correo" value="" />
+                                        </div>
+                                        <input type="submit" class="btnRegister"  value="Enviar"/>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="number" class="form-control" formControlName="pasajeros" [class.is-invalid]="form.controls.pasajeros.status=='INVALID'" [class.is-valid]="form.controls.pasajeros.status=='VALID'"  placeholder="N° de pasajeros" value="" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="date" class="form-control" formControlName="fechaSalida" [class.is-invalid]="form.controls.fechaSalida.status=='INVALID'" [class.is-valid]="form.controls.fechaSalida.status=='VALID'"  placeholder="Fecha de salida" value="" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="date" class="form-control" formControlName="fechaLlegada" [class.is-invalid]="form.controls.fechaLlegada.status=='INVALID'" [class.is-valid]="form.controls.fechaLlegada.status=='VALID'"  placeholder="Fecha de Llegada" value="" />
-                                </div>
-                                <div class="form-group">
-                                    <textarea style="resize: none" formControlName="descripcion" class="form-control" [class.is-invalid]="form.controls.descripcion.status=='INVALID'" [class.is-valid]="form.controls.descripcion.status=='VALID'" 
-                                        id="inputDescripcion" rows="3" placeholder="Descripcion" value=""></textarea>
-
-                                </div>
-
                             </div>
-                            <div class="col-md-6">
-                                <h5>Datos Cotizante</h5>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" formControlName="nombre" class="form-control" [class.is-invalid]="form.controls.nombre.status=='INVALID'" [class.is-valid]="form.controls.nombre.status=='VALID'"  placeholder="Nombre" value="" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="tel" formControlName="telefono" class="form-control" [class.is-invalid]="form.controls.telefono.status=='INVALID'" [class.is-valid]="form.controls.telefono.status=='VALID'"  name="txtEmpPhone"
-                                        class="form-control" placeholder="Telefono" value="" />
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="email" class="form-control" formControlName="correo" class="form-control" [class.is-invalid]="form.controls.correo.status=='INVALID'" [class.is-valid]="form.controls.correo.status=='VALID'"  placeholder="Correo" value="" />
-                                </div>
-                                <input type="submit" class="btnRegister" value="Enviar" />
-                            </div>
+                         
                         </div>
                     </div>
-
                 </div>
-            </form>
-        </div>
-    </div>
 
-</div>
-<br>
+            </div>
+  <br>
