@@ -2,27 +2,39 @@
     <div class="m-3">
         <h3 style="text-align: center">Paquetes Estadia</h3>
     </div>
+    <hr style="color: rgb(9, 156, 28); height: 3px;">
     <div class=" contenedor">
         
-        <div class="col-md-3" *ngFor="let tour of tours" style="margin: 15px;">
+        <div class="col-md-3" *ngFor="let tour of tours" style="margin: 20px; padding: 0;">
             <div class="card-sl">
                 <div class="card-image">
                     <img style="height:175px; width: 840px" src="{{ tour.paquete.urlImagen }}" />
                 </div>
 
-                <div class="card-heading">
-                    {{tour.paquete.nombre}}
-                </div>
-                
-                <div class="card-text">
-                fechaSalida: {{tour.fechaSalida}}<br>
-                fechaLlegada: {{tour.fechaLlegada}}
+                <div class="card-button2" align='center'>
+                    <i class='fas fa-bus ' style='font-size:20px' ></i> 
+                    <i class="fas fa-utensils icon-1"style='font-size:20px'></i>    
+                    <i class="fa fa-bed icon-1 " style="font-size:20px"></i>
+                   
+                    
+                    </div>
+                   
+
+                <div class="card-heading" align='center'>
+                    {{tour.paquete.nombre}} 
+                     <hr style="color: rgb(0, 146, 31); height: 1px;">
                 </div>
 
-                <div class="card-text">
-                    Precio:{{tour.paquete.precio}}
-                </div>
-                
+              
+                <div class="card-text" align='center'>
+                    
+                  <i class="fas fa-tags" ></i> <b> Precio:</b> ${{tour.paquete.precio}}  
+                  <br>
+                  <i class="far fa-calendar-alt" ></i> <b> Fecha de Salida:</b> {{tour.fechaSalida}}
+                  <br>
+                  <i class="far fa-calendar-alt" ></i> <b> Fecha de Llegada:</b> {{tour.fechaLlegada}}
+                </div><br>
+           
                 
                 <a routerLink="/estadia/detalletour/{{ tour.idTour }}" class="card-button"> Ver más </a>
             </div>
