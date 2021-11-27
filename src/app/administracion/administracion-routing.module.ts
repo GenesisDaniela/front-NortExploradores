@@ -93,7 +93,7 @@ const routes : Routes = [
       {path:"dashboard", component:DashboardComponent},
 
       {path:"calendario", component:CalendarioComponent},
-      {path:"**", redirectTo:"reportes"}
+      {path:"**", redirectTo:"dashboard"}
   ]}
 ]
 
