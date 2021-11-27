@@ -18,6 +18,13 @@ export class NotificacionesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 6,
+      language:{
+        url:"//cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+      }
+    };
     this.notificacionService.get().subscribe(notificaciones=>{
       this.notificaciones =notificaciones;
     })

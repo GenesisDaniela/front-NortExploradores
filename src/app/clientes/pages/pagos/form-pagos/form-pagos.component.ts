@@ -316,6 +316,7 @@ export class FormPagosComponent implements OnInit {
       compra?.classList.remove("pendiente")
     }
     this.totalCompra = this.pasajeros.length*this.tourSeleccionado.paquete.precio
+    console.log(this.totalCompra);
     this.infoPagina = 2;
 
     window.scroll(0, 0);
@@ -444,9 +445,9 @@ export class FormPagosComponent implements OnInit {
 
   cargarTour(event: any) {
     let idTourSeleccionado = event.target.value;
-
     this.tourSeleccionado = this.tourService.encontrarTour(idTourSeleccionado).subscribe(tour => {
       this.tourSeleccionado = tour;
+      console.log(tour);
       this.cuposDisponibles = tour.cantCupos;
       const output = document.getElementById('cantidadCupos');
       if (output) output.innerHTML = tour.cantCupos;
@@ -498,7 +499,7 @@ export class FormPagosComponent implements OnInit {
       pago?.classList.add("pendiente")
       pago?.classList.remove("complete")
     }
-
+    this.totalCompra= this.totalCompra/2
     this.idUsuario = this.usuario.id_Usuario
     this.email = this.persona.correo
     this.nombrePersona = this.persona.nombre + " " + this.persona.apellido
@@ -521,7 +522,7 @@ export class FormPagosComponent implements OnInit {
     var compra = {
       idCompra: this.idCompra,
       cantidadPasajeros: this.total,
-      totalCompra: this.totalCompra,
+      totalCompra: this.totalCompra*2,
       estado: "PENDIENTE",
       usuario: this.usuario.id_Usuario,
       tour: this.tourSeleccionado.idTour
