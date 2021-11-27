@@ -42,6 +42,7 @@ export class AddTourComponent implements OnInit {
     private toastr: ToastrService
   ) {
     this.id = aRouter.snapshot.paramMap.get('idTour');
+
     this.idTrans = aRouter.snapshot.paramMap.get('idTour/idTransporte');
   }
 
@@ -51,40 +52,40 @@ export class AddTourComponent implements OnInit {
     this.agregarSeguros();
     this.agregarEmpleados();
     this.agregarTransporte();
-    this.form = this.formBuilder.group({
-      idTour: ['', Validators.compose([
-        Validators.required
-      ])],
-      minCupos:['', Validators.compose([
-        Validators.required,
-        Validators.min(1)
-      ])],
-      maxCupos: ['', Validators.compose([
-        Validators.required,
-        Validators.min(1)
-      ])],
-      fechaLlegada: ['', Validators.compose([
-        Validators.required,
-      ])],
-      fechaSalida: ['', Validators.compose([
-        Validators.required,
-      ])],
-      estado: ['', Validators.compose([
-        Validators.required,
-      ])],
-      empleado:['', Validators.compose([
-        Validators.required,
-      ])],
-      paquete: ['', Validators.compose([
-        Validators.required,
-      ])],
-      idTransporte:['', Validators.compose([
-        Validators.required,
-      ])],
-      seguro: ['', Validators.compose([
-        Validators.required,
-      ])],
-    });
+      this.form = this.formBuilder.group({
+        idTour: ['', Validators.compose([
+          Validators.required
+        ])],
+        minCupos:['', Validators.compose([
+          Validators.required,
+          Validators.min(1)
+        ])],
+        maxCupos: ['', Validators.compose([
+          Validators.required,
+          Validators.min(1)
+        ])],
+        fechaLlegada: ['', Validators.compose([
+          Validators.required,
+        ])],
+        fechaSalida: ['', Validators.compose([
+          Validators.required,
+        ])],
+        estado: ['', Validators.compose([
+          Validators.required,
+        ])],
+        empleado:['', Validators.compose([
+          Validators.required,
+        ])],
+        paquete: ['', Validators.compose([
+          Validators.required,
+        ])],
+        idTransporte:['', Validators.compose([
+          Validators.required,
+        ])],
+        seguro: ['', Validators.compose([
+          Validators.required,
+        ])],
+      });
     // this.formTrans=this.formBuilder.group({
     //   transporte: ['', Validators.required],
     // });
@@ -126,6 +127,12 @@ export class AddTourComponent implements OnInit {
   }
 
   public enviarData() {
+    if(!this.form.valid){
+      this.toastr.error('Datos incorrectos!', 'Error',{
+        positionClass: 'toast-bottom-right'
+      });
+      return 
+    }
     if (this.id !== null) {
       this.tourService.editarTour(this.form.value).subscribe((data) => {
         this.tourService
@@ -147,7 +154,7 @@ export class AddTourComponent implements OnInit {
             data.idTour,
             this.form.controls.idTransporte.value
           )
-          .subscribe((data) => {this.toastr.success('Tour Agregaso Con Exito!', 'Tour Agregado',{
+          .subscribe((data) => {this.toastr.success('Tour Agregado Con Exito!', 'Tour Agregado',{
             positionClass: 'toast-bottom-right'
           });
             this.router.navigate(['/administracion/tours']);

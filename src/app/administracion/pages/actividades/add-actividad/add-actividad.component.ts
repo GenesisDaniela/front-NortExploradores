@@ -35,14 +35,25 @@ export class AddActividadComponent implements OnInit {
   ngOnInit(): void {
     this.esEditarAct();
     this.agregarPaquete();
-    this.form = this.formBuilder.group({
-      idActividad: ['', Validators.required],
-      nombre: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      urlImg: ['', Validators.required],
-      estado: ['', Validators.required],
-      paquete: ['', Validators.required]
-    });
+    if(this.id != null){
+      this.form = this.formBuilder.group({
+        idActividad: ['', Validators.required],
+        nombre: ['', Validators.required],
+        descripcion: [''],
+        urlImg: [''],
+        estado: [''],
+        paquete: ['', Validators.required]
+      });
+    } else{
+      this.form = this.formBuilder.group({
+        idActividad: [''],
+        nombre: ['', Validators.required],
+        descripcion: [''],
+        urlImg: [''],
+        estado: [''],
+        paquete: ['', Validators.required]
+      });
+    }
   }
 
 
@@ -53,7 +64,12 @@ export class AddActividadComponent implements OnInit {
   }
 
   public enviarData() {
-
+  if(!this.form.valid){
+    this.toastr.error("¡Datos incorrectos!", "Error", {
+      positionClass: 'toast-bottom-right'
+    });
+      return 
+  }
     //edita alojamiento
     if (this.id !== null) {
       this.actividadService
