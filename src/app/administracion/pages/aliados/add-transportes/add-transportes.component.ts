@@ -14,8 +14,8 @@ export class AddTransportesComponent implements OnInit {
 
   public empresas:any = [];
   public form!: FormGroup;
-  titulo = 'Agregar Seguro';
-  boton = 'Agregar Seguro';
+  titulo = 'Agregar Transporte';
+  boton = 'Agregar Transporte';
   id: string | null;
   constructor(
     
@@ -34,12 +34,45 @@ export class AddTransportesComponent implements OnInit {
     this.agregarEmpresa();
     
     this.form=this.formBuilder.group({
-     idTransporte: ['', Validators.required],
-     puestos: ['', Validators.required],
-     modelo: ['', Validators.required],
-     color: ['', Validators.required],
-     precio: ['', Validators.required],
-     estado: ['', Validators.required],
+
+     idTransporte:['', Validators.compose([
+      Validators.required,
+      Validators.minLength(5),
+      Validators.maxLength(6)
+    ])],
+
+     puestos:  ['', Validators.compose([
+      Validators.required,
+      Validators.minLength(1),
+      Validators.maxLength(4)
+    ])],
+
+     modelo:  ['',
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(25)
+        ])],
+
+     color:  ['',
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(25)
+        ])],
+
+     precio: ['',
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(11)
+        ])],
+
+     estado: ['',
+        Validators.compose([
+          Validators.required
+        ])],
+
      empresa: ['', Validators.required]
       
     });
@@ -51,6 +84,10 @@ export class AddTransportesComponent implements OnInit {
   }
  
   public enviarData(){
+
+
+
+    
     if (this.id !== null) {
       this.transporteService
         .editarTransporte(this.id, this.form.value)
