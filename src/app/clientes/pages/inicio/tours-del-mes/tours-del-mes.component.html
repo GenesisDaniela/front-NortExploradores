@@ -1,45 +1,24 @@
-<!-- <div class="container-fluid" style="margin-top: 25px;">
-    <h1 style="text-align: center;">Tours Del Mes</h1>
-
-
-    <div class="container">
-        <div class="card">
-         
-        </div>
-      
-        <div class="card">
-         
-        </div>
-    
-        <div class="card">
-            
-          </div>
-      </div>
-</div> -->
+<div class="container-fluid" style="margin-top: 25px;">
+    <h1 style="text-align: center;">Tours del mes</h1> <br>
+    <h4 style="text-align: center">En esta sección se presentan los tours más demandados en el mes.</h4>
+    <hr style="color: rgb(9, 156, 28); height: 3px;">
 
 <div class="container" style="background-color: white;">
-    <div class="row">
-        <div class="col-lg-7 info">
-            <!-- TODO: NOMBRE DEL PUEBLO -->
-            <h3 style="font-weight: bold; font-family: 'Roboto', sans-serif;">{{data.paquete.municipio.nombre}} - {{data.paquete.municipio.idDepto.nombre}}</h3>
-            <!-- TODO: DESCRIPCION -->
-            <h5 style="font-family: 'Roboto', sans-serif;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque nisi possimus repellendus recusandae temporibus numquam harum corporis fuga distinctio consequuntur molestias quia eum eos, dicta vero mollitia omnis. Esse, tempora!
-            Nobis eveniet aliquid facere voluptates sint! Voluptates, perspiciatis? Soluta, perspiciatis inventore deserunt voluptatum obcaecati dolor laudantium accusantium? Vero corrupti explicabo cupiditate facere expedita dolorem velit, beatae adipisci provident molestias sunt.
-            Hic itaque sapiente sint. Vero harum est tempore quod excepturi recusandae vitae, consectetur, ipsam eveniet exercitationem dolore incidunt iste, reprehenderit doloribus delectus facere repudiandae impedit accusamus esse laudantium doloremque! In.</h5>
-
-            <h4>Alojamiento: {{data.paquete.alojamiento.nombre}}</h4>
-
-            <h4>Recomendaciones: {{data.paquete.recomendacion}}</h4>
-
-            <h4>Precio: $ {{data.paquete.precio}}</h4>
-        </div>
-
-        <div class="col-lg-5 img" style="background-image: url({{data.paquete.urlImagen}});">
-            
+    <div class="col-md-3" style="margin: 20px; padding: 0;">
+        <div class="card-sl" >
+            <div class="card-image">
+                <img style="height:175px; width: 100%; height: 250px;" src="{{data.paquete.urlImagen}}" />
+            </div>
+            <div class="card-heading" align='center'>
+                {{data.paquete.nombre}}
+                <!-- <hr style="color: rgb(5, 73, 5); height: 2px;"> -->
+                <hr style="color: rgb(0, 146, 31); height: 1px;">
+            </div>
+            <a routerLink="/rutas"  class="card-button"> Ver más </a>
         </div>
     </div>
+    </div>
 </div>
-
 
 <!-- 
 <div class="container">
