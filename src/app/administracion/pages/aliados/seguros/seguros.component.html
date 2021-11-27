@@ -23,6 +23,7 @@
           <th>NOMBRE</th>
           <th>DESCRIPCIÓN</th>
           <th>EMPRESA</th>
+          <th>IMAGEN</th>
           <th>PRECIO</th>
           <th>OPCIÓN</th>      
         </tr>
@@ -33,6 +34,9 @@
             <td>{{ seguro.nombre }}</td>
             <td>{{ seguro.descripcion }}</td>
             <td>{{ seguro.empresa.nombre }}</td>
+            <td class="text-center">
+                <img [src]="seguro.empresa.urlImagen" alt="" style="max-width: 190px;" >
+            </td>
             <td>{{ seguro.precio }}</td>
                                 
           <td nzAlign="center">

@@ -16,6 +16,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class ViajesGrupalesComponent implements OnInit {
 
+  public form!: FormGroup;
   public formTour !: FormGroup;
   public formPaq !: FormGroup;
   public formSol !: FormGroup;
@@ -38,31 +39,52 @@ export class ViajesGrupalesComponent implements OnInit {
     this.cargarToken();
     this.agregarMunicipio();
     this.cargarUsuario();
-    this.formSol = this.formBuilder.group({
-      fecha: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      tour: ['', Validators.required],
-      usuario: ['', Validators.required],
-    })
-    this.formTour = this.formBuilder.group({
-      minCupos: ['', Validators.required],
-      maxCupos: ['', Validators.required],
-      fechaLlegada: ['', Validators.required],
-      fechaSalida: ['', Validators.required],
-      cantCupos: ['', Validators.required],
-      empleado: [null, Validators.required],
-      paquete: ['', Validators.required],
-      seguro: [null, Validators.required]
-    })
-    this.formPaq = this.formBuilder.group({
-      precio: ['', Validators.required],
-      urlImagen: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      recomendacion: ['', Validators.required],
-      nombre: ['', Validators.required],
-      alojamiento: [null, Validators.required],
-      municipio: ['', Validators.required]
-    })
+
+
+    this.form = this.formBuilder.group({
+      destino: ['',
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(50)
+        ])],
+      pasajeros: ['',
+        Validators.compose([
+          Validators.required,
+          Validators.min(1),
+          Validators.max(50)
+        ])],
+      fechaSalida: ['',
+        Validators.required
+      ],
+      fechaLlegada: ['',
+        Validators.required
+      ],
+      descripcion: ['',
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(255)
+        ])],
+      nombre: ['',
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(100)
+        ])],
+      telefono: ['',
+        Validators.compose([
+          Validators.required,
+          Validators.min(100000000),
+          Validators.max(9999999999)
+        ])],
+      correo: ['',
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(100)
+        ])],
+    });
+
+
   }
   cargarUsuario() {
     this.usuarioSer.usuarioPorUsername(this.nombreUser).subscribe(usuario => {
@@ -90,15 +112,15 @@ export class ViajesGrupalesComponent implements OnInit {
     this.formTour.controls.maxCupos.setValue(0);
     this.formTour.controls.paquete.setValue(this.formPaq.value);
     var solicitudTour = {
-      "usuario": this.usuario,  
+      "usuario": this.usuario,
       "tour": this.formTour.value,
       "descripcion": this.formSol.controls.descripcion.value
     }
 
     console.log(solicitudTour);
-    
-        this.viajesGrupales.post(this.formPaq.controls.municipio.value, solicitudTour).subscribe((data) => {
 
-        })
+    this.viajesGrupales.post(this.formPaq.controls.municipio.value, solicitudTour).subscribe((data) => {
+
+    })
   }
 }

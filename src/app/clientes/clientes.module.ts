@@ -34,6 +34,7 @@ import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.componen
 import { InformacionTransaccionComponent } from './pages/pagos/informacion-transaccion/informacion-transaccion.component';
 import { FormReservaComponent } from './pages/pagos/form-reserva/form-reserva.component';
 import { MisViajesComponent } from './pages/mis-viajes/mis-viajes.component';
+import { EditarPerfilComponent } from './pages/editar-perfil/editar-perfil.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { MisViajesComponent } from './pages/mis-viajes/mis-viajes.component';
     MisReservasComponent,
     InformacionTransaccionComponent,
     FormReservaComponent,
-    MisViajesComponent
+    MisViajesComponent,
+    EditarPerfilComponent
   ],
   imports: [
     CommonModule,

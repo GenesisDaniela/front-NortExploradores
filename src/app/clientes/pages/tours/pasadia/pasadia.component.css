@@ -46,14 +46,15 @@ a {
 /* Card Styles */
 
 .card-sl {
-    border-radius: 8px;
+    border-radius: 6px;
+
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .card-image img {
     max-height: 100%;
     max-width: 100%;
-    border-radius: 8px 8px 0px 0;
+    border-radius: 6px 6px 0px 0;
 }
 
 .card-action {
@@ -95,9 +96,22 @@ a {
     justify-content: center;
     padding: 10px 0;
     width: 100%;
-    background-color: green;
+    background-color: rgb(91, 150, 91);
     color: #fff;
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 0 6px 6px;
+}
+.card-button2 {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    width: 100%;
+    background-color: rgb(150, 231, 154);
+    color: rgb(0, 0, 0);
+    border-radius: 0px 0px 0 0;
+}
+
+.icon-1{
+    padding-left: 30px;
 }
 
 .card-button:hover {
@@ -138,3 +152,4 @@ a {
     flex-wrap: wrap;
     justify-content: center;
 }
+

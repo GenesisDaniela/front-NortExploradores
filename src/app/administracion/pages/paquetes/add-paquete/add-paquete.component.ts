@@ -22,6 +22,7 @@ export class AddPaqueteComponent implements OnInit {
   boton = 'Agregar Paquete';
   id: string | null;
 
+
   constructor(
     private alojamientoservice: AlojamientosService,
     private municipioService: MunicipioService,
@@ -41,12 +42,33 @@ export class AddPaqueteComponent implements OnInit {
     this.agregarMunicipio();
     this.form=this.formBuilder.group({
       idPaq:['', Validators.required],
-      precio:['', Validators.required],
+      precio:['', 
+        Validators.compose([
+          Validators.required, 
+          Validators.min(1000), 
+          Validators.maxLength(1000000)])],
       estado:['', Validators.required],
-      urlImagen:['', Validators.required],
-      descripcion:['', Validators.required],
-      recomendacion:['', Validators.required],
-      nombre:['', Validators.required],
+      urlImagen:['', Validators.compose([
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(255)
+      ])],
+      descripcion:['', 
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(255)
+      ])],
+      recomendacion:['', 
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(255)])],
+      nombre:['', 
+        Validators.compose([
+          Validators.required, 
+          Validators.minLength(3),
+          Validators.maxLength(20)])],
       alojamiento:['', Validators.required],
       municipio:['', Validators.required],
       acts: this.formBuilder.array([])
@@ -98,6 +120,8 @@ export class AddPaqueteComponent implements OnInit {
       this.paqueteService.postAct(this.getActividades.value, paquete.idPaq).subscribe(data=>{    this.toastr.success("Paquete Agregado Con Exito!", "Paquete Registrado", {
         positionClass: 'toast-bottom-right'
       })
+      console.log("id mun:", this.form.value.municipio);
+        this.municipioService.deshabilitar(this.form.value.municipio).subscribe(data=>{});
         this.router.navigate(["/administracion/paquetes"]);})
       })
    

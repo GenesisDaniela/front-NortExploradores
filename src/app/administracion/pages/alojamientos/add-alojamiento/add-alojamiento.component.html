@@ -13,7 +13,9 @@
 
           <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
             <span class="contact100-form-combo">Nombre del alojamiento</span>
-            <input formControlName="nombre" class="input100" type="text" placeholder="Nombre del alojamiento" id="inputNombre">
+            <input formControlName="nombre" class="input100 form-control" type="text" placeholder="Nombre del alojamiento" id="inputNombre"
+            [class.is-invalid]="form.controls.nombre.status!='VALID'"
+            [class.is-valid]="form.controls.nombre.status=='VALID'">
             <span class="focus-input100"></span>
           </div>
 
@@ -28,22 +30,28 @@
 
           <div class="wrap-input100 validate-input" data-validate="Por favor ingrese su descripcion">
             <span class="contact100-form-combo">Descripción</span>
-            <textarea formControlName="descripcion" class="input100" placeholder="Descripcion del alojamiento"
-              id="inputDescripcion"></textarea>
+            <textarea formControlName="descripcion" class="input100 form-control" placeholder="Descripcion del alojamiento"
+              id="inputDescripcion"
+              [class.is-invalid]="form.controls.descripcion.status!='VALID'"
+            [class.is-valid]="form.controls.descripcion.status=='VALID'"></textarea>
             <span class="focus-input100"></span>
           </div>
 
 
           <div class="wrap-input100 validate-input" data-validate="Por favor ingrese la direccion completo">
             <span class="contact100-form-combo">Dirección</span>
-            <input formControlName="dir" class="input100" type="text" placeholder="Direccion" id="inputDir">
+            <input formControlName="dir" class="input100 form-control" type="text" placeholder="Direccion" id="inputDir"
+            [class.is-invalid]="form.controls.dir.status!='VALID'"
+            [class.is-valid]="form.controls.dir.status=='VALID'">
             <span class="focus-input100"></span>
           </div>
 
   
           <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el precio">
             <span class="contact100-form-combo">Precio</span>
-            <input formControlName="precio" class="input100" type="number" placeholder="Precio" id="inputPrecio">
+            <input formControlName="precio" class="input100 form-control" type="number" placeholder="Precio" id="inputPrecio"
+            [class.is-invalid]="form.controls.precio.status!='VALID'"
+            [class.is-valid]="form.controls.precio.status=='VALID'">
             <span class="focus-input100"></span>
           </div>
   
