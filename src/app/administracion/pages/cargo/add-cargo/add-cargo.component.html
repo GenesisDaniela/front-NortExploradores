@@ -10,28 +10,35 @@
 
       <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
         <span class="contact100-form-combo">Nombre del cargo</span>
-        <input formControlName="nombre" class="input100" type="text" placeholder="Nombre del Cargo" id="inputNombre">
+        <input formControlName="nombre" class="input100 form-control" type="text" placeholder="Nombre del Cargo" id="inputNombre"
+            [class.is-invalid]="form.controls.nombre.status!='VALID'"
+            [class.is-valid]="form.controls.nombre.status=='VALID'">
         <span class="focus-input100"></span>
       </div>
 
       <div class="wrap-input100">
         <span class="contact100-form-combo">Estado del cargo</span>
-        <select formControlName="estado" type="text" class="form-control" id="inputEstado" class="input100"
-            placeholder="Estado">
+        <select formControlName="estado" type="text" class="input100 form-control" id="inputEstado" class="input100"
+            placeholder="Estado"
+            [class.is-invalid]="form.controls.estado.status!='VALID'"
+            [class.is-valid]="form.controls.estado.status=='VALID'">
             <option value="false">INACTVO</option>
             <option value="true">ACTIVO</option>
         </select>
     </div>
       <div class="wrap-input100 validate-input" data-validate="Por favor ingrese su descripcion">
         <span class="contact100-form-combo">Descripcion</span>
-        <textarea formControlName="descripcion" class="input100" placeholder="Descripcion del Cargo"
-          id="inputDescripcion"></textarea>
+        <textarea formControlName="descripcion" class="input100 form-control" placeholder="Descripcion del Cargo"id="inputDescripcion"
+          [class.is-invalid]="form.controls.descripcion.status!='VALID'"
+            [class.is-valid]="form.controls.descripcion.status=='VALID'"></textarea>
         <span class="focus-input100"></span>
       </div>
 
       <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
         <span class="contact100-form-combo">Sueldo</span>
-        <input formControlName="sueldo" class="input100" type="number" placeholder="Sueldo" id="inputSueldo">
+        <input formControlName="sueldo" class="input100 form-control" type="number" placeholder="Sueldo" id="inputSueldo"
+        [class.is-invalid]="form.controls.sueldo.status!='VALID'"
+            [class.is-valid]="form.controls.sueldo.status=='VALID'">
         <span class="focus-input100"></span>
       </div>
       <hr style="color: rgb(5, 168, 5);">

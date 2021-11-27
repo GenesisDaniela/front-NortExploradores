@@ -19,7 +19,7 @@
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
           <span class="contact100-form-combo"> Nombre de la empresa</span>
-          <input formControlName="nombre" class="input100" type="text" placeholder="Nombre de la empresa" id="inputNombre"
+          <input formControlName="nombre" class="input100 form-control" type="text" placeholder="Nombre de la empresa" id="inputNombre"
             [class.is-invalid]="form.controls.nombre.status!='VALID'"
             [class.is-valid]="form.controls.nombre.status=='VALID'">
           <span class="focus-input100"></span>
@@ -27,7 +27,7 @@
 
         <div class="wrap-input100" [formGroup]="form">
           <span class="contact100-form-combo">Estado del Aliado</span>
-          <select formControlName="estado" type="text" class="form-control" id="inputEstado" class="input100"
+          <select formControlName="estado" type="text" class="form-control form-control" id="inputEstado" class="input100 form-control"
               placeholder="Estado">
               <option value="false">INACTVO</option>
               <option value="true">ACTIVO</option>
@@ -80,7 +80,7 @@
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
           <span class="contact100-form-combo"> Telefono</span>
-          <input formControlName="telefono" class="input100" type="number" placeholder="Telefono" id="inputNombre"
+          <input formControlName="telefono" class="input100 form-control" type="number" placeholder="Telefono" id="inputNombre"
             [class.is-invalid]="form.controls.telefono.status!='VALID'"
             [class.is-valid]="form.controls.telefono.status=='VALID'">
           <span class="focus-input100"></span>
@@ -89,7 +89,7 @@
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
           <span class="contact100-form-combo"> Fecha de Convenio</span>
-          <input formControlName="fecha" class="input100" type="date" placeholder="FechaConvenio" id="inputFecha"
+          <input formControlName="fecha" class="input100 form-control" type="date" placeholder="FechaConvenio" id="inputFecha"
             [class.is-invalid]="form.controls.fecha.status!='VALID'"
             [class.is-valid]="form.controls.fecha.status=='VALID'">
           <span class="focus-input100"></span>
@@ -98,7 +98,7 @@
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
           <span class="contact100-form-combo"> urlImagen</span>
-          <input formControlName="urlImagen" class="input100" type="text" placeholder="urlImagen" id="inputImagen"
+          <input formControlName="urlImagen" class="input100 form-control" type="text" placeholder="urlImagen" id="inputImagen"
             [class.is-invalid]="form.controls.urlImagen.status!='VALID'"
             [class.is-valid]="form.controls.urlImagen.status=='VALID'">
           <span class="focus-input100"></span>
