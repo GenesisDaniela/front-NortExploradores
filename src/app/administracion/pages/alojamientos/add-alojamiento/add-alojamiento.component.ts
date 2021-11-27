@@ -33,16 +33,38 @@ export class AddAlojamientoComponent implements OnInit {
     this.esEditarAloja();
       this.form = this.formBuilder.group({
       idAlojamiento:['', Validators.required],
-      nombre:['', Validators.required],
-      estado:['', Validators.required],
-      dir:['', Validators.required],
-      descripcion:['', Validators.required],
-      precio:['', Validators.required]
+      nombre:['', 
+        Validators.compose([
+          Validators.required, 
+          Validators.minLength(10)])],
+      estado:['', 
+        Validators.compose([
+          Validators.required
+      ])],
+      dir:['', 
+        Validators.compose([
+          Validators.required, 
+          Validators.min(5)])],
+      descripcion:['', Validators.compose([
+          Validators.required,
+          Validators.minLength(20)
+      ])],
+      precio:['', 
+        Validators.compose([
+          Validators.required,
+          Validators.min(1000)
+        ])]
     });
   }
 
   public enviarData() {
-      console.log('sss')
+    if (!this.form.valid) {
+      this.toastr.error('¡Datos incorrectos!', 'ERROR', {
+        timeOut: 3000, positionClass: 'toast-top-center'
+      });
+      return;
+    }
+      
     if (this.id !== null) {
 
       this.alojamientosservice.editarAlojamiento(this.id, this.form.value)

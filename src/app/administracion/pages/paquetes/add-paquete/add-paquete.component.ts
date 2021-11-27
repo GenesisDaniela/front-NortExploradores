@@ -22,6 +22,7 @@ export class AddPaqueteComponent implements OnInit {
   boton = 'Agregar Paquete';
   id: string | null;
 
+
   constructor(
     private alojamientoservice: AlojamientosService,
     private municipioService: MunicipioService,
@@ -41,12 +42,33 @@ export class AddPaqueteComponent implements OnInit {
     this.agregarMunicipio();
     this.form=this.formBuilder.group({
       idPaq:['', Validators.required],
-      precio:['', Validators.required],
+      precio:['', 
+        Validators.compose([
+          Validators.required, 
+          Validators.min(1000), 
+          Validators.maxLength(1000000)])],
       estado:['', Validators.required],
-      urlImagen:['', Validators.required],
-      descripcion:['', Validators.required],
-      recomendacion:['', Validators.required],
-      nombre:['', Validators.required],
+      urlImagen:['', Validators.compose([
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(255)
+      ])],
+      descripcion:['', 
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(255)
+      ])],
+      recomendacion:['', 
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(255)])],
+      nombre:['', 
+        Validators.compose([
+          Validators.required, 
+          Validators.minLength(3),
+          Validators.maxLength(20)])],
       alojamiento:['', Validators.required],
       municipio:['', Validators.required],
       acts: this.formBuilder.array([])
@@ -91,6 +113,12 @@ export class AddPaqueteComponent implements OnInit {
   }
   
   public enviarData() {
+    if (!this.form.valid) {
+      this.toastr.error('¡Datos incorrectos!', 'ERROR', {
+        timeOut: 3000, positionClass: 'toast-top-center'
+      });
+      return;
+    }
    
     console.log('actssss', this.getActividades.value);
     this.paqueteService.post(this.form.value).subscribe(paquete=>{

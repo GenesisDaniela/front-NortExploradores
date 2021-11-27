@@ -152,38 +152,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let paq of data; let indice=index">
+        <tr *ngFor="let paq of data">
           <td>{{ paq.nombre }}</td>
           <td>{{ paq.precio}}</td>
           <td>{{ paq.estado}}</td>
           <td>{{ paq.descripcion}}</td>
           <td>{{ paq.recomendacion }}</td>
           <td>{{ paq.alojamiento.nombre}}</td>
-          <td>imagen</td>                      
+          <td>{{ paq.estado}}</td>                      
         <td nzAlign="center">
-          <!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="staticBackdropLabel">Deshabilitar paquete</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <div class="modal-body">
-                      Se ha deshabilitado el paquete: {{ paq.nombre }}
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-             Button trigger modal 
-              <a style="margin-right: 10px;" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="deshabilitar(paq.idPaq)">
-
-                <i nz-icon nzType="stop" nzTheme="outline" style="font-size: 20px; color: red;"></i>
-              </a> -->
+          
           <a [routerLink]="['/administracion/editarPaquete',paq.idPaq]">
             <i
               nz-icon
