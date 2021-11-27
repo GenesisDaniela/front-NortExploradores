@@ -1,0 +1,14 @@
+.img-maleta{
+    text-align: left;
+    margin-right: 80px;
+}
+
+.img-maleta img{
+    width: 150px;
+}
+
+.contenedor{
+    background-color: #fff;
+    margin: 10px;
+    border-radius: 10px;
+}

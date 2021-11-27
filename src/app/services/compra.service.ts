@@ -19,4 +19,9 @@ export class CompraService {
   public encontrar(idCompra:any):Observable<any>{
     return this.http.get<any>(this.url+idCompra)
   }
+
+  public compras():Observable<any>{
+    return this.http.get<any>(this.url)
+  }
+
 }
