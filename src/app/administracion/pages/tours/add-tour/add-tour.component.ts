@@ -148,7 +148,7 @@ export class AddTourComponent implements OnInit {
             data.idTour,
             this.form.controls.idTransporte.value
           )
-          .subscribe((data) => { this.toastr.success('Cargo Editado Con Exito!', 'Cargo Editado',{
+          .subscribe((data) => { this.toastr.success('Tour Editado Con Exito!', 'Tour Editado',{
             positionClass: 'toast-bottom-right'
           });
             console.log(data);
