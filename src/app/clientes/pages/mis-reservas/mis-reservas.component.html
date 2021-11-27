@@ -1,32 +1,38 @@
 <div class="container-user">
-        <span class="contact100-form-title">
-            <h4 >Mis Reservas</h4>
-        </span>
-        <hr style="color: green;">
-        <div class="container-user-table ">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Num. Compra</th>
-                        <th scope="col">Paquete</th>
-                        <th scope="col">Fecha de Viaje</th>
-                        <th scope="col">Cant. Pasajeros</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Estado</th>
+    <span class="contact100-form-title">
+        <h4>Mis Reservas</h4>
+    </span>
+    <hr style="color: green;">
+    <div class="container-user-table ">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Num. Compra</th>
+                    <th scope="col">Paquete</th>
+                    <th scope="col">Fecha de Viaje</th>
+                    <th scope="col">Cant. Pasajeros</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Opcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let reserva of reservas">
+                    <td>{{reserva.idCompra}}</td>
+                    <td>{{reserva.tour.paquete.nombre}}</td>
+                    <td>{{reserva.tour.fechaSalida}}</td>
+                    <td>{{reserva.cantidadPasajeros}}</td>
+                    <td>{{reserva.tour.paquete.precio}}</td>
+                    <td>{{reserva.estado}}</td>
+                    <td nzAlign="center">
+                        <a [routerLink]="['/pago',reserva.idCompra]">
+                            <i nz-icon nzType="edit" nzTheme="outline" style="font-size: 20px"></i>Pagar
+                        </a>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let reserva of reservas">
-                        <td>{{reserva.idCompra}}</td>
-                        <td>{{reserva.tour.paquete.nombre}}</td>
-                        <td>{{reserva.tour.fechaSalida}}</td>
-                        <td>{{reserva.cantidadPasajeros}}</td>
-                        <td>{{reserva.tour.paquete.precio}}</td>
-                        <td>{{reserva.estado}}</td>
-                    </tr>
-                </tbody>
-            </table> 
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 <div class="img-maleta">

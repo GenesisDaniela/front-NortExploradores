@@ -21,7 +21,7 @@
                                         <h5>Datos del tour</h5>
                                         <!--  -->
                                         <div [formGroup]="formPaq" class="form-group" >
-                                            <select formControlName="municipio" class=" form-control" type="text" id="inputMunicipio">
+                                            <select formControlName="municipio" [class.is-invalid]="formPaq.controls.municipio.status=='INVALID'" [class.is-valid]="formPaq.controls.municipio.status=='VALID'"  class=" form-control" type="text" id="inputMunicipio">
                                                 <option value="">Seleecione un Municipio</option>
                                                 <option *ngFor="let municipio of municipios" name="municipio" id="muni{{municipio.idMuni}}"
                                                     value={{municipio.idMuni}}>
@@ -33,18 +33,18 @@
                                             <input type="text" class="form-control" placeholder="Destino" value="" />
                                         </div> -->
                                         <div [formGroup]="formTour" class="form-group">
-                                            <input formControlName="cantCupos" type="text" class="form-control" placeholder="N° de pasajeros" />
+                                            <input formControlName="pasajeros" [class.is-invalid]="formTour.controls.pasajeros.status=='INVALID'" [class.is-valid]="formTour.controls.pasajeros.status=='VALID'"  type="text" class="form-control" placeholder="N° de pasajeros" />
                                         </div>
                                         <div [formGroup]="formTour" class="wrap-input100">
                                             <span style="margin-left: 20px;">Fecha Salida</span>
-                                            <input formControlName="fechaSalida" type="date" class="form-control input100">
+                                            <input formControlName="fechaSalida"  [class.is-invalid]="formTour.controls.fechaSalida.status=='INVALID'" [class.is-valid]="formTour.controls.fechaSalida.status=='VALID'"  type="date" class="form-control input100">
                                         </div>
                                         <div [formGroup]="formTour" class="wrap-input100">
                                             <span style="margin-left: 20px;">Fecha Llegada</span>
-                                            <input formControlName="fechaLlegada" type="date" class="form-control input100">
+                                            <input formControlName="fechaLlegada"  [class.is-invalid]="formTour.controls.fechaLlegada.status=='INVALID'" [class.is-valid]="formTour.controls.fechaLlegada.status=='VALID'"  type="date" class="form-control input100">
                                         </div>
                                         <div [formGroup]="formSol" class="form-group">
-                                            <textarea style="resize: none" formControlName="descripcion" class="form-control"
+                                            <textarea style="resize: none" formControlName="descripcion" [class.is-invalid]="formSol.controls.descripcion.status=='INVALID'" [class.is-valid]="formSol.controls.descripcion.status=='VALID'"  class="form-control"
                                             id="inputDescripcion" rows="3" placeholder="Descripcion"  ></textarea>
                                          
                                         </div>

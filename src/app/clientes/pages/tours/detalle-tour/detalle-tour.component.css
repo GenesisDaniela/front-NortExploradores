@@ -12,7 +12,7 @@
   }
   .carousel-caption{
     background-color: rgba(0, 0, 0, 0.5);
-    margin-bottom: 700px;
+    margin-bottom: 400px;
   }
   .carousel-caption hr{
     text-align: center;
@@ -24,4 +24,5 @@
 
   .contact100-form-btn{
     background-color: rgb(91, 150, 91);
+    width: 70px;
   }
