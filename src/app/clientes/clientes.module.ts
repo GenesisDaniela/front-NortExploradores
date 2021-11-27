@@ -33,6 +33,7 @@ import { MaletaComponent } from './pages/maleta/maleta.component';
 import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.component';
 import { InformacionTransaccionComponent } from './pages/pagos/informacion-transaccion/informacion-transaccion.component';
 import { FormReservaComponent } from './pages/pagos/form-reserva/form-reserva.component';
+import { MisViajesComponent } from './pages/mis-viajes/mis-viajes.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { FormReservaComponent } from './pages/pagos/form-reserva/form-reserva.co
     InformacionPagoComponent,
     MisReservasComponent,
     InformacionTransaccionComponent,
-    FormReservaComponent
+    FormReservaComponent,
+    MisViajesComponent
   ],
   imports: [
     CommonModule,
