@@ -1,112 +1,108 @@
 <div class="container-contact100">
-  <div class="wrap-contact100">
+    <div class="wrap-contact100">
 
-    <form [formGroup]="formPer" (submit)="enviarData()" class="contact100-form validate-form">
-      <span class="contact100-form-title">
+        <form [formGroup]="formPer" (submit)="enviarData()" class="contact100-form validate-form">
+            <span class="contact100-form-title">
         <h4 class="col-sm-10">{{titulo | uppercase}}</h4>
       </span>
-      <hr style="color: rgb(5, 168, 5);">
+            <hr style="color: rgb(5, 168, 5);">
 
-
-
-      <div class="wrap-input100">
-        <span class="contact100-form-combo">Tipo de Identificacion</span>
-        <select  *ngIf="id==null" formControlName="idTipo" class="input100" type="text" id="inputTipo">
+            <div class="wrap-input100 validate-input">
+                <span class="contact100-form-combo">Tipo de Identificacion</span>
+                <select *ngIf="id==null" id="inputTipo" formControlName="idTipo" [class.is-invalid]="formPer.controls.idTipo.status=='INVALID'" [class.is-valid]="formPer.controls.idTipo.status=='VALID'" class="form-control input100" type="text">
+    
           <option *ngFor="let tipo of tipos" name="tipo" id="tipo{{tipo.idTipo}}"
               value={{tipo.idTipo}}>
-              {{tipo.descripcion}}</option>
-          </select>   
-          <input class="input100" *ngIf="id!=null" id="tipoCC" readonly>
-          <input class="input100" *ngIf="id!=null" formControlName="idTipo" type="hidden">
-          <span class="focus-input100"></span>
-          </div>
-       
-   
+              {{tipo.tipo}}</option>
+          </select>
+                <input class="input100" *ngIf="id!=null" id="tipoCC" readonly>
+                <input class="input100" *ngIf="id!=null" formControlName="idTipo" type="hidden">
+                <span class="focus-input100"></span>
+            </div>
 
+            <div class="wrap-input100 validate-input" data-validate="Numero de Identificacion">
+                <span class="contact100-form-combo">Numero de Identificacion</span>
+                <input formControlName="idPersona" [class.is-invalid]="formPer.controls.idPersona.status=='INVALID'" [class.is-valid]="formPer.controls.idPersona.status=='VALID'" class="form-control input100" type="number" id="inputIdPer" placeholder="Numero de Identificacion">
+                <span class="focus-input100"></span>
+            </div>
 
-      <div class="wrap-input100" data-validate="Numero de Identificacion">
-        <span class="contact100-form-combo">Numero de Identificacion</span>
-        <input formControlName="idPersona" class="input100" type="number" id="inputIdPer" placeholder="Numero de Identificacion">
-        <span class="focus-input100"></span>
-      </div>
-
-      <div class="wrap-input100" [formGroup]="form">
-        <span class="contact100-form-combo">Estado del empleado</span>
-        <select formControlName="estado" type="text" class="form-control" id="inputEstado" class="input100"
-            placeholder="Estado">
+            <div class="wrap-input100 validate-input" [formGroup]="form">
+                <span class="contact100-form-combo">Estado del empleado</span>
+                <select formControlName="estado" [class.is-invalid]="form.controls.estado.status=='INVALID'" [class.is-valid]="form.controls.estado.status=='VALID'" type="text" id="inputEstado" class="form-control input100" placeholder="Estado">
             <option value="false">INACTVO</option>
             <option value="true">ACTIVO</option>
         </select>
-    </div>
+            </div>
 
-      <div class="wrap-input100 validate-input">
-        <span class="contact100-form-combo">Nombre</span>
-        <input formControlName="nombre" class="input100" type="text" placeholder="Ingrese el nombre" id="inputNombre">
-        <span class="focus-input100"></span>
-      </div>
+            <div class="wrap-input100 validate-input">
+                <span class="contact100-form-combo">Nombre</span>
+                <input formControlName="nombre" [class.is-invalid]="formPer.controls.nombre.status=='INVALID'" [class.is-valid]="formPer.controls.nombre.status=='VALID'" class="form-control input100" type="text" placeholder="Ingrese el nombre" id="inputNombre">
+                <span class="focus-input100"></span>
+            </div>
 
-      <div class="wrap-input100">
-        <span class="contact100-form-combo">Apellido</span>
-        <input formControlName="apellido" class="input100" type="text" placeholder="Ingrese el apellido" id="inputApellido">
-        <span class="focus-input100"></span>
-      </div>
+            <div class="wrap-input100 validate-input">
+                <span class="contact100-form-combo">Apellido</span>
+                <input formControlName="apellido" [class.is-invalid]="formPer.controls.apellido.status=='INVALID'" [class.is-valid]="formPer.controls.apellido.status=='VALID'" class="form-control input100" type="text" placeholder="Ingrese el apellido" id="inputApellido">
+                <span class="focus-input100"></span>
+            </div>
 
-      <div class="wrap-input100">
-        <span class="contact100-form-combo">Sexo</span>
-        <select formControlName="sexo" class="input100" type="number" id="inputTipo">
+            <div class="wrap-input100 validate-input">
+                <span class="contact100-form-combo">Sexo</span>
+                <select formControlName="sexo" [class.is-invalid]="formPer.controls.sexo.status =='INVALID'" [class.is-valid]="formPer.controls.sexo.status=='VALID'" class="form-control input100" type="number" id="inputTipo">
             <option value="1">Masculino</option> 
             <option value="0">Femenino</option>
           </select>
-        <span class="focus-input100"></span>
-      </div>
+                <span class="focus-input100"></span>
+            </div>
 
-      <div class="wrap-input100">
-        <span class="contact100-form-combo">Fecha nacimiento</span>
-        <input formControlName="fechaNac" class="input100" type="DATE" placeholder="Fecha de nacimiento" id="inputFechaNac">
-        <span class="focus-input100"></span>
-      </div>
+            <div class="wrap-input100 validate-input">
+                <span class="contact100-form-combo">Fecha nacimiento</span>
+                <input formControlName="fechaNac" [class.is-invalid]="formPer.controls.fechaNac.status=='INVALID'" [class.is-valid]="formPer.controls.fechaNac.status=='VALID'" class="form-control input100" type="DATE" placeholder="Fecha de nacimiento" id="inputFechaNac">
+                <span class="focus-input100"></span>
+            </div>
 
-      <div class="wrap-input100">
-        <span class="contact100-form-combo">Celular</span>
-        <input formControlName="cel" class="input100" type="text" placeholder="Numero de cel" id="inputCelular">
-        <span class="focus-input100"></span>
-      </div>
+            <div class="wrap-input100">
+                <span class="contact100-form-combo">Celular</span>
+                <input formControlName="cel" [class.is-invalid]="formPer.controls.cel.status=='INVALID'" [class.is-valid]="formPer.controls.cel.status=='VALID'" class="form-control input100" type="text" placeholder="Numero de cel" id="inputCelular">
+                <span class="focus-input100"></span>
+            </div>
 
-      <div class="wrap-input100">
-        <span class="contact100-form-combo">Correo</span>
-        <input formControlName="correo" class="input100" type="email" placeholder="Correo" id="inputEmail">
-        <span class="focus-input100"></span>
-      </div>
+            <div class="wrap-input100">
+                <span class="contact100-form-combo">Correo</span>
+                <input formControlName="correo" [class.is-invalid]="formPer.controls.correo.status=='INVALID'" [class.is-valid]="formPer.controls.correo.status=='VALID'" class="form-control input100" type="email" placeholder="Correo" id="inputEmail">
+                <span class="focus-input100"></span>
+            </div>
 
-      <div [formGroup]="form">
-        <input formControlName="idEmpleado" hidden type="number" class="form-control" id="inputIdEmpleado">
-      </div>
+            <div [formGroup]="form">
+                <input formControlName="idEmpleado" hidden type="number" class="form-control" id="inputIdEmpleado">
+            </div>
 
-      <div class="wrap-input100" [formGroup]="form" >
-        <span class="contact100-form-combo">Fecha contratacion</span>
-        <input formControlName="fechaContratacion" class="input100" type="DATE" placeholder="Fecha de contratacion" id="inputFecha">
-        <span class="focus-input100"></span>
-      </div>
+            <div class="wrap-input100" [formGroup]="form">
+                <span class="contact100-form-combo">Fecha contratacion</span>
+                <input formControlName="fechaContratacion" [class.is-invalid]="form.controls.fechaContratacion.status=='INVALID'" [class.is-valid]="form.controls.fechaContratacion.status=='VALID'" class="form-control input100" type="DATE" placeholder="Fecha de contratacion"
+                    id="inputFecha">
+                <span class="focus-input100"></span>
+            </div>
 
-      <div class="wrap-input100"  [formGroup]="form">
-        <span class="contact100-form-combo">Imagen Empleado</span>
-        <input formControlName="urlImagen" class="input100" type="text" placeholder="Imagen" id="inputImage">
-        <span class="focus-input100"></span>
-      </div>
+            <div class="wrap-input100" [formGroup]="form">
+                <span class="contact100-form-combo">Imagen Empleado</span>
+                <input formControlName="urlImagen" [class.is-invalid]="form.controls.urlImagen.status=='INVALID'" [class.is-valid]="form.controls.urlImagen.status=='VALID'" class="form-control input100" type="text" placeholder="Url-imagen del empleado a registrar" id="inputImage">
+                <span class="focus-input100"></span>
+            </div>
 
-      <div class="wrap-input100" [formGroup]="form">
-        <span class="contact100-form-combo">Cargo</span>
-        <select formControlName="cargo" class="input100" type="text" id="inputCargo">
+            <div class="wrap-input100" [formGroup]="form">
+                <span class="contact100-form-combo">Cargo</span>
+                <select formControlName="cargo" [class.is-invalid]="form.controls.cargo.status=='INVALID'" [class.is-valid]="form.controls.cargo.status=='VALID'" class="form-control input100" type="text" id="inputCargo">
           <option *ngFor="let cargo of cargos" name="cargo" id="car{{cargo.idCargo}}"
           value={{cargo.idCargo}}>
           {{cargo.nombre}}</option>
           </select>
-        <span class="focus-input100"></span>
-      </div>
-      <hr style="color: rgb(5, 168, 5);">
-      <div class="container-contact100-form-btn">
-        <button class="contact100-form-btn" type="submit">{{boton | uppercase}}</button>
-      </div>
-    </form>
-  </div>
+                <span class="focus-input100"></span>
+            </div>
+            <hr style="color: rgb(5, 168, 5);">
+            <div class="container-contact100-form-btn">
+                <button class="contact100-form-btn" type="submit">{{boton | uppercase}}</button>
+            </div>
+        </form>
+    </div>
 </div>

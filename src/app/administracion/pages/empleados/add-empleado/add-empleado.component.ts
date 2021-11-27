@@ -40,27 +40,62 @@ export class AddEmpleadoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.agregarCargos();
     this.agregarTipo();
+    this.agregarCargos();
     //this.agregarPersonas();
     this.esEditarEmpleado();
     this.formPer = this.formBuilder.group({
-      idPersona: ['', Validators.required],
-      nombre: ['', Validators.required],
-      apellido: ['', Validators.required],
-      sexo: ['', Validators.required],
-      fechaNac: ['', Validators.required],
-      cel: ['', Validators.required],
-      correo: ['', Validators.required],
-      idTipo: ['', Validators.required]
+      idPersona: ['', Validators.compose([
+        Validators.required,
+        Validators.min(10000000),
+        Validators.max(999999999)]
+      )],
+      nombre: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(20)]
+      )],
+      apellido: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(20)
+      ])],
+      sexo: ['', Validators.compose([
+        Validators.required])],
+      fechaNac: ['', Validators.compose([
+        Validators.required])],
+      cel: ['', Validators.compose([
+        Validators.required,
+        Validators.min(3000000000),
+        Validators.max(3999999999)]
+      )],
+      correo: ['',Validators.compose([
+        Validators.required, 
+        Validators.email
+      ])],
+      idTipo: ['', Validators.compose([
+        Validators.required
+      ])]
     });
     this.form = this.formBuilder.group({
-      idEmpleado: ['', Validators.required],
-      estado: ['', Validators.required],
-      fechaContratacion: ['', Validators.required],
-      urlImagen: ['', Validators.required],
-      cargo: ['', Validators.required],
-      persona: ['', Validators.required]
+      idEmpleado: ['',],
+      estado: ['', Validators.compose([
+        Validators.required,
+      ])],
+      fechaContratacion: ['', Validators.compose([
+        Validators.required
+      ])],
+      urlImagen: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(255)
+    ])],
+      cargo: ['', Validators.compose([
+        Validators.required
+      ])],
+      persona: ['', Validators.compose([
+        Validators.required
+      ])]
     });
   }
   public agregarCargos() {
