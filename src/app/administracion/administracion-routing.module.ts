@@ -30,6 +30,7 @@ import { SolicitudComponent } from './pages/solicitud/solicitud.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditPaqueteComponent } from './pages/paquetes/edit-paquete/edit-paquete.component';
 import { SolicitudesComponent } from './pages/solicitud/solicitudes/solicitudes.component';
+import { NotificacionesComponent } from './pages/notificaciones/notificaciones.component';
 
 const routes : Routes = [
   {path:"", 
@@ -41,7 +42,9 @@ const routes : Routes = [
       
         {path:"solicitud/:idSolicitud",component:SolicitudComponent},
         {path:"solicitudes",component:SolicitudesComponent},
-
+        {path:"notificaciones",component:NotificacionesComponent},
+        {path:"editinfo",component:EditInfoComponent},
+      
         {path:"empleados", component:EmpleadosComponent},
         {path:"nuevoEmpleado", component:AddEmpleadoComponent},
         {path:"editarEmpleado/:idEmpleado", component:AddEmpleadoComponent},

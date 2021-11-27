@@ -14,7 +14,9 @@ export class UsuarioService {
   public usuarioPorId(idUsuario:number):Observable<any>{
     return this.http.get<any>(`${this.url}/${idUsuario}`);
   }
-
+  public post(usuario:number):Observable<any>{
+    return this.http.post<any>(`${this.url}`,usuario);
+  }
   public usuarioPorUsername(username:string):Observable<any>{
     return this.http.get<any>(`${this.url}/${username}/username`);
   }

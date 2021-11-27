@@ -52,6 +52,8 @@ import { EditInfoComponent } from './pages/inf-corporativa/edit-info/edit-info.c
 import { SolicitudComponent } from './pages/solicitud/solicitud.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SolicitudesComponent } from './pages/solicitud/solicitudes/solicitudes.component';
+import { NotificacionesComponent } from './pages/notificaciones/notificaciones.component';
+import { EditarInfoComponent } from './pages/editar-info/editar-info.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -84,7 +86,9 @@ import { SolicitudesComponent } from './pages/solicitud/solicitudes/solicitudes.
     SolicitudComponent,
     DashboardComponent,
     EditPaqueteComponent,
-    SolicitudesComponent
+    SolicitudesComponent,
+    NotificacionesComponent,
+    EditarInfoComponent
   ],
   imports: [
     CommonModule,
