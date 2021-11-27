@@ -9,6 +9,7 @@ import { LoginUsuario } from '../models/login-usuario';
 @Component({
   selector: 'app-auth-login',
   templateUrl: './auth-login.component.html',
+  
 })
 export class AuthLoginComponent implements OnInit {
   isLogged = false;
