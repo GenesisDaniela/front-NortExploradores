@@ -7,45 +7,54 @@
           <h4 class="col-sm-10">{{titulo | uppercase}}</h4>
         </span>
         <hr style="color: rgb(5, 168, 5);">
+        
+        
+        
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
           <span class="contact100-form-combo"> Id Transporte</span>
-          <input formControlName="idTransporte" class="input100" type="text" placeholder="Id" id="inputTransporte">
+          <input *ngIf="id==null" formControlName="idTransporte" class="input100 form-control" type="text" placeholder="Id" id="inputTransporte"[class.is-invalid]="form.controls.idTransporte.status!='VALID'"
+          [class.is-valid]="form.controls.idTransporte.status=='VALID'">
+          <input class="input100" *ngIf="id!=null" id="idTrans" readonly>
           <span class="focus-input100"></span>
         </div>
 
         <div class="wrap-input100" [formGroup]="form">
           <span class="contact100-form-combo">Estado del transporte</span>
-          <select formControlName="estado" type="text" class="form-control" id="inputEstado" class="input100"
-              placeholder="Estado">
-              <option value="false">INACTVO</option>
-              <option value="true">ACTIVO</option>
+          <select formControlName="estado" type="text" class="form-control" [class.is-invalid]="form.controls.estado.status=='INVALID'" [class.is-valid]="form.controls.estado.status=='VALID'"id="inputEstado" class="form-control input100"
+            placeholder="Estado">
+            <option value="false">INACTVO</option>
+            <option value="true">ACTIVO</option>
           </select>
-      </div>
+        </div>
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
           <span class="contact100-form-combo"> Modelo</span>
-          <input formControlName="modelo" class="input100" type="text" placeholder="Modelo" id="inputModelo">
+          <input formControlName="modelo" class="form-control input100" type="text" placeholder="Modelo" id="inputModelo" [class.is-invalid]="form.controls.modelo.status!='VALID'"
+          [class.is-valid]="form.controls.modelo.status=='VALID'">
           <span class="focus-input100"></span>
         </div>
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
           <span class="contact100-form-combo"> Puestos</span>
-          <input formControlName="puestos" class="input100" type="number" placeholder="Numero de puestos"
-            id="inputPuestos">
+          <input formControlName="puestos" class="form-control input100" type="number" placeholder="Numero de puestos"
+            id="inputPuestos"[class.is-invalid]="form.controls.puestos.status!='VALID'"
+            [class.is-valid]="form.controls.puestos.status=='VALID'">
           <span class="focus-input100"></span>
         </div>
 
 
-        <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+        <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el color">
           <span class="contact100-form-combo"> Color</span>
-          <input formControlName="color" class="input100" type="text" placeholder="Color" id="inputColor">
+          <input formControlName="color" class="input100 form-control" type="text" placeholder="Color" id="inputColor"[class.is-invalid]="form.controls.color.status!='VALID'"
+          [class.is-valid]="form.controls.color.status=='VALID'">
           <span class="focus-input100"></span>
         </div>
 
 
-        <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+        <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el precio">
           <span class="contact100-form-combo"> Precio</span>
-          <input formControlName="precio" class="input100" type="number" placeholder="Precio" id="inputColor">
+          <input formControlName="precio" class="form-control input100" type="number" placeholder="Precio" id="inputColor"[class.is-invalid]="form.controls.precio.status!='VALID'"
+          [class.is-valid]="form.controls.precio.status=='VALID'">
           <span class="focus-input100"></span>
         </div>
 
@@ -53,7 +62,7 @@
 
         <div class="wrap-input100">
           <span class="contact100-form-combo"> Empresa</span>
-          <select formControlName="empresa" class="form-select" aria-label="Default select example" class="input100"
+          <select formControlName="empresa" class="form-select"[class.is-invalid]="form.controls.empresa.status=='INVALID'" [class.is-valid]="form.controls.empresa.status=='VALID'" aria-label="Default select example" class=" form-control input100"
             placeholder="empresa">
             <option *ngFor="let empresa of empresas" name="empresa" id="emp{{empresa.idEmpresa}}"
               value={{empresa.idEmpresa}}>

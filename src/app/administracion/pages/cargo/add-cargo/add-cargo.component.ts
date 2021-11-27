@@ -33,17 +33,33 @@ export class AddCargoComponent implements OnInit {
     this.esEditar();
    // this.deshabilitar();
     this.form = this.formBuilder.group({
-      idCargo: ['', Validators.required],
+      idCargo: ['', ],
       estado: ['', Validators.required],
-      nombre: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      sueldo: ['', Validators.required],
+      nombre: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(25)
+      ])],
+      descripcion: ['',
+        Validators.compose([
+          Validators.required,
+          Validators.maxLength(200)
+        ])],
+      sueldo: ['', Validators.compose([
+        Validators.required,
+        Validators.min(10000),
+        Validators.max(9999999),
+      ])],
     });
   }
 
   public enviarData() {
-    console.log('asdadadaidaidjajd',this.form.value);
-    
+    if (!this.form.valid) {
+      this.toastr.error('¡Datos incorrectos!', 'ERROR', {
+        timeOut: 3000, positionClass: 'toast-top-center'
+      });
+      return;
+    }
     if (this.id !== null) {
       this.cargoService.editarCargo(this.id, this.form.value).subscribe((data) => {
         this.toastr.success('Cargo Editado Con Exito!', 'Cargo Editado',{

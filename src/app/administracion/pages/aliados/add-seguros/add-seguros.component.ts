@@ -33,22 +33,47 @@ export class AddSegurosComponent implements OnInit {
     this.agregarEmpresa();
     this.esEditar();
     this.form=this.formBuilder.group({
-      nombre: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      precio: ['', Validators.required],
-      idSeguro: ['', Validators.required],
-      estado: ['', Validators.required],
-      empresa: ['', Validators.required]
+      nombre: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(25)
+      ])],
+      descripcion: ['',
+        Validators.compose([
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(200)
+        ])],
+      precio: ['', Validators.compose([
+        Validators.required,
+        Validators.min(1000),
+        Validators.max(999999),
+      ])],
+      estado: ['', Validators.compose([
+        Validators.required,
+      ])],
+      idSeguro: ['', ],
+      empresa: ['', Validators.compose([
+        Validators.required
+      ])],
       
     });
   }
   public agregarEmpresa(){
     this.empresaService.listarEmpresa().subscribe(empresas=>{
       this.empresas = empresas; 
+      console.log('empresas', this.empresas);
+      
     })
   }
  
   public enviarData(){
+    if (!this.form.valid) {
+      this.toastr.error('¡Datos incorrectos!', 'ERROR', {
+        timeOut: 3000, positionClass: 'toast-top-center'
+      });
+      return;
+    }
     if (this.id !== null) {
       this.seguroService
         .editarSeguro(this.id, this.form.value).subscribe((data) => {
@@ -76,8 +101,8 @@ export class AddSegurosComponent implements OnInit {
           nombre: data.nombre,
           descripcion: data.descripcion,
           precio: data.precio,
-          idSeguro: data.idSeguro,
           estado: data.estado,
+          idSeguro: data.idSeguro,
           empresa: data.empresa.idEmpresa,
         });
       });

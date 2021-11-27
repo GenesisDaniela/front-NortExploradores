@@ -44,7 +44,7 @@ export class CargoComponent implements OnInit, OnDestroy {
   //     console.log(id);
       
   //   });
-  //}
+  // }
 
 
 }
