@@ -1,15 +1,11 @@
-<p>notificaciones works!</p>
 <div class="container-fluid">
     <div class="cajon">
       <div class="titulo">
         <h5 style="text-align: start; color: white; font-weight: bold;" class="gestiones">
-          Administración De Empleados
+          Administración De notificaciones
         </h5>
       </div>
-  
-      <div style="text-align: right; margin: 0;">
-        <a routerLink="/administracion/nuevoEmpleado" nz-button nzType="primary" class="boton"><i class="fas fa-person-dolly" style="margin-right: 5px;"></i>Agregar Empleado</a>
-      </div>
+
   
       <div class="table">
         <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
@@ -29,8 +25,14 @@
                 <td>{{notificacion.descripcion}}</td>
                 <td>{{notificacion.fecha}}</td>
                 <td *ngIf="notificacion.usuario!=null">{{notificacion.usuario.username}}</td>
+                <td *ngIf="notificacion.usuario==null">----</td>
+
                 <td *ngIf="notificacion.sugerencia!=null">{{notificacion.sugerencia.descripcion}}</td>
-                <td *ngIf="notificacion.solicitudTour!=null">{{notificacion.solicitudTour}}</td>
+                <td *ngIf="notificacion.sugerencia==null">----</td>
+
+                <td *ngIf="notificacion.solicitudTour!=null">{{notificacion.solicitudTour.descripcion}}</td>
+                <td *ngIf="notificacion.solicitudTour==null">----</td>
+
            </tr>
           </tbody>
         </table>
