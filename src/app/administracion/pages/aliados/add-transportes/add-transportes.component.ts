@@ -38,13 +38,13 @@ export class AddTransportesComponent implements OnInit {
      idTransporte:['', Validators.compose([
       Validators.required,
       Validators.minLength(5),
-      Validators.maxLength(6)
+      Validators.maxLength(8)
     ])],
 
      puestos:  ['', Validators.compose([
       Validators.required,
-      Validators.minLength(1),
-      Validators.maxLength(4)
+      Validators.min(1),
+      Validators.max(99)
     ])],
 
      modelo:  ['',
@@ -64,8 +64,8 @@ export class AddTransportesComponent implements OnInit {
      precio: ['',
         Validators.compose([
           Validators.required,
-          Validators.minLength(4),
-          Validators.maxLength(11)
+          Validators.min(1000),
+          Validators.maxLength(999999)
         ])],
 
      estado: ['',
@@ -73,7 +73,10 @@ export class AddTransportesComponent implements OnInit {
           Validators.required
         ])],
 
-     empresa: ['', Validators.required]
+     empresa: ['',
+     Validators.compose([
+       Validators.required
+     ])],
       
     });
   }
@@ -84,11 +87,14 @@ export class AddTransportesComponent implements OnInit {
   }
  
   public enviarData(){
+    if (!this.form.valid) {
+      this.toastr.error('¡Datos incorrectos!', 'ERROR', {
+        timeOut: 3000, positionClass: 'toast-top-center'
+      });
+      return;
+    }
 
-
-
-    
-    if (this.id !== null) {
+    else if (this.id !== null) {
       this.transporteService
         .editarTransporte(this.id, this.form.value)
         .subscribe((data) => { 
@@ -124,6 +130,10 @@ export class AddTransportesComponent implements OnInit {
           estado: data.estado,
           empresa: data.empresa.idEmpresa,
         });
+        const output = document.getElementById('idTrans');
+        if (output){
+          output.setAttribute("value",data.idTransporte)
+        }
       });
     }
   }
