@@ -116,7 +116,25 @@
     font-family: 'Montserrat', sans-serif;
     background: #112233;
   }
+
+  p{
+    color: rgb(201, 201, 201);
+  }
+  h3{
+    color: rgb(255, 255, 255);
+    font-size: xx-large;
+  }
   
+  .carousel-caption{
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  .carousel-caption hr{
+    text-align: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+
   .weather-card {
     margin: 60px auto;
     height: 740px;
