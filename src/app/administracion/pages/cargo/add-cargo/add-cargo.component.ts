@@ -33,7 +33,7 @@ export class AddCargoComponent implements OnInit {
     this.esEditar();
    // this.deshabilitar();
     this.form = this.formBuilder.group({
-      // idCargo: ['', Validators.required],
+      idCargo: ['', ],
       estado: ['', Validators.required],
       nombre: ['', Validators.compose([
         Validators.required,
