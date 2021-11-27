@@ -15,7 +15,6 @@ import { UsuarioService } from 'src/app/services/usuario.service';
   styleUrls: ['./viajes-grupales.component.css']
 })
 export class ViajesGrupalesComponent implements OnInit {
-
   public formTour !: FormGroup;
   public formPaq !: FormGroup;
   public formSol !: FormGroup;
@@ -35,9 +34,11 @@ export class ViajesGrupalesComponent implements OnInit {
 
   ngOnInit(): void {
     this.nombreUser = this.tokenS.getUserName();
+    
     this.cargarToken();
     this.agregarMunicipio();
     this.cargarUsuario();
+    
     this.formSol = this.formBuilder.group({
       fecha: ['', Validators.required],
       descripcion: ['', Validators.required],
@@ -50,9 +51,9 @@ export class ViajesGrupalesComponent implements OnInit {
       fechaLlegada: ['', Validators.required],
       fechaSalida: ['', Validators.required],
       cantCupos: ['', Validators.required],
-      empleado: [null, Validators.required],
+      empleado: [1, Validators.required],
       paquete: ['', Validators.required],
-      seguro: [null, Validators.required]
+      seguro: [1, Validators.required]
     })
     this.formPaq = this.formBuilder.group({
       precio: ['', Validators.required],
@@ -67,6 +68,7 @@ export class ViajesGrupalesComponent implements OnInit {
   cargarUsuario() {
     this.usuarioSer.usuarioPorUsername(this.nombreUser).subscribe(usuario => {
       this.usuario = usuario;
+      this.usuarioCotizante(usuario)
     })
   }
   public agregarMunicipio() {
@@ -89,16 +91,25 @@ export class ViajesGrupalesComponent implements OnInit {
     this.formTour.controls.minCupos.setValue(0);
     this.formTour.controls.maxCupos.setValue(0);
     this.formTour.controls.paquete.setValue(this.formPaq.value);
-    var solicitudTour = {
+    let date: Date = new Date();
+    let solicitudTour = {
+      "fecha": date,
       "usuario": this.usuario,  
       "tour": this.formTour.value,
       "descripcion": this.formSol.controls.descripcion.value
     }
-
     console.log(solicitudTour);
-    
         this.viajesGrupales.post(this.formPaq.controls.municipio.value, solicitudTour).subscribe((data) => {
 
         })
   }
+
+  public usuarioCotizante(usuario:any){
+    const username = document.getElementById("username")
+    if(username) username.innerHTML=usuario.username
+
+    const email = document.getElementById("email")
+    if(email) email.innerHTML=usuario.email
+  }
+
 }

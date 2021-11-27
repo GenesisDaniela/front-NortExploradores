@@ -28,7 +28,7 @@ export class InfCorporativaComponent implements OnInit {
       }
     };
 
-    this.empresa.obtenerEmpresa("1").subscribe(data=>{
+    this.empresa.obtenerEmpresa("84950").subscribe(data=>{
       console.log(data);
       this.info = data;
       this.dtTrigger.next();
