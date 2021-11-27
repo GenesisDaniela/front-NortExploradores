@@ -8,6 +8,7 @@ import { ViajesGrupalesService } from 'src/app/services/viajes-grupales.service'
 import { MunicipioService } from 'src/app/administracion/services/municipio.service';
 import { PaquetesService } from 'src/app/administracion/services/paquetes.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-viajes-grupales',
@@ -29,6 +30,7 @@ export class ViajesGrupalesComponent implements OnInit {
     private viajesGrupales: ViajesGrupalesService,
     private municipioService: MunicipioService,
     private formBuilder: FormBuilder,
+    private toastr: ToastrService,
     private usuarioSer: UsuarioService,
   ) { }
 
@@ -50,7 +52,13 @@ export class ViajesGrupalesComponent implements OnInit {
       maxCupos: ['', Validators.required],
       fechaLlegada: ['', Validators.required],
       fechaSalida: ['', Validators.required],
-      cantCupos: ['', Validators.required],
+      pasajeros: ['',
+        Validators.compose([
+          Validators.required,
+          Validators.min(1),
+          Validators.max(50)
+        ])],
+      /* cantCupos: ['', Validators.required], */
       empleado: [1, Validators.required],
       paquete: ['', Validators.required],
       seguro: [1, Validators.required]
@@ -62,7 +70,7 @@ export class ViajesGrupalesComponent implements OnInit {
       recomendacion: ['', Validators.required],
       nombre: ['', Validators.required],
       alojamiento: [null, Validators.required],
-      municipio: ['', Validators.required]
+      municipio: ['', Validators.required]      
     })
   }
   cargarUsuario() {
@@ -100,8 +108,11 @@ export class ViajesGrupalesComponent implements OnInit {
     }
     console.log(solicitudTour);
         this.viajesGrupales.post(this.formPaq.controls.municipio.value, solicitudTour).subscribe((data) => {
-
+          this.toastr.success("Solicitud Enviada Con Exito!", "Enviado", {
+            positionClass: 'toast-bottom-right'
+          })          
         })
+        this.router.navigateByUrl("/inicio");
   }
 
   public usuarioCotizante(usuario:any){
