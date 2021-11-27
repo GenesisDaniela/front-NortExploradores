@@ -1,1 +1,43 @@
 <p>notificaciones works!</p>
+<div class="container-fluid">
+    <div class="cajon">
+      <div class="titulo">
+        <h5 style="text-align: start; color: white; font-weight: bold;" class="gestiones">
+          Administración De Empleados
+        </h5>
+      </div>
+  
+      <div style="text-align: right; margin: 0;">
+        <a routerLink="/administracion/nuevoEmpleado" nz-button nzType="primary" class="boton"><i class="fas fa-person-dolly" style="margin-right: 5px;"></i>Agregar Empleado</a>
+      </div>
+  
+      <div class="table">
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+          class="table table-striped table-bordered row-border hover" style="margin-bottom: 25px;">
+          <thead class="table-dark">
+            <tr>
+              <th>DESCRIPCION</th>
+              <th>FECHA</th>
+              <th>USUARIO</th>
+              <th>SUGERENCIA</th>
+              <th>SOLICITUD</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+           <tr *ngFor="let notificacion of notificaciones">
+                <td>{{notificacion.descripcion}}</td>
+                <td>{{notificacion.fecha}}</td>
+                <td *ngIf="notificacion.usuario!=null">{{notificacion.usuario.username}}</td>
+                <td *ngIf="notificacion.sugerencia!=null">{{notificacion.sugerencia.descripcion}}</td>
+                <td *ngIf="notificacion.solicitudTour!=null">{{notificacion.solicitudTour}}</td>
+           </tr>
+          </tbody>
+        </table>
+  
+      </div>
+  
+  
+  
+    </div>
+  </div>

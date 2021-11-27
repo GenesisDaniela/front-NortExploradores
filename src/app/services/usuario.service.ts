@@ -14,9 +14,7 @@ export class UsuarioService {
   public usuarioPorId(idUsuario:number):Observable<any>{
     return this.http.get<any>(`${this.url}/${idUsuario}`);
   }
-  public post(usuario:number):Observable<any>{
-    return this.http.post<any>(`${this.url}`,usuario);
-  }
+
   public usuarioPorUsername(username:string):Observable<any>{
     return this.http.get<any>(`${this.url}/${username}/username`);
   }
@@ -48,6 +46,9 @@ export class UsuarioService {
 
   public guardarPasajerosDeUsuario(idUsuario:number, pasajeros:any[]):Observable<any>{
     return this.http.post<any>(`${this.url}/${idUsuario}/pasajeros`,pasajeros);
+  }
+  public post(pasajeros:any):Observable<any>{
+    return this.http.put<any>(`${this.url}`,pasajeros);
   }
 
 }

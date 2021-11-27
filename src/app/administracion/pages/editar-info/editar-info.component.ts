@@ -33,6 +33,7 @@ export class EditarInfoComponent implements OnInit {
       estado: ['', Validators.required],
     });
     
+   
     this.usuarioS.usuarioPorUsername(this.tokenS.getUserName()).subscribe(usuario => {
       this.form.setValue({
         id_Usuario:usuario.id_Usuario,

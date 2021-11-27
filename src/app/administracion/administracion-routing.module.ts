@@ -31,6 +31,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EditPaqueteComponent } from './pages/paquetes/edit-paquete/edit-paquete.component';
 import { SolicitudesComponent } from './pages/solicitud/solicitudes/solicitudes.component';
 import { NotificacionesComponent } from './pages/notificaciones/notificaciones.component';
+import { EditarInfoComponent } from './pages/editar-info/editar-info.component';
 
 const routes : Routes = [
   {path:"", 
@@ -38,13 +39,14 @@ const routes : Routes = [
     children:[
       {path:"infoCorporativa", component:InfCorporativaComponent},
         {path:"editInfo/:idEmp", component:EditInfoComponent},
-      {path:"reportes", component:ReportesComponent},
       
         {path:"solicitud/:idSolicitud",component:SolicitudComponent},
         {path:"solicitudes",component:SolicitudesComponent},
         {path:"notificaciones",component:NotificacionesComponent},
         {path:"editinfo",component:EditInfoComponent},
       
+        {path:"editarinfo", component:EditarInfoComponent},
+
         {path:"empleados", component:EmpleadosComponent},
         {path:"nuevoEmpleado", component:AddEmpleadoComponent},
         {path:"editarEmpleado/:idEmpleado", component:AddEmpleadoComponent},
@@ -82,7 +84,7 @@ const routes : Routes = [
       {path:"nuevoPaquete", component:AddPaqueteComponent},
       {path:"editarPaquete/:idPaq", component:EditPaqueteComponent},
         
-      {path:"reportes", component:ReportesComponent},
+      {path:"reportes", component:DashboardComponent},
       
       {path:"tours", component:ToursComponent},
       {path:"nuevoTour", component:AddTourComponent},

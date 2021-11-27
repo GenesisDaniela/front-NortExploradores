@@ -38,11 +38,13 @@ export class AuthRegisterComponent implements OnInit {
   ngOnInit(): void {
     this.registroInfo = this.fb.group({
       
-        nombreUsuario:['',Validators.compose([
+        nombreUsuario:['',Validators.compose(
+          [
           Validators.required,
           Validators.minLength(5),
-          Validators.maxLength(25)
-        ])],
+          Validators.maxLength(25),
+        ]
+        )],
         email:['',Validators.compose([
           Validators.required, 
           Validators.email
@@ -54,7 +56,7 @@ export class AuthRegisterComponent implements OnInit {
       ,
         idPersona: ['', Validators.compose([
           Validators.required,
-          Validators.min(10000000),
+          Validators.min(100000000),
           Validators.max(999999999)]
         )],
         nombre: ['', Validators.compose([
