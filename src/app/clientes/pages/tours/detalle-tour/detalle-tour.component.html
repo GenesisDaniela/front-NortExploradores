@@ -19,15 +19,21 @@
               <h2><strong class="text-primary ">{{data.paquete.nombre}}</strong></h2>
             </div>
             <hr style="color: green; height: 3px;">
-            <h2><small><i class="fa fa-university" ></i>   Precio: ${{data.paquete.precio}}</small></h2>
             
-            <h2><small><i class="fa fa-calendar"></i> Fecha de salida: {{data.fechaSalida}}</small></h2>
-            
-            <h2><small><i class="fa fa-calendar"></i> Fecha de llegado:{{data.fechaLlegada}}</small></h2>
+            <h4 align='center'> <i class="fas fa-tags style='font-size:20px' " ></i><b> Precio:</b> ${{data.paquete.precio}}</h4>
+
+            <br>
+
+            <h4 align='center'><i class="far fa-calendar-alt"></i> <b> Fecha de Salida: </b>  {{data.fechaSalida}}</h4>
+
+            <br>
+
+            <h4 align='center'><i class="far fa-calendar-alt"></i> <b> Fecha de Llegada: </b>{{data.fechaLlegada}}</h4>
 
 
             <a routerLink="/pago">
               <div class="mt-4 d-grid gap-2 col-6 mx-auto">
+                
                 <button class="btn btn-primary" type="submit">Comprar</button>
                 <div class="col-sm-3"></div>
               </div>
