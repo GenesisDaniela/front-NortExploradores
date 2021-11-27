@@ -9,19 +9,21 @@
 
             <div class="wrap-input100">
                 <span class="contact100-form-combo">Min cupos</span>
-                <input formControlName="minCupos" type="number" class="form-control" id="inputMinCupo" [class.is-invalid]="form.controls.minCupos.status=='INVALID'" [class.is-valid]="form.controls.minCupos.status=='VALID'" class="form-control input100" placeholder="Minimo de cupos">
+                <input [(ngModel)]="minC" formControlName="minCupos" type="number" class="form-control" id="inputMinCupo" [class.is-invalid]="form.controls.minCupos.status=='INVALID'|| !validarCupos()" [class.is-valid]="form.controls.minCupos.status=='VALID'" class="form-control input100"
+                    placeholder="Minimo de cupos">
             </div>
 
             <div class="wrap-input100">
                 <span class="contact100-form-combo">Max cupos</span>
-                <input formControlName="maxCupos" type="number" class="form-control" id="inputMaxCupo" [class.is-invalid]="form.controls.maxCupos.status=='INVALID'" [class.is-valid]="form.controls.maxCupos.status=='VALID'" class="form-control input100" placeholder="Maximo de cupos">
+                <input [(ngModel)]="maxC" formControlName="maxCupos" type="number" class="form-control" id="inputMaxCupo" [class.is-invalid]="form.controls.maxCupos.status=='INVALID' || !validarCupos()" [class.is-valid]="form.controls.maxCupos.status=='VALID'" class="form-control input100"
+                    placeholder="Maximo de cupos">
             </div>
 
             <div class="wrap-input100">
                 <span class="contact100-form-combo">Fecha Salida</span>
                 <input [(ngModel)]="fechaS" formControlName="fechaSalida" [class.is-invalid]="form.controls.fechaSalida.status=='INVALID' ||
                  !validarFecha()" [class.is-valid]="form.controls.fechaSalida.status=='VALID'
-                 && validarFecha() " type="date" class="form-control input100" id="inputFechaSalida" placeholder="Fecha salida" type="date" placeholder="Fecha salida">
+                 && validarFecha()" type="date" class="form-control input100" id="inputFechaSalida" placeholder="Fecha salida" type="date" placeholder="Fecha salida">
             </div>
 
             <div class="wrap-input100">

@@ -27,6 +27,8 @@ export class AddTourComponent implements OnInit {
 
   public fechaL!: Date;
   public fechaS!: Date;
+  public minC !: number;
+  public maxC !: number;
 
   //public formTrans !: FormGroup;
 
@@ -99,7 +101,13 @@ export class AddTourComponent implements OnInit {
     if(this.fechaL != undefined && this.fechaS != undefined && fechaLlegada >= fechaSalida)
       validar = true
     return validar;
+  }
 
+  validarCupos(){
+    let validar = false;
+    if(this.maxC != undefined && this.minC != undefined && this.maxC >= this.minC)
+      validar =  true;
+    return validar;
   }
 
   public agregarPaquetes() {
