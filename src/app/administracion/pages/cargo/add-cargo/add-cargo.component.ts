@@ -43,12 +43,12 @@ export class AddCargoComponent implements OnInit {
       descripcion: ['',
         Validators.compose([
           Validators.required,
-          Validators.maxLength(500)
+          Validators.maxLength(200)
         ])],
       sueldo: ['', Validators.compose([
         Validators.required,
         Validators.min(10000),
-        Validators.max(999999999),
+        Validators.max(9999999),
       ])],
     });
   }
