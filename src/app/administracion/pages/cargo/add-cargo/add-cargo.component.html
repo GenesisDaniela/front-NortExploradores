@@ -16,16 +16,16 @@
         <span class="focus-input100"></span>
       </div>
 
-      <div class="wrap-input100">
+      <div class="wrap-input100" [formGroup]="form">
         <span class="contact100-form-combo">Estado del cargo</span>
-        <select formControlName="estado" type="text" class="input100 form-control" id="inputEstado" class="input100"
-            placeholder="Estado"
-            [class.is-invalid]="form.controls.estado.status!='VALID'"
-            [class.is-valid]="form.controls.estado.status=='VALID'">
-            <option value="false">INACTVO</option>
-            <option value="true">ACTIVO</option>
+        <select formControlName="estado" aria-label="Default select example"
+          [class.is-invalid]="form.controls.estado.status=='INVALID'"
+          [class.is-valid]="form.controls.estado.status=='VALID'" class="form-control input100"
+          placeholder="estado">
+          <option value="false">INACTVO</option>
+          <option value="true">ACTIVO</option>
         </select>
-    </div>
+      </div>
       <div class="wrap-input100 validate-input" data-validate="Por favor ingrese su descripcion">
         <span class="contact100-form-combo">Descripcion</span>
         <textarea formControlName="descripcion" class="input100 form-control" placeholder="Descripcion del Cargo"id="inputDescripcion"

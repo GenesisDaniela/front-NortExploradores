@@ -26,13 +26,15 @@
         </div>
 
         <div class="wrap-input100" [formGroup]="form">
-          <span class="contact100-form-combo">Estado del Aliado</span>
-          <select formControlName="estado" type="text" class="form-control form-control" id="inputEstado" class="input100 form-control"
-              placeholder="Estado">
-              <option value="false">INACTVO</option>
-              <option value="true">ACTIVO</option>
+          <span class="contact100-form-combo">Estado de la empresa</span>
+          <select formControlName="estado" aria-label="Default select example"
+            [class.is-invalid]="form.controls.estado.status=='INVALID'"
+            [class.is-valid]="form.controls.estado.status=='VALID'" class="form-control input100"
+            placeholder="estado">
+            <option value="false">INACTVO</option>
+            <option value="true">ACTIVO</option>
           </select>
-      </div>
+        </div>
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
           <span class="contact100-form-combo"> Direccion</span>
