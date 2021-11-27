@@ -1,0 +1,48 @@
+<p>editar-info works!</p>
+<div class="container-contact100">
+    <div class="wrap-contact100" style="background-color: rgba(224, 224, 224, 0.76);">
+      <form [formGroup]="form" (submit)="guardarUsuario()" class="contact100-form validate-form">
+            <span class="contact100-form-title">
+                <h4 class="col-sm-10">Editar administrador</h4>
+        <img [src]="form.controls.imgUrl.value" style="width: 200px; height: auto;" alt="" srcset="">
+
+            </span>
+        <hr style="color: rgb(5, 168, 5);">
+        <input formControlName="id_Usuario" hidden type="hidden" class="form-control" id="inputCargo">
+        <input formControlName="roles" hidden type="hidden" class="form-control" id="inputCargo">
+        <input formControlName="password" hidden type="hidden" class="form-control" id="inputCargo">
+
+        <div class="row">
+            <div class="col-6">
+                <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+                    <span class="contact100-form-combo">Username</span>
+                    
+                    <input style="height: 30px;"
+                    [class.is-valid]="form.controls.username.status=='VALID'"
+                    [class.is-invalid]="form.controls.username.status=='INVALID'"
+                    formControlName="username" class="input100" type="text" placeholder="Username" id="inputNombre"
+                    >
+                    <span class="focus-input100"></span>
+                  </div>
+            </div>
+            <div class="col-6">
+                <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+                    <span class="contact100-form-combo">Email</span>
+                    <input style="height: 30px;" formControlName="email" class="input100" type="text" placeholder="email" id="inputSueldo">
+                    <span class="focus-input100"></span>
+                  </div>
+            </div>
+        </div>
+
+        <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+            <span class="contact100-form-combo">Imagen URL</span>
+            <textarea style="height: 50px;" formControlName="imgUrl" class="input100" type="text" placeholder="URL" id="inputSueldo"></textarea>
+            <span class="focus-input100"></span>
+          </div>
+        <hr style="color: rgb(5, 168, 5);">
+        <div class="container-contact100-form-btn">
+          <button class="contact100-form-btn" type="submit">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>

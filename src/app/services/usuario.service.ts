@@ -47,5 +47,8 @@ export class UsuarioService {
   public guardarPasajerosDeUsuario(idUsuario:number, pasajeros:any[]):Observable<any>{
     return this.http.post<any>(`${this.url}/${idUsuario}/pasajeros`,pasajeros);
   }
+  public post(pasajeros:any):Observable<any>{
+    return this.http.put<any>(`${this.url}`,pasajeros);
+  }
 
 }

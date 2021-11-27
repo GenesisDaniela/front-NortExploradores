@@ -14,6 +14,11 @@ export class NotificacionService {
   public getNotificaciones():Observable<any>{
     return this.http.get<any>(this.uri+"activas");
   }
+
+  public get():Observable<any>{
+    return this.http.get<any>(this.uri);
+  }
+
   public desactivar(id:number):Observable<any>{
     return this.http.get<any>(this.uri+id+"/desactivar");
   }
