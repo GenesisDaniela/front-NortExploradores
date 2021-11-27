@@ -180,7 +180,6 @@ let tour:any
       this.tourService.obtenerTour(this.id).subscribe((data) => {
         tour=data
         this.tourService.obtenerTrans(this.id).subscribe((data) => {
-          console.log(data)
           this.form.setValue({
             idTour: tour.idTour,
             minCupos: tour.minCupos,
