@@ -30,7 +30,6 @@ export class ClientesComponent implements OnInit {
     };
     this.httpClient.listarCliente().subscribe((data:any)=>{
       this.data = data;
-      console.log(data)
       this.dtTrigger.next();
     })
   }
@@ -41,12 +40,7 @@ export class ClientesComponent implements OnInit {
   }
 
   deshabilitar(id:any){
-    this.httpClient.deshabilitar(id).subscribe((data) => {  
-      console.log(id);
-      
-    });
+    this.httpClient.deshabilitar(id).subscribe((data) => {});
   }
-
-
 
 }

@@ -30,7 +30,7 @@ const routes: Routes = [
     path:"pago/:idPago",component:FormPagosComponent
   },
   {
-    path:"administracion", 
+    path:"administracion",
     loadChildren: ()=> import("./administracion/administracion.module").then( m => m.AdministracionModule)
   },
   {

@@ -22,6 +22,7 @@ export class AuthRegisterComponent implements OnInit {
   password=""
   errMsj?: string;
   isLogged = false;
+  fechaNac !:Date
   public generos:any = ['FEMENINO',"MASCULINO"];
   registroInfo!:FormGroup;
 
@@ -78,15 +79,36 @@ export class AuthRegisterComponent implements OnInit {
         )],
         estado: [1, [Validators.required]]
     })
-    console.log(this.registroInfo);
     if (this.tokenService.getToken()) {
       this.isLogged = true;
     }
   }
 
+  validarFecha(){
+    let anios = this.calcularFecha()
+    console.log(anios);
+    if(anios >= 18){
+      return true
+    }
+    return false
+  }
+
+  calcularFecha(){
+    let fechaNaci = new Date(this.fechaNac);
+    let otherDate = new Date();
+
+    var years = (otherDate.getFullYear() - fechaNaci.getFullYear());
+
+    if (otherDate.getMonth() < fechaNaci.getMonth() ||
+      otherDate.getMonth() == fechaNaci.getMonth() && otherDate.getDate() < fechaNaci.getDate()) {
+      years--;
+    }
+    console.log(years);
+    return years;
+  }
+
   enviarData(){
     let informacion =(this.registroInfo.value);
-    console.log(this.registroInfo);
     if(this.registroInfo.status=="INVALID"){
       this.toastr.error('¡Datos incorrectos!', 'ERROR', {
         timeOut: 3000, positionClass: 'toast-top-center'

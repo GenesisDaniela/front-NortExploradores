@@ -42,8 +42,10 @@ export class AuthLoginComponent implements OnInit {
 
     if (this.tokenService.getToken()) {
       this.isLogged = true;
+      this.router.navigate(['/']);
       this.isLoginFail = false;
       this.roles = this.tokenService.getAuthorities();
+
     }}
 
   isAdministrador(){
@@ -79,6 +81,7 @@ export class AuthLoginComponent implements OnInit {
         if(this.isAdmin){
           this.router.navigate(['/administracion']);
         }else{
+          window.location.reload()
           this.router.navigate(['/']);
         }
       },
@@ -88,7 +91,6 @@ export class AuthLoginComponent implements OnInit {
         this.toastr.error(this.errMsj, 'Fail', {
           timeOut: 3000,  positionClass: 'toast-top-center',
         });
-        console.log(err.error.message);
       }
     );
   }

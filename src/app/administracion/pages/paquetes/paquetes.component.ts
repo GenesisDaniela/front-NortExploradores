@@ -30,7 +30,6 @@ export class PaquetesComponent implements OnInit {
     };
     this.httpClient.listarPaquete().subscribe((data:any)=>{
       this.data = data;
-      console.log(this.data);
       this.dtTrigger.next();
     })
   }
