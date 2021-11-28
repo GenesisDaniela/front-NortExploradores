@@ -16,8 +16,16 @@ export class SolicitudesComponent implements OnInit {
   constructor(private solicitud:SolicitudpaqueteService) { }
 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 6,
+      language:{
+        url:"//cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+      }
+    };
     this.solicitud.listar().subscribe(solicitudes=>{
       this.solicitudes=solicitudes;
+      this.dtTrigger.next();
     })
   }
 

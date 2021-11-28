@@ -83,7 +83,6 @@ export class SolicitudComponent implements OnInit {
       })
     });
     this.solicitudPaqueteService.obtenerSolicitud(this.id).subscribe(solicitud => {
-      console.log(solicitud);
       const out = document.getElementById("cliente");
       if (out) out.innerHTML = solicitud.usuario.username
       console.log(solicitud.tour.paquete.idPaq);

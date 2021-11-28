@@ -213,7 +213,7 @@ background-color: rgb(245, 245, 245);
   box-shadow: 0 1px 38px rgba(0, 0, 0, 0.15), 0 5px 12px rgba(0, 0, 0, 0.25);
 }
 
-.titulo h5{
+.titulo h4{
 text-align: start; 
 color: white; 
 font-weight: bold;
@@ -221,6 +221,7 @@ font-weight: bold;
 
 .table{
   width: 100%;
+  padding:5px
 }
 .boton {
   background: rgb(0, 128, 128);
