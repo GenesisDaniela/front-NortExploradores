@@ -74,10 +74,10 @@ export class PrincipalComponent implements OnInit {
     const out = document.getElementById('box');
     if(out){
       if(this.dropd){
-        out.setAttribute("style","width: 250px;height: 0px;opacity: 0;position: absolute;top: 53px;right: 242px;border-radius: 5px 0px 5px 5px;background-color: #27293dfa!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)");
+        out.setAttribute("style","width: 250px;height: 0px;display:none;opacity: 0;position: absolute;top: 53px;right: 242px;border-radius: 5px 0px 5px 5px;background-color: #27293dfa!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)");
         this.dropd=false;
       }else{
-        out.setAttribute("style","width: 250px;height: auto;opacity: 1;position: absolute;top: 53px;right: 242px;border-radius: 5px 0px 5px 5px;background-color: #27293dfa!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)");
+        out.setAttribute("style","width: 250px;height: auto;display:block;opacity: 1;position: absolute;top: 53px;right: 242px;border-radius: 5px 0px 5px 5px;background-color: #27293dfa!important;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)");
         
         this.dropd=true;
       
