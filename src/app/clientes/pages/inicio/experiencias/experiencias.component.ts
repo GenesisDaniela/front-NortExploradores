@@ -20,7 +20,7 @@ export class ExperienciasComponent implements OnInit {
     this.httpClient.listar().subscribe(data=>{
       this.data = data;  
          
-      console.log(data);
+      console.log("experiencias: ",data);
     })
 
     
