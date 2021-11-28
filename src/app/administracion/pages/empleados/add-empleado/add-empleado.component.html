@@ -89,6 +89,7 @@
                 <input formControlName="urlImagen" [class.is-invalid]="form.controls.urlImagen.status=='INVALID'" [class.is-valid]="form.controls.urlImagen.status=='VALID'" class="form-control input100" type="text" placeholder="Url-imagen del empleado a registrar" id="inputImage">
                 <span class="focus-input100"></span>
             </div>
+            <input [formGroup]="formPer" formControlName="estado" class="form-control input100" type="hidden" >
 
             <div class="wrap-input100" [formGroup]="form">
                 <span class="contact100-form-combo">Cargo</span>

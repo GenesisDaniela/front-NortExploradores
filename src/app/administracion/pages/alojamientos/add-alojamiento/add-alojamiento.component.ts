@@ -32,7 +32,7 @@ export class AddAlojamientoComponent implements OnInit {
   ngOnInit(): void {
     this.esEditarAloja();
       this.form = this.formBuilder.group({
-      idAlojamiento:['', Validators.required],
+      idAlojamiento:['', ],
       nombre:['', 
         Validators.compose([
           Validators.required, 
@@ -60,6 +60,13 @@ export class AddAlojamientoComponent implements OnInit {
 
   public enviarData() {
          
+    if (!this.form.valid) {
+      this.toastr.error('¡Datos incorrectos!', 'ERROR', {
+        timeOut: 3000, positionClass: 'toast-top-center'
+      });
+      return;
+    }
+
     if (this.id !== null) {
 
       this.alojamientosservice.editarAlojamiento(this.id, this.form.value)

@@ -56,7 +56,7 @@ export class AddTourComponent implements OnInit {
     this.agregarTransporte();
       this.form = this.formBuilder.group({
         idTour: ['', Validators.compose([
-          Validators.required
+         
         ])],
         minCupos:['', Validators.compose([
           Validators.required,

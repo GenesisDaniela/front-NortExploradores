@@ -37,8 +37,8 @@ export class AddTransportesComponent implements OnInit {
 
      idTransporte:['', Validators.compose([
       Validators.required,
-      Validators.minLength(5),
-      Validators.maxLength(8)
+      Validators.minLength(6),
+      Validators.maxLength(6)
     ])],
 
      puestos:  ['', Validators.compose([

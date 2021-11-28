@@ -47,8 +47,8 @@ export class AddEmpleadoComponent implements OnInit {
     this.formPer = this.formBuilder.group({
       idPersona: ['', Validators.compose([
         Validators.required,
-        Validators.min(10000000),
-        Validators.max(999999999)]
+        Validators.min(1000000000),
+        Validators.max(9999999999)]
       )],
       nombre: ['', Validators.compose([
         Validators.required,
@@ -73,12 +73,13 @@ export class AddEmpleadoComponent implements OnInit {
         Validators.required, 
         Validators.email
       ])],
+      estado:[true, ],
       idTipo: ['', Validators.compose([
         Validators.required
       ])]
     });
     this.form = this.formBuilder.group({
-      idEmpleado: ['',],
+      idEmpleado: ['', ],
       estado: ['', Validators.compose([
         Validators.required,
       ])],
@@ -86,7 +87,7 @@ export class AddEmpleadoComponent implements OnInit {
         Validators.required
       ])],
       urlImagen: ['', Validators.compose([
-        Validators.required,
+        
         Validators.minLength(5),
         Validators.maxLength(255)
     ])],
@@ -155,6 +156,7 @@ export class AddEmpleadoComponent implements OnInit {
           sexo: data.persona.sexo,
           fechaNac: data.persona.fechaNac,
           cel: data.persona.cel,
+          estado: true,
           correo: data.persona.correo,
           idTipo: data.persona.idTipo.idTipo
         });
