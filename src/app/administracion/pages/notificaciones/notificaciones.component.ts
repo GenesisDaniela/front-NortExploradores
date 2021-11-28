@@ -27,6 +27,7 @@ export class NotificacionesComponent implements OnInit {
     };
     this.notificacionService.get().subscribe(notificaciones=>{
       this.notificaciones =notificaciones;
+      this.dtTrigger.next();
     })
   }
 
