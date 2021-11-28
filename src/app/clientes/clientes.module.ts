@@ -13,7 +13,6 @@ import { PasadiaComponent } from './pages/tours/pasadia/pasadia.component';
 import { EstadiaComponent } from './pages/tours/estadia/estadia.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { FormPagosComponent } from './pages/pagos/form-pagos/form-pagos.component';
-import { InformacionPagoComponent } from './pages/pagos/informacion-pago/informacion-pago/informacion-pago.component';
 
 //NG ZORRO
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
@@ -32,7 +31,6 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { MaletaComponent } from './pages/maleta/maleta.component';
 import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.component';
 import { InformacionTransaccionComponent } from './pages/pagos/informacion-transaccion/informacion-transaccion.component';
-import { FormReservaComponent } from './pages/pagos/form-reserva/form-reserva.component';
 import { MisViajesComponent } from './pages/mis-viajes/mis-viajes.component';
 import { EditarPerfilComponent } from './pages/editar-perfil/editar-perfil.component';
 
@@ -45,7 +43,6 @@ import { EditarPerfilComponent } from './pages/editar-perfil/editar-perfil.compo
     EstadiaComponent,
     ContactoComponent,
     FormPagosComponent,
-    InformacionPagoComponent,
     QuienesSomosComponent,
     ServiciosComponent,
     ExperienciasComponent,
@@ -58,10 +55,8 @@ import { EditarPerfilComponent } from './pages/editar-perfil/editar-perfil.compo
     DetalleTourComponent,
     AddExperienciaComponent,
     MaletaComponent,
-    InformacionPagoComponent,
     MisReservasComponent,
     InformacionTransaccionComponent,
-    FormReservaComponent,
     MisViajesComponent,
     EditarPerfilComponent
   ],

@@ -18,10 +18,8 @@ import { AddExperienciaComponent } from './pages/inicio/experiencias/add-experie
 import { FormPagosComponent } from './pages/pagos/form-pagos/form-pagos.component';
 import { AuthLoginComponent } from '../security/auth-login/auth-login.component';
 import { AuthRegisterComponent } from '../security/auth-register/auth-register.component';
-import { InformacionPagoComponent } from './pages/pagos/informacion-pago/informacion-pago/informacion-pago.component';
 import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.component';
 import { InformacionTransaccionComponent } from './pages/pagos/informacion-transaccion/informacion-transaccion.component';
-import { FormReservaComponent } from './pages/pagos/form-reserva/form-reserva.component';
 import { MaletaComponent } from './pages/maleta/maleta.component';
 import { MisViajesComponent } from './pages/mis-viajes/mis-viajes.component';
 import { EditarPerfilComponent } from './pages/editar-perfil/editar-perfil.component';
@@ -52,7 +50,6 @@ const routes : Routes = [
     {path:"editarPerfil", component:EditarPerfilComponent},
     {path:"misReservas", component:MisReservasComponent},
     {path:"inftransaccion", component:InformacionTransaccionComponent},
-    {path:"pagoreserva/:idCompra", component:FormReservaComponent},
   {path:"misViajes", component:MisViajesComponent},
     
     {path:"**", redirectTo:"inicio"},

@@ -31,13 +31,7 @@ import { TransaccionService } from './services/transaccion.service';
 import { interceptorProvider } from './security/interceptors/paq-interceptor.service';
 import { FooterComponent } from './shared/footer/footer.component';
 
-
-
-
 // import { InformacionPagoComponent } from './home/informacion-pago/informacion-pago/informacion-pago.component';
-
-
-
 
 registerLocaleData(es);
 
