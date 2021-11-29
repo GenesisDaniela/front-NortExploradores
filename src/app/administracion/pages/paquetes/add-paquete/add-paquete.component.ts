@@ -51,25 +51,25 @@ export class AddPaqueteComponent implements OnInit {
       urlImagen:['', Validators.compose([
           Validators.required,
           Validators.minLength(5),
-          Validators.maxLength(255)
+          Validators.maxLength(250)
       ])],
       descripcion:['', 
         Validators.compose([
           Validators.required,
           Validators.minLength(10),
-          Validators.maxLength(255)
+          Validators.maxLength(1000)
       ])],
       recomendacion:['', 
         Validators.compose([
           Validators.required,
           Validators.minLength(5),
-          Validators.maxLength(255)])],
+          Validators.maxLength(1000)])],
       nombre:['', 
         Validators.compose([
           Validators.required, 
           Validators.minLength(3),
           Validators.maxLength(20)])],
-      alojamiento:['', Validators.required],
+      alojamiento:[''],
       municipio:['', Validators.required],
       acts: this.formBuilder.array([])
     });

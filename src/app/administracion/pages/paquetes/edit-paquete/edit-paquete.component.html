@@ -85,7 +85,9 @@
 
             <div class="wrap-input100" [formGroup]="form">
                 <span class="contact100-form-combo">Municipio</span>
-                <select formControlName="municipio" class="input100" type="text" id="inputMunicipio">
+                <select formControlName="municipio" class="input100 form-control" type="text" id="inputMunicipio" 
+                [class.is-invalid]="form.controls.municipio.status!='VALID'"
+                    [class.is-valid]="form.controls.municipio.status=='VALID'">
                     <option *ngFor="let municipio of municipios" name="municipio" id="muni{{municipio.idMuni}}"
                         value={{municipio.idMuni}}>
                         {{municipio.nombre}}</option>
