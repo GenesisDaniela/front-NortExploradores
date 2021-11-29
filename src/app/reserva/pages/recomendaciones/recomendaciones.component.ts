@@ -29,9 +29,9 @@ export class RecomendacionesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.cargarToken();  
     this.nombreUser=this.tokenS.getUserName(); 
     this.cargarUsuario();
-    this.cargarToken();  
     
     
     this.form = this.formBuilder.group({   
@@ -49,7 +49,12 @@ export class RecomendacionesComponent implements OnInit {
   public cargarToken() {
     if (this.tokenS.getToken()) {
     } else {
-      this.router.navigateByUrl("/inicio");
+      this.toastr.warning("Por favor, inicia sesión para realizar recomendaciones", "", {
+        positionClass: 'toast-top-center',
+        timeOut: 3000
+       }) 
+      this.router.navigateByUrl("/login");
+
     }
   }
 

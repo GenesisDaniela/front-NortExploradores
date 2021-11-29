@@ -87,7 +87,11 @@ export class ViajesGrupalesComponent implements OnInit {
   public cargarToken() {
     if (this.tokenS.getToken()) {
     } else {
-      this.router.navigateByUrl("/inicio");
+      this.toastr.warning("Por favor, inicia sesión para realizar solicitudes de paquetes", "", {
+        positionClass: 'toast-top-center',
+        timeOut: 3000
+       })
+      this.router.navigateByUrl("/login");
     }
   }
   public enviarData() {
