@@ -3,6 +3,8 @@ import { TokenService } from '../../../services/token.service';
 import { Router } from '@angular/router';
 import { CompraService } from '../../../services/compra.service';
 import { UsuarioService } from '../../../services/usuario.service';
+import { NzButtonSize } from 'ng-zorro-antd/button';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-mis-viajes',
@@ -17,6 +19,11 @@ export class MisViajesComponent implements OnInit {
   public compras: any;
   public comprasUsuario: any[]=[];
 
+  size: NzButtonSize = 'large';
+  dtOptions: DataTables.Settings = {};
+  
+  dtTrigger = new Subject<any>();
+
   constructor(    
     private usuarioSer: UsuarioService,
     private comprasSer: CompraService,
@@ -28,6 +35,21 @@ export class MisViajesComponent implements OnInit {
     this.nombreUser=this.tokenS.getUserName(); 
     this.cargarUsuario();
     this.cargarToken();    
+
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 6,
+      language:{
+        url:"//cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+      }
+    };
+
+
+  }
+
+  ngOnDestroy(): void {
+    // Do not forget to unsubscribe the event
+    this.dtTrigger.unsubscribe();
   }
 
   public cargarToken() {
@@ -57,6 +79,7 @@ export class MisViajesComponent implements OnInit {
         }
   
       }
+      this.dtTrigger.next();
 
     })   
    

@@ -6,7 +6,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { VerRutasComponent } from './pages/ver-rutas/ver-rutas.component';
 
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PasadiaComponent } from './pages/tours/pasadia/pasadia.component';
@@ -33,6 +32,10 @@ import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.componen
 import { InformacionTransaccionComponent } from './pages/pagos/informacion-transaccion/informacion-transaccion.component';
 import { MisViajesComponent } from './pages/mis-viajes/mis-viajes.component';
 import { EditarPerfilComponent } from './pages/editar-perfil/editar-perfil.component';
+
+//DATA TABLES
+
+import { DataTablesModule } from "angular-datatables";
 
 @NgModule({
   declarations: [
@@ -68,7 +71,8 @@ import { EditarPerfilComponent } from './pages/editar-perfil/editar-perfil.compo
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NzButtonModule
+    NzButtonModule,
+    DataTablesModule
   ],
   exports:[]
 })

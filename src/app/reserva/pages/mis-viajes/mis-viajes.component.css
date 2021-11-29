@@ -12,3 +12,9 @@
     margin: 10px;
     border-radius: 10px;
 }
+
+.titulo h5{
+    color: #fff;
+    font-size: 25px;
+    font-weight: bold;
+}
