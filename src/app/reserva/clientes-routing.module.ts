@@ -32,7 +32,7 @@ const routes : Routes = [
       {path:"nuestrosAliados", component:NuestrosAliadosComponent},
       {path:"toursDelMes", component:ToursDelMesComponent},
       {path:"addExperiencia", component:AddExperienciaComponent},
-    {path:"rutas", component:VerRutasComponent},
+    {path:"destinos", component:VerRutasComponent},
     {path:"verRuta/:idRuta", component:DesRutasComponent},
     {path:"contacto", component:ContactoComponent},
     {path:"pasadia", component:PasadiaComponent},  
