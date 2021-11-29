@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FormPagosComponent } from './clientes/pages/pagos/form-pagos/form-pagos.component';
+import { FormPagosComponent } from './reserva/pages/pagos/form-pagos/form-pagos.component';
 import { ErrorPagesComponent } from './shared/error-pages/error-pages.component';
 
 const routes: Routes = [
@@ -16,11 +16,11 @@ const routes: Routes = [
   },
   {
     path:"",
-    loadChildren: ()=> import("./clientes/clientes.module").then( m => m.ClientesModule)
+    loadChildren: ()=> import("./reserva/clientes.module").then(m => m.ClientesModule)
   },
-  {path:"404", component:ErrorPagesComponent},  
+  {path:"404", component:ErrorPagesComponent},
   {path:"**", redirectTo:""},
-   
+
 ];
 
 @NgModule({

@@ -17,7 +17,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { AdministracionModule } from './administracion/administracion.module';
 import { RouterModule } from '@angular/router';
 import { ErrorPagesComponent } from './shared/error-pages/error-pages.component';
-import { ClientesModule } from './clientes/clientes.module';
+import { ClientesModule } from './reserva/clientes.module';
 
 //DATA-TABLES
 import { DataTablesModule } from "angular-datatables";
@@ -41,7 +41,7 @@ registerLocaleData(es);
     ErrorPagesComponent,
     AuthLoginComponent,
     AuthRegisterComponent,
-  
+
   ],
   imports: [
     BrowserModule,
