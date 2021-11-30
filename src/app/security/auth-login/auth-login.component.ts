@@ -73,7 +73,7 @@ export class AuthLoginComponent implements OnInit {
         this.roles = data.authorities;
 
         this.toastr.success('Bienvenido ' + data.nombreUsuario, 'OK', {
-          timeOut: 3000, positionClass: 'toast-top-center'
+          timeOut: 3000, positionClass: 'toast-bottom-center'
         });
         
         this.isAdministrador();
@@ -88,8 +88,8 @@ export class AuthLoginComponent implements OnInit {
       err => {
         this.isLogged = false;
         this.errMsj = err.error.message;
-        this.toastr.error(this.errMsj, 'Fail', {
-          timeOut: 3000,  positionClass: 'toast-top-center',
+        this.toastr.error(this.errMsj, 'Nombre De Usuario o Contraseña Invalidos', {
+          timeOut: 3000,  positionClass: 'toast-bottom-center',
         });
       }
     );

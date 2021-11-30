@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ReservaService } from 'src/app/services/reserva.service';
 import { TokenService } from 'src/app/services/token.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -12,12 +14,14 @@ export class MisReservasComponent implements OnInit {
   public idUsuario!:number;
   public usuario:any;
   public nombreUser!:string;
-  public reservas: any;
+  public reservas: any[] = [] ;
   
   constructor(
     private usuarioSer: UsuarioService,
     private tokenS: TokenService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService,
+    public compra: ReservaService
   ) { }
 
   ngOnInit(): void {
@@ -45,6 +49,25 @@ export class MisReservasComponent implements OnInit {
   public cargarReservas(){
     this.usuarioSer.comprasReservadasUsuario(this.idUsuario).subscribe((reservas: any)=>{
       this.reservas = reservas;
+      
     })
   }
+
+  public cancelar(id:any){
+      this.compra.cancelarReserva(id).subscribe((reserva: any)=> {
+        this.toastr.success("Reserva cancelada con exito!", "", {
+          positionClass: 'toast-top-center',
+          timeOut: 3000
+         })
+         this.eliminarReserva(id);
+      })
+  }
+  public eliminarReserva(id:any){
+    for (let i = 0; i < this.reservas.length; i++) {
+      if(this.reservas[i].reserva.idReserva == id){
+        this.reservas.splice(i, 1);
+      }
+    }
+  }
+
 }

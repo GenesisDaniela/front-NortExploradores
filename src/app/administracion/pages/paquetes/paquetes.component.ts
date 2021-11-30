@@ -29,7 +29,13 @@ export class PaquetesComponent implements OnInit {
       }
     };
     this.httpClient.listarPaquete().subscribe((data:any)=>{
-      this.data = data;
+      // this.data = data;
+      for (const iterator of data) {
+        if(iterator.estado==='ACTIVO' || iterator.estado==='INACTVO'){
+          this.data.push(iterator);
+        }
+      }
+      console.log(this.data);
       this.dtTrigger.next();
     })
   }

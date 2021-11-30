@@ -12,7 +12,7 @@ export class MunicipioService {
     
   }
   public listarMunicipio():Observable<any>{
-      return this.http.get<any>(this.uri);
+      return this.http.get<any>(`${this.uri}listar`);
   }
 
   public deshabilitar(id:string):Observable<any>{

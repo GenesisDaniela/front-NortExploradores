@@ -47,7 +47,7 @@ export class AddAlojamientoComponent implements OnInit {
       descripcion:['', Validators.compose([
           Validators.required,
           Validators.minLength(20),
-          Validators.maxLength(200)
+          Validators.maxLength(1000)
       ])],
       precio:['', 
         Validators.compose([

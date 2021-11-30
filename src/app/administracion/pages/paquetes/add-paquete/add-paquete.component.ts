@@ -15,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 export class AddPaqueteComponent implements OnInit {
 
   public alojamientos: any = [];
-  public municipios: any = [];
+  public municipios: any  = [];
   public actividades: any=[];
   public form!: FormGroup;
   titulo = 'Agregar Paquete';
@@ -46,7 +46,7 @@ export class AddPaqueteComponent implements OnInit {
         Validators.compose([
           Validators.required, 
           Validators.min(1000), 
-          Validators.maxLength(1000000)])],
+          Validators.max(1000000)])],
       estado:['', Validators.required],
       urlImagen:['', Validators.compose([
           Validators.required,
@@ -68,8 +68,8 @@ export class AddPaqueteComponent implements OnInit {
         Validators.compose([
           Validators.required, 
           Validators.minLength(3),
-          Validators.maxLength(20)])],
-      alojamiento:[''],
+          Validators.maxLength(25)])],
+      alojamiento:[null],
       municipio:['', Validators.required],
       acts: this.formBuilder.array([])
     });
@@ -83,8 +83,16 @@ export class AddPaqueteComponent implements OnInit {
   }
 
   public agregarMunicipio() {
-    this.municipioService.listarMunicipio().subscribe(municipios => {
-      this.municipios = municipios;
+    this.municipioService.listarMunicipio().subscribe((municipios :any)=> {
+      // this.municipios = municipios;
+      for (const iterator of municipios) {
+        if(iterator.estado==true){
+          // console.log("true", iterator);
+          this.municipios.push(iterator);
+        }
+      }
+      // console.log(this.municipios);
+      // console.log(municipios);
     })
   }
 
@@ -114,9 +122,8 @@ export class AddPaqueteComponent implements OnInit {
   
   public enviarData() {
    
-    console.log('actssss', this.getActividades.value);
+    // console.log('actssss', this.getActividades.value);
     this.paqueteService.post(this.form.value).subscribe(paquete=>{
-      console.log(paquete);
       this.paqueteService.postAct(this.getActividades.value, paquete.idPaq).subscribe(data=>{    this.toastr.success("Paquete Agregado Con Exito!", "Paquete Registrado", {
         positionClass: 'toast-bottom-right'
       })

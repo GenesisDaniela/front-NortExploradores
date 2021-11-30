@@ -15,6 +15,9 @@
                     [class.is-invalid]="form.controls.nombre.status!='VALID'"
                     [class.is-valid]="form.controls.nombre.status=='VALID'">
                 <span class="focus-input100"></span>
+                <div class="invalid-feedback" style="text-align: center;">
+                    Minimo 3 Caracteres - Maximo 25 Caracteres 
+                </div>
             </div>
 
             <div class="wrap-input100">
@@ -23,6 +26,9 @@
                     placeholder="Precio" [class.is-invalid]="form.controls.precio.status!='VALID'"
                     [class.is-valid]="form.controls.precio.status=='VALID'">
                 <span class="focus-input100"></span>
+                <div class="invalid-feedback" style="text-align: center;">
+                    Precio Minimo $1000 - Precio Maximo $1.000.000 
+                </div>
             </div>
 
             <div class="wrap-input100">
@@ -31,9 +37,11 @@
                     placeholder="Estado"
                     [class.is-invalid]="form.controls.estado.status!='VALID'"
                     [class.is-valid]="form.controls.estado.status=='VALID'">
+                    <option value="">Seleccione Una Estado</option>
                     <option value="INACTVO">INACTVO</option>
                     <option value="ACTIVO">ACTIVO</option>
                 </select>
+                <div class="invalid-feedback" style="text-align: center;">Elige Un Estado</div>
             </div>
 
             <div class="wrap-input100" data-validate="Por favor ingrese su descripcion">
@@ -43,6 +51,9 @@
                     [class.is-invalid]="form.controls.descripcion.status!='VALID'"
                     [class.is-valid]="form.controls.descripcion.status=='VALID'"></textarea>
                 <span class="focus-input100"></span>
+                <div class="invalid-feedback" style="text-align: center;">
+                    Minimo 10 Caracteres - Maximo 1000 Caracteres
+                </div>
             </div>
 
             <div class="wrap-input100">
@@ -52,6 +63,9 @@
                     [class.is-invalid]="form.controls.recomendacion.status!='VALID'"
                     [class.is-valid]="form.controls.recomendacion.status=='VALID'">
                 <span class="focus-input100"></span>
+                <div class="invalid-feedback" style="text-align: center;">
+                    Minimo 5 Caracteres - Maximo 1000 Caracteres
+                </div>
             </div>
 
 
@@ -61,6 +75,9 @@
                     [class.is-invalid]="form.controls.urlImagen.status!='VALID'"
                     [class.is-valid]="form.controls.urlImagen.status=='VALID'">
                 <span class="focus-input100"></span>
+                <div class="invalid-feedback" style="text-align: center;">
+                    Ingresa Una URL valida
+                </div>
             </div>
 
             <div class="wrap-input100" [formGroup]="form">
@@ -72,6 +89,7 @@
                         {{alojamiento.nombre}}</option>
                 </select>
                 <span class="focus-input100"></span>
+                
             </div>
 
             <div class="wrap-input100" [formGroup]="form">
@@ -79,11 +97,15 @@
                 <select formControlName="municipio" class="input100 form-control" type="text" id="inputMunicipio"
                 [class.is-invalid]="form.controls.municipio.status!='VALID'"
                     [class.is-valid]="form.controls.municipio.status=='VALID'">
+                    <option value="">Seleccione Un Municipio</option>
                     <option *ngFor="let municipio of municipios" name="municipio" id="muni{{municipio.idMuni}}"
                         value={{municipio.idMuni}}>
                         {{municipio.nombre}}</option>
                 </select>
                 <span class="focus-input100"></span>
+                <div class="invalid-feedback" style="text-align: center;">
+                    Elige Un Municipio
+                </div>
             </div>
 
             <div class="wrap-input100">
