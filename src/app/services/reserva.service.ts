@@ -15,4 +15,8 @@ export class ReservaService {
   public paqueteDeReserva(idReserva:number):Observable<any>{
     return this.http.get<any>(`${this.uri}/${idReserva}/paquetes`);
   }
+
+  public cancelarReserva(idReserva:number):Observable<any>{
+    return this.http.get<any>(`${global.url}/compra/${idReserva}/cancelarReserva`);
+  }
 }

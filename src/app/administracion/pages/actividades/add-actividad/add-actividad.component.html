@@ -18,15 +18,15 @@
 
                 <div class="wrap-input100">
                     <span class="contact100-form-combo">Estado de la actividad</span>
-                    <select formControlName="estado" type="text" class="form-control" id="inputEstado" class="input100" placeholder="Estado">
-              <option value="false">INACTVO</option>
-              <option value="true">ACTIVO</option>
-            </select>
+                    <select formControlName="estado" type="text" class="form-control input100" id="inputEstado" placeholder="Estado">
+                        <option class="select-options" value="false">INACTVO</option>
+                        <option class="select-options" value="true">ACTIVO</option>
+                    </select>
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate="Por favor ingrese su descripcion">
                     <span class="contact100-form-combo">Descripcion</span>
-                    <textarea formControlName="descripcion" class="input100" placeholder="Descripcion de la actividad" id="inputDescripcion"></textarea>
+                    <textarea formControlName="descripcion" class="input100 form-control" placeholder="Descripcion de la actividad" id="inputDescripcion"></textarea>
                     <span class="focus-input100"></span>
                 </div>
 
@@ -38,7 +38,7 @@
 
                 <div class="wrap-input100">
                     <span class="contact100-form-combo"> Paquete</span>
-                    <select formControlName="paquete" [class.is-invalid]="form.controls.paquete.status=='INVALID'" [class.is-valid]="form.controls.paquete.status=='VALID'" class="form-control input100" class="form-select" aria-label="Default select example" class="form-control input100"
+                    <select formControlName="paquete" [class.is-invalid]="form.controls.paquete.status=='INVALID'" [class.is-valid]="form.controls.paquete.status=='VALID'" class="form-control input100"  aria-label="Default select example" 
                         placeholder="paquete">
             <option *ngFor="let paquete of paquetes" name="paquete" id="paquete{{paquete.idPaq}}"
               value={{paquete.idPaq}}>
