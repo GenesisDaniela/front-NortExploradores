@@ -3,11 +3,13 @@
     <div class="imgRutas">
         <img src="{{ data.urlImagen }}" alt="">
         <h1>{{ data.municipio.nombre }}</h1>
+      
     </div>
 
     <div class="informacion">
         <div class="descripcion">
             <h1>Descripción del Destino</h1>
+            <hr  style="color: rgb(0, 0, 0); height: 3px; width: 60%;"><br>
             <p>{{ data.descripcion }}</p>
         </div>        
     </div>
@@ -16,15 +18,17 @@
         <div class="col-md-3" *ngFor="let act of data2" style="margin: 15px;">
             <div class="card-sl">
                 <div class="card-image">
-                    <img style="height:175px; width: 100%" src="{{ act.urlImagen }}" />
+                    <img style="height:175px; width: 100%" src="{{ act.urlImg }}" />
                 </div>
 
-                <div class="card-heading">
-                    {{ act.nombre }}
-                </div>
+                <div class="card-heading" align='center'>
+                    {{ act.nombre }}  <hr style="color: rgb(9, 156, 28); height: 3px;">
+                    
                 <div class="card-text">
                     {{ act.descripcion }}
-                </div>                          
+                </div>          
+                </div>
+                              
             </div>
         </div>
     </div>

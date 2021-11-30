@@ -38,6 +38,12 @@
     font-size: 22px;
 }
 
+.informacion .descripcion hr{
+text-align: center;
+   margin: 0 auto;
+   padding: 0 auto;
+}
+
 .actividades{
     display: flex;
     flex-wrap: wrap;
