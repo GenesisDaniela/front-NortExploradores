@@ -60,7 +60,6 @@ export class ViajesGrupalesComponent implements OnInit {
         ])],
       /* cantCupos: ['', Validators.required], */
       empleado: [1, Validators.required],
-      paquete: ['', Validators.required],
       seguro: [1, Validators.required]
     })
     this.formPaq = this.formBuilder.group({
@@ -102,21 +101,22 @@ export class ViajesGrupalesComponent implements OnInit {
     this.formPaq.controls.nombre.setValue("Pendiente");
     this.formTour.controls.minCupos.setValue(0);
     this.formTour.controls.maxCupos.setValue(0);
-    this.formTour.controls.paquete.setValue(this.formPaq.value);
     let date: Date = new Date();
     let solicitudTour = {
       "fecha": date,
       "usuario": this.usuario,  
       "tour": this.formTour.value,
+      "municipio":this.formPaq.controls.municipio.value,
       "descripcion": this.formSol.controls.descripcion.value
     }
     console.log(solicitudTour);
-        this.viajesGrupales.post(this.formPaq.controls.municipio.value, solicitudTour).subscribe((data) => {
+
+
+        this.viajesGrupales.post(solicitudTour).subscribe((data) => {
           this.toastr.success("Solicitud Enviada Con Exito!", "Enviado", {
             positionClass: 'toast-bottom-right'
           })          
         })
-        this.router.navigateByUrl("/inicio");
   }
 
   public usuarioCotizante(usuario:any){

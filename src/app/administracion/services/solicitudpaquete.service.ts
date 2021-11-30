@@ -20,6 +20,10 @@ export class SolicitudpaqueteService {
   public cantidadSolicitudes():Observable<any>{
     return this.http.get(this.uri+"total");
   }
+  
+  public post(solicitud:any):Observable<any>{
+    return this.http.post(this.uri,solicitud);
+  }
 
   public listar():Observable<any>{
     return this.http.get(this.uri);
@@ -27,6 +31,9 @@ export class SolicitudpaqueteService {
   
   public aceptarSolicitud(id:any):Observable<any>{
     return this.http.get(this.uri+id+"/aceptar");
+  }
+  public rechazarSolicitud(id:any):Observable<any>{
+    return this.http.get(this.uri+id+"/rechazar");
   }
 
 }

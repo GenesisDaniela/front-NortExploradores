@@ -10,7 +10,7 @@ export class ViajesGrupalesService {
   uri =`${global.url}/solicitudtour/`;
   constructor(private http: HttpClient) { }
   
-  public post(id:any, solicitud:any):Observable<any>{
-    return this.http.post<any>(this.uri+id, solicitud)
+  public post(solicitud:any):Observable<any>{
+    return this.http.post<any>(this.uri, solicitud)
   }
 }

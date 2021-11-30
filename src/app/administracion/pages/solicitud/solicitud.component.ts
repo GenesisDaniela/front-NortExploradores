@@ -11,6 +11,8 @@ import { TourService } from 'src/app/services/tour.service';
 import { TransportesService } from '../../services/transportes.service';
 import { ToastrService } from 'ngx-toastr';
 import { SolicitudpaqueteService } from '../../services/solicitudpaquete.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-add-tour',
@@ -18,6 +20,7 @@ import { SolicitudpaqueteService } from '../../services/solicitudpaquete.service
 })
 export class SolicitudComponent implements OnInit {
   public paquetes: any = [];
+  public usuario:any;
   public seguros: any = [];
   public empleados: any = [];
   public transportes: any = [];
@@ -45,7 +48,9 @@ export class SolicitudComponent implements OnInit {
     private tourService: TourService,
     private transporteService: TransportesService,
     private toastr: ToastrService,
-    private solicitudPaqueteService: SolicitudpaqueteService
+    private solicitudPaqueteService: SolicitudpaqueteService,
+    private user:UsuarioService,
+    private token: TokenService
   ) {
     this.id = aRouter.snapshot.paramMap.get('idSolicitud');
   }
@@ -57,18 +62,17 @@ export class SolicitudComponent implements OnInit {
     this.agregarTransporte();
     this.agregarAlojamiento();
     this.agregarMunicipio();
+    this.user.usuarioPorUsername(this.token.getUserName()).subscribe(user=>{
+      this.usuario = user;
+    });
 
     this.form = this.formBuilder.group({
-      idPaq: ['', Validators.required],
+      idSolicitud:[''],
+      usuario:[''],
       precio: ['', Validators.required],
       estado: ['', Validators.required],
-      urlImagen: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      recomendacion: ['', Validators.required],
-      nombre: ['', Validators.required],
       alojamiento: ['', Validators.required],
       municipio: ['', Validators.required],
-      acts: this.formBuilder.array([]),
       descripcionUsuario:['', Validators.required],
       tour: this.formBuilder.group({
         idTour: ['', Validators.required],
@@ -85,28 +89,24 @@ export class SolicitudComponent implements OnInit {
     this.solicitudPaqueteService.obtenerSolicitud(this.id).subscribe(solicitud => {
       const out = document.getElementById("cliente");
       if (out) out.innerHTML = solicitud.usuario.username
-      console.log(solicitud.tour.paquete.idPaq);
-      if(solicitud.tour.paquete.estado =="ACEPTADO"){
+
+      if(solicitud.estado =="ACEPTADO"){
         this.isAceptado=true;
         return;
       }
-      else if(solicitud.tour.paquete.estado =="RECHAZADO"){
+      else if(solicitud.estado =="RECHAZADO"){
         this.isRechazado=true;
         return;
       }
       this.flag=2;
       this.form.setValue({
-        idPaq: solicitud.tour.paquete.idPaq,
-        precio: solicitud.tour.paquete.precio,
+        idSolicitud:this.id,
+        usuario:this.usuario,
         estado: "ACEPTADO",
-        urlImagen: "",
-        descripcion: "",
-      alojamiento:"",
-        recomendacion: "",
-        nombre: "",
-        acts:[],
+        alojamiento:"",
+        precio:0,
         descripcionUsuario:solicitud.descripcion,
-        municipio: solicitud.tour.paquete.municipio.idMuni,
+        municipio: solicitud.municipio.idMuni,
         tour: {
           idTour: solicitud.tour.idTour,
           minCupos: solicitud.tour.minCupos,
@@ -114,9 +114,9 @@ export class SolicitudComponent implements OnInit {
           fechaLlegada: solicitud.tour.fechaLlegada,
           fechaSalida: solicitud.tour.fechaSalida,
           empleado: solicitud.tour.empleado,
-          paquete: solicitud.tour.paquete.idPaq,
           idTransporte: "",
           seguro: "",
+          paquete:null,
         }
       })
     })
@@ -136,56 +136,23 @@ export class SolicitudComponent implements OnInit {
     })
   }
 
-  public cargarActividades(evento: any) {
 
-    let totalAct = evento.target.value;
-    let actividadess = this.form.get('acts') as FormArray;
-    actividadess.clear();
-
-    for (let i = 0; i < totalAct; i++) {
-      actividadess.push(
-        this.formBuilder.group({
-          nombre: ['', Validators.required],
-          descripcion: ['', Validators.required],
-          urlImg: ['', Validators.required],
-          paquete: [null, Validators.required]
-        })
-      )
-    }
-    console.log(actividadess.value);
-    console.log('total acts', totalAct);
-  }
-
-  get getActividades() {
-    return this.form.get('acts') as FormArray;
-  }
   get getTour() {
-    console.log(this.form.get('tour') as FormGroup);
     return this.form.get('tour') as FormGroup;
   }
 
   public enviarData() {
 
-    this.paqueteService.post(this.form.value).subscribe(paquete => {
-      if (this.getActividades.value.length > 0) {
-        this.paqueteService.postAct(this.getActividades.value, paquete.idPaq).subscribe(data => {
-          this.tourService.post(this.form.value.tour).subscribe(tour => {
-            this.router.navigate(["/administracion/paquetes"]);
-          })
-        })
-      } else {
         this.tourService.post(this.form.value.tour).subscribe(tour => {
-          this.toastr.success("La solicitud ha sido aceptada", 'OK', {
-            timeOut: 3000, positionClass: 'toast-top-center'
-          });
-          this.router.navigate(["/administracion/paquetes"]);
+          this.solicitudPaqueteService.post(this.form.value).subscribe(solicitud=>{
+            this.toastr.success("La solicitud ha sido aceptada", 'OK', {
+              timeOut: 3000, positionClass: 'toast-top-center'
+            });
+          })
+         
         })
 
-      }
-
-    })
-
-  }
+}
 
   public agregarPaquetes() {
     this.paqueteService.listar().subscribe((paquetes) => {
