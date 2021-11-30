@@ -159,7 +159,9 @@
           <td>{{ paq.descripcion}}</td>
           <td>{{ paq.recomendacion }}</td>
           <td>{{ paq.alojamiento.nombre}}</td>
-          <td>{{ paq.estado}}</td>                      
+          <td>
+            <img [src]="paq.urlImagen" width="50%" alt="">
+          </td>                      
         <td nzAlign="center">
           
           <a [routerLink]="['/administracion/editarPaquete',paq.idPaq]">

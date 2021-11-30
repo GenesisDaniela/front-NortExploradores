@@ -14,7 +14,7 @@ export class PaquetesService {
   constructor(private http: HttpClient) { }
 
   public listarPaquete():Observable<any>{    
-    return this.http.get<any>(this.url);
+    return this.http.get<any>(`${this.url}listar`);
   }
   
   public post(paquete:any):Observable<any>{

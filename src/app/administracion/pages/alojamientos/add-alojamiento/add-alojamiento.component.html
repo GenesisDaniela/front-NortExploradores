@@ -17,6 +17,9 @@
             [class.is-invalid]="form.controls.nombre.status!='VALID'"
             [class.is-valid]="form.controls.nombre.status=='VALID'">
             <span class="focus-input100"></span>
+            <div class="invalid-feedback" style="text-align: center;">
+              Maximo 50 Caracteres
+            </div>
           </div>
 
           <div class="wrap-input100">
@@ -25,9 +28,13 @@
                 placeholder="Estado" 
                 [class.is-invalid]="form.controls.estado.status!='VALID'"
                 [class.is-valid]="form.controls.estado.status=='VALID'">
+                <option value="">Seleccione Una Opción</option>
                 <option value="false">INACTVO</option>
                 <option value="true">ACTIVO</option>
             </select>
+            <div class="invalid-feedback" style="text-align: center;">Elige Un Estado</div>
+
+            
           </div>
 
           <div class="wrap-input100 validate-input" data-validate="Por favor ingrese su descripcion">
@@ -37,6 +44,9 @@
               [class.is-invalid]="form.controls.descripcion.status!='VALID'"
             [class.is-valid]="form.controls.descripcion.status=='VALID'"></textarea>
             <span class="focus-input100"></span>
+            <div class="invalid-feedback" style="text-align: center;">
+              Minimo 20 Caracteres
+            </div>
           </div>
 
 
@@ -46,6 +56,9 @@
             [class.is-invalid]="form.controls.dir.status!='VALID'"
             [class.is-valid]="form.controls.dir.status=='VALID'">
             <span class="focus-input100"></span>
+            <div class="invalid-feedback" style="text-align: center;">
+              Minimo 5 Caracteres - Maximo 100 Caracteres
+            </div>
           </div>
 
   
@@ -55,6 +68,9 @@
             [class.is-invalid]="form.controls.precio.status!='VALID'"
             [class.is-valid]="form.controls.precio.status=='VALID'">
             <span class="focus-input100"></span>
+            <div class="invalid-feedback" style="text-align: center;">
+              Precio Minimo $1000 - Precio Maximo 1.000.000 Caracteres
+            </div>
           </div>
   
 
