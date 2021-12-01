@@ -29,7 +29,7 @@
 .bloq-1 li{
     text-align: left;
     color: #1A5276 ;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .bloq-1 img:hover{
@@ -46,13 +46,11 @@
 }
 
 .bloq-1 h1{
-    color: #28B463 ;
     font-weight: bold;
 }
 
 .bloq-1 h3{
-    color: #28B463 ;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: bold;
     text-align: left;
     padding: 10px 0px;
@@ -60,7 +58,7 @@
 
 .bloq-1 h4{
     color: #1A5276 ;
-    font-size: 18px;
+    font-size: 16px;
     text-align: left; 
     padding: 10px 0px;   
     
@@ -69,7 +67,7 @@
 .bloq-2{    
     width: 50%;
     text-align: right;
-    padding: 0px 70px;
+    padding: 0px 120px;
     margin: auto;
 }
 
