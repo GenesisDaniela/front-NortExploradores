@@ -12,7 +12,7 @@ import { SolicitudComponent } from '../solicitud.component';
 export class SolicitudesComponent implements OnInit {
   size: NzButtonSize = 'large';
   dtOptions: DataTables.Settings = {};
-  solicitudes:any = [];
+  solicitudes:any[] = [];
   dtTrigger = new Subject<any>();
   constructor(private solicitud:SolicitudpaqueteService,
     private toastr:ToastrService) { }
@@ -36,7 +36,24 @@ export class SolicitudesComponent implements OnInit {
       this.toastr.success('Solicitud rechazada correctamente', 'OK', {
         timeOut: 3000, positionClass: 'toast-top-center'
       });
+      this.eliminarSolicitud(idSolicitud)
+      
+    },msg=>{
+      if(msg.status ==200){
+        this.toastr.success('Solicitud rechazada correctamente', 'OK', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
+      }
+      this.eliminarSolicitud(idSolicitud)
     })
+  }
+
+  eliminarSolicitud(id:any){
+    for (let i = 0; i < this.solicitudes.length; i++) {
+      if(this.solicitudes[i].idSolicitud == id){
+        this.solicitudes.splice(i,1);
+      }   
+    }
   }
 
 }
