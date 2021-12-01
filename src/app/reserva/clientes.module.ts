@@ -26,6 +26,7 @@ import { ToursDelMesComponent } from './pages/inicio/tours-del-mes/tours-del-mes
 import { DesRutasComponent } from './pages/des-rutas/des-rutas.component';
 import { DetalleTourComponent } from './pages/tours/detalle-tour/detalle-tour.component';
 import { AddExperienciaComponent } from './pages/inicio/experiencias/add-experiencia/add-experiencia.component';
+
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { MaletaComponent } from './pages/maleta/maleta.component';
 import { MisReservasComponent } from './pages/mis-reservas/mis-reservas.component';
@@ -36,6 +37,7 @@ import { EditarPerfilComponent } from './pages/editar-perfil/editar-perfil.compo
 //DATA TABLES
 
 import { DataTablesModule } from "angular-datatables";
+import { InformacionPagoComponent } from './pages/pagos/informacion-pago/informacion-pago/informacion-pago.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,8 @@ import { DataTablesModule } from "angular-datatables";
     MisReservasComponent,
     InformacionTransaccionComponent,
     MisViajesComponent,
-    EditarPerfilComponent
+    EditarPerfilComponent,
+    InformacionPagoComponent
   ],
   imports: [
     CommonModule,

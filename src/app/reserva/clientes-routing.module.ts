@@ -23,6 +23,7 @@ import { InformacionTransaccionComponent } from './pages/pagos/informacion-trans
 import { MaletaComponent } from './pages/maleta/maleta.component';
 import { MisViajesComponent } from './pages/mis-viajes/mis-viajes.component';
 import { EditarPerfilComponent } from './pages/editar-perfil/editar-perfil.component';
+import { InformacionPagoComponent } from './pages/pagos/informacion-pago/informacion-pago/informacion-pago.component';
 
 const routes : Routes = [
   {path:"",
@@ -39,7 +40,7 @@ const routes : Routes = [
     {path:"pasadia/detalletour/:idTour", component:DetalleTourComponent},
     {path:"pago", component:FormPagosComponent},
     {path:"pago/:idPaq", component:FormPagosComponent},
-
+    {path: "infpago", component:InformacionPagoComponent},
     {path:"estadia", component:EstadiaComponent},
     {path:"estadia/detalletour/:idTour", component:DetalleTourComponent},
     {path:"recomendaciones", component:RecomendacionesComponent},
