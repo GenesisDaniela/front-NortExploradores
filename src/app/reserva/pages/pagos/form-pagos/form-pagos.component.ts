@@ -339,7 +339,10 @@ export class FormPagosComponent implements OnInit {
       this.isLogged = true;
     } else {
       this.isLogged = false;
-      this.router.navigateByUrl("/inicio");
+      this.toastr.warning("Debes iniciar sesión para comprar tours ","",{
+        timeOut: 3000, positionClass: 'toast-top-center'
+      });
+      this.router.navigateByUrl("/login");
     }
   }
 
