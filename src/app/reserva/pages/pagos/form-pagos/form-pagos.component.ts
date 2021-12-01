@@ -558,8 +558,7 @@ export class FormPagosComponent implements OnInit {
           form.submit();
         });
       },error=>{
-        console.log(error);
-        this.toastr.error(error.message, 'ERROR', {
+        this.toastr.error(error.error, 'ERROR', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
       })
