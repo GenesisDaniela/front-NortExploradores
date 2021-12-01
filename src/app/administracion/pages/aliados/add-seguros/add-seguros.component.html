@@ -16,6 +16,9 @@
             id="inputNombre" [class.is-invalid]="form.controls.nombre.status!='VALID'"
             [class.is-valid]="form.controls.nombre.status=='VALID'">
           <span class="focus-input100"></span>
+          <div class="invalid-feedback" style="text-align: center;">
+            Ingresa el nombre del seguro con min 3 y maximo 25 caracteres
+          </div>
         </div>
 
 
@@ -28,6 +31,9 @@
             <option value="false">INACTVO</option>
             <option value="true">ACTIVO</option>
           </select>
+          <div class="invalid-feedback" style="text-align: center;">
+            Selecciona un estado
+          </div>
         </div>
 
         <div class="wrap-input100 validate-input">
@@ -36,6 +42,9 @@
             id="inputDescripcion" [class.is-invalid]="form.controls.descripcion.status!='VALID'"
             [class.is-valid]="form.controls.descripcion.status=='VALID'"></textarea>
           <span class="focus-input100"></span>
+          <div class="invalid-feedback" style="text-align: center;">
+            Ingresa una Descripcion con un maximo de 500 caracteres
+        </div>
         </div>
 
         <div class="wrap-input100 validate-input">
@@ -44,6 +53,9 @@
             id="inputPrecio" [class.is-invalid]="form.controls.precio.status!='VALID'"
             [class.is-valid]="form.controls.precio.status=='VALID'">
           <span class="focus-input100"></span>
+          <div class="invalid-feedback" style="text-align: center;">
+            Ingresa un precio mayor a 10Mil
+          </div>
         </div>
 
 
@@ -68,6 +80,9 @@
               value={{empresa.idEmpresa}}>
               {{empresa.nombre}}</option>
           </select>
+          <div class="invalid-feedback" style="text-align: center;">
+            Seleccione el nombre de la empresa
+          </div>
         </div>
 
         <hr style="color: rgb(5, 168, 5);">

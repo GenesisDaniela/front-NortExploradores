@@ -16,6 +16,9 @@
           [class.is-valid]="form.controls.idTransporte.status=='VALID'">
           <input class="input100" *ngIf="id!=null" id="idTrans" readonly>
           <span class="focus-input100"></span>
+          <div class="invalid-feedback" style="text-align: center;">
+            Ingresa la placa del transporte con min y max 6 caracteres
+        </div>
         </div>
 
         <div class="wrap-input100" [formGroup]="form">
@@ -25,6 +28,9 @@
             <option value="false">INACTVO</option>
             <option value="true">ACTIVO</option>
           </select>
+          <div class="invalid-feedback" style="text-align: center;">
+            Selecciona un estado
+          </div>
         </div>
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
@@ -32,6 +38,9 @@
           <input formControlName="modelo" class="form-control input100" type="text" placeholder="Modelo" id="inputModelo" [class.is-invalid]="form.controls.modelo.status!='VALID'"
           [class.is-valid]="form.controls.modelo.status=='VALID'">
           <span class="focus-input100"></span>
+          <div class="invalid-feedback" style="text-align: center;">
+            Ingresa el nombre del modelo del transporte con min 5 y maximo 25 caracteres
+          </div>
         </div>
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
@@ -40,6 +49,9 @@
             id="inputPuestos"[class.is-invalid]="form.controls.puestos.status!='VALID'"
             [class.is-valid]="form.controls.puestos.status=='VALID'">
           <span class="focus-input100"></span>
+          <div class="invalid-feedback" style="text-align: center;">
+            Ingresa un numero de puestos como minimo 1 y maximo 99 
+          </div>
         </div>
 
 
@@ -48,6 +60,9 @@
           <input formControlName="color" class="input100 form-control" type="text" placeholder="Color" id="inputColor"[class.is-invalid]="form.controls.color.status!='VALID'"
           [class.is-valid]="form.controls.color.status=='VALID'">
           <span class="focus-input100"></span>
+          <div class="invalid-feedback" style="text-align: center;">
+            Ingresa el color del transporte con min 4 y maximo 25 caracteres
+          </div>
         </div>
 
 
@@ -56,6 +71,9 @@
           <input formControlName="precio" class="form-control input100" type="number" placeholder="Precio" id="inputColor"[class.is-invalid]="form.controls.precio.status!='VALID'"
           [class.is-valid]="form.controls.precio.status=='VALID'">
           <span class="focus-input100"></span>
+          <div class="invalid-feedback" style="text-align: center;">
+            Ingresa un precio mayor a 10Mil
+          </div>
         </div>
 
 
@@ -68,6 +86,9 @@
               value={{empresa.idEmpresa}}>
               {{empresa.nombre}}</option>
           </select>
+          <div class="invalid-feedback" style="text-align: center;">
+            Seleccione el nombre de la empresa
+          </div>
         </div>
 
         <hr style="color: rgb(5, 168, 5);">

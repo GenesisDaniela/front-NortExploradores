@@ -46,8 +46,8 @@ export class AddSegurosComponent implements OnInit {
         ])],
       precio: ['', Validators.compose([
         Validators.required,
-        Validators.min(1000),
-        Validators.max(999999),
+        Validators.min(10000),
+        Validators.max(9999999),
       ])],
       estado: ['', Validators.compose([
         Validators.required,
