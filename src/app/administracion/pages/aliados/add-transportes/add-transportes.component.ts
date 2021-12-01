@@ -64,8 +64,8 @@ export class AddTransportesComponent implements OnInit {
      precio: ['',
         Validators.compose([
           Validators.required,
-          Validators.min(1000),
-          Validators.maxLength(999999)
+          Validators.min(10000),
+          Validators.maxLength(9999999)
         ])],
 
      estado: ['',

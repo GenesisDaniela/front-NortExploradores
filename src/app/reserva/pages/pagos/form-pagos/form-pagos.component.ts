@@ -93,8 +93,24 @@ export class FormPagosComponent implements OnInit {
     private detalleCompra: DetcompraService,
     private toastr: ToastrService,
     private router: Router,
+    private aRoutes: ActivatedRoute
 
-  ) { }
+  ) {
+
+    this.idPaquete = this.aRoutes.snapshot.paramMap.get("idPaq");
+    console.log(this.aRoutes.snapshot.paramMap.get("idPaq"));
+    if(this.idPaquete){
+      this.tourSeleccionado = this.tourService.encontrarTour(this.idPaquete).subscribe(tour => {
+        this.tourSeleccionado = tour;
+        console.log(tour);
+        this.cuposDisponibles = tour.cantCupos;
+        const output = document.getElementById('cantidadCupos');
+        if (output) output.innerHTML = tour.cantCupos;
+        const output2 = document.getElementById('imagenTour');
+        if (output2) output2.setAttribute("src", tour.paquete.urlImagen);
+      })
+    }
+   }
 
   ngOnInit():void {
     this.nombreUser = this.tokenS.getUserName();
@@ -103,7 +119,7 @@ export class FormPagosComponent implements OnInit {
     this.listarTour();
     this.generarReferencia();
     this.referenciaUnic = this.generarReferencia()
-    this.idPaquete = this.route.snapshot.paramMap.get("idPaq");
+    
     this.pagosInfo = this.formBuilder.group({
       paquete: this.idPaquete,
       total: [],
@@ -339,7 +355,10 @@ export class FormPagosComponent implements OnInit {
       this.isLogged = true;
     } else {
       this.isLogged = false;
-      this.router.navigateByUrl("/inicio");
+      this.toastr.warning("Debes iniciar sesión para comprar tours ","",{
+        timeOut: 3000, positionClass: 'toast-top-center'
+      });
+      this.router.navigateByUrl("/login");
     }
   }
 

@@ -14,6 +14,9 @@
             [class.is-invalid]="form.controls.nombre.status!='VALID'"
             [class.is-valid]="form.controls.nombre.status=='VALID'">
         <span class="focus-input100"></span>
+        <div class="invalid-feedback" style="text-align: center;">
+          Ingresa nombre entre 5 y 25 caracteres
+      </div>
       </div>
 
       <div class="wrap-input100" [formGroup]="form">
@@ -25,6 +28,10 @@
           <option value="false">INACTVO</option>
           <option value="true">ACTIVO</option>
         </select>
+        <div class="invalid-feedback" style="text-align: center;">
+          Selecciona un estado
+      </div>
+
       </div>
       <div class="wrap-input100 validate-input" data-validate="Por favor ingrese su descripcion">
         <span class="contact100-form-combo">Descripcion</span>
@@ -32,6 +39,9 @@
           [class.is-invalid]="form.controls.descripcion.status!='VALID'"
             [class.is-valid]="form.controls.descripcion.status=='VALID'"></textarea>
         <span class="focus-input100"></span>
+        <div class="invalid-feedback" style="text-align: center;">
+          Ingresa una descripcion de maximo 202 caracteres
+      </div>
       </div>
 
       <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
@@ -40,6 +50,9 @@
         [class.is-invalid]="form.controls.sueldo.status!='VALID'"
             [class.is-valid]="form.controls.sueldo.status=='VALID'">
         <span class="focus-input100"></span>
+        <div class="invalid-feedback" style="text-align: center;">
+          Ingresa un sueldo min de 10Mil y maximo de 9.9Millones 
+      </div>
       </div>
       <hr style="color: rgb(5, 168, 5);">
       <div class="container-contact100-form-btn">

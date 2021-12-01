@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { NzButtonSize } from 'ng-zorro-antd/button';
 import { ClientesService } from '../../services/clientes.service';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
@@ -16,7 +16,7 @@ export class ClientesComponent implements OnInit {
   dtTrigger = new Subject<any>();
   public data: any[]=[];
 
-  constructor(private httpClient: ClientesService){
+  constructor(private httpClient: ClientesService , private toastr: ToastrService){
 
   }
 
@@ -40,7 +40,24 @@ export class ClientesComponent implements OnInit {
   }
 
   deshabilitar(id:any){
-    this.httpClient.deshabilitar(id).subscribe((data) => {});
+    this.httpClient.deshabilitar(id).subscribe((data) => {
+      this.toastr.success("Pasajero Deshabilitado con exito", "", {
+        positionClass: 'toast-bottom-right' 
+      })
+     
+    }); 
+
   }
 
+  habilitar(id:any){
+    this.httpClient.habilitar(id).subscribe((data) => {
+      this.toastr.success("Pasajero Habilitado con exito", "", {
+      positionClass: 'toast-bottom-right'
+    })
+    
+  });
+  }
+
+//   window.location.reload();
+// 
 }

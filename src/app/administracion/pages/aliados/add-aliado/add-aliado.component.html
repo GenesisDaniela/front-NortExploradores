@@ -10,100 +10,132 @@
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
           <span class="contact100-form-combo"> NIT</span>
-          <input *ngIf="id==null" formControlName="idEmpresa" class="input100 form-control" type="number" placeholder="NIT " id="inputIdEmpresa"
-          [class.is-invalid]="form.controls.idEmpresa.status!='VALID'"
-          [class.is-valid]="form.controls.idEmpresa.status=='VALID'">
+          <input *ngIf="id==null" formControlName="idEmpresa" class="input100 form-control" type="number"
+            placeholder="NIT " id="inputIdEmpresa" [class.is-invalid]="form.controls.idEmpresa.status!='VALID'"
+            [class.is-valid]="form.controls.idEmpresa.status=='VALID'">
           <input class="input100" *ngIf="id!=null" id="idEmp" readonly>
           <span class="focus-input100"></span>
+          <div class="invalid-feedback" style="text-align: center;">
+            Ingresa un NIT con min 9 y maximo 10 digitos
+          </div>
         </div>
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
           <span class="contact100-form-combo"> Nombre de la empresa</span>
-          <input formControlName="nombre" class="input100 form-control" type="text" placeholder="Nombre de la empresa" id="inputNombre"
-            [class.is-invalid]="form.controls.nombre.status!='VALID'"
+          <input formControlName="nombre" class="input100 form-control" type="text" placeholder="Nombre de la empresa"
+            id="inputNombre" [class.is-invalid]="form.controls.nombre.status!='VALID'"
             [class.is-valid]="form.controls.nombre.status=='VALID'">
           <span class="focus-input100"></span>
+          <div class="invalid-feedback" style="text-align: center;">
+            Ingresa nombre entre 2 y 50 caracteres
+          </div>
         </div>
 
         <div class="wrap-input100" [formGroup]="form">
           <span class="contact100-form-combo">Estado de la empresa</span>
           <select formControlName="estado" aria-label="Default select example"
             [class.is-invalid]="form.controls.estado.status=='INVALID'"
-            [class.is-valid]="form.controls.estado.status=='VALID'" class="form-control input100"
-            placeholder="estado">
+            [class.is-valid]="form.controls.estado.status=='VALID'" class="form-control input100" placeholder="estado">
             <option value="false">INACTVO</option>
             <option value="true">ACTIVO</option>
           </select>
+          <div class="invalid-feedback" style="text-align: center;">
+            Selecciona un estado
+          </div>
         </div>
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
           <span class="contact100-form-combo"> Direccion</span>
-          <input formControlName="direccion" class="input100 form-control" type="text" placeholder="Direccion" id="inputNombre"
-            [class.is-invalid]="form.controls.direccion.status!='VALID'"
+          <input formControlName="direccion" class="input100 form-control" type="text" placeholder="Direccion"
+            id="inputNombre" [class.is-invalid]="form.controls.direccion.status!='VALID'"
             [class.is-valid]="form.controls.direccion.status=='VALID'">
           <span class="focus-input100"></span>
+          <div class="invalid-feedback" style="text-align: center;">
+            Ingresa nombre entre 5 y 25 caracteres
+        </div>
         </div>
 
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese su descripcion">
           <span class="contact100-form-combo"> Misión</span>
-          <textarea formControlName="mision" class="input100 form-control" placeholder="Misión de la empresa" id="inputMision"
-            [class.is-invalid]="form.controls.mision.status!='VALID'"
+          <textarea formControlName="mision" class="input100 form-control" placeholder="Misión de la empresa"
+            id="inputMision" [class.is-invalid]="form.controls.mision.status!='VALID'"
             [class.is-valid]="form.controls.mision.status=='VALID'"></textarea>
           <span class="focus-input100"></span>
+          <div class="invalid-feedback" style="text-align: center;">
+            Ingresa una Mision con un maximo de 500 caracteres
+        </div>
         </div>
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese su descripcion">
           <span class="contact100-form-combo"> Visión</span>
-          <textarea formControlName="vision" class="input100 form-control" placeholder="visión de la empresa"id="inputVision"
-            [class.is-invalid]="form.controls.vision.status!='VALID'"
+          <textarea formControlName="vision" class="input100 form-control" placeholder="visión de la empresa"
+            id="inputVision" [class.is-invalid]="form.controls.vision.status!='VALID'"
             [class.is-valid]="form.controls.vision.status=='VALID'"></textarea>
           <span class="focus-input100"></span>
+          <div class="invalid-feedback" style="text-align: center;">
+            Ingresa una vision con un maximo de 500 caracteres
+        </div>
         </div>
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese su descripcion">
           <span class="contact100-form-combo"> Descripción</span>
-          <textarea formControlName="descripcion" class="input100 form-control" placeholder="Descripcion de la empresa" id="inputDescripcion"
-            [class.is-invalid]="form.controls.descripcion.status!='VALID'"
+          <textarea formControlName="descripcion" class="input100 form-control" placeholder="Descripcion de la empresa"
+            id="inputDescripcion" [class.is-invalid]="form.controls.descripcion.status!='VALID'"
             [class.is-valid]="form.controls.descripcion.status=='VALID'"></textarea>
           <span class="focus-input100"></span>
+          <div class="invalid-feedback" style="text-align: center;">
+            Ingresa una Descripcion con un maximo de 500 caracteres
+        </div>
         </div>
 
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
           <span class="contact100-form-combo">Correo</span>
-          <input formControlName="correo" class="input100 form-control" type="email" placeholder="Correo" id="inputCorreo"
-            [class.is-invalid]="form.controls.correo.status!='VALID'"
+          <input formControlName="correo" class="input100 form-control" type="email" placeholder="Correo"
+            id="inputCorreo" [class.is-invalid]="form.controls.correo.status!='VALID'"
             [class.is-valid]="form.controls.correo.status=='VALID'">
           <span class="focus-input100"></span>
+          <div class="invalid-feedback" style="text-align: center;">
+            Ingresa un correo la estructura ejemplo@gmail.com
+        </div>
         </div>
 
 
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
           <span class="contact100-form-combo"> Telefono</span>
-          <input formControlName="telefono" class="input100 form-control" type="number" placeholder="Telefono" id="inputNombre"
-            [class.is-invalid]="form.controls.telefono.status!='VALID'"
+          <input formControlName="telefono" class="input100 form-control" type="number" placeholder="Telefono"
+            id="inputNombre" [class.is-invalid]="form.controls.telefono.status!='VALID'"
             [class.is-valid]="form.controls.telefono.status=='VALID'">
           <span class="focus-input100"></span>
+          <div class="invalid-feedback" style="text-align: center;">
+            Ingresa un telefono con min 7 y maximo 10 digitos
+          </div>
         </div>
 
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
           <span class="contact100-form-combo"> Fecha de Convenio</span>
-          <input formControlName="fecha" class="input100 form-control" type="date" placeholder="FechaConvenio" id="inputFecha"
-            [class.is-invalid]="form.controls.fecha.status!='VALID'"
+          <input formControlName="fecha" class="input100 form-control" type="date" placeholder="FechaConvenio"
+            id="inputFecha" [class.is-invalid]="form.controls.fecha.status!='VALID'"
             [class.is-valid]="form.controls.fecha.status=='VALID'">
           <span class="focus-input100"></span>
+          <div class="invalid-feedback" style="text-align: center;">
+            Ingresa la fecha del dia de convenio
+          </div>
         </div>
 
 
         <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
           <span class="contact100-form-combo"> urlImagen</span>
-          <input formControlName="urlImagen" class="input100 form-control" type="text" placeholder="urlImagen" id="inputImagen"
-            [class.is-invalid]="form.controls.urlImagen.status!='VALID'"
+          <input formControlName="urlImagen" class="input100 form-control" type="text" placeholder="urlImagen"
+            id="inputImagen" [class.is-invalid]="form.controls.urlImagen.status!='VALID'"
             [class.is-valid]="form.controls.urlImagen.status=='VALID'">
           <span class="focus-input100"></span>
+          <div class="invalid-feedback" style="text-align: center;">
+            Ingresa una URL valida
+          </div>
         </div>
         <hr style="color: rgb(5, 168, 5);">
         <div class="container-contact100-form-btn">
