@@ -8,7 +8,7 @@ const routes: Routes = [
     path:"pago",component:FormPagosComponent
   },
   {
-    path:"pago/:idPago",component:FormPagosComponent
+    path:"pago/:idPaq",component:FormPagosComponent
   },
   {
     path:"administracion",
