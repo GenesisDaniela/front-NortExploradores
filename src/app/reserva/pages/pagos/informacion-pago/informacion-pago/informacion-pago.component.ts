@@ -1,6 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CompraService } from 'src/app/services/compra.service';
 import { EmpresaService } from 'src/app/services/empresa.service';
 import { PersonaService } from 'src/app/services/persona.service';
@@ -23,6 +23,7 @@ export class InformacionPagoComponent implements OnInit {
   public persona:any;
   public empresa:any;
   public compra:any;
+  public transaccion:any
 
   constructor(
     private route:ActivatedRoute,
@@ -31,7 +32,10 @@ export class InformacionPagoComponent implements OnInit {
     private tokenS: TokenService,
     private personaService: PersonaService,
     private empresaService: EmpresaService,
-    private compraService: CompraService
+    private compraService: CompraService,
+    private aRouter: ActivatedRoute,
+    private router: Router,
+    private transaccionService: TransaccionService
 
     
     ) { }
@@ -58,12 +62,25 @@ export class InformacionPagoComponent implements OnInit {
         body.set("email_buyer",params.buyerEmail);     
         body.set("payment_method_id",params.polPaymentMethod);  
         body.set("response_message_pol",params.lapTransactionState);
-        this.compraService.encontrar(body.get("extra1")).subscribe(compra=>{
-          this.compra=compra;
-        })
-        body.forEach((data)=>{
-          this.infoTransaccion.push(data);
-        });
+
+        if(body.get("extra1")!=null){
+          this.compraService.encontrar(body.get("transaction_id")).subscribe(compra=>{
+            this.compra=compra;
+          })
+        }else{
+          let id = this.aRouter.snapshot.paramMap.get('idCompra');
+          if(id!=null){
+            this.transaccionService.encontrar(id).subscribe(compra=>{
+              this.compra=compra;
+            },error=>{
+              // this.router.navigateByUrl("/inicio");
+            })
+          }else{
+            // this.router.navigateByUrl("/inicio");
+
+          }
+        }
+
     })
   }
 

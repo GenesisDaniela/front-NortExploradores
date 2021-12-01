@@ -41,6 +41,8 @@ const routes : Routes = [
     {path:"pago", component:FormPagosComponent},
     {path:"pago/:idPaq", component:FormPagosComponent},
     {path: "infpago", component:InformacionPagoComponent},
+    {path: "infpago/:idCompra", component:InformacionPagoComponent},
+
     {path:"estadia", component:EstadiaComponent},
     {path:"estadia/detalletour/:idTour", component:DetalleTourComponent},
     {path:"recomendaciones", component:RecomendacionesComponent},

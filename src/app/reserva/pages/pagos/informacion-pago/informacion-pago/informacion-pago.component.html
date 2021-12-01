@@ -8,7 +8,15 @@
             <span class="pull-right hidden-print">
             <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Imprimir</a>
             </span>
-            NorteXploradores
+            <div class="row">
+               <div class="col-3">
+                  <img style="height:200px;width: auto;" src="../../../../../../assets/img/LOGO-01.png" alt="">
+
+               </div>
+               <div class="col-2"></div>
+               <h2 class="col-4" style="font-weight:bold;">Transacción aprobada</h2>
+               <img class="alerticon col-4" style="height: 90px;width: auto;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Check_green_icon.svg/2048px-Check_green_icon.svg.png" alt="checkmark" />
+            </div>
          </div>
          <!-- end invoice-company -->
          <!-- begin invoice-header -->
@@ -33,10 +41,10 @@
             </div>
             <div class="invoice-date">
                <small>Factura</small>
-               <div class="date text-inverse m-t-5">August 3,2012</div>
+               <div class="date text-inverse m-t-5">{{compra.date}}</div>
                <div class="invoice-detail">
-                  #0000123DSS<br>
-                  Services Product
+                  #{{compra.transactionId}}<br>
+                  Pago de paquetes turísticos
                </div>
             </div>
          </div>
@@ -49,62 +57,82 @@
                   <thead>
                      <tr>
                         <th>Información de la compra</th>
-                        <th class="text-right" width="20%">TOTAL</th>
+                        <th class="text-right" width="20%"></th>
                      </tr>
                   </thead>
                   <tbody>
                      <tr>
                         <td>
-                           <span class="text-inverse">Website design &amp; development</span><br>
-                           <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id sagittis arcu.</small>
+                           <span style="font-weight: bold;color: rgb(0, 0, 0);" class="text-inverse">ID</span><br>
+                           <small>Referencia única de la transacción</small>
                         </td>
-                        <td class="text-center">$50.00</td>
+                        <td class="text-center">#{{compra.transactionId}}</td>
                      </tr>
+                     <tr>
+                        <td>
+                           <span style="font-weight: bold;color: rgb(0, 0, 0);"class="text-inverse">FECHA</span><br>
+                           <small>Fecha en la que se realizó la transacción</small>
+                        </td>
+                        <td class="text-center">{{compra.date}}</td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <span style="font-weight: bold;color: rgb(0, 0, 0);"class="text-inverse">#Compra</span><br>
+                           <small>Referencia de la compra</small>
+                        </td>
+                        <td class="text-center">{{compra.referenceSale.idCompra}}</td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <span style="font-weight: bold;color: rgb(0, 0, 0);"class="text-inverse">Descripción</span><br>
+                        </td>
+                        <td class="text-center">{{compra.description}}</td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <span style="font-weight: bold;color: rgb(0, 0, 0);"class="text-inverse">Total</span><br>
+                           <small>Total de la compra realizada</small>
 
+                        </td>
+                        <td class="text-center">{{compra.value}}</td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <span style="font-weight: bold;color: rgb(0, 0, 0);"class="text-inverse">Estado</span><br>
+                           <small>Estado final de la transacción</small>
+
+                        </td>
+                        <td class="text-center">{{compra.responseMessagePol}}</td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <span style="font-weight: bold;color: rgb(0, 0, 0);"class="text-inverse">Destino</span><br>
+                           <small>{{compra.referenceSale.tour.paquete.municipio.nombre}}</small>
+
+                        </td>
+                        <td class="text-center"><img style="height: 100px;width: auto;" src="{{compra.referenceSale.tour.paquete.municipio.urlImagen}}" alt="" srcset=""></td>
+                     </tr>
                   </tbody>
                </table>
             </div>
             <!-- end table-responsive -->
             <!-- begin invoice-price -->
             <div class="invoice-price">
-               <div class="invoice-price-left">
-                  <div class="invoice-price-row">
-                     <div class="sub-price">
-                        <small>SUBTOTAL</small>
-                        <span class="text-inverse">$4,500.00</span>
-                     </div>
-                     <div class="sub-price">
-                        <i class="fa fa-plus text-muted"></i>
-                     </div>
-                     <div class="sub-price">
-                        <small>PAYPAL FEE (5.4%)</small>
-                        <span class="text-inverse">$108.00</span>
-                     </div>
-                  </div>
-               </div>
                <div class="invoice-price-right">
-                  <small>TOTAL</small> <span class="f-w-600">$4508.00</span>
+                  <small>TOTAL A PAGAR</small> <span class="f-w-600">${{compra.value}}</span>
                </div>
             </div>
             <!-- end invoice-price -->
          </div>
-         <!-- end invoice-content -->
-         <!-- begin invoice-note -->
-         <div class="invoice-note">
-            * Make all cheques payable to [Your Company Name]<br>
-            * Payment is due within 30 days<br>
-            * If you have any questions concerning this invoice, contact  [Name, Phone Number, Email]
-         </div>
-         <!-- end invoice-note -->
-         <!-- begin invoice-footer -->
+
          <div class="invoice-footer">
             <p class="text-center m-b-5 f-w-600">
-               THANK YOU FOR YOUR BUSINESS
+               Gracias por comprar con NorteXploradores
             </p>
             <p class="text-center">
-               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> matiasgallipoli.com</span>
-               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i> T:016-18192302</span>
-               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i> rtiemps@gmail.com</span>
+               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i>{{empresa.direccion}}</span>
+               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i> T:{{empresa.telefono}}</span>
+               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i>  {{empresa.correo}}</span>
             </p>
          </div>
          <!-- end invoice-footer -->
