@@ -23,16 +23,18 @@
     margin-bottom: 10px;
 }
 
+
 .informacion .descripcion{
      margin-bottom: 10px;
 }
 
-.informacion .descripcion h1{
+.informacion .descripcion h1,h2{
     padding: 10px 0px;
     text-align: center;
     font-weight: bold;
     color: #2A6184;
 }
+
 .informacion .descripcion p{
     text-align: center;
     font-size: 22px;
@@ -73,7 +75,7 @@ a {
 .card-image img {
     max-height: 100%;
     max-width: 100%;
-    border-radius: 8px 8px 0px 0;
+    border-radius: 8px 8px 0px 0px;
 }
 
 .card-action {
@@ -117,7 +119,7 @@ a {
     width: 100%;
     background-color: green;
     color: #fff;
-    border-radius: 0 0 8px 8px;
+    border-radius: 8px 8px 8px 8px;
 }
 
 .card-button:hover {
