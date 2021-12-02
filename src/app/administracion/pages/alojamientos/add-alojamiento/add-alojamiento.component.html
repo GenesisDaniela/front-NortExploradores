@@ -22,13 +22,13 @@
             </div>
           </div>
 
-          <div class="wrap-input100">
+          <div class="wrap-input100 validate-input">
             <span class="contact100-form-combo">Estado del alojamiento</span>
             <select formControlName="estado" type="text" class="input100 form-control" id="inputEstado"
                 placeholder="Estado" 
                 [class.is-invalid]="form.controls.estado.status!='VALID'"
                 [class.is-valid]="form.controls.estado.status=='VALID'">
-                <option value="">Seleccione Una Opción</option>
+                <option value="">Seleccione una opción</option>
                 <option value="false">INACTVO</option>
                 <option value="true">ACTIVO</option>
             </select>
