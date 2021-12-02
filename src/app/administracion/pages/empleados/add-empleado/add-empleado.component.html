@@ -18,12 +18,18 @@
                 <input class="input100" *ngIf="id!=null" id="tipoCC" readonly>
                 <input class="input100" *ngIf="id!=null" formControlName="idTipo" type="hidden">
                 <span class="focus-input100"></span>
+                <div class="invalid-feedback" style="text-align: center;">
+                    Selecciona el tipo de identificación
+                   </div>
             </div>
 
             <div class="wrap-input100 validate-input" data-validate="Numero de Identificacion">
                 <span class="contact100-form-combo">Numero de Identificacion</span>
                 <input formControlName="idPersona" [class.is-invalid]="formPer.controls.idPersona.status=='INVALID'" [class.is-valid]="formPer.controls.idPersona.status=='VALID'" class="form-control input100" type="number" id="inputIdPer" placeholder="Numero de Identificacion">
                 <span class="focus-input100"></span>
+                <div class="invalid-feedback" style="text-align: center;">
+                    Ingresa el número de identificación, 10 dígitos
+                   </div>
             </div>
 
             <div class="wrap-input100 validate-input" [formGroup]="form">
@@ -32,18 +38,27 @@
             <option value="false">INACTVO</option>
             <option value="true">ACTIVO</option>
         </select>
+        <div class="invalid-feedback" style="text-align: center;">
+            Selecciona un estado
+          </div>
             </div>
 
             <div class="wrap-input100 validate-input">
                 <span class="contact100-form-combo">Nombre</span>
                 <input formControlName="nombre" [class.is-invalid]="formPer.controls.nombre.status=='INVALID'" [class.is-valid]="formPer.controls.nombre.status=='VALID'" class="form-control input100" type="text" placeholder="Ingrese el nombre" id="inputNombre">
                 <span class="focus-input100"></span>
+                <div class="invalid-feedback" style="text-align: center;">
+                    Ingresa nombres entre 2 y 50 caracteres
+                  </div>
             </div>
 
             <div class="wrap-input100 validate-input">
                 <span class="contact100-form-combo">Apellido</span>
                 <input formControlName="apellido" [class.is-invalid]="formPer.controls.apellido.status=='INVALID'" [class.is-valid]="formPer.controls.apellido.status=='VALID'" class="form-control input100" type="text" placeholder="Ingrese el apellido" id="inputApellido">
                 <span class="focus-input100"></span>
+                <div class="invalid-feedback" style="text-align: center;">
+                    Ingresa apellidos entre 2 y 50 caracteres
+                  </div>
             </div>
 
             <div class="wrap-input100 validate-input">
@@ -53,24 +68,36 @@
             <option value="0">Femenino</option>
           </select>
                 <span class="focus-input100"></span>
+                <div class="invalid-feedback" style="text-align: center;">
+                    Selecciona el sexo
+                  </div>
             </div>
 
             <div class="wrap-input100 validate-input">
                 <span class="contact100-form-combo">Fecha nacimiento</span>
                 <input formControlName="fechaNac" [class.is-invalid]="formPer.controls.fechaNac.status=='INVALID'" [class.is-valid]="formPer.controls.fechaNac.status=='VALID'" class="form-control input100" type="DATE" placeholder="Fecha de nacimiento" id="inputFechaNac">
                 <span class="focus-input100"></span>
+                <div class="invalid-feedback" style="text-align: center;">
+                    Selecciona la fecha de nacimiento
+                  </div>
             </div>
 
             <div class="wrap-input100">
                 <span class="contact100-form-combo">Celular</span>
                 <input formControlName="cel" [class.is-invalid]="formPer.controls.cel.status=='INVALID'" [class.is-valid]="formPer.controls.cel.status=='VALID'" class="form-control input100" type="text" placeholder="Numero de cel" id="inputCelular">
                 <span class="focus-input100"></span>
+                <div class="invalid-feedback" style="text-align: center;">
+                    Ingresa el número de celular, mínimo 7 y máximo 10 dígitos
+                  </div>
             </div>
 
             <div class="wrap-input100">
                 <span class="contact100-form-combo">Correo</span>
                 <input formControlName="correo" [class.is-invalid]="formPer.controls.correo.status=='INVALID'" [class.is-valid]="formPer.controls.correo.status=='VALID'" class="form-control input100" type="email" placeholder="Correo" id="inputEmail">
                 <span class="focus-input100"></span>
+                <div class="invalid-feedback" style="text-align: center;">
+                   Ingresa el correo electrónico con estructura: ejemplo@gmail.com
+                  </div>
             </div>
 
             <div [formGroup]="form">
@@ -82,12 +109,18 @@
                 <input formControlName="fechaContratacion" [class.is-invalid]="form.controls.fechaContratacion.status=='INVALID'" [class.is-valid]="form.controls.fechaContratacion.status=='VALID'" class="form-control input100" type="DATE" placeholder="Fecha de contratacion"
                     id="inputFecha">
                 <span class="focus-input100"></span>
+                <div class="invalid-feedback" style="text-align: center;">
+                    Selecciona la fecha de contratación
+                   </div>
             </div>
 
             <div class="wrap-input100" [formGroup]="form">
                 <span class="contact100-form-combo">Imagen Empleado</span>
                 <input formControlName="urlImagen" [class.is-invalid]="form.controls.urlImagen.status=='INVALID'" [class.is-valid]="form.controls.urlImagen.status=='VALID'" class="form-control input100" type="text" placeholder="Url-imagen del empleado a registrar" id="inputImage">
                 <span class="focus-input100"></span>
+                <div class="invalid-feedback" style="text-align: center;">
+                    Ingresa una URL valida
+                   </div>
             </div>
             <input [formGroup]="formPer" formControlName="estado" class="form-control input100" type="hidden" >
 
@@ -99,6 +132,9 @@
           {{cargo.nombre}}</option>
           </select>
                 <span class="focus-input100"></span>
+                <div class="invalid-feedback" style="text-align: center;">
+                    Selecciona un cargo
+                   </div>
             </div>
             <hr style="color: rgb(5, 168, 5);">
             <div class="container-contact100-form-btn">
