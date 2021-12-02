@@ -94,7 +94,7 @@ a {
     justify-content: center;
     padding: 10px 0;
     width: 100%;
-    background-color:rgb(91, 150, 91);
+    background-color: #408d3d;
     color: #fff;
     border-radius: 0 0 6px 6px;
 }
@@ -104,7 +104,7 @@ a {
     justify-content: center;
     padding: 10px 0;
     width: 100%;
-    background-color: rgb(150, 231, 154);
+    background-color: rgba(169, 255, 174, 0.973);
     color: rgb(0, 0, 0);
     border-radius: 0px 0px 0 0;
 }

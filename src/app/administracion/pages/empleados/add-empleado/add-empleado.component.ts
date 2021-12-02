@@ -42,7 +42,6 @@ export class AddEmpleadoComponent implements OnInit {
   ngOnInit(): void {
     this.agregarTipo();
     this.agregarCargos();
-    //this.agregarPersonas();
     this.esEditarEmpleado();
     this.formPer = this.formBuilder.group({
       idPersona: ['', Validators.compose([
@@ -149,6 +148,7 @@ export class AddEmpleadoComponent implements OnInit {
           if (output){
             output.setAttribute("value",data.persona.idTipo.tipo)
           }
+          
         this.formPer.setValue({
           idPersona: data.persona.idPersona,
           nombre: data.persona.nombre,

@@ -1,130 +1,107 @@
-<div class="row mt-4">
-    <div class="col"></div>
-    <div class="col-8 bg-light ">
-  
-      <form [formGroup]="form" (submit)="enviarData()">
-        <div class="mb-3 row">
-          <div class="col-sm-2"></div>
-          <h4 class="col-sm-10">Editar Empresa</h4>
+<div class="container-contact100">
+  <div class="wrap-contact100 ">
+
+    <form [formGroup]="form" (submit)="enviarData()" class="contact100-form validate-form">
+      <span class="contact100-form-title">
+        <h4 class="col-sm-10">Editar Empresa</h4>
+      </span>
+      <hr style="color: rgb(5, 168, 5);">
+      <input formControlName="idActividad" hidden type="text" class="form-control" id="inputidAct">
+
+      <div class="wrap-input100">
+        <span class="contact100-form-combo">NIT</span>
+        <input readonly formControlName="idEmpresa" type="text" class="input100 form-control" id="inputNombre"
+          style="background-color: white;">
+        <span class="focus-input100"></span>
+      </div>
+
+
+
+      <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
+        <span class="contact100-form-combo">Nombre</span>
+        <input formControlName="nombre" type="text" class="input100 form-control"
+          [class.is-invalid]="form.controls.nombre.status!='VALID'"
+          [class.is-valid]="form.controls.nombre.status=='VALID'" id="inputNombre">
+        <span class="focus-input100"></span>
+        <div class="invalid-feedback" style="text-align: center;">
+          Ingresa nombre entre 4 y 25 caracteres
         </div>
-  
-        <input formControlName="idActividad" hidden type="text" class="form-control" id="inputidAct">
+      </div>
 
-        <div class="row mb-3">
-            <label for="inputNombre" class="col-sm-2 col-form-label">ID</label>
-            <div class="col-sm-10">
-              <input readonly formControlName = "idEmpresa"  type="text" class="form-control" id="inputNombre">
-            </div>
-          </div>
+      <div class="wrap-input100 validate-input">
+        <span class="contact100-form-combo">Mision</span>
+        <textarea style="resize: none" formControlName="mision" class="input100 form-control"
+          [class.is-invalid]="form.controls.mision.status!='VALID'"
+          [class.is-valid]="form.controls.mision.status=='VALID'" id="inputMision" rows="3"></textarea>
+      </div>
 
-        <div class="row mb-3">
-          <label for="inputNombre" class="col-sm-2 col-form-label">Nombre</label>
-          <div class="col-sm-10">
-            <input formControlName = "nombre" type="text" class="form-control"
-            [class.is-invalid]="form.controls.nombre.status!='VALID'"
-            [class.is-valid]="form.controls.nombre.status=='VALID'"
-            id="inputNombre">
-          </div>
-        </div>
+      <div class="wrap-input100 validate-input">
+        <span class="contact100-form-combo">Vision</span>
+        <textarea style="resize: none" formControlName="vision" class="input100 form-control"
+          [class.is-invalid]="form.controls.vision.status!='VALID'"
+          [class.is-valid]="form.controls.vision.status=='VALID'" id="inputVision" rows="3"></textarea>
+      </div>
 
-        <div class="row mb-3">
-            <label for="inputDescripcion" class="col-sm-2 col-form-label">Misión</label>
-            <div class="col-sm-10">
-                <textarea  style="resize: none" formControlName="mision" class="form-control"
-            [class.is-invalid]="form.controls.mision.status!='VALID'"
-            [class.is-valid]="form.controls.mision.status=='VALID'"
-             id="inputDescripcion"
-                    rows="3"></textarea>
-            </div>
-          </div>
+      <div class="wrap-input100 validate-input">
+        <span class="contact100-form-combo">Descripcion</span>
+          <textarea style="resize: none" formControlName="descripcion" class="input100 form-control" id="inputDescripcion"
+            [class.is-invalid]="form.controls.descripcion.status!='VALID'"
+            [class.is-valid]="form.controls.descripcion.status=='VALID'" rows="3"></textarea>
+      </div>
 
-          <div class="row mb-3">
-            <label for="inputDescripcion" class="col-sm-2 col-form-label">Visión</label>
-            <div class="col-sm-10">
-                <textarea  style="resize: none" formControlName="vision" class="form-control"
-              [class.is-invalid]="form.controls.vision.status!='VALID'"
-              [class.is-valid]="form.controls.vision.status=='VALID'" 
-                id="inputDescripcion"
-                    rows="3"></textarea>
-            </div>
-          </div>
-  
-        <div class="row mb-3">
-          <label for="inputDescripcion" class="col-sm-2 col-form-label">Descripción</label>
-          <div class="col-sm-10">
-              <textarea  style="resize: none" formControlName="descripcion" class="form-control" id="inputDescripcion"
-              [class.is-invalid]="form.controls.descripcion.status!='VALID'"
-              [class.is-valid]="form.controls.descripcion.status=='VALID'" 
-                  rows="3"></textarea>
-          </div>
-        </div>
-  
 
-        <div class="row mb-3">
-          <label for="inputImagen" class="col-sm-2 col-form-label">Dirección</label>
-          <div class="col-sm-10">
-            <input formControlName = "direccion" type="text" class="form-control"
+      <div class="wrap-input100 validate-input">
+        <span class="contact100-form-combo">Direccion</span>
+          <input formControlName="direccion" type="text" class="input100 form-control"
             [class.is-invalid]="form.controls.direccion.status!='VALID'"
-              [class.is-valid]="form.controls.direccion.status=='VALID'" id="inputImagen">
-          </div>
-        </div>
+            [class.is-valid]="form.controls.direccion.status=='VALID'" id="inputDireccion">
+      </div>
 
-        <div class="row mb-3">
-            <label for="inputImagen" class="col-sm-2 col-form-label">Url Imagen</label>
-            <div class="col-sm-10">
-              <input formControlName = "urlImagen" type="text" class="form-control"
-              [class.is-invalid]="form.controls.urlImagen.status!='VALID'"
-              [class.is-valid]="form.controls.urlImagen.status=='VALID'"
-              id="inputImagen">
-            </div>
-          </div>
-  
-          <div class="row mb-3">
-            <label for="inputImagen" class="col-sm-2 col-form-label">Correo</label>
-            <div class="col-sm-10">
-              <input formControlName = "correo" type="email" class="form-control"
-              [class.is-invalid]="form.controls.correo.status!='VALID'"
-              [class.is-valid]="form.controls.correo.status=='VALID'"
-              id="inputImagen">
-            </div>
-          </div>
+      <div class="wrap-input100 validate-input">
+        <span class="contact100-form-combo">Imagen de la empresa(URL)</span>
+          <input formControlName="urlImagen" type="text" class="input100 form-control"
+            [class.is-invalid]="form.controls.urlImagen.status!='VALID'"
+            [class.is-valid]="form.controls.urlImagen.status=='VALID'" id="inputImagen">
+      </div>
 
-          <div class="row mb-3">
-            <label for="inputImagen" class="col-sm-2 col-form-label">Estado</label>
-            <div class="col-sm-10">
-              <input formControlName = "estado" type="text" class="form-control"
-              [class.is-invalid]="form.controls.estado.status!='VALID'"
-              [class.is-valid]="form.controls.estado.status=='VALID'"
-              id="inputImagen">
-            </div>
-          </div>
+      <div class="wrap-input100 validate-input">
+        <span class="contact100-form-combo">Correo</span>
+          <input formControlName="correo" type="email" class="input100 form-control"
+            [class.is-invalid]="form.controls.correo.status!='VALID'"
+            [class.is-valid]="form.controls.correo.status=='VALID'" id="inputCorreo">
+      </div>
 
-          <div class="row mb-3">
-            <label for="inputImagen" class="col-sm-2 col-form-label">Telefono</label>
-            <div class="col-sm-10">
-              <input formControlName = "telefono" type="text" class="form-control" id="inputImagen"
-              [class.is-invalid]="form.controls.telefono.status!='VALID'"
-              [class.is-valid]="form.controls.telefono.status=='VALID'">
-            </div>
-          </div>
+      <div class="wrap-input100 validate-input">
+        <span class="contact100-form-combo">Estado</span>
+        <select formControlName="estado" aria-label="Default select example"
+        [class.is-invalid]="form.controls.estado.status=='INVALID'"
+        [class.is-valid]="form.controls.estado.status=='VALID'" class="form-control input100"
+        placeholder="estado">
+        <option value="false">INACTVO</option>
+        <option value="true">ACTIVO</option>
+      </select>
+      </div>
 
-          <div class="row mb-3">
-            <label for="inputFechaNac" class="col-sm-2 col-form-label">Fecha de fundación</label>
-            <div class="col-sm-10">
-              <input formControlName="fecha" type="DATE" class="form-control" id="inputFechaNac"
-              [class.is-invalid]="form.controls.fecha.status!='VALID'"
-              [class.is-valid]="form.controls.fecha.status=='VALID'"
-              >
-            </div>
-          </div>
+      <div class="wrap-input100 validate-input">
+        <span class="contact100-form-combo">Telefono</span>
+          <input formControlName="telefono" type="text" class="input100 form-control" id="inputTelefono"
+            [class.is-invalid]="form.controls.telefono.status!='VALID'"
+            [class.is-valid]="form.controls.telefono.status=='VALID'">
+      </div>
 
-                 
+      <div class="wrap-input100 validate-input">
+        <span class="contact100-form-combo">Fecha de fundacion</span>
+          <input formControlName="fecha" type="DATE" class="input100 form-control" id="inputFechaFun"
+            [class.is-invalid]="form.controls.fecha.status!='VALID'"
+            [class.is-valid]="form.controls.fecha.status=='VALID'">
+      </div>
 
-        <div class="d-grid gap-2 col-6 mx-auto">
-          <button class="btn btn-primary" type="submit" >Editar</button>
-          <div class="col-sm-0"></div>
-        </div>
-      </form>
-    </div>
-    <div class="col"></div>
+
+
+      <hr style="color: rgb(5, 168, 5);">
+      <div class="container-contact100-form-btn">
+        <button class="contact100-form-btn" type="submit">Editar</button>
+      </div>
+    </form>
   </div>
+</div>
