@@ -124,7 +124,7 @@ export class AddCalificacionComponent implements OnInit {
     
     this.calificacion.post(this.form.value).subscribe(data=>{
       this.toastr.success("Calificación Agregada!", "Registrada", {
-        positionClass: 'toast-top-center'
+        positionClass: 'toast-bottom-center'
        }) 
       this.router.navigateByUrl("/misViajes")
     })
