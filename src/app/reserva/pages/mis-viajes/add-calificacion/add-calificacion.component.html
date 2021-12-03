@@ -20,7 +20,7 @@
                             <h5>Calificación</h5>
                             
                             <div  class="form-group">
-                                <input formControlName="puntuacion" [class.is-invalid]="form.controls.puntuacion.status=='INVALID'" [class.is-valid]="form.controls.puntuacion.status=='VALID'"   type="number" class="form-control" placeholder="Puntuación" />
+                                <input formControlName="puntuacion"  [class.is-invalid]="form.controls.puntuacion.status=='INVALID'" [class.is-valid]="form.controls.puntuacion.status=='VALID'"   type="number" min="1" max="5"  class="form-control" placeholder="Puntuación" />
                             </div>
                                                        
                             <div class="form-group">
@@ -28,12 +28,23 @@
                                 id="inputComentario" rows="3" placeholder="Comentario"  ></textarea>
                             
                             </div>
+                            <div class="form-group needs-validation" novalidate>
+                                <input hidden formControlName="usuario" type="text" class="form-control"
+                                    placeholder="id" value="{{ idUsuario }}" required />
+                            </div>
+
+
+                            <div class="form-group needs-validation" novalidate>
+                                <input hidden formControlName="tour" type="text" class="form-control"
+                                    placeholder="id" value="{{ idTour }}" required />
+                            </div>
+                           
                          
                         </div>
                         <div   class="col-md-6">
-                            <h5>Viaje a Calificar</h5>
+                            <h5>Paquete a Calificar</h5>
                             <div class="form-group">
-                                <p id="email"  class="form-control"></p>
+                                <p id="nomPaquete"  class="form-control"></p>
                             </div>                            
                             <button type="submit" class="btnRegister" >Enviar</button>
                         </div>
