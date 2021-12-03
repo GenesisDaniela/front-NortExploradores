@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AliadosService } from '../../services/aliados.service';
 import { Subject } from 'rxjs';
 import { NzButtonSize } from 'ng-zorro-antd/button';
+import { TokenService } from 'src/app/services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-aliados',
@@ -16,11 +18,15 @@ export class AliadosComponent implements OnInit {
   dtTrigger = new Subject<any>();
   public data: any[]=[];
 
-  constructor(private httpClient: AliadosService){
+  constructor(private httpClient: AliadosService,
+    private tokenS:TokenService,
+    private router : Router,
+    ){
 
   }
 
   ngOnInit(): void {
+    this.cargarToken();
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 6,
@@ -45,4 +51,14 @@ export class AliadosComponent implements OnInit {
       
   //   });
   // }
+
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      if(this.tokenS.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
+    }
+  }
 }

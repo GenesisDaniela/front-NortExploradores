@@ -6,6 +6,7 @@ import { ActividadesService } from 'src/app/administracion/services/actividades.
 import { ActivatedRoute, Router } from '@angular/router';
 import { MunicipioService } from 'src/app/administracion/services/municipio.service';
 import { ToastrService } from 'ngx-toastr';
+import { TokenService } from 'src/app/services/token.service';
 @Component({
   selector: 'app-add-paquete',
   templateUrl: './add-paquete.component.html',
@@ -29,15 +30,16 @@ export class AddPaqueteComponent implements OnInit {
     private actividadService: ActividadesService,
     private paqueteService: PaquetesService,
     private formBuilder: FormBuilder,
-    private router : Router,
     private aRouter: ActivatedRoute,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private tokenS: TokenService,
+    private router: Router
   ) { 
     this.id = aRouter.snapshot.paramMap.get('idPaq');
   }
 
   ngOnInit(): void {
-  
+    this.cargarToken();
     this.agregarAlojamiento();
     this.agregarMunicipio();
     this.form=this.formBuilder.group({
@@ -112,8 +114,6 @@ export class AddPaqueteComponent implements OnInit {
         })
       )
     }
-    console.log(actividadess.value);
-    console.log('total acts', totalAct);
   }
   
   get getActividades(){
@@ -121,8 +121,6 @@ export class AddPaqueteComponent implements OnInit {
   }
   
   public enviarData() {
-   
-    // console.log('actssss', this.getActividades.value);
     this.paqueteService.post(this.form.value).subscribe(paquete=>{
       this.paqueteService.postAct(this.getActividades.value, paquete.idPaq).subscribe(data=>{    this.toastr.success("Paquete Agregado Con Exito!", "Paquete Registrado", {
         positionClass: 'toast-bottom-right'
@@ -133,6 +131,16 @@ export class AddPaqueteComponent implements OnInit {
       })
    
    }
+
+   public cargarToken() {
+    if (this.tokenS.getToken()) {
+      if(this.tokenS.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
+    }
+  }
 
    
 }

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ActividadesService } from 'src/app/administracion/services/actividades.service';
 import { PaquetesService } from 'src/app/administracion/services/paquetes.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-add-actividad',
@@ -25,7 +26,8 @@ export class AddActividadComponent implements OnInit {
     private formBuilder: FormBuilder,
     private aRouter: ActivatedRoute,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private tokenS: TokenService
     
   ) {
     this.id = aRouter.snapshot.paramMap.get('idActividad');
@@ -33,6 +35,7 @@ export class AddActividadComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cargarToken();
     this.esEditarAct();
     this.agregarPaquete();
     if(this.id != null){
@@ -108,6 +111,14 @@ export class AddActividadComponent implements OnInit {
     }
   }
 
-
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      if(this.tokenS.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
+    }
+  }
 
 }

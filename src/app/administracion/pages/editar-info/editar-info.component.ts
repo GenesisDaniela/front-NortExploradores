@@ -23,6 +23,7 @@ export class EditarInfoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.cargarToken();
     this.form = this.formBuilder.group({
       id_Usuario:['',Validators.required],
       username: ['', Validators.required],
@@ -58,6 +59,15 @@ export class EditarInfoComponent implements OnInit {
     })
   }
 
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      if(this.tokenS.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
+    }
+  }
 
 
 }

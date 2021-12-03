@@ -30,7 +30,7 @@ export class PrincipalComponent implements OnInit {
     private tokenS: TokenService,
     private router: Router,
     private soli: SolicitudpaqueteService,
-    private notificacionService: NotificacionService
+    private notificacionService: NotificacionService,
   ) { }
 
   ngOnInit(): void {
@@ -97,6 +97,16 @@ export class PrincipalComponent implements OnInit {
   volverInicio(){
     this.router.navigate(['/administracion']);
     
+  }
+
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      if(this.tokenS.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
+    }
   }
 
 }

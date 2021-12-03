@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TokenService } from 'src/app/services/token.service';
+import { PaquetesService } from '../../services/paquetes.service';
 
 @Component({
   selector: 'app-reportes',
@@ -10,6 +12,8 @@ export class ReportesComponent implements OnInit {
 
   current = 0;
 
+
+  
   index = 'First-content';
 
   paginas =[
@@ -52,9 +56,20 @@ export class ReportesComponent implements OnInit {
       }
     }
   }
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private tokenS: TokenService,
+    ) { }
 
   ngOnInit(): void {
   }
 
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      if(this.tokenS.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
+    }
+  }
 }

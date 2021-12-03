@@ -5,6 +5,7 @@ import { PaquetesService } from 'src/app/administracion/services/paquetes.servic
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MunicipioService } from 'src/app/administracion/services/municipio.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-edit-paquete',
@@ -29,11 +30,13 @@ export class EditPaqueteComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router : Router,
     private aRouter: ActivatedRoute,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private tokenS: TokenService,
 
   ) { this.id = aRouter.snapshot.paramMap.get('idPaq');}
 
   ngOnInit(): void {
+    this.cargarToken();
     this.esEditar();
     this.agregarAlojamiento();
     this.agregarMunicipio();
@@ -118,6 +121,14 @@ export class EditPaqueteComponent implements OnInit {
     }
   }
 
-
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      if(this.tokenS.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
+    }
+  }
 
 }

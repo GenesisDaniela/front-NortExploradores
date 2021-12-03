@@ -41,6 +41,7 @@ import { AddCalificacionComponent } from './pages/mis-viajes/add-calificacion/ad
 @NgModule({
   declarations: [
     InicioComponent,
+    MisReservasComponent,
     HomeComponent,
     VerRutasComponent,
     PasadiaComponent,
@@ -59,11 +60,10 @@ import { AddCalificacionComponent } from './pages/mis-viajes/add-calificacion/ad
     DetalleTourComponent,
     AddExperienciaComponent,
     MaletaComponent,
-    MisReservasComponent,
     InformacionTransaccionComponent,
     MisViajesComponent,
     EditarPerfilComponent,
-    AddCalificacionComponent
+    AddCalificacionComponent,
   ],
   imports: [
     CommonModule,

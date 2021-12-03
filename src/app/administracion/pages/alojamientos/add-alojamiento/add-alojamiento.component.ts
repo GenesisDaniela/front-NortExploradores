@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule} f
 import { ActivatedRoute, Router} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AlojamientosService } from 'src/app/administracion/services/alojamientos.service';
+import { TokenService } from 'src/app/services/token.service';
 
 
 
@@ -24,12 +25,13 @@ export class AddAlojamientoComponent implements OnInit {
     private aRouter: ActivatedRoute,
     private router : Router,
     private toastr: ToastrService,
-
+    private tokenS:TokenService,
   ) {
     this.id = aRouter.snapshot.paramMap.get('idAlojamiento');
   }
 
   ngOnInit(): void {
+    this.cargarToken();
     this.esEditarAloja();
       this.form = this.formBuilder.group({
       idAlojamiento:['', ],
@@ -100,6 +102,16 @@ export class AddAlojamientoComponent implements OnInit {
           precio: data.precio,
         });
       });
+    }
+  }
+  public cargarToken() {
+    
+    if (this.tokenS.getToken()) {
+      if(this.tokenS.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
     }
   }
 }

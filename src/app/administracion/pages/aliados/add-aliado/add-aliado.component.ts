@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 // import { ToastrService } from 'ngx-toastr';
 import { EmpresaService } from 'src/app/services/empresa.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-add-aliado',
@@ -23,12 +24,14 @@ export class AddAliadoComponent implements OnInit {
     private formBuilder: FormBuilder,
     private aRouter: ActivatedRoute,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private tokenS: TokenService,
   ) {
     this.id = aRouter.snapshot.paramMap.get('idAliado');
   }
 
   ngOnInit(): void {
+    this.cargarToken();
     this.esEditar();
     this.form = this.formBuilder.group({
       idEmpresa: ['', Validators.compose([
@@ -134,6 +137,15 @@ export class AddAliadoComponent implements OnInit {
             output.setAttribute("value",data.idEmpresa)
           }
       });
+    }
+  }
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      if(this.tokenS.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
     }
   }
 }

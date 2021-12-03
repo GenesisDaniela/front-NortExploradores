@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { TokenService } from 'src/app/services/token.service';
+import { AlojamientosService } from '../../services/alojamientos.service';
 
 @Component({
   selector: 'app-calendario',
@@ -6,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calendario.component.css']
 })
 export class CalendarioComponent {
+  constructor(private httpClient: AlojamientosService,
+    private router : Router,
+    private tokenS:TokenService,
+    
+    ){
 
+  }
+
+  ngOnInit(): void {
+    this.cargarToken();
+  }
   listDataMap = {
     seven:[
       { type: 'warning', content: 'This is warning event.' },
@@ -36,6 +49,16 @@ export class CalendarioComponent {
       return 1394;
     }
     return null;
+  }
+
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      if(this.tokenS.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
+    }
   }
 
 }

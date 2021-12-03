@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { TokenService } from 'src/app/services/token.service';
 import { ToursService } from '../../services/tours.service';
 
 @Component({
@@ -14,7 +16,10 @@ export class ToursComponent implements OnInit {
   dtTrigger = new Subject<any>();
   public data: any[]=[];
 
-  constructor(private tourService: ToursService){
+  constructor(private tourService: ToursService,
+    private router: Router,
+    private token: TokenService,
+    ){
 
   }
 
@@ -40,5 +45,15 @@ export class ToursComponent implements OnInit {
     this.tourService.deshabilitar(id).subscribe((data) => {  
       console.log(id);
     });
+  }
+  
+  public cargarToken() {
+    if (this.token.getToken()) {
+      if(this.token.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
+    }
   }
 }

@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Subject } from 'rxjs';
+import { TokenService } from 'src/app/services/token.service';
 import { CargosService } from '../../services/cargos.service';
 import { AddCargoComponent } from './add-cargo/add-cargo.component';
 
@@ -16,11 +18,15 @@ export class CargoComponent implements OnInit, OnDestroy {
   dtTrigger = new Subject<any>();
   public data: any[]=[];
 
-  constructor(private httpClient: CargosService){
+  constructor(private httpClient: CargosService,
+    private tokenS:TokenService,
+    private router : Router,
+    ){
 
   }
 
   ngOnInit(): void {
+    this.cargarToken();
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 6,
@@ -45,6 +51,14 @@ export class CargoComponent implements OnInit, OnDestroy {
       
   //   });
   // }
-
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      if(this.tokenS.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
+    }
+  }
 
 }

@@ -3,6 +3,8 @@ import { Subject } from 'rxjs';
 import { NzButtonSize } from 'ng-zorro-antd/button';
 import { ClientesService } from '../../services/clientes.service';
 import { ToastrService } from 'ngx-toastr';
+import { TokenService } from 'src/app/services/token.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
@@ -16,11 +18,15 @@ export class ClientesComponent implements OnInit {
   dtTrigger = new Subject<any>();
   public data: any[]=[];
 
-  constructor(private httpClient: ClientesService , private toastr: ToastrService){
+  constructor(private httpClient: ClientesService , private toastr: ToastrService,
+    private tokenS:TokenService,
+    private router : Router,
+    ){
 
   }
 
   ngOnInit(): void {
+    this.cargarToken();
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 6,
@@ -56,6 +62,16 @@ export class ClientesComponent implements OnInit {
     })
     
   });
+  }
+
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      if(this.tokenS.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
+    }
   }
 
 //   window.location.reload();

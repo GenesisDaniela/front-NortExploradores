@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { NzButtonSize } from 'ng-zorro-antd/button';
 import { Subject } from 'rxjs';
+import { TokenService } from 'src/app/services/token.service';
 import { EmpleadosService } from '../../services/empleados.service';
 
 @Component({
@@ -16,11 +18,15 @@ export class EmpleadosComponent implements OnDestroy, OnInit {
   dtTrigger = new Subject<any>();
   public data: any[]=[];
 
-  constructor(private httpClient: EmpleadosService){
+  constructor(private httpClient: EmpleadosService,
+    private router: Router,
+    private tokenS: TokenService,
+    ){
 
   }
 
   ngOnInit(): void {
+    this.cargarToken();
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 6,
@@ -44,5 +50,14 @@ export class EmpleadosComponent implements OnDestroy, OnInit {
   //     console.log(id);
   //   });
   // }
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      if(this.tokenS.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
+    }
+  }
 
 }

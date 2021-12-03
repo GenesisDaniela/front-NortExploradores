@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { TransportesService } from 'src/app/administracion/services/transportes.service';
 import { EmpresaService } from 'src/app/services/empresa.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-add-transportes',
@@ -25,11 +26,13 @@ export class AddTransportesComponent implements OnInit {
     private aRouter: ActivatedRoute ,
     private router : Router,
     private toastr: ToastrService,
+    private tokenS:TokenService
   ){
     this.id = aRouter.snapshot.paramMap.get('idTransporte');
   }
 
   ngOnInit(): void {
+    this.cargarToken();
     this.esEditarTransporte();
     this.agregarEmpresa();
     
@@ -114,7 +117,15 @@ export class AddTransportesComponent implements OnInit {
     }
   }
 
-
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      if(this.tokenS.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
+    }
+  }
 
   esEditarTransporte() {
     if (this.id !== null) {

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NzButtonSize } from 'ng-zorro-antd/button';
 import { Subject } from 'rxjs';
+import { TokenService } from 'src/app/services/token.service';
 import { SegurosService } from '../../../services/seguros.service';
 
 @Component({
@@ -16,11 +18,15 @@ export class SegurosComponent implements OnInit {
   dtTrigger = new Subject<any>();
   public data: any[]=[];
 
-  constructor(private seguros : SegurosService) { 
+  constructor(private seguros : SegurosService,
+    private tokenS:TokenService,
+    private router : Router,
+    ) { 
 
   }
 
   ngOnInit(): void {
+    this.cargarToken();
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 6,
@@ -40,5 +46,14 @@ export class SegurosComponent implements OnInit {
       
   //   });
   // }
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      if(this.tokenS.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
+    }
+  }
 
-}
+} 

@@ -9,6 +9,8 @@ import { ToursService } from 'src/app/administracion/services/tours.service';
 import { TransportesService } from 'src/app/administracion/services/transportes.service';
 import { PaqueteService } from 'src/app/services/paquete.service';
 import { ToastrService } from 'ngx-toastr';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { TokenService } from 'src/app/services/token.service';
 @Component({
   selector: 'app-add-tour',
   templateUrl: './add-tour.component.html',
@@ -41,7 +43,9 @@ export class AddTourComponent implements OnInit {
     private formBuilder: FormBuilder,
     private aRouter: ActivatedRoute,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private user:UsuarioService,
+    private token: TokenService,
   ) {
     this.id = aRouter.snapshot.paramMap.get('idTour');
 
@@ -194,6 +198,16 @@ let tour:any
           });
         });
       });
+    }
+  }
+
+  public cargarToken() {
+    if (this.token.getToken()) {
+      if(this.token.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
     }
   }
 }

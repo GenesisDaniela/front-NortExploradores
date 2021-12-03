@@ -6,6 +6,7 @@ import { CargoService } from 'src/app/services/cargo.service';
 import { PersonaService } from 'src/app/administracion/services/persona.service';
 import { TipoidService } from 'src/app/services/tipoid.service';
 import { ToastrService } from 'ngx-toastr';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-add-empleado',
@@ -33,13 +34,15 @@ export class AddEmpleadoComponent implements OnInit {
     private tipoIdService: TipoidService,
     private aRouter: ActivatedRoute,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private tokenS: TokenService,
   ) {
     this.id = aRouter.snapshot.paramMap.get('idEmpleado');
     this.idPer = aRouter.snapshot.paramMap.get('idPersona');
   }
 
   ngOnInit(): void {
+    this.cargarToken();
     this.agregarTipo();
     this.agregarCargos();
     this.esEditarEmpleado();
@@ -162,6 +165,16 @@ export class AddEmpleadoComponent implements OnInit {
         });
       });
 
+    }
+  }
+
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      if(this.tokenS.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
     }
   }
 }

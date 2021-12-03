@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { SegurosService } from 'src/app/administracion/services/seguros.service';
 import { EmpresaService } from 'src/app/services/empresa.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-add-seguros',
@@ -25,11 +26,13 @@ export class AddSegurosComponent implements OnInit {
     private aRouter: ActivatedRoute ,
     private router : Router,
     private toastr: ToastrService,
+    private tokenS:TokenService
   ){
     this.id = aRouter.snapshot.paramMap.get('idSeguro');
   }
 
   ngOnInit(): void {
+    this.cargarToken();
     this.agregarEmpresa();
     this.esEditar();
     this.form=this.formBuilder.group({
@@ -91,7 +94,15 @@ export class AddSegurosComponent implements OnInit {
       });
     }
   }
-
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      if(this.tokenS.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
+    }
+  }
   esEditar() {
     if (this.id !== null) {
       this.titulo = 'Editar Seguro';

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NzButtonSize } from 'ng-zorro-antd/button';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { SolicitudpaqueteService } from 'src/app/administracion/services/solicitudpaquete.service';
+import { TokenService } from 'src/app/services/token.service';
 import { SolicitudComponent } from '../solicitud.component';
 @Component({
   selector: 'app-solicitudes',
@@ -15,9 +17,12 @@ export class SolicitudesComponent implements OnInit {
   solicitudes:any[] = [];
   dtTrigger = new Subject<any>();
   constructor(private solicitud:SolicitudpaqueteService,
+    private router: Router,
+    private tokenS: TokenService,
     private toastr:ToastrService) { }
 
   ngOnInit(): void {
+    this.cargarToken()
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 6,
@@ -56,4 +61,13 @@ export class SolicitudesComponent implements OnInit {
     }
   }
 
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      if(this.tokenS.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
+    }
+  }
 }

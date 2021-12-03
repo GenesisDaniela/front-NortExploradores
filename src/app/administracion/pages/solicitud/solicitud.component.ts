@@ -50,12 +50,13 @@ export class SolicitudComponent implements OnInit {
     private toastr: ToastrService,
     private solicitudPaqueteService: SolicitudpaqueteService,
     private user:UsuarioService,
-    private token: TokenService
+    private token: TokenService,
   ) {
     this.id = aRouter.snapshot.paramMap.get('idSolicitud');
   }
 
   ngOnInit(): void {
+    this.cargarToken()
     this.agregarPaquetes();
     this.agregarSeguros();
     this.agregarEmpleados();
@@ -177,7 +178,16 @@ export class SolicitudComponent implements OnInit {
       this.empleados = empleados;
     });
   }
+  
 
-
+  public cargarToken() {
+    if (this.token.getToken()) {
+      if(this.token.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
+    }
+  }
 
 }

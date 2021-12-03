@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { data } from 'jquery';
 import { ToastrService } from 'ngx-toastr';
 import { CargosService } from 'src/app/administracion/services/cargos.service';
+import { TokenService } from 'src/app/services/token.service';
 import { CargoComponent } from '../cargo.component';
 
 @Component({
@@ -24,12 +25,14 @@ export class AddCargoComponent implements OnInit {
     private formBuilder: FormBuilder,
     private aRouter: ActivatedRoute,
     private router : Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private tokenS:TokenService,
   ) {
     this.id = aRouter.snapshot.paramMap.get('idCargo');
   }
 
   ngOnInit(): void {
+    this.cargarToken();
     this.esEditar();
    // this.deshabilitar();
     this.form = this.formBuilder.group({
@@ -80,7 +83,15 @@ export class AddCargoComponent implements OnInit {
 
     // CargoComponent.prototype.handleOk();
   }
-
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      if(this.tokenS.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
+    }
+  }
   esEditar() {
     // this.aRouter.snapshot.paramMap("idCargo");
     if (this.id !== null) {

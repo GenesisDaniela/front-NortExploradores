@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EmpresaService } from '../../../../services/empresa.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-edit-info',
@@ -18,6 +19,7 @@ export class EditInfoComponent implements OnInit {
 
   constructor(private aRoute: ActivatedRoute, private empresa: EmpresaService, private fb: FormBuilder,
     private toastr: ToastrService,
+    private tokenS: TokenService,
     private router: Router) {
 
     this.form = this.fb.group({
@@ -69,6 +71,7 @@ export class EditInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cargarToken();
     this.id = this.aRoute.snapshot.paramMap.get("idEmp");
 
 
@@ -116,6 +119,16 @@ export class EditInfoComponent implements OnInit {
       this.router.navigateByUrl("/administracion/infoCorporativa");
     })
     console.log(this.form.value)
+  }
+
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      if(this.tokenS.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
+    }
   }
 
 }

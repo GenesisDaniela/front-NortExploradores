@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { CargosService } from '../../services/cargos.service';
 import { EmpresaService } from '../../../services/empresa.service';
+import { TokenService } from 'src/app/services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inf-corporativa',
@@ -15,7 +17,9 @@ export class InfCorporativaComponent implements OnInit {
   dtTrigger = new Subject<any>();
   info: any=[];
 
-  constructor(private empresa : EmpresaService){
+  constructor(private empresa : EmpresaService,
+    private tokenS: TokenService,
+    private router: Router){
 
   }
 
@@ -41,5 +45,13 @@ export class InfCorporativaComponent implements OnInit {
     this.dtTrigger.unsubscribe();
   }
 
-
-}
+  public cargarToken() {
+    if (this.tokenS.getToken()) {
+      if(this.tokenS.getAuthorities().length < 2){
+      this.router.navigateByUrl("/inicio");
+      }
+    } else {
+      this.router.navigateByUrl("/inicio");
+    }
+  }
+} 
