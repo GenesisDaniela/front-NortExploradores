@@ -87,8 +87,14 @@ export class AuthLoginComponent implements OnInit {
       },
       err => {
         this.isLogged = false;
-        this.errMsj = err.error.message;
-        this.toastr.error(this.errMsj, 'Nombre De Usuario o Contraseña Invalidos', {
+        this.errMsj = err.error;
+        if( typeof err.error == 'object'){
+          this.toastr.error("Contraseña incorrecta", '', {
+            timeOut: 3000,  positionClass: 'toast-bottom-center',
+          });
+          return;
+        }
+        this.toastr.error(this.errMsj, '', {
           timeOut: 3000,  positionClass: 'toast-bottom-center',
         });
       }
