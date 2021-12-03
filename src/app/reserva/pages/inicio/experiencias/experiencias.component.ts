@@ -18,7 +18,11 @@ export class ExperienciasComponent implements OnInit {
 
   ngOnInit(): void {
     this.httpClient.listar().subscribe(data=>{
-      this.data = data;  
+      // this.data = data; 
+      
+      for (let index = 0; index < 3; index++) {
+        this.data.push(data[index])        
+      }
          
       console.log("experiencias: ",data);
     })

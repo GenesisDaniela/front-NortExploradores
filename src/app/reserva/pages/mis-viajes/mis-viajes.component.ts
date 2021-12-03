@@ -71,7 +71,7 @@ export class MisViajesComponent implements OnInit {
   public cargarPaquetesComprados(id: number) {
     this.comprasSer.compras().subscribe((compras: any) => {
       this.compras = compras;
-      
+      console.log(this.compras)
       for(const iterator of compras){               
         if(id===iterator.usuario.id_Usuario){          
           this.comprasUsuario.push(iterator)
