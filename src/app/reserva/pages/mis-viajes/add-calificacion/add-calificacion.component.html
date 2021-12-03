@@ -1,0 +1,48 @@
+
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+            <h3>Bienvenido</h3>
+            <p>En norteXploradores nos gustaría conocer tu Calificación con nosotros</p>
+           
+        </div>
+        <div class="col-md-9 register-right">
+            <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+              
+                
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h3 class="register-heading">Califica tu viaje!</h3>
+                    <form [formGroup]="form" (ngSubmit)="enviarData()" class="row register-form" >
+                        <div class="col-md-6">
+                            <h5>Calificación</h5>
+                            
+                            <div  class="form-group">
+                                <input formControlName="puntuacion" [class.is-invalid]="form.controls.puntuacion.status=='INVALID'" [class.is-valid]="form.controls.puntuacion.status=='VALID'"   type="number" class="form-control" placeholder="Puntuación" />
+                            </div>
+                                                       
+                            <div class="form-group">
+                                <textarea style="resize: none" formControlName="comentario" [class.is-invalid]="form.controls.comentario.status=='INVALID'" [class.is-valid]="form.controls.comentario.status=='VALID'" class="form-control"
+                                id="inputComentario" rows="3" placeholder="Comentario"  ></textarea>
+                            
+                            </div>
+                         
+                        </div>
+                        <div   class="col-md-6">
+                            <h5>Viaje a Calificar</h5>
+                            <div class="form-group">
+                                <p id="email"  class="form-control"></p>
+                            </div>                            
+                            <button type="submit" class="btnRegister" >Enviar</button>
+                        </div>
+                    </form>
+                </div>
+             
+            </div>
+        </div>
+    </div>
+
+</div>
+<br>

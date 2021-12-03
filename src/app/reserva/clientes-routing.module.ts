@@ -23,6 +23,7 @@ import { InformacionTransaccionComponent } from './pages/pagos/informacion-trans
 import { MaletaComponent } from './pages/maleta/maleta.component';
 import { MisViajesComponent } from './pages/mis-viajes/mis-viajes.component';
 import { EditarPerfilComponent } from './pages/editar-perfil/editar-perfil.component';
+import { AddCalificacionComponent } from './pages/mis-viajes/add-calificacion/add-calificacion.component';
 
 const routes : Routes = [
   {path:"",
@@ -48,7 +49,11 @@ const routes : Routes = [
     {path:"editarPerfil", component:EditarPerfilComponent},
     {path:"misReservas", component:MisReservasComponent},
     {path:"inftransaccion", component:InformacionTransaccionComponent},
+
   {path:"misViajes", component:MisViajesComponent},
+  {path:"calificar", component:AddCalificacionComponent},
+  {path:"calificar/:idCompra", component:AddCalificacionComponent},
+
     
     {path:"**", redirectTo:"inicio"},
   ]}

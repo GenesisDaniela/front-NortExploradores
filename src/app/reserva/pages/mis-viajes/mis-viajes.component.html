@@ -17,6 +17,8 @@
             <th scope="col">Cant. Pasajeros</th>
             <th scope="col">Precio</th>
             <th scope="col">Imagen</th>
+            <th scope="col">Calificar</th>
+
         </tr>
         </thead>
         <tbody>
@@ -28,6 +30,13 @@
             <td>{{viajes.cantidadPasajeros}}</td>
             <td>{{viajes.tour.paquete.precio}}</td>
             <td><img src="{{viajes.tour.paquete.urlImagen}}" alt="" style="width: 50%;"></td>
+            <td style="padding-top: 70px;">
+              
+
+              <a [routerLink]="['/calificar',viajes.idCompra]">
+              
+                <i class="far fa-check-circle" style="font-size: 40px"></i>               
+              </a>
         </tr>
         </tbody>
       </table>

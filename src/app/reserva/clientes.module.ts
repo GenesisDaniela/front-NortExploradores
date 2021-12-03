@@ -36,6 +36,7 @@ import { EditarPerfilComponent } from './pages/editar-perfil/editar-perfil.compo
 //DATA TABLES
 
 import { DataTablesModule } from "angular-datatables";
+import { AddCalificacionComponent } from './pages/mis-viajes/add-calificacion/add-calificacion.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { DataTablesModule } from "angular-datatables";
     MisReservasComponent,
     InformacionTransaccionComponent,
     MisViajesComponent,
-    EditarPerfilComponent
+    EditarPerfilComponent,
+    AddCalificacionComponent
   ],
   imports: [
     CommonModule,
