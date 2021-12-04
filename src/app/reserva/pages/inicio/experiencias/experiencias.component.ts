@@ -32,14 +32,18 @@ export class ExperienciasComponent implements OnInit {
 
   puntuacion(number: any){
     let puntos =""; 
-    if(number==="1"){
+    if(number=="1"){
        puntos="★" 
-    }else if(number==="2"){
+    }else if(number=="2"){
       puntos="★★";
-    }else if(number==="5"){
+    }else if(number=="3"){
+      puntos="★★★";
+    }else if(number=="4"){
+      puntos="★★★★";       
+    }else if(number=="5"){
       puntos="★★★★★"
     }
-    this.cantidad=puntos;
+    return this.cantidad=puntos;
     // return this.cantidad=puntos;
   }
 
