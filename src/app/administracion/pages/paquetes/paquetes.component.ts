@@ -39,7 +39,7 @@ export class PaquetesComponent implements OnInit {
     this.httpClient.listarPaquete().subscribe((data:any)=>{
       // this.data = data;
       for (const iterator of data) {
-        if(iterator.estado==='ACTIVO' || iterator.estado==='INACTVO'){
+        if(iterator.estado==='ACTIVO' || iterator.estado==='INACTIVO'){
           this.data.push(iterator);
         }
       }
