@@ -53,6 +53,7 @@ export class AddTourComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.cargarToken();
     this.esEditartour();
     this.agregarPaquetes();
     this.agregarSeguros();
