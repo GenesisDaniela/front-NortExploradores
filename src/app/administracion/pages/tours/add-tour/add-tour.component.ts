@@ -93,9 +93,6 @@ export class AddTourComponent implements OnInit {
           Validators.required,
         ])],
       });
-    // this.formTrans=this.formBuilder.group({
-    //   transporte: ['', Validators.required],
-    // });
   }
 
 
@@ -184,6 +181,7 @@ let tour:any
 
       this.tourService.obtenerTour(this.id).subscribe((data) => {
         tour=data
+        console.log(data)
         this.tourService.obtenerTrans(this.id).subscribe((data) => {
           this.form.setValue({
             idTour: tour.idTour,

@@ -71,9 +71,9 @@
 
             <div class="wrap-input100">
                 <span class="contact100-form-combo">Estado del tour</span>
-                <select formControlName="estado" type="text" class="form-control" [class.is-invalid]="form.controls.estado.status=='INVALID'" [class.is-valid]="form.controls.estado.status=='VALID'" id="inputEstado" class="form-control input100" placeholder="Estado">
-            <option value="false">INACTVO</option>
-            <option value="true">ACTIVO</option>
+                <select formControlName="estado" type="text" [class.is-invalid]="form.controls.estado.status=='INVALID'" [class.is-valid]="form.controls.estado.status=='VALID'" id="inputEstado" class="form-control input100" placeholder="Estado">
+            <option class="select-options"  value="INACTIVO">INACTVO</option>
+            <option class="select-options"  value="ACTIVO">ACTIVO</option>
         </select>
             </div>
 
