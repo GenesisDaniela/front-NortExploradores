@@ -55,7 +55,7 @@ export class EditPaqueteComponent implements OnInit {
         Validators.compose([
           Validators.required, 
           Validators.minLength(10), 
-          Validators.maxLength(255)])],
+          Validators.maxLength(1000)])],
       recomendacion:['', 
         Validators.compose([
           Validators.required, 
