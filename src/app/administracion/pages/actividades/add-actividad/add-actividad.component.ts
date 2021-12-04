@@ -53,7 +53,7 @@ export class AddActividadComponent implements OnInit {
         nombre: ['', Validators.required],
         descripcion: [''],
         urlImg: [''],
-        estado: [''],
+        estado: ['', Validators.required],
         paquete: ['', Validators.required]
       });
     }

@@ -70,6 +70,7 @@
         <thead class="table-dark ">
           <tr>
             <th>ID</th>
+            <th>USUARIO</th>
             <th>NOMBRE Y APELIDO</th>
             <th>TELEFONO</th>
             <th>CORREO</th>
@@ -77,41 +78,30 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let clien of data">
+          <tr *ngFor="let clien of pasajero;let i=index">
             <td>{{clien.idPasajero}}</td>
+            <td>{{usuario[i].username}}</td>
             <td>{{clien.persona.nombre}} {{clien.persona.apellido}}</td>
             <td>{{clien.persona.cel}}</td>
             <td>{{clien.persona.correo }}</td>
             <td class="text-center">
-
-              <!-- Modal -->
-              <!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="staticBackdropLabel">Deshabilitar Cliente</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      Se ha deshabilitado el cliente: {{ clien.persona.nombre }}
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-
-              <a style="margin-right: 10px;" data-bs-target="#staticBackdrop"
+              <a *ngIf="usuario[i].estado" style="margin-right: 10px;" data-bs-target="#staticBackdrop"
                 (click)="deshabilitar(clien.idPasajero)">
                 <i class="far fa-user-times" style="font-size: 20px; color: rgb(177, 62, 62);"></i>
               </a>
-
-              <a style="margin-right: 10px;" data-bs-target="#staticBackdrop" (click)="habilitar(clien.idPasajero)">
-                <i class="far fa-user-check" style="font-size: 20px; color: rgb(35, 104, 3);"></i>
+              <a *ngIf="usuario[i].estado" style="margin-right: 10px;" data-bs-target="#staticBackdrop">
+                <i class="far fa-user-check" style="font-size: 20px; color: rgb(92, 92, 92);"></i>
+              </a>
+              <a *ngIf="!usuario[i].estado" style="margin-right: 10px;" data-bs-target="#staticBackdrop">
+                <i class="far fa-user-times" style="font-size: 20px; color: rgb(92, 92, 92);"></i>
               </a>
 
+              <a *ngIf="!usuario[i].estado" style="margin-right: 10px;" data-bs-target="#staticBackdrop">
+                <i (click)="habilitar(clien.idPasajero)" class="far fa-user-check" style="font-size: 20px; color: rgb(71, 209, 7);"></i>
+              </a>
+
+
+            
             </td>
           </tr>
         </tbody>

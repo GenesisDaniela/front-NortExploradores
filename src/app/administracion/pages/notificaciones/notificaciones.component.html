@@ -24,8 +24,9 @@
           </thead>
           <tbody>
            <tr *ngFor="let notificacion of notificaciones">
+            <td>{{notificacion.fecha}}</td>
+
                 <td>{{notificacion.descripcion}}</td>
-                <td>{{notificacion.fecha}}</td>
                 <td *ngIf="notificacion.usuario!=null">{{notificacion.usuario.username}}</td>
                 <td *ngIf="notificacion.usuario==null" class="text-center">----</td>
 

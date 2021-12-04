@@ -12,13 +12,18 @@
 
                 <div class="wrap-input100 validate-input" data-validate="Por favor ingrese el nombre completo">
                     <span class="contact100-form-combo">Nombre de la actividad</span>
-                    <input formControlName="nombre" [class.is-invalid]="form.controls.nombre.status=='INVALID'" [class.is-valid]="form.controls.nombre.status=='VALID'" class="form-control input100" type="text" placeholder="Nombre de la actividad" id="inputNombre">
+                    <input formControlName="nombre" 
+                    [class.is-invalid]="form.controls.nombre.status=='INVALID'" 
+                    [class.is-valid]="form.controls.nombre.status=='VALID'" class="form-control input100" type="text" placeholder="Nombre de la actividad" id="inputNombre">
                     <span class="focus-input100"></span>
                 </div>
 
                 <div class="wrap-input100">
                     <span class="contact100-form-combo">Estado de la actividad</span>
-                    <select formControlName="estado" type="text" class="form-control input100" id="inputEstado" placeholder="Estado">
+                    <select 
+                    [class.is-invalid]="form.controls.estado.status=='INVALID'" 
+                    [class.is-valid]="form.controls.estado.status=='VALID'" 
+                    formControlName="estado" type="text" class="form-control input100" id="inputEstado" placeholder="Estado">
                         <option class="select-options" value="false">INACTVO</option>
                         <option class="select-options" value="true">ACTIVO</option>
                     </select>

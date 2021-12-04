@@ -18,6 +18,9 @@ export class ClientesComponent implements OnInit {
   dtTrigger = new Subject<any>();
   public data: any[]=[];
 
+  public pasajero:any[] = [];
+  public usuario:any[] = [];
+
   constructor(private httpClient: ClientesService , private toastr: ToastrService,
     private tokenS:TokenService,
     private router : Router,
@@ -36,6 +39,8 @@ export class ClientesComponent implements OnInit {
     };
     this.httpClient.listarCliente().subscribe((data:any)=>{
       this.data = data;
+      this.pasajero = this.data[0]
+      this.usuario = this.data[1]
       this.dtTrigger.next();
     })
   }
@@ -50,6 +55,7 @@ export class ClientesComponent implements OnInit {
       this.toastr.success("Pasajero Deshabilitado con exito", "", {
         positionClass: 'toast-bottom-right' 
       })
+      window.location.reload();
      
     }); 
 
@@ -60,6 +66,7 @@ export class ClientesComponent implements OnInit {
       this.toastr.success("Pasajero Habilitado con exito", "", {
       positionClass: 'toast-bottom-right'
     })
+    window.location.reload();
     
   });
   }
