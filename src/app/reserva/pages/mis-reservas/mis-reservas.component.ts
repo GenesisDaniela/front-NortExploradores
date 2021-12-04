@@ -4,6 +4,8 @@ import { ToastrService } from 'ngx-toastr';
 import { ReservaService } from 'src/app/services/reserva.service';
 import { TokenService } from 'src/app/services/token.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { NzButtonSize } from 'ng-zorro-antd/button';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-mis-reservas',
@@ -16,6 +18,11 @@ export class MisReservasComponent implements OnInit {
   public nombreUser!:string;
   public reservas: any[] = [] ;
   
+  size: NzButtonSize = 'large';
+  dtOptions: DataTables.Settings = {};
+  
+  dtTrigger = new Subject<any>();
+
   constructor(
     private usuarioSer: UsuarioService,
     private tokenS: TokenService,
@@ -28,6 +35,15 @@ export class MisReservasComponent implements OnInit {
     this.nombreUser=this.tokenS.getUserName(); 
     this.cargarUsuario();
     this.cargarToken();
+
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 6,
+      language:{
+        url:"//cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
+      }
+    };
+
   }
 
   public cargarToken() {
@@ -49,7 +65,7 @@ export class MisReservasComponent implements OnInit {
   public cargarReservas(){
     this.usuarioSer.comprasReservadasUsuario(this.idUsuario).subscribe((reservas: any)=>{
       this.reservas = reservas;
-      
+      this.dtTrigger.next();
     })
   }
 

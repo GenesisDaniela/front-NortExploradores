@@ -36,12 +36,15 @@
                                             <input formControlName="pasajeros" [class.is-invalid]="formTour.controls.pasajeros.status=='INVALID'" [class.is-valid]="formTour.controls.pasajeros.status=='VALID'"  type="text" class="form-control" placeholder="N° de pasajeros" />
                                         </div>
                                         <div [formGroup]="formTour" class="wrap-input100">
-                                            <span style="margin-left: 20px;">Fecha Salida</span>
-                                            <input formControlName="fechaSalida"  [class.is-invalid]="formTour.controls.fechaSalida.status=='INVALID'" [class.is-valid]="formTour.controls.fechaSalida.status=='VALID'"  type="date" class="form-control input100">
+                                            <span class="contact100-form-combo">Fecha Salida</span>
+                <input [(ngModel)]="fechaS" formControlName="fechaSalida" [class.is-invalid]="formTour.controls.fechaSalida.status=='INVALID' ||
+                 !validarFecha()" [class.is-valid]="formTour.controls.fechaSalida.status=='VALID'
+                 && validarFecha()" type="date" class="form-control input100" id="inputFechaSalida" placeholder="Fecha salida" type="date" placeholder="Fecha salida">
                                         </div>
                                         <div [formGroup]="formTour" class="wrap-input100">
-                                            <span style="margin-left: 20px;">Fecha Llegada</span>
-                                            <input formControlName="fechaLlegada"  [class.is-invalid]="formTour.controls.fechaLlegada.status=='INVALID'" [class.is-valid]="formTour.controls.fechaLlegada.status=='VALID'"  type="date" class="form-control input100">
+                                            <span class="contact100-form-combo">Fecha Llegada</span>
+                <input [(ngModel)]="fechaL" formControlName="fechaLlegada" [class.is-invalid]="formTour.controls.fechaLlegada.status=='INVALID' || !validarFecha()" [class.is-valid]="formTour.controls.fechaLlegada.status=='VALID'
+                && validarFecha()" type="date" class="form-control" id="inputFechaLlegada" class="form-control input100" placeholder="Maximo de cupos">
                                         </div>
                                         <div [formGroup]="formSol" class="form-group">
                                             <textarea style="resize: none" formControlName="descripcion" [class.is-invalid]="formSol.controls.descripcion.status=='INVALID'" [class.is-valid]="formSol.controls.descripcion.status=='VALID'"  class="form-control"

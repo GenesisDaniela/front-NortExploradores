@@ -35,7 +35,12 @@ export class AliadosComponent implements OnInit {
       }
     };
     this.httpClient.listarAliados().subscribe((data:any)=>{
-      this.data = data;
+      // this.data = data;
+      for (const iterator of data) {
+        if(iterator.idEmpresa!=84950){
+          this.data.push(iterator)
+        }
+      }
       this.dtTrigger.next();
     })
   }
