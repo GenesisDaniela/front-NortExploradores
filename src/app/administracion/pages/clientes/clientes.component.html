@@ -89,18 +89,19 @@
                 (click)="deshabilitar(clien.idPasajero)">
                 <i class="far fa-user-times" style="font-size: 20px; color: rgb(177, 62, 62);"></i>
               </a>
-
               <a *ngIf="usuario[i].estado" style="margin-right: 10px;" data-bs-target="#staticBackdrop">
-                <i class="far fa-user-times" style="font-size: 20px; color: rgb(92, 92, 92);"></i>
+                <i class="far fa-user-check" style="font-size: 20px; color: rgb(92, 92, 92);"></i>
               </a>
-
-              <a *ngIf="!usuario[i].estado" style="margin-right: 10px;" data-bs-target="#staticBackdrop" (click)="habilitar(clien.idPasajero)">
-                <i class="far fa-user-check" style="font-size: 20px; color: rgb(35, 104, 3);"></i>
-              </a>
-
               <a *ngIf="!usuario[i].estado" style="margin-right: 10px;" data-bs-target="#staticBackdrop">
                 <i class="far fa-user-times" style="font-size: 20px; color: rgb(92, 92, 92);"></i>
               </a>
+
+              <a *ngIf="!usuario[i].estado" style="margin-right: 10px;" data-bs-target="#staticBackdrop">
+                <i (click)="habilitar(clien.idPasajero)" class="far fa-user-check" style="font-size: 20px; color: rgb(71, 209, 7);"></i>
+              </a>
+
+
+            
             </td>
           </tr>
         </tbody>
