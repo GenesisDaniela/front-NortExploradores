@@ -30,6 +30,7 @@ import { PersonaService } from './services/persona.service';
 import { TransaccionService } from './services/transaccion.service';
 import { interceptorProvider } from './security/interceptors/paq-interceptor.service';
 import { FooterComponent } from './shared/footer/footer.component';
+import { ExcelService } from './services/excel-service.service';
 
 // import { InformacionPagoComponent } from './home/informacion-pago/informacion-pago/informacion-pago.component';
 
@@ -62,7 +63,9 @@ registerLocaleData(es);
     UsuarioService,
     PersonaService,
     TransaccionService,
-    interceptorProvider],
+    interceptorProvider,
+    ExcelService  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

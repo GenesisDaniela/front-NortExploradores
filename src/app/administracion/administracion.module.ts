@@ -108,7 +108,6 @@ import { EditarInfoComponent } from './pages/editar-info/editar-info.component';
     ReactiveFormsModule,
     NzModalModule,
     ToastrModule.forRoot(),
-    // BrowserAnimationsModule,
   ],
   exports:[
     PrincipalComponent

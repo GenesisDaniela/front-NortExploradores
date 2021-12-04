@@ -20,6 +20,10 @@ export class CompraService {
     return this.http.get<any>(this.url+idCompra)
   }
 
+  public comprasMes():Observable<any>{
+    return this.http.get<any>(this.url+"mensuales")
+  }
+
   public compras():Observable<any>{
     return this.http.get<any>(this.url)
   }

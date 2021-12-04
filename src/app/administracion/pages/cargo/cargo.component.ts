@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { Subject } from 'rxjs';
+import { ExcelService } from 'src/app/services/excel-service.service';
 import { CargosService } from '../../services/cargos.service';
 import { AddCargoComponent } from './add-cargo/add-cargo.component';
 
@@ -16,7 +17,8 @@ export class CargoComponent implements OnInit, OnDestroy {
   dtTrigger = new Subject<any>();
   public data: any[]=[];
 
-  constructor(private httpClient: CargosService){
+  constructor(private httpClient: CargosService,
+    private excelservice: ExcelService){
 
   }
 
@@ -45,6 +47,8 @@ export class CargoComponent implements OnInit, OnDestroy {
       
   //   });
   // }
-
+  public exportarExcel(){
+    this.excelservice.exportAsExcelFile(this.data,"sample");
+  }
 
 }

@@ -24,6 +24,8 @@ export class InformacionPagoComponent implements OnInit {
   public empresa:any;
   public compra:any;
   public transaccion:any
+  public respuesta!:string;
+  public imgRespuesta!:string;
 
   constructor(
     private route:ActivatedRoute,
@@ -66,12 +68,29 @@ export class InformacionPagoComponent implements OnInit {
         if(body.get("extra1")!=null){
           this.compraService.encontrar(body.get("transaction_id")).subscribe(compra=>{
             this.compra=compra;
+            if(compra.response_message_pol=="APPROVED" && compra.reference_sale.estado=="PAGADO"){
+              this.respuesta="¡Transacción aprobada, disfruta tu viaje!"
+              this.imgRespuesta="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Check_green_icon.svg/2048px-Check_green_icon.svg.png"
+              return;
+            }
+            if(compra.response_message_pol=="APPROVED" && compra.reference_sale.estado=="PAGO_PARCIAL"){
+              this.respuesta="¡Transacción aprobada, recuerda pagar el 50% restante!"
+              this.imgRespuesta="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Check_green_icon.svg/2048px-Check_green_icon.svg.png"
+              return;
+            }
+
+
           })
         }else{
           let id = this.aRouter.snapshot.paramMap.get('idCompra');
           if(id!=null){
             this.transaccionService.encontrar(id).subscribe(compra=>{
               this.compra=compra;
+              if(compra.response_message_pol=="APPROVED" && compra.reference_sale.estado=="PAGADO"){
+                this.respuesta="¡Transacción aprobada, disfruta tu viaje!"
+                this.imgRespuesta="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Check_green_icon.svg/2048px-Check_green_icon.svg.png"
+                return;
+              }
             },error=>{
               // this.router.navigateByUrl("/inicio");
             })
