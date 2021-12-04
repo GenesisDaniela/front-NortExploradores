@@ -24,10 +24,14 @@
                     <td>{{reserva.cantidadPasajeros}}</td>
                     <td>{{reserva.tour.paquete.precio}}</td>
                     <td>{{reserva.estado}}</td>
-                    <td nzAlign="center">
+                    <td *ngIf="reserva.estado=='PAGO_PARCIAL' ||reserva.estado=='PENDIENTE'" nzAlign="center">
                         <a (click)="cancelar(reserva.reserva.idReserva)">
                             <i class="far fa-window-close" style="font-size: 25px;"></i>
                         </a>
+                    </td>
+
+                    <td *ngIf="reserva.estado!='PAGO_PARCIAL' &&reserva.estado!='PENDIENTE'" nzAlign="center">
+                       ------
                     </td>
                 </tr>
             </tbody>

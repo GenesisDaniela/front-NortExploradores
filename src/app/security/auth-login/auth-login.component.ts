@@ -29,10 +29,11 @@ export class AuthLoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginInfo = this.fb.group({
-      nombreUsuario:['',Validators.compose([
+      email:['',Validators.compose([
         Validators.required,
         Validators.minLength(5),
-        Validators.maxLength(25)
+        Validators.maxLength(25),
+        Validators.email
       ])],
       password:['',Validators.compose([
         Validators.required, 

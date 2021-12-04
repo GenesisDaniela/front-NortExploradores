@@ -15,11 +15,11 @@
 
 
 
-                    <input type="text" name="nombreUsuario" id="nombreUsuario" class="form-control" [class.is-valid]="loginInfo.controls.nombreUsuario.status=='VALID'" [class.is-invalid]="loginInfo.controls.nombreUsuario.status!='VALID'" formControlName="nombreUsuario" required
+                    <input type="text" name="nombreUsuario" id="nombreUsuario" class="form-control" [class.is-valid]="loginInfo.controls.email.status=='VALID'" [class.is-invalid]="loginInfo.controls.email.status!='VALID'" formControlName="email" required
                         type="text" size="18" alt="login" required />
                     <span class="form-highlight"></span>
                     <span class="form-bar"></span>
-                    <label for="username" class="float-label">Usuario</label>
+                    <label for="username" class="float-label">Email</label>
                 </div>
 
                 <div id="form-login-password" class="form-group">

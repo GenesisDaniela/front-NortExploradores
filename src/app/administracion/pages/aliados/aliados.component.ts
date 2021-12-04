@@ -14,7 +14,6 @@ export class AliadosComponent implements OnInit {
 
   size: NzButtonSize = 'large';
   dtOptions: DataTables.Settings = {};
-  
   dtTrigger = new Subject<any>();
   public data: any[]=[];
 
@@ -58,6 +57,8 @@ export class AliadosComponent implements OnInit {
   // }
 
   public cargarToken() {
+
+
     if (this.tokenS.getToken()) {
       if(this.tokenS.getAuthorities().length < 2){
       this.router.navigateByUrl("/inicio");
@@ -66,4 +67,5 @@ export class AliadosComponent implements OnInit {
       this.router.navigateByUrl("/inicio");
     }
   }
+
 }
