@@ -72,7 +72,7 @@ export class RecomendacionesComponent implements OnInit {
     
     this.recomendacion.enviarDatos(this.form.value).subscribe(data=>{
       this.toastr.success("Sugerencia Agregada!", "Registrada", {
-        positionClass: 'toast-top-center'
+        positionClass: 'toast-bottom-center'
        }) 
       this.router.navigateByUrl("/inicio")
     })
