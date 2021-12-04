@@ -22,6 +22,9 @@ export class ViajesGrupalesComponent implements OnInit {
   public municipios: any = [];
   public nombreUser!: string;
   public usuario: any;
+  public fechaL!: Date;
+  public fechaS!: Date;
+
   constructor(
     private tokenS: TokenService,
     private router: Router,
@@ -50,8 +53,12 @@ export class ViajesGrupalesComponent implements OnInit {
     this.formTour = this.formBuilder.group({
       minCupos: ['', Validators.required],
       maxCupos: ['', Validators.required],
-      fechaLlegada: ['', Validators.required],
-      fechaSalida: ['', Validators.required],
+      fechaLlegada: ['', Validators.compose([
+        Validators.required,
+      ])],
+      fechaSalida: ['', Validators.compose([
+        Validators.required,
+      ])],
       pasajeros: ['',
         Validators.compose([
           Validators.required,
@@ -125,6 +132,15 @@ export class ViajesGrupalesComponent implements OnInit {
 
     const email = document.getElementById("email")
     if(email) email.innerHTML=usuario.email
+  }
+
+  validarFecha(){
+    let fechaLlegada = new Date(this.fechaL);
+    let fechaSalida = new Date(this.fechaS);
+    let validar = false;
+    if(this.fechaL != undefined && this.fechaS != undefined && fechaLlegada >= fechaSalida)
+      validar = true
+    return validar;
   }
 
 }
