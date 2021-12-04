@@ -147,6 +147,7 @@
           <th>DESCRIPCIÓN</th>
           <th>RECOMENDACIÓN</th>
           <th>ALOJAMIENTO</th>
+          <th>MUNICIPIO</th>
           <th>IMÁGEN</th>
           <th>OPCIÓN</th> 
         </tr>
@@ -158,7 +159,9 @@
           <td>{{ paq.estado}}</td>
           <td>{{ paq.descripcion}}</td>
           <td>{{ paq.recomendacion }}</td>
-          <td>{{ paq.alojamiento.nombre}}</td>
+          <td *ngIf="paq.alojamiento!=null">{{ paq.alojamiento.nombre}}</td>
+          <td *ngIf="paq.alojamiento==null" style="text-align: center;">Sin alojamiento</td>
+          <td>{{paq.municipio.nombre}}</td>
           <td>
             <img [src]="paq.urlImagen" width="50%" alt="">
           </td>                      
